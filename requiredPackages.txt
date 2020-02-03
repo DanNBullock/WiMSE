@@ -1,0 +1,8 @@
+PIL
+os
+matplotlib
+numpy
+ipywidgets
+niwidgets
+
+GeoPandas
