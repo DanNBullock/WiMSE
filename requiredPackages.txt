@@ -1,4 +1,4 @@
-PIL
+Pillow
 os
 matplotlib
 numpy
