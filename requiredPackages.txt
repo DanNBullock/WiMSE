@@ -5,5 +5,3 @@ numpy
 ipywidgets
 niwidgets
 pandas
-
-GeoPandas
