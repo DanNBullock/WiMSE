@@ -1,0 +1,11 @@
+PIL
+os
+matplotlib
+numpy
+ipywidgets
+niwidgets
+pandas
+subprocess
+__future__
+nibabel
+nilearn
