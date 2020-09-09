@@ -6,7 +6,6 @@ ipywidgets
 niwidgets
 pandas
 subprocess
-__future__
 nibabel
 nilearn
 dipy
