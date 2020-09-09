@@ -9,3 +9,4 @@ subprocess
 __future__
 nibabel
 nilearn
+dipy
