@@ -6,4 +6,4 @@ niwidgets
 pandas
 nibabel
 nilearn
-dipy
+dipy==1.1.1
