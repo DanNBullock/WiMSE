@@ -1,11 +1,9 @@
 pillow
-os
 matplotlib
 numpy
 ipywidgets
 niwidgets
 pandas
-subprocess
 nibabel
 nilearn
 dipy
