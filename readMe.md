@@ -1,4 +1,5 @@
-(click below to launch this notebook collection as an interactive [Binder](https://mybinder.org/))
+(click below to launch this notebook collection as an interactive[Binder](https://mybinder.org/))
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/DanNBullock/WiMSE/master)
 
 ### Author
