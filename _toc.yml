@@ -1,3 +1,4 @@
+#- file: notebooks/readMe
 - file: notebooks/Introduction
 
 - part: Building intuitions with digital images
@@ -24,5 +25,3 @@
 - part: Segmenting tractography
   chapters:
   - file: notebooks/A_first_segmentation
-
-
