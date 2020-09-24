@@ -1,0 +1,28 @@
+- file: notebooks/Introduction
+
+- part: Building intuitions with digital images
+  chapters:
+  - file: notebooks/Why_are_we_talking_about_JPEGs
+  - file: notebooks/Intro_to_discretized_image_representation_&_maps
+  - file: notebooks/Aligning_two_images
+  - file: notebooks/Multi_object_maps_in_images
+  - file: notebooks/A_consideration_of_jpegs_and_brain_images
+
+- part: Working with NIfTI data
+  chapters:
+  - file: notebooks/How_to_represent_the_brain's_anatomy_-_as_a_volume
+  - file: notebooks/A_quick_demonstration_of_linear_affine_transformations_in_3-D
+  - file: notebooks/How_to_interpret_a_volumetric_brain_segmentation
+  
+- part: White matter and tractography
+  chapters:
+  - file: notebooks/Highways_of_the_brain
+  - file: notebooks/The_measurement,_the_object,_and_the_modality_-_What's_measured_in_diffusion_imaging
+  - file: notebooks/The_voxel_and_the_streamline
+  - file: notebooks/The_source_tractogram
+  
+- part: Segmenting tractography
+  chapters:
+  - file: notebooks/A_first_segmentation
+
+

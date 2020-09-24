@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; White Matter Segmentation Education (WiMSE)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/sphinx-book-theme.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">White Matter Segmentation Education (WiMSE)</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Building intuitions with digital images
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Why_are_we_talking_about_JPEGs.html">
+   Why are we talking about JPEGs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_to_discretized_image_representation_&amp;_maps.html">
+   Introduction to discritized image representation and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Aligning_two_images.html">
+   Aligning two images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multi_object_maps_in_images.html">
+   Multi object maps in images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_consideration_of_jpegs_and_brain_images.html">
+   A consideration of jpegs and brain images
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Working with NIfTI data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="How_to_represent_the_brain's_anatomy_-_as_a_volume.html">
+   How to represent the brain’s anatomy - as a volume
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_quick_demonstration_of_linear_affine_transformations_in_3-D.html">
+   A quick demonstration of linear affine transformations in 3-D
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="How_to_interpret_a_volumetric_brain_segmentation.html">
+   How to interpret a volumetric brain segmentation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  White matter and tractography
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Highways_of_the_brain.html">
+   Highways of the brain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_measurement,_the_object,_and_the_modality_-_What's_measured_in_diffusion_imaging.html">
+   The measurement, the object, and the modality - Whats in measured in diffusion imaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_voxel_and_the_streamline.html">
+   The voxel and the streamline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_source_tractogram.html">
+   The source tractogram
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Segmenting tractography
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_first_segmentation.html">
+   A first segmentation
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/interact lengths visualization.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        
+        <a class="edit-button" href="https://github.com/DanNBullock/WiMSE/edit/master/notebooks/interact lengths visualization.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DanNBullock/WiMSE/master?urlpath=tree/notebooks/interact lengths visualization.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/DanNBullock/WiMSE/blob/master/notebooks/interact lengths visualization.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>To begin to explore our tractography model, we first have to load the fibergroup.  There are several different file standards for storing tractography including .tck, .trk and .fg.  Despite their differences, they are alike in that they are composed of some finite number of streamlines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># load the tractography file into the streamsObjIN variable</span>
+<span class="n">streamsObjIN</span><span class="o">=</span><span class="n">nib</span><span class="o">.</span><span class="n">streamlines</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/Users/plab/Downloads/5c5d35e2f5d2a10052842847/track.tck&#39;</span><span class="p">)</span>
+
+<span class="c1"># determine the number of streamlines</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[600000]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above we see the total number of streamlines contained within this tractogram.  Typically we would want a million or more in order to adequately cover the entire white matter of the brain.  Here though, we are working with a smaller number as it is easier to use in a notebook.</p>
+<p>Lets plot two of these streamlines so we can get a sense of what streamlines look like when visualized</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="k">import</span> <span class="n">window</span><span class="p">,</span> <span class="n">actor</span><span class="p">,</span> <span class="n">colormap</span> <span class="k">as</span> <span class="n">cmap</span>
+
+<span class="c1"># Enables/disables interactive visualization</span>
+<span class="n">interactive</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">firstTwoStreamline</span><span class="o">=</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+
+
+
+
+<span class="c1"># Make display objects</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">line_colors</span><span class="p">(</span><span class="n">firstTwoStreamline</span><span class="p">)</span>
+<span class="n">cc_streamlines_actor</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">firstTwoStreamline</span><span class="p">,</span>
+                                  <span class="n">cmap</span><span class="o">.</span><span class="n">line_colors</span><span class="p">(</span><span class="n">firstTwoStreamline</span><span class="p">))</span>
+
+
+<span class="n">vol_actor</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">slicer</span><span class="p">(</span><span class="n">t1_data</span><span class="p">)</span>
+
+<span class="n">vol_actor</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">vol_actor2</span> <span class="o">=</span> <span class="n">vol_actor</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">vol_actor2</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+
+<span class="c1"># Add display objects to canvas</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">Renderer</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vol_actor</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vol_actor2</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cc_streamlines_actor</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cc_ROI_actor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">dbcae4ae97f4</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> 
+<span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">vol_actor</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">slicer</span><span class="p">(</span><span class="n">t1_data</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> 
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">vol_actor</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;t1_data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have seen two of these, lets get a more comprehensive feel by plotting all of them ast the same time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="k">import</span> <span class="n">window</span><span class="p">,</span> <span class="n">actor</span><span class="p">,</span> <span class="n">colormap</span> <span class="k">as</span> <span class="n">cmap</span>
+
+<span class="c1"># Enables/disables interactive visualization</span>
+<span class="n">interactive</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1">#create an object for the first two streamlines</span>
+<span class="n">firstTwoStreamline</span><span class="o">=</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Make display objects</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">line_colors</span><span class="p">(</span><span class="n">firstTwoStreamline</span><span class="p">)</span>
+<span class="n">cc_streamlines_actor</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">firstTwoStreamline</span><span class="p">,</span>
+                                  <span class="n">cmap</span><span class="o">.</span><span class="n">line_colors</span><span class="p">(</span><span class="n">firstTwoStreamline</span><span class="p">))</span>
+
+
+<span class="n">vol_actor</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">slicer</span><span class="p">(</span><span class="n">t1_data</span><span class="p">)</span>
+
+<span class="n">vol_actor</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">vol_actor2</span> <span class="o">=</span> <span class="n">vol_actor</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">vol_actor2</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+
+<span class="c1"># Add display objects to canvas</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">Renderer</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vol_actor</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vol_actor2</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cc_streamlines_actor</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cc_ROI_actor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Streamline Length&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Streamlines&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Streamline Lengths&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>DISCUSS RELEVANCE OF STREAMLNIE DISTRIBUTION</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref_nifti</span><span class="o">=</span><span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/Users/plab/Documents/JupyerData/proj-5c50b6f12daf2e0032f880eb/sub-100206/dt-neuro-parcellation-volume.id-5c50c3f7ecd2f200ccfe9fae/parc.nii.gz&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">FloatSlider</span>
+
+<span class="n">niftiData</span><span class="o">=</span><span class="n">ref_nifti</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="n">niftiDataInt</span><span class="o">=</span><span class="n">niftiData</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+
+<span class="n">lengthsArray</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">dipy.tracking</span> <span class="k">import</span> <span class="n">utils</span>
+
+
+<span class="n">M</span><span class="p">,</span> <span class="n">grouping</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">connectivity_matrix</span><span class="p">(</span><span class="n">streamlines</span><span class="o">=</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">,</span> 
+                                        <span class="n">affine</span><span class="o">=</span><span class="n">ref_nifti</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> 
+                                        <span class="n">label_volume</span><span class="o">=</span><span class="n">niftiDataInt</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">),</span>
+                                        <span class="n">return_mapping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                        <span class="n">mapping_as_streamlines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">uniqueKeys</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">niftiDataInt</span><span class="p">))</span>
+
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">keyList</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">roiTotal</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">roiTotal</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">uniqueKeys</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="n">countMatrix</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">roiTotal</span><span class="p">,</span><span class="n">roiTotal</span><span class="p">])</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">keyList</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">roiTotal</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">countList</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">keyList</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">iKeys</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keyList</span><span class="p">)):</span>
+    <span class="n">curIndexes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">grouping</span><span class="p">[</span><span class="n">keyList</span><span class="p">[</span><span class="n">iKeys</span><span class="p">]])</span>
+    <span class="n">countList</span><span class="p">[</span><span class="n">iKeys</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">lengthsArray</span><span class="p">[</span><span class="n">curIndexes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)])</span>
+    
+<span class="n">lowerBound</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">upperBound</span> <span class="o">=</span> <span class="mi">100</span>
+    
+<span class="k">def</span> <span class="nf">draw_adaptiveMatrix</span><span class="p">():</span>    
+    <span class="k">global</span> <span class="n">keyList</span>
+    <span class="k">global</span> <span class="n">countList</span>
+    <span class="k">global</span> <span class="n">lowerBound</span>
+    <span class="k">global</span> <span class="n">upperBound</span>
+    <span class="k">for</span> <span class="n">iKeys</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keyList</span><span class="p">)):</span> 
+        <span class="n">curIndex</span><span class="o">=</span><span class="n">keyList</span><span class="p">[</span><span class="n">iKeys</span><span class="p">]</span>
+        <span class="n">countMatrix</span><span class="p">[</span><span class="n">curIndex</span><span class="p">]</span> <span class="o">=</span><span class="p">((</span><span class="n">lowerBound</span> <span class="o">&lt;</span> <span class="n">countList</span><span class="p">[</span><span class="n">iKeys</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">countList</span><span class="p">[</span><span class="n">iKeys</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">upperBound</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>    
+        <span class="n">countMatrix</span><span class="p">[</span><span class="n">curIndex</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span><span class="p">((</span><span class="n">lowerBound</span> <span class="o">&lt;</span> <span class="n">countList</span><span class="p">[</span><span class="n">iKeys</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">countList</span><span class="p">[</span><span class="n">iKeys</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">upperBound</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>    
+    
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">countMatrix</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Atlas ROI number&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Atlas ROI number&#39;</span><span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+    <span class="c1">#fig.colorbar(np.log1p(countMatrix))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mf">18.5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">xposition</span> <span class="o">=</span> <span class="p">[</span><span class="n">lowerBound</span><span class="p">,</span><span class="n">upperBound</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">xc</span> <span class="ow">in</span> <span class="n">xposition</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xc</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Streamline Length&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Streamlines&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Streamline Lengths&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span>
+
+
+<span class="k">def</span> <span class="nf">update_bound</span><span class="p">(</span><span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">upperBound</span>
+    <span class="k">global</span> <span class="n">lowerBound</span>
+    <span class="n">lowerBound</span> <span class="o">=</span> <span class="n">minimum</span>
+    <span class="n">upperBound</span> <span class="o">=</span> <span class="n">maximum</span>
+    <span class="n">draw_adaptiveMatrix</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;now running&quot;</span><span class="p">)</span>    
+<span class="n">minslide</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">lengthsArray</span><span class="p">),</span> <span class="nb">max</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">lengthsArray</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">maxslide</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">lengthsArray</span><span class="p">),</span> <span class="nb">max</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">lengthsArray</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">update_bound</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="n">minslide</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="n">maxslide</span><span class="p">)</span>
+<span class="c1">#interact(update_upperbound, maximum=maxslide)</span>
+<span class="c1">#draw_adaptiveMatrix()</span>
+
+<span class="c1">#interact(adaptiveMatrix,{&#39;lowerBound&#39;:FloatSlider(min=np.min(lengthsArray), max=np.max(lengthsArray), step=1, continuous_update=False),&#39;upperBound&#39;:FloatSlider(min=np.min(lengthsArray), max=np.max(lengthsArray), step=1, continuous_update=False)})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>DISCUSS HOW VARYING LENGTHS AND PROPERTIES OF THE STREAMLINES CORRESPOND TO SEPARATE ANATOMICAL FEATURES OF THE BRAIN</p>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Daniel Bullock<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

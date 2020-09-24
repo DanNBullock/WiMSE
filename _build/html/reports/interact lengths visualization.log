@@ -1,0 +1,61 @@
+Traceback (most recent call last):
+  File "/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/nbclient/client.py", line 1082, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/plab/anaconda/envs/currpy/lib/python3.7/asyncio/base_events.py", line 579, in run_until_complete
+    return future.result()
+  File "/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/nbclient/client.py", line 536, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/nbclient/client.py", line 827, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/nbclient/client.py", line 735, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from dipy.viz import window, actor, colormap as cmap
+
+# Enables/disables interactive visualization
+interactive = True
+
+firstTwoStreamline=streamsObjIN.tractogram.streamlines[1:2]
+
+
+
+
+# Make display objects
+color = cmap.line_colors(firstTwoStreamline)
+cc_streamlines_actor = actor.line(firstTwoStreamline,
+                                  cmap.line_colors(firstTwoStreamline))
+
+
+vol_actor = actor.slicer(t1_data)
+
+vol_actor.display(x=40)
+vol_actor2 = vol_actor.copy()
+vol_actor2.display(z=35)
+
+# Add display objects to canvas
+r = window.Renderer()
+r.add(vol_actor)
+r.add(vol_actor2)
+r.add(cc_streamlines_actor)
+r.add(cc_ROI_actor)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-2-dbcae4ae97f4>[0m in [0;36m<module>[0;34m[0m
+[1;32m     15[0m [0;34m[0m[0m
+[1;32m     16[0m [0;34m[0m[0m
+[0;32m---> 17[0;31m [0mvol_actor[0m [0;34m=[0m [0mactor[0m[0;34m.[0m[0mslicer[0m[0;34m([0m[0mt1_data[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     18[0m [0;34m[0m[0m
+[1;32m     19[0m [0mvol_actor[0m[0;34m.[0m[0mdisplay[0m[0;34m([0m[0mx[0m[0;34m=[0m[0;36m40[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 't1_data' is not defined
+NameError: name 't1_data' is not defined
+

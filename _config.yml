@@ -1,0 +1,16 @@
+# Book settings
+title: White Matter Segmentation Education (WiMSE)
+author: Daniel Bullock
+repository:
+  url                       : https://github.com/DanNBullock/WiMSE
+html:
+  use_repository_button: true
+html:
+  use_issues_button: true
+html:
+  use_edit_page_button: true
+execute:
+  timeout: 120
+# Configure your Binder links, such as the URL of the BinderHub.
+launch_buttons:
+  binderhub_url             : https://mybinder.org
