@@ -1,5 +1,10 @@
-#- file: notebooks/readMe
-- file: notebooks/Introduction
+- file:  landingPage
+
+- part: Front matter
+  chapters:
+  - file: Author_and_funding_information
+  - file: chapterSummaries
+  - file: notebooks/Introduction
 
 - part: Building intuitions with digital images
   chapters:

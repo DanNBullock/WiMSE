@@ -3,12 +3,8 @@
 This set of notebooks has been developed to provide a guide to performing digital segmentations of white matter.  It's lessons are designed for advanced undergraduates, advanced STEM students, or persons wanting to become more familiar with the process of the digital segmentation of white matter.  These lessons begin by building a strong foundation of intuitions based on everyday data representations.  Having established this, it moves towards neuroimaging-specific data formats and their use.  Finally, it moves to tractograms and segmentations, demonstrating basic concepts and characteristics, and even allowing users to perform some rudamentary interactive segmentations. 
 
 ## Chapter Summaries 
-
-test
  
 ### Building intuitions with digital images
-
-test
 
 #### Why are we talking about JPEGs
 
@@ -32,8 +28,6 @@ In this chapter we reflect on our observations about digital images as we begin 
 
 ### Working with NIfTI data
 
-test
-
 #### How to represent the brain's anatomy - as a volume
 
 In this chapter we shift from a consideration of 2 dimensional, color digital photographs to MRI data stored in a NIfTI.  Although there are a number of conceptual similarities between these data modalities, there are also a number of important distinctions which we consider here.  We also take a look at the affine information contained within the NIfTI header, and reflect on its relevance to aligning 2 dimensional images.
@@ -43,8 +37,6 @@ In this chapter we shift from a consideration of 2 dimensional, color digital ph
 In this chapter we consider very briefly how to implement linear transforms and rotations in 3 dimensions.  Given that there are [other, more detailed resources available](https://nipy.org/nibabel/coordinate_systems.html), this is primarily a hands on demonstration so that users can become familiar with the concept.
 
 ### White matter and tractography
-
-test
 
 #### Highways of the brain
 
@@ -63,8 +55,6 @@ In this chapter we take a look at the actual data characteristics of a streamlin
 In this chapter we take a look at a whole brain tractoram.  And note its characteristics as an amalgum of component streamlines.  Our chief takeaway is that we'll need a systematic method to divide up the tractogram in order to extract any insights from it.
 
 ### Segmenting tractography
-
-test
 
 #### A first segmentation
 
