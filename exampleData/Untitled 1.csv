@@ -1,0 +1,12 @@
+   	Digital Photography	Structural Brain Imaging (T1) 	Diffusion Imaging (DWI)	Tractography	
+Data Token	digital photo image	structural brain image (T1)	diffusion image (DWI) 	tractogram	
+Object represented	visual scene	cranium / brain	cranium / brain 	white matter of brain	
+Source system	camera	MRI scanner	MRI scanner 	Mathematical model	 
+Source phenomena	reflected light	water/ hydrogen / magnetic properties	water movement 	orientation interpolation (from DWI)	
+Property of interest	topography	volumetric occupancy	tissue structure 	putative axon collection traversal	
+File extension	.jpg, .png ... 	.nifti, nii.gz 	(dwi) .nifti, nii.gz 	.fg, .trk, .tck 	
+Metadata	exif	header 	header 	varies by format 	
+Data size	~ 100s kb - 1s MB 	~ 2.5 - 5 MB 	~ 50 MB - 1.5 GB 	~ 500 MB - 10 GB 	
+Data dimensionality	2D (3 RGB layers) 	3D 	4D 	1D nested?	
+Data atoms	pixels	voxels 	voxel-angle 	vectors (streamlines) 	
+Data atom content 	integer	float 	float 	ordered float sequence (nodes) 	
