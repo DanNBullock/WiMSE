@@ -4,19 +4,9 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Standard approaches to segmentation\n",
+    " Before we do that though, lets think about **why** we might want an ROI.\n",
     "\n",
-    "In our previous chapters on images and NiFTIs the elementary action of \"masking\" was discussed.  In essence, what we were doing there was selecting a subset of the object's elements based on the application of some quantative criteria.  In the digital 2-D image we used distance from a color, while in the brain NiFTI case we used whether or not a particular voxel corresponded to a given label in an associated parcellation.  Conceptually we're not doing anything that different in the case of tractograms and streamlines:  we want to subselect some finite number of the streamlines in a tractogram in accordance with an explicitly selected criterion.  So how do we do that?\n",
-    "\n",
-    "##  Intersection with an Region of Interest (ROI), the fundamental operation\n",
-    "\n",
-    "Perhaps the most straightfoward way to demonstrate this subselection operation is to use an intersect with Region of Interest (ROI) operation.  First though, we probably ought to establish what a ROI even is.\n",
-    "\n",
-    "### What's an ROI?\n",
-    "\n",
-    "In practice, a Region of Interest can be stored in a number of ways, but the specifics of this are beyond the scope of our purpose.  What we want to know is \"what is the fundamental characteristic of an ROI that makes it of use to us?\".  At its heart, an ROI, in the context of streamline/tractogram segmentation, is a [point cloud](https://en.wikipedia.org/wiki/Point_cloud): a set of X, Y, and Z coordinates corresponding to points in the same relative coordinate space as your tractogram. Whereas the streamlines of a tractogram are an ordered sequence of coordinates, the coordinates of an ROI are not in any particular order.  Typically, they are used to define a particular volume of space and are sampled in a regular fashion, forming a 3-D lattice.  Often times these take the shape of a sphere or plane.  In a moment, we will begin by creating an example (and formatless) planar ROI.  Before we do that though, lets think about **why** we might want an ROI.\n",
-    "\n",
-    "### What's an ROI good for?\n",
+    "### What is an ROI good for?\n",
     "\n",
     "In the case of the planar ROI, what we have essentially done is defined a coordinate in a single dimension that is of particular interest to is.  For example, if we created a planar ROI at 10 Y in [ACPC space](https://bids-specification.readthedocs.io/en/latest/99-appendices/08-coordinate-systems.html#ieeg-specific-coordinate-systems) we would obtain a large number of points.  Specifically the X and Z coordinates for these points would correspond to all possible combinations of X and Z values between the minimum and maximum dimensions of the associated source image (i.e. a T1 or DWI image), sampled at some regular interval (i.e. 1 mm).  The Y coordinates, on the other hand, would all be 10.  So how can we use this?\n",
     "\n",
@@ -29,31 +19,6 @@
     "> In addition to the aforementioned possibility, it's also possible that this algorithm (which is, in essence, the one that is typically used in segmentation) might **fail to detect** a streamlinehet that we would consider to be intersecting with the ROI.  How?  If we think back to our previous discussion of step-sizes between streamline nodes, we realize that its possible for there to actually be fairly sizable amounts of distance between nodes, particularly if the streamlines have been [\"compressed\"](https://dipy.org/documentation/1.0.0./examples_built/streamline_length/).  If the inter-node distance is enough to where the streamline \"traverses\" the ROI (i.e. there are nodes on either side of the ROI), but no individual node is within the distance threshold, then the algorithm will fail to detect this intersection.  For example, if the nearest nodes on either side of a planar ROI are 2 mm from the plane, but the threshold distance is .5, the \"intersection\" will go unnoticed.  This is particularly an issue with planar ROIs, but less so with fuller, volumetric ROIS (e.g. spheres).  \n",
     "\n",
     "For the moment, there's really nothing we can do about these possibilities.  In the first case, we may not be too worried about it, since .5 is pretty close, and we'd probably be comfortable calling that an intersection.  In the latter case, we're probably not comfortable with that outcome, but we can safeguard against it by ensuring that our streamlines are sampled at a rate that takes into account the threshold distance of our intersection algorithm.  Regardless, its time to make and examine our first planar ROI."
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "## Moving beyond planes\n",
-    "\n",
-    "A _full_ plane is a special case of a region of interest.  Namely:\n",
-    "- 1. The coordinates   \n",
-    "\n",
-    "Now what we have demonstrated the basic concept of intersecting streamlines with a planar ROI we can consider variations on this theme. For example, instead of using a plane we could use a sphere.\n",
-    "\n",
-    "### A spherical ROI\n",
-    " \n",
-    "The construction of a spherical ROI proceeds in much the same was as a planar roi, except the point cloud lattice now extends in 3 dimensions.  There are two important characteristics for a spherical ROI which can, in essence, sum up (or be used to generate) the sphere.\n",
-    "\n",
-    "- 1.  The center coordinate\n",
-    "- 2.  The radius\n",
-    "\n",
-    "### Spherical ROI applications\n",
-    "\n",
-    "Spherical ROIs are typically used to determine if streamlines pass within some distance (the specified radius value) of a point of interest.  Investigators can place the point manually, or attempt to develop automated heuristics to place them.\n",
-    "\n",
-    "Lets generate a spherical ROI now."
    ]
   }
  ],
