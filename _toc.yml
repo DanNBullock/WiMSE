@@ -4,7 +4,7 @@
   chapters:
   - file: Author_and_funding_information
   - file: chapterSummaries
-  - file: notebooks/Introduction
+  - file: notebooks/Building_Bridges
 
 - part: Building intuitions with digital images
   chapters:
@@ -30,3 +30,7 @@
 - part: Segmenting tractography
   chapters:
   - file: notebooks/A_first_segmentation
+  - file: notebooks/Biological_Plausibility_for_Tractograms
+  - file: notebooks/Segmenting_Tracts-Conceptualy
+  - file: notebooks/ROIs_as_tools
+  - file: notebooks/Using_ROIs_as_tools
