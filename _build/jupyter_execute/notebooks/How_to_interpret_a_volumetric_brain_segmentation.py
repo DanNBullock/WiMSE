@@ -139,6 +139,8 @@ AtlasLabelCounts.head(40)
 
 
 # It seems that our frequency values are traversing several orders of magnitude.  Just for the sake of easy visualization, lets leave off the top three most common values (0, 41, 2) and plot 3 histogram of the rest, splitting them at values below 10000, between 10000 and 12000, and above 12000.
+# 
+# Some values we can take note of right off the bat are 0, 2 and 41.  These correspond to the background (i.e. unlabeled entries), left cerebral white matter, and right cerebral white matter.  The extremely large value assoicated with "background" (15382362) [] is indicative of what proportion of the data volume is actually associated with labeled entries. Likewise, the values for left and right cerebral white matter (268665 and 265864) are indicative of the large ammount of brain "real estate" occupied by the undifferentiated white matter labels.  Ultimately, it will be our task as budding white matter segmenters to divide those areas up more sensibly, but for now lets look at a plot of the relative size of the brain volumes occupied by these labels.  We have opted not to plot the data for background, left and right cerebral white matter because of how they would informatively dwarf the other values.  Also, keep in mind, that given the resolution of the atlas we are using (1 mm^3, isotropic) the values you note in the subsequent plot can be interpreted as cubic millimeters _or_ as milileters (so as to compare to intuitive refernce volumes like a standard 12oz soda can, which contains ~ 355 ml of liquid).
 
 # In[6]:
 
@@ -167,7 +169,7 @@ upperLabels=upperLabels.reset_index(drop=True)
 #import seaborn and matplotlib for plotting
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+get_ipython().run_line_magic('matplotlib', 'inline')
 fig, (ax1,ax2,ax3)=plt.subplots(1, 3)
 fig.tight_layout(pad=3.0)
 sns.countplot(y='Label Number',data=lowerLabels,ax=ax1)

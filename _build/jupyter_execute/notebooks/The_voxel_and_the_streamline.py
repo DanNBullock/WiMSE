@@ -5,20 +5,15 @@
 # 
 # In our earlier chapters we considered the manner in which a particular voxel of a T1 NIfTI image represented some quantative feature of the measured volume/brain.  Representing white matter is somewhat different though.  The key features of white matter that we'd like to capture with our representation are (minimally) its connectivity and its traversal.  In this chapter we'll look at how our data representation of white matter acheives this. 
 
-# In[1]:
-
-
-#whats in a voxel
-
-
-# **whats in a streamline**
+# ## What's in a streamline?
 # 
 # Before moving into a discussion of **how** our model of white matter anatomy is generated, we should consider an essential difference between the data representation of the T1 and the data reprsentation of white matter (i.e. tractography):
 # 
 # T1 images and other NIfTI data objects represent the brain with voxel-value pairings, such that each volume of represented space is associated with a quantative measure of that space.  As an arbitrary example, within some spatial frame of reference (i.e. scanner space, ACPC space, etc) a measured volume represented in the nifti image's data field at coordinate (128,120, 80) could have value of 125.32.  Relatedly, this is in much the same fashion that the 2 dimensional images that we discussed previously represent each area of depicted space with a value (or in the case of a standard color image, 3 values corresponding to RGB values).  Our most common method for representing white matter, which we refer to as "[Tractography](https://en.wikipedia.org/wiki/Tractography)", **does not** operate in this fashion.  To see why lets refer back to the table that was provided just before we began our consideration of digital photography.
 # 
-# |   | **Digital Photograph** | **Brain Image (T1)** | **Diffusion image** | **Tractography** |
+# |   | **Digital Photography** | **Structural Brain Imaging (T1)** | **Diffusion Imaging (DWI)** | **Tractography** |
 # | --- | --- | --- | --- | --- |
+# | _Data Token_ | digital photo image | structural brain image (T1)| diffusion image (DWI) | tractogram |
 # | _Object represented_ | visual scene | cranium / brain | cranium / brain | white matter of brain |
 # | _Source system_ | camera | MRI scanner | MRI scanner | Mathematical model  | 
 # | _Source phenomena_ | reflected light | water / magnetic properties | water movement | orientation interpolation |
@@ -37,7 +32,7 @@
 # 
 # **Lets consider how the data constituting a streamline is arranged**
 
-# In[2]:
+# In[1]:
 
 
 import nibabel as nib
@@ -61,7 +56,7 @@ print(list(np.shape(streamsObjIN.tractogram.streamlines)))
 
 # Above, we have loaded a .tck file ("singleStream.tck") and then printed out the dimensions of the object storing streamlines.  We see that it is 1 by 142 by 3.  This indicates that there is 1 streamline with 142 nodes, and there are X, Y, and Z coordinates for each of these nodes.  This is a fairly unique tractography file, in that it only has one streamline in it.  Typically, a tractography file will contain many more streamlines than this.  Indeed, in the case of a tractography file that is representing an entire brain's white matter, it will likely have millions of streamlines.  For now though, we'll focus on just one streamline to get a sense of what a streamline is, data-wise.  Let's look at its contents more closely.
 
-# In[3]:
+# In[2]:
 
 
 print(streamsObjIN.tractogram.streamlines[0])
@@ -75,7 +70,7 @@ print(streamsObjIN.tractogram.streamlines[0])
 # 
 # In order to learn more about this streamline we'll need to perform more rigorous assesments of its quantative characteristics.
 
-# In[4]:
+# In[3]:
 
 
 import numpy as np

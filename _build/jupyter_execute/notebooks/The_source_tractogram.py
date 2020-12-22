@@ -5,7 +5,7 @@
 # 
 # To begin to explore our tractography model, we first have to load the fibergroup.  There are several different file standards for storing tractography including .tck, .trk and .fg.  Despite their differences, they are alike in that they are composed of some finite number of streamlines.   
 
-# In[16]:
+# In[1]:
 
 
 #this code ensures that we can navigate the WiMSE repo across multiple systems
@@ -24,6 +24,7 @@ import numpy as np
 
 # load the tractography file into the streamsObjIN variable
 smallTractogramPath=os.path.join(gitRepoPath,'exampleData','smallTractogram.tck')
+
 #same for T1
 t1Path=os.path.join(gitRepoPath,'exampleData','t1.nii.gz')
 

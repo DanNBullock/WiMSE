@@ -50,12 +50,6 @@ plotting.plot_anat(t1img, title="source orientation")
 plotting.plot_anat(atlasImg, title="associated atlas")
 
 
-# In[ ]:
-
-
-
-
-
 # This appears to be fine.  As an added bonus, we can determine from the coloring of the atlas plot whether or not it has an X-flip.  How?  Note that the cortical areas in the left hemisphere are labeled starting in 11,000, while cortical areas in the right hemisphere are labeled starting in 12,000, and that our coloring scheme ranges from black at 0 all the way to gray/white at the highest value.  Because the color of the right hemisphere is brighter, we can infer that the numbers are higher than in the left hemisphere, and thus the labels are on the appropriate side.
 # 
 # However, there appears to be something off when viewing the atlas interactively.
@@ -89,6 +83,7 @@ def rotateAndPlot(xRotation,yRotation,zRotation):
     from nilearn import plotting
     import nibabel as nib
     import numpy as np
+    import math
     
     atlasData = atlasImg.get_fdata()
     atlasAffine=atlasImg.affine
@@ -181,9 +176,9 @@ def fig2Img(figure2convert):
 
     # To remove the huge white borders
     ax.margins(0)
-
-    figure2convert.canvas.draw()       # draw the canvas, cache the renderer
     
+    # draw the canvas, cache the renderer
+    figure2convert.canvas.draw()       
 
     image_from_plot = np.frombuffer(figure2convert.canvas.tostring_rgb(), dtype=np.uint8)
     image_from_plot = image_from_plot.reshape(figure2convert.canvas.get_width_height()[::-1] + (3,))
@@ -212,16 +207,4 @@ from ipywidgets import IntSlider
 
 interact(multiDimOverlayPlot,          xSlice=IntSlider(min=0, max=256, step=1,continuous_update=False),           ySlice=IntSlider(min=0, max=256, step=1,continuous_update=False),          zSlice=IntSlider(min=0, max=256, step=1,continuous_update=False)
          )
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
