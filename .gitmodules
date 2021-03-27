@@ -1,0 +1,3 @@
+[submodule "wma_pyTools"]
+	path = wma_pyTools
+	url = https://github.com/DanNBullock/wma_pyTools.git
