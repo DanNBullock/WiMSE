@@ -1,10 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+# Problems With Parcellations
 
-# # Problems With Parcellations
-# 
-# ## Missing labels
-# 
-# ## Affine Misalignments
-# 
-# ## Islands
+## Missing labels
+
+## Affine Misalignments
+
+## Islands

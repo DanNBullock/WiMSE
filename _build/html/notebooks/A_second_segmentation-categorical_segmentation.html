@@ -1,0 +1,1004 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A second segmentation - categorical segmentation &#8212; White Matter Segmentation Education (WiMSE)</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">White Matter Segmentation Education (WiMSE)</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landingPage.html">
+   White Matter Segmentation Education (WiMSE)
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Front matter
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Author_and_funding_information.html">
+   Author and Funding information
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapterSummaries.html">
+   White Matter Segmentation Education - WiMSE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Building_Bridges.html">
+   Building bridges from the familiar to the unfamiliar
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Building intuitions with digital images
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_to_discretized_image_representation_%26_maps.html">
+   Introduction to discritized image representation and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Aligning_two_images.html">
+   Aligning two images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multi_object_maps_in_images.html">
+   Multi object maps in images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_consideration_of_jpegs_and_brain_images.html">
+   A consideration of jpegs and brain images
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Working with NIfTI data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="How_to_represent_the_brain%27s_anatomy_-_as_a_volume.html">
+   How to represent the brain’s anatomy - as a volume
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_quick_demonstration_of_linear_affine_transformations_in_3-D.html">
+   A quick demonstration of linear affine transformations in 3-D
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="How_to_interpret_a_volumetric_brain_segmentation.html">
+   How to interpret a volumetric brain segmentation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  White matter and tractography
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Highways_of_the_brain.html">
+   Highways of the brain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_measurement%2C_the_object%2C_and_the_modality_-_What%27s_measured_in_diffusion_imaging.html">
+   The measurement, the object, and the modality - Whats in measured in diffusion imaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_voxel_and_the_streamline.html">
+   The voxel and the streamline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_source_tractogram.html">
+   The source tractogram
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Segmenting tractography
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_first_segmentation.html">
+   A first segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Biological_Plausibility_for_Tractograms.html">
+   Biological Plausibility for Tractograms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html">
+   Segmenting Tracts - Conceptualy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html#why-segment-a-tract">
+   Why segment a tract
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ROIs_as_tools.html">
+   ROIs as tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Using_ROIs_as_tools.html">
+   <em>
+    Using
+   </em>
+   ROIs as tools
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/A_second_segmentation-categorical_segmentation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        
+        <a class="edit-button" href="https://github.com/DanNBullock/WiMSE/edit/master/notebooks/A_second_segmentation-categorical_segmentation.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DanNBullock/WiMSE/master?urlpath=tree/notebooks/A_second_segmentation-categorical_segmentation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-grey-matter-parcellations-with-white-matter-tractograms">
+   Using grey matter parcellations with white matter tractograms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-gross-anatomy-categorical-segmentation-of-white-matter">
+   A gross-anatomy categorical segmentation of white matter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-quick-look-at-the-gross-anatomy-atlas">
+     A quick look at the gross anatomy atlas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-s-a-categorical-segmentation-good-for">
+   What’s a categorical segmentation good for?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#biological-plausibility-check">
+     Biological plausibility check
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#candidate-viability-check">
+     Candidate viability check
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quick-first-step-for-segmentations">
+     Quick first step for segmentations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps-using-anatomy-information">
+   Next steps using anatomy information
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="a-second-segmentation-categorical-segmentation">
+<h1>A second segmentation - categorical segmentation<a class="headerlink" href="#a-second-segmentation-categorical-segmentation" title="Permalink to this headline">¶</a></h1>
+<p>In the previous chapter we introduced the fundamental operation of digital white matter segmentation:  the application of an inclusion (or exclusion) ROI.  Indeed, at their heart, all segmentations are composed of some finite number of applications of these operations.  We began with the hopefully intuitive case of a planar ROI, which was used to (in essence) assess the traversal of streamlines across a certian coordinate threshold.  After also demonsrating applications of <em>modified</em> planar ROIs (i.e. partial planar ROIs), we then demonstrated the use of ROI intersecton using a sphere.  These are both quite common uses of ROIs for white matter segmentation, however they are by no means <em>exhaustive</em> of the tools available to segmenters.  Indeed, in keeping with the recurrent theme of repurposing existing tools and resources, one of our most powerful abilities turns out to be using anatomical parcellations (from structural data, e.g. <a class="reference external" href="https://surfer.nmr.mgh.harvard.edu/">Freesurfer</a> to perform white matter segmentation.  In fact, our fist consideration of a “complete segmentation” (see chapter “Segmenting Tracts-Conceptualy” for a definition of this term), was technically an “anatomically based segmentation” in that the parcellation we used to generate the connectome/segmentation was composed of anatomical labels.  Lets consider the conceptual underpinnings of anatomical segmentations a bit more before we perform our second segmentation.</p>
+<div class="section" id="using-grey-matter-parcellations-with-white-matter-tractograms">
+<h2>Using grey matter parcellations with white matter tractograms<a class="headerlink" href="#using-grey-matter-parcellations-with-white-matter-tractograms" title="Permalink to this headline">¶</a></h2>
+<p>One thing that we should note about anatomically-based segmentations from the outset centers on the notion of <strong>biological plausibility</strong>, which was discussed broadly in a previous chapter.  Specifically, we should think back to what most existing anatomical parcellations are:  grey matter segmentations.  This means that the areas that are being labeled are typically where neuronal cell bodies (and not mid to long-range mylenated axons) are located.  As such, if we take our tractome at face value, and assume that it is a <em>valid, accurate, and biologicall plausible</em> model of white matter anatomy and trajectory, we won’t typically find streamlines traversing these labeled volumes unless they also terminate there.  Streamlines are therefore expected to course through anatomical volumes corresponding to white matter before they ultimately land in an area corresponding to a grey matter label.  Recent tractography generation methods, like <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/quantitative_structural_connectivity/act.html">mrtrix 3’s “Anatomically-Constrained Tractography (ACT)”</a>, build this into their tractography generation models, in order to generate higher quality tractomes in the first place.  Previously (i.e. mrtrix 2) and/or with other tractography generation algorithms, this criteria was not implemented, and so streamlines could terminate in or traverse through biologically implausible areas.  Thus, the assesment of streamline termination areas can provide useful information about the anatomical characeristics of streamlines and the white matter components they putatively model.</p>
+<p>The possibility of using streamline termination areas to label streamlines should seem familiar to you–this was the method we used in the “A first segmentation” chapter.   There, we used a <a class="reference external" href="https://dipy.org/documentation/1.0.0./examples_built/streamline_tools/">dipy connectome generation method</a> which is algorithmically predicated upon the labeling (or, alternatively, segmenting/categorizing) of streamlines based upon their terminal nodes.  In fact, the failure to generate a connectome using terminations, and to instead consider instances of traversal as an edge measure, could theoretically result in more connections than your tractome has streamlines (and can thus also serve as a good sanity check) as well as potentially implausible connectivity profiles.  Explicitly put:  a streamline’s traversal arbitrarily close to a particular label (which may or may not, itself, occupy a biologically implausible volume of the relevant atlas) <em>is not</em> sufficient evidence for connectivity.  More generally though, its worth noting that connectome generation methods are, generally speaking, <em>necessarily</em> agnostic to the atlases/parcellations that they are applied to.  In order to be maximally useful to network investigators, their algorithms typically reflect a minimal number of assumptions such that they simply iterate over labels and note which streamlines terminate “in” (i.e. “sufficiently near”) which areas.  This is not at all an inherently bad feature of connectome generation methods, but rather this is to point out that the resulting categories / connective structures may not always correspond to intuitive or interpretable types.  However, if we leverage our anatomical knowledge <em>before</em> applying a parcellation-agnostic white matter segmentation of this sort, we can generate a segmentation that:</p>
+<ul class="simple">
+<li><ol class="simple">
+<li><p>Results in intuitve streamline categories</p></li>
+</ol>
+</li>
+<li><ol class="simple">
+<li><p>Is, in essence, generalizable beyond the specific input grey matter parcellation used to generate it (in that any number of grey matter parcellations could be used to produce this segmentation)</p></li>
+</ol>
+</li>
+<li><ol class="simple">
+<li><p>Proves to be <em>immensely</em> useful when segmenting more specific white matter anatomy structures.</p></li>
+</ol>
+</li>
+</ul>
+<p>How can we acheive this?  By performing a gross anatomical category segmentation of the white matter.</p>
+</div>
+<div class="section" id="a-gross-anatomy-categorical-segmentation-of-white-matter">
+<h2>A gross-anatomy categorical segmentation of white matter<a class="headerlink" href="#a-gross-anatomy-categorical-segmentation-of-white-matter" title="Permalink to this headline">¶</a></h2>
+<p>The term gross anatomy corresponds to the study of anatomical features which are macroscopically evident.  In the case of performing a categorical, gross anatomical segmentation of white matter this means dividing up the white matter in accordance with its connectivity with gross anatomical brain structures.</p>
+<p>Typically, parcellations and atlases of the cortex (and subcortex) divide regions up into established and well studied areas (e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/Brodmann_area">Brodmann’s areas</a>.  However, we needn’t rely in such fine grained parcellations of the brain in order to begin the process of dividing up white matter structures into useful subcomponents.  Instead, we can simply consider more general structures like the frontal, parietal, occipital, and temporal lobes, along with other higher order structure groupings (e.g. the thalamus, midbrain, etc.).</p>
+<p>Lets begin the process of implementing this segmentation by assigning the regions of the <a class="reference external" href="https://dx.doi.org/10.1016%2Fj.neuroimage.2010.06.010">“Destrieux” 2009 atlas</a> to these gross anatomical categories.  Luckily, this work has been done previously for a <a class="reference external" href="https://doi.org/10.25663/brainlife.app.249">brainlife app</a> / <a class="reference external" href="https://github.com/DanNBullock/wma_tools/blob/master/Segmentations/bsc_streamlineCategoryPriors_v7.m">wma_tools product</a>.  First we’ll (exhaustively, in that we’ll do it for all labels) establish the meaningful label categories we are interested in.  Then we will relabel the atlas in accordance with these groupings, in much the same way we renumbered atlas labels in the chapter “How to interpret a volumetric brain segmentation”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#debatable:</span>
+<span class="c1">#Planum temporale</span>
+<span class="c1">#fusiform gyrus</span>
+<span class="c1">#oc-temp_med_and_Lingual</span>
+
+<span class="c1">#this code ensures that we can navigate the WiMSE repo across multiple systems</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1">#get top directory path of the current git repository, under the presumption that </span>
+<span class="c1">#the notebook was launched from within the repo directory</span>
+<span class="n">gitRepoPath</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;rev-parse&#39;</span><span class="p">,</span> <span class="s1">&#39;--show-toplevel&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1">#move to the top of the directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">grossAnatomyPath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">,</span><span class="s1">&#39;exampleData&#39;</span><span class="p">,</span><span class="s1">&#39;GrossAnatomyLookup.csv&#39;</span><span class="p">)</span>
+
+<span class="n">grossAnatTable</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">grossAnatomyPath</span><span class="p">)</span>
+
+<span class="n">grossAnatTable</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>#No.</th>
+      <th>LabelName:</th>
+      <th>R</th>
+      <th>G</th>
+      <th>B</th>
+      <th>A</th>
+      <th>GrossAnat</th>
+      <th>Hemi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>Unknown</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Left-Cerebral-White-Matter</td>
+      <td>245</td>
+      <td>245</td>
+      <td>245</td>
+      <td>0</td>
+      <td>wm</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3</td>
+      <td>Left-Cerebral-Cortex</td>
+      <td>205</td>
+      <td>62</td>
+      <td>78</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>4</td>
+      <td>Left-Lateral-Ventricle</td>
+      <td>120</td>
+      <td>18</td>
+      <td>134</td>
+      <td>0</td>
+      <td>ventricle</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>5</td>
+      <td>Left-Inf-Lat-Vent</td>
+      <td>196</td>
+      <td>58</td>
+      <td>250</td>
+      <td>0</td>
+      <td>ventricle</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>7</td>
+      <td>Left-Cerebellum-White-Matter</td>
+      <td>220</td>
+      <td>248</td>
+      <td>164</td>
+      <td>0</td>
+      <td>cerebellum</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>8</td>
+      <td>Left-Cerebellum-Cortex</td>
+      <td>230</td>
+      <td>148</td>
+      <td>34</td>
+      <td>0</td>
+      <td>cerebellum</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>10</td>
+      <td>Left-Thalamus-Proper*</td>
+      <td>0</td>
+      <td>118</td>
+      <td>14</td>
+      <td>0</td>
+      <td>subcortical</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>11</td>
+      <td>Left-Caudate</td>
+      <td>122</td>
+      <td>186</td>
+      <td>220</td>
+      <td>0</td>
+      <td>subcortical</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>12</td>
+      <td>Left-Putamen</td>
+      <td>236</td>
+      <td>13</td>
+      <td>176</td>
+      <td>0</td>
+      <td>subcortical</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10</td>
+      <td>13</td>
+      <td>Left-Pallidum</td>
+      <td>12</td>
+      <td>48</td>
+      <td>255</td>
+      <td>0</td>
+      <td>subcortical</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>11</td>
+      <td>14</td>
+      <td>3rd-Ventricle</td>
+      <td>204</td>
+      <td>182</td>
+      <td>142</td>
+      <td>0</td>
+      <td>ventricle</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>12</td>
+      <td>15</td>
+      <td>4th-Ventricle</td>
+      <td>42</td>
+      <td>204</td>
+      <td>164</td>
+      <td>0</td>
+      <td>ventricle</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>13</td>
+      <td>16</td>
+      <td>Brain-Stem</td>
+      <td>119</td>
+      <td>159</td>
+      <td>176</td>
+      <td>0</td>
+      <td>spine</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>14</td>
+      <td>17</td>
+      <td>Left-Hippocampus</td>
+      <td>220</td>
+      <td>216</td>
+      <td>20</td>
+      <td>0</td>
+      <td>subcortical</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>15</td>
+      <td>18</td>
+      <td>Left-Amygdala</td>
+      <td>103</td>
+      <td>255</td>
+      <td>255</td>
+      <td>0</td>
+      <td>subcortical</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>16</td>
+      <td>19</td>
+      <td>Left-Insula</td>
+      <td>80</td>
+      <td>196</td>
+      <td>98</td>
+      <td>0</td>
+      <td>insula</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>17</td>
+      <td>20</td>
+      <td>Left-Operculum</td>
+      <td>60</td>
+      <td>58</td>
+      <td>210</td>
+      <td>0</td>
+      <td>insula</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>18</td>
+      <td>24</td>
+      <td>CSF</td>
+      <td>60</td>
+      <td>60</td>
+      <td>60</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>19</td>
+      <td>26</td>
+      <td>Left-Accumbens-area</td>
+      <td>255</td>
+      <td>165</td>
+      <td>0</td>
+      <td>0</td>
+      <td>subcortical</td>
+      <td>l</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#load the atlas</span>
+<span class="n">atlasPath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">,</span><span class="s1">&#39;exampleData&#39;</span><span class="p">,</span><span class="s1">&#39;parc.nii.gz&#39;</span><span class="p">)</span>
+<span class="c1">#load it as an object</span>
+<span class="n">atlasImg</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">atlasPath</span><span class="p">)</span>
+
+<span class="c1">#get and copy the data</span>
+<span class="n">relabeledAtlas</span><span class="o">=</span><span class="n">atlasImg</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1">#get the labels to iterate over</span>
+<span class="n">uniqueAtlasEntries</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">atlasImg</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">grossAnatList</span><span class="o">=</span><span class="n">grossAnatTable</span><span class="p">[</span><span class="s1">&#39;GrossAnat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="c1">#iterate across unique label entries</span>
+<span class="k">for</span> <span class="n">iLabels</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">uniqueAtlasEntries</span><span class="p">)):</span>
+    <span class="c1">#print(np.isin(grossAnatTable[&#39;GrossAnat&#39;].loc[grossAnatTable[&#39;#No.&#39;]==uniqueAtlasEntries[iLabels]],grossAnatList))</span>
+    <span class="c1">#replace the current uniqueAtlasEntries value with the label corresponding to the gross anat category</span>
+    <span class="n">currentLabelReNum</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">grossAnatList</span><span class="p">,</span><span class="n">grossAnatTable</span><span class="p">[</span><span class="s1">&#39;GrossAnat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">grossAnatTable</span><span class="p">[</span><span class="s1">&#39;#No.&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">uniqueAtlasEntries</span><span class="p">[</span><span class="n">iLabels</span><span class="p">]]))</span>
+    <span class="n">relabeledAtlas</span><span class="p">[</span><span class="n">relabeledAtlas</span><span class="o">==</span><span class="n">uniqueAtlasEntries</span><span class="p">[</span><span class="n">iLabels</span><span class="p">]]</span><span class="o">=</span><span class="n">currentLabelReNum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">grossAnatNifti</span><span class="o">=</span><span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">relabeledAtlas</span><span class="p">,</span> <span class="n">atlasImg</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">atlasImg</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-quick-look-at-the-gross-anatomy-atlas">
+<h3>A quick look at the gross anatomy atlas<a class="headerlink" href="#a-quick-look-at-the-gross-anatomy-atlas" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have relabeled the atlas, lets take a quick look at it using a NiFTI viewing widget.</p>
+<p>Overall the gross anatomical seems suitable.  Due to the coarseness of the DK2009 parcellation in some cases it is difficult to place a label cleanly in a particual lobe (this is noticably true for temporo-parietal and temporo-occipital labels. Other parcellations can be used to generate this same sort of result, and may result in better lobe masks.</p>
+<p>After viewing the gross anatomy parcellation, we’ll move on to performing the white matter segmenation and viewing the outputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">niwidgets</span> <span class="k">import</span> <span class="n">NiftiWidget</span>
+<span class="c1">#plot it</span>
+<span class="n">atlas_widget</span> <span class="o">=</span> <span class="n">NiftiWidget</span><span class="p">(</span><span class="n">grossAnatNifti</span><span class="p">)</span>
+<span class="n">atlas_widget</span><span class="o">.</span><span class="n">nifti_plotter</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;nipy_spectral&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "264a1407327d4abeb36d253b08d9faa4"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the tractography file into the streamsObjIN variable</span>
+<span class="n">smallTractogramPath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">,</span><span class="s1">&#39;exampleData&#39;</span><span class="p">,</span><span class="s1">&#39;smallTractogram.tck&#39;</span><span class="p">)</span>
+<span class="n">streamsObjIN</span><span class="o">=</span><span class="n">nib</span><span class="o">.</span><span class="n">streamlines</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">smallTractogramPath</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">dipy.tracking</span> <span class="k">import</span> <span class="n">utils</span>
+<span class="c1">#segment tractome into connectivity matrix from parcellation</span>
+<span class="n">M</span><span class="p">,</span> <span class="n">grouping</span><span class="o">=</span><span class="n">utils</span><span class="o">.</span><span class="n">connectivity_matrix</span><span class="p">(</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">,</span> <span class="n">grossAnatNifti</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> \
+                        <span class="n">label_volume</span><span class="o">=</span><span class="n">grossAnatNifti</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> 
+                        <span class="n">return_mapping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">mapping_as_streamlines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#get tractogram from the Tck holder</span>
+<span class="n">sourceTractogram</span><span class="o">=</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span>
+
+<span class="c1">#quick and dirty tractogram subsetter by Brad Caron</span>
+<span class="c1">#https://github.com/bacaron</span>
+<span class="k">def</span> <span class="nf">extractSubTractogram</span><span class="p">(</span><span class="n">sourceTractogram</span><span class="p">,</span><span class="n">indexes</span><span class="p">):</span>
+    <span class="c1">#import relevant package</span>
+    <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
+    <span class="c1">#extrect the desired streamlines into a new streamline object</span>
+    <span class="n">streamlines</span> <span class="o">=</span> <span class="n">sourceTractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">[</span><span class="n">indexes</span><span class="p">]</span>
+    <span class="c1">#establish tractogram object</span>
+    <span class="n">out_tractogram</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">streamlines</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">Tractogram</span><span class="p">(</span><span class="n">streamlines</span><span class="p">)</span>
+    <span class="c1">#adjust the relevant header fields</span>
+    <span class="c1">#don&#39;t bother for now, header is only relevant to Tck file</span>
+    <span class="c1">#for headerFields in [&#39;total_count&#39;,&#39;count&#39;,&#39;nb_streamlines&#39;]:</span>
+        <span class="c1">#nb_streamlines is an int, whereas the others are strings, for some reason</span>
+    <span class="c1">#    if headerFields == &#39;nb_streamlines&#39;:</span>
+    <span class="c1">#        out_tractogram.header[headerFields] = len(streamlines)</span>
+    <span class="c1">#    else:</span>
+    <span class="c1">#        out_tractogram.header[headerFields] = &#39;%s&#39; %len(streamlines)</span>
+    <span class="k">return</span> <span class="n">out_tractogram</span>
+
+<span class="c1">#interactive plotting via niwidgets?  </span>
+<span class="c1">#widget within a widget doesn&#39;t seem to work</span>
+<span class="k">def</span> <span class="nf">plotParcellationConnectionWidget</span><span class="p">(</span><span class="n">subTractogram</span><span class="p">):</span>
+    <span class="c1">#import widget</span>
+    <span class="kn">from</span> <span class="nn">niwidgets</span> <span class="k">import</span> <span class="n">StreamlineWidget</span>
+    <span class="c1">#set widget object</span>
+    
+    <span class="n">sw</span> <span class="o">=</span> <span class="n">StreamlineWidget</span><span class="p">(</span><span class="n">streamlines</span><span class="o">=</span><span class="n">subTractogram</span><span class="p">)</span>
+    <span class="c1">#set plotting characteristics</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;axes&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">},</span>
+                  <span class="s1">&#39;ticklabel&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">},</span>
+                  <span class="s1">&#39;visible&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+         <span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;visible&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}}</span>
+    <span class="c1">#plot it</span>
+    <span class="n">sw</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">display_fraction</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plotTract</span><span class="p">(</span><span class="n">tractIn</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="k">import</span> <span class="n">window</span><span class="p">,</span> <span class="n">actor</span>
+    <span class="n">renderer</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+    <span class="n">stream_actor</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">tractIn</span><span class="p">)</span>
+    <span class="c1">#renderer.set_camera(position=(-176.42, 118.52, 128.20),</span>
+    <span class="c1">#               focal_point=(113.30, 128.31, 76.56),</span>
+    <span class="c1">#                view_up=(0.18, 0.00, 0.98))</span>
+    <span class="o">%</span><span class="k">matplotlib</span> inline
+    <span class="n">renderer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">stream_actor</span><span class="p">)</span>
+    
+    <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">renderer</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">reset_camera</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">updateFunction</span><span class="p">(</span><span class="n">regionIndex1</span><span class="p">,</span><span class="n">regionIndex2</span><span class="p">):</span>
+    <span class="n">currentRenumberIndex1</span><span class="o">=</span><span class="n">regionIndex1</span>    
+    <span class="n">currentRenumberIndex2</span><span class="o">=</span><span class="n">regionIndex2</span>   
+ 
+    
+    <span class="c1">#check to make sure this pairing is actually in the connections</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">((</span><span class="n">currentRenumberIndex1</span><span class="p">,</span><span class="n">currentRenumberIndex2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">grouping</span><span class="o">.</span><span class="n">keys</span><span class="p">(),(</span><span class="n">currentRenumberIndex1</span><span class="p">,</span><span class="n">currentRenumberIndex2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">grouping</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span> 
+        <span class="c1">#if they are both there do it (dipy method may preclude this)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">((</span><span class="n">currentRenumberIndex1</span><span class="p">,</span><span class="n">currentRenumberIndex2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">grouping</span><span class="o">.</span><span class="n">keys</span><span class="p">(),(</span><span class="n">currentRenumberIndex1</span><span class="p">,</span><span class="n">currentRenumberIndex2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">grouping</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span> 
+            <span class="n">currentIndexes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">grouping</span><span class="p">[</span><span class="n">currentRenumberIndex1</span><span class="p">,</span><span class="n">currentRenumberIndex2</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">grouping</span><span class="p">[</span><span class="n">currentRenumberIndex2</span><span class="p">,</span><span class="n">currentRenumberIndex1</span><span class="p">])))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">currentRenumberIndex1</span><span class="p">,</span><span class="n">currentRenumberIndex2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">grouping</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">currentIndexes</span><span class="o">=</span><span class="n">grouping</span><span class="p">[</span><span class="n">currentRenumberIndex1</span><span class="p">,</span><span class="n">currentRenumberIndex2</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">currentRenumberIndex2</span><span class="p">,</span><span class="n">currentRenumberIndex1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">grouping</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">currentIndexes</span><span class="o">=</span><span class="n">grouping</span><span class="p">[</span><span class="n">currentRenumberIndex2</span><span class="p">,</span><span class="n">currentRenumberIndex1</span><span class="p">]</span>
+        <span class="c1">#there are no other potential cases</span>
+        <span class="n">subTractogram</span><span class="o">=</span><span class="n">extractSubTractogram</span><span class="p">(</span><span class="n">sourceTractogram</span><span class="p">,</span><span class="n">currentIndexes</span><span class="p">)</span>
+        <span class="o">%</span><span class="k">matplotlib</span> inline
+        <span class="n">plotParcellationConnectionWidget</span><span class="p">(</span><span class="n">subTractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;connection not present&#39;</span><span class="p">)</span>
+
+<span class="n">dropDownList</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">grossAnatList</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grossAnatList</span><span class="p">))))</span>
+
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">Dropdown</span>
+
+<span class="c1">#establish interactivity</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">updateFunction</span><span class="p">,</span> 
+         <span class="n">regionIndex1</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">dropDownList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;region1&quot;</span><span class="p">),</span> 
+         <span class="n">regionIndex2</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">dropDownList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;region2&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "f83f70f1a89345b0a66bd1df9ff8c12b"}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.updateFunction(regionIndex1, regionIndex2)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="what-s-a-categorical-segmentation-good-for">
+<h2>What’s a categorical segmentation good for?<a class="headerlink" href="#what-s-a-categorical-segmentation-good-for" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have generated a gross-anatomy categorical segmentation you may find yourself asking “Why did we do this?” or “What can this be used for?”.  As it turns out there are a number of potential applications for a gross-anatomy categorical segmentation like this.  We’ll start with some of the more general uses first</p>
+<div class="section" id="biological-plausibility-check">
+<h3>Biological plausibility check<a class="headerlink" href="#biological-plausibility-check" title="Permalink to this headline">¶</a></h3>
+<p>Thinking back to our earlier conceptual discussion of segmentations, this constitutes a “complete” segmentation.  This is because each streamline is <strong>necessarily</strong> assigned a category.  As such this allows us to obtain a broad overview of the characteristics of the input tractome and the streamlines that constitute it.  For example, if one were concerned with the general biological plausiblity of their tractome, this segmentation (and visualization) can be used to look at streamlines that terminate in biologically implausible areas (i.e. ventricles, white matter, and “unknown”).  As such, the larger the proportion of streamlines that fall into these categories, the more one should be concerned about the quality of the tractography.  The relative number of streamlines in particular categories can also be useful for assessing the input tractome in other ways as well.</p>
+</div>
+<div class="section" id="candidate-viability-check">
+<h3>Candidate viability check<a class="headerlink" href="#candidate-viability-check" title="Permalink to this headline">¶</a></h3>
+<p>Perhaps one of the key insights that this guide endeavors to impart upon users is that even the best segmentation algorithm can’t find what isn’t there.  If the input tractome doesn’t contain amongst its many candidate features (e.g. streamlines) some semblance of the structure of interest, then no amount of clever criteria application will be able to extract it.  But what’s a quick way to check if the source of your problem is the tractome or the segmentation?  By looking at a categorical segmentation and the general category that the structure would be associated with, its possible to get a good sense of whether the isn’t even there to be segmented, or if your specific segmentation implementation is missing it.  As an example of how to perform this check, consider the case in which either you or a downstream segmentation consumer notices that the inferior fronto-occipital fasiculus (IFOF) derived from a segmentation looks particularly weak or anemic.  To determine whether the issue is the tractography or the segmentation, all one needs to do is look at the “occipital to frontal” (or vice versa) category and see whether there are long range streamlines running along the inferiror of the tractome.  If they are there, but not in the segmented IFOF, this suggests that the segmentation is at fault.  If they are not visible in the general category, or if there are very few of them, this suggests that the tractography is at fault.  Below you will find a non-exhaustive table of some major white matter structures and the categories they are associated with:</p>
+<p>(taken from the brainlife <a class="reference external" href="https://doi.org/10.25663/brainlife.app.249">categorical segmentation app</a> <a class="reference external" href="https://github.com/brainlife/app-streamlineCategorySegmentation/edit/2.0/README.md">readme</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Tract Name</strong></p></th>
+<th class="head"><p><strong>Corresponding Category</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Arcuate</p></td>
+<td><p>Fronto-temporal</p></td>
+</tr>
+<tr class="row-odd"><td><p>VOF (vertical occipital fasciculus)</p></td>
+<td><p>Occipital-occipital</p></td>
+</tr>
+<tr class="row-even"><td><p>TP-SPL (temporo parietal connection)</p></td>
+<td><p>Temporal-parietal</p></td>
+</tr>
+<tr class="row-odd"><td><p>MdLF (middle longitudinal fasciculus)</p></td>
+<td><p>Temporo-parietal</p></td>
+</tr>
+<tr class="row-even"><td><p>Aslant</p></td>
+<td><p>Frontal-frontal</p></td>
+</tr>
+<tr class="row-odd"><td><p>CST (cortico spinal tract)</p></td>
+<td><p>Spinal-frontal</p></td>
+</tr>
+<tr class="row-even"><td><p>SLF (superior longitudinal fasciculus)</p></td>
+<td><p>Frontal-parietal</p></td>
+</tr>
+<tr class="row-odd"><td><p>ILF (inferior longitudinal fasciculus)</p></td>
+<td><p>Occipital-temporal</p></td>
+</tr>
+<tr class="row-even"><td><p>IFOF (inferior fronto-occipital fasciculus)</p></td>
+<td><p>Frontal-occipital</p></td>
+</tr>
+<tr class="row-odd"><td><p>pArc (posterior arcuate)</p></td>
+<td><p>Temporal-parietal</p></td>
+</tr>
+<tr class="row-even"><td><p>Uncinate</p></td>
+<td><p>Frontal-temporal</p></td>
+</tr>
+</tbody>
+</table>
+<p>The ability to associate these general categories with major structures hints at another use.</p>
+</div>
+<div class="section" id="quick-first-step-for-segmentations">
+<h3>Quick first step for segmentations<a class="headerlink" href="#quick-first-step-for-segmentations" title="Permalink to this headline">¶</a></h3>
+<p>In cases where you are attempting to segment a relatively large tractome (i.e. more than 250,000 streamlines) and your segmentation tools include the relevant algorithmic speed-ups (as is the case with wma_tools), the earlier in the sementation algorithm for a given structure that you drastically reduce the number of streamlines you are considering, the faster your segmentation will process.  This is due to the number of distance computations that need to be performed by ROI criteria applications (as discussed in previous ROI chapters).  As such, applying a category criteria is a relatively generous (in that it doesn’t really impose that stringent of a criteria) and efficient method for reducing the number of streamlines you are considering.  Although specifying termination regions up front may seem objectionable to some, its worth noting that (1) we aren’t imposing particularly specific requirements of the streamlines given how general the gross anatomical areas are (2) in keeping with the table above (and the fact that we have to take streamlines <em>at face value</em>) estabished tracts are <em>definitionally required</em> to terminate in certian regions.</p>
+</div>
+</div>
+<div class="section" id="next-steps-using-anatomy-information">
+<h2>Next steps using anatomy information<a class="headerlink" href="#next-steps-using-anatomy-information" title="Permalink to this headline">¶</a></h2>
+<p>Having considered some initial ways to use anatomical information by applying a gross-anatomy categorical segmentation, we can now move on to thinking about more advanced and finer-grained applications using anatomical information in white matter segmentation.</p>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"aa2003068ec14c5d8e67c9ad2e3a4ee2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "abc99a08f0b64590a81e5fee15270008": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "5f47b64cd35b4cbb8cac6be2c6b9960e": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": false, "description": "x", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_aa2003068ec14c5d8e67c9ad2e3a4ee2", "max": 255, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_abc99a08f0b64590a81e5fee15270008", "value": 127}}, "61ed126daa5e460f9275d178f898acca": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8e133b38b5804bedb51dab3be9a4f59e": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "0af750d612024c82a29a74f11254cada": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": false, "description": "y", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_61ed126daa5e460f9275d178f898acca", "max": 255, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_8e133b38b5804bedb51dab3be9a4f59e", "value": 127}}, "92e55bd53f5d4e219baedbf5d79b79a5": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "aaed4e7c70cb4353822139d25c6ef366": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "d372a3e8082e4d9ea66b88842f3ba09b": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": false, "description": "z", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_92e55bd53f5d4e219baedbf5d79b79a5", "max": 255, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_aaed4e7c70cb4353822139d25c6ef366", "value": 127}}, "f5bd6f9a85534291a5b25788348a426b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "264a1407327d4abeb36d253b08d9faa4": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_5f47b64cd35b4cbb8cac6be2c6b9960e", "IPY_MODEL_0af750d612024c82a29a74f11254cada", "IPY_MODEL_d372a3e8082e4d9ea66b88842f3ba09b", "IPY_MODEL_e8aef15b2a9747bf87bfb283470bb64f"], "layout": "IPY_MODEL_f5bd6f9a85534291a5b25788348a426b"}}, "9c9ee6c5257241d1b8227ac5869aeb9e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e8aef15b2a9747bf87bfb283470bb64f": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9c9ee6c5257241d1b8227ac5869aeb9e", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stderr", "text": "/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/niwidgets/niwidget_volume.py:197: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.\n  else np.fliplr(np.flipud(np.rot90(data[slice_obj], k=1)))\n/Users/plab/anaconda/envs/currpy/lib/python3.7/site-packages/niwidgets/niwidget_volume.py:196: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.\n  if views[ii] != \"Sagittal\"\n"}, {"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<Figure size 1500x500 with 3 Axes>"}}]}}, "5a8b27876bde4413b7bc51574b4e0140": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a34d7fdf32fe44a58f922912ac8d180b": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "25e5db9ecaf247d7bcfe50b979b5d558": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["unknown", "wm", "ventricle", "cerebellum", "subcortical", "spine", "insula", "optic", "cc", "frontal", "occipital", "parietal", "temporal", "periC"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "region1", "description_tooltip": null, "disabled": false, "index": 2, "layout": "IPY_MODEL_5a8b27876bde4413b7bc51574b4e0140", "style": "IPY_MODEL_a34d7fdf32fe44a58f922912ac8d180b"}}, "78e9f1205b724563873cb726aa1b9977": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5507abb91cff4a07bb510abc73163fd1": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "1fcfd9fb91e644b893dc64e551b2f59c": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["unknown", "wm", "ventricle", "cerebellum", "subcortical", "spine", "insula", "optic", "cc", "frontal", "occipital", "parietal", "temporal", "periC"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "region2", "description_tooltip": null, "disabled": false, "index": 2, "layout": "IPY_MODEL_78e9f1205b724563873cb726aa1b9977", "style": "IPY_MODEL_5507abb91cff4a07bb510abc73163fd1"}}, "6e90bcca1f32479e84ed816863a08ea9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f83f70f1a89345b0a66bd1df9ff8c12b": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_25e5db9ecaf247d7bcfe50b979b5d558", "IPY_MODEL_1fcfd9fb91e644b893dc64e551b2f59c", "IPY_MODEL_051bfd53ec3f422da8d6d39692426811"], "layout": "IPY_MODEL_6e90bcca1f32479e84ed816863a08ea9"}}, "a93ed39f0ea140fc93a0d0bf5802983d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "051bfd53ec3f422da8d6d39692426811": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_a93ed39f0ea140fc93a0d0bf5802983d", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "VBox(children=(Figure(camera=PerspectiveCamera(fov=46.0, position=(0.0, 0.0, 2.0), quaternion=(0.0, 0.0, 0.0, \u2026", "application/vnd.jupyter.widget-view+json": {"version_major": 2, "version_minor": 0, "model_id": "232feb0e3fbe4ea5a2f921ca4e4979c8"}}}, {"output_type": "display_data", "metadata": {}, "data": {"text/plain": "interactive(children=(FloatSlider(value=98.91178131103516, continuous_update=False, description='threshold', m\u2026", "application/vnd.jupyter.widget-view+json": {"version_major": 2, "version_minor": 0, "model_id": "659d287f960c4f32a8664a33c7c7c78b"}}}]}}, "40f67dadfaa1467aab125000862ef5e0": {"model_name": "PerspectiveCameraModel", "model_module": "jupyter-threejs", "model_module_version": "^2.1.0", "state": {"_model_module": "jupyter-threejs", "_model_module_version": "^2.1.0", "_model_name": "PerspectiveCameraModel", "_view_count": null, "_view_module": null, "_view_module_version": "", "_view_name": null, "aspect": 1.0, "castShadow": false, "children": [], "far": 2000.0, "focus": 10.0, "fov": 46.0, "frustumCulled": true, "matrix": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], "matrixAutoUpdate": true, "matrixWorld": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], "matrixWorldInverse": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], "matrixWorldNeedsUpdate": false, "modelViewMatrix": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], "name": "", "near": 0.1, "normalMatrix": [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0], "position": [0.0, 0.0, 2.0], "projectionMatrix": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], "quaternion": [0.0, 0.0, 0.0, 1.0], "receiveShadow": false, "renderOrder": 0, "rotation": [0.0, 0.0, 0.0, "XYZ"], "scale": [1.0, 1.0, 1.0], "type": "PerspectiveCamera", "up": [0.0, 1.0, 0.0], "visible": true, "zoom": 1.0}}, "1183c75826564c13a62caad56ea42580": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2ddb3d27aaa542e3ae8d81057dfc22d3": {"model_name": "SceneModel", "model_module": "jupyter-threejs", "model_module_version": "^2.1.0", "state": {"_model_module": "jupyter-threejs", "_model_module_version": "^2.1.0", "_model_name": "SceneModel", "_view_count": null, "_view_module": null, "_view_module_version": "", "_view_name": null, "autoUpdate": true, "background": null, "castShadow": false, "children": [], "fog": null, "frustumCulled": true, "matrix": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], "matrixAutoUpdate": true, "matrixWorld": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], "matrixWorldNeedsUpdate": false, "modelViewMatrix": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], "name": "", "normalMatrix": [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0], "overrideMaterial": null, "position": [0.0, 0.0, 0.0], "quaternion": [0.0, 0.0, 0.0, 1.0], "receiveShadow": false, "renderOrder": 0, "rotation": [0.0, 0.0, 0.0, "XYZ"], "scale": [1.0, 1.0, 1.0], "type": "Scene", "up": [0.0, 1.0, 0.0], "visible": true}}, "fef860ddbacf40e49fa127bca49a9550": {"model_name": "FigureModel", "model_module": "ipyvolume", "model_module_version": "~0.5.2", "state": {"_dom_classes": [], "_model_module": "ipyvolume", "_model_module_version": "~0.5.2", "_model_name": "FigureModel", "_view_count": null, "_view_module": "ipyvolume", "_view_module_version": "~0.5.2", "_view_name": "FigureView", "ambient_coefficient": 0.5, "animation": 1000.0, "animation_exponent": 1.0, "camera": "IPY_MODEL_40f67dadfaa1467aab125000862ef5e0", "camera_center": [0.0, 0.0, 0.0], "camera_control": "trackball", "camera_fov": 1.0, "capture_fps": null, "cube_resolution": 512, "diffuse_coefficient": 0.8, "displayscale": 1.0, "downscale": 1, "eye_separation": 6.4, "height": 1000, "layout": "IPY_MODEL_1183c75826564c13a62caad56ea42580", "matrix_projection": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "matrix_world": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "meshes": ["IPY_MODEL_07eaa6045ea34570a1c2a3a03b93d4ff"], "mouse_mode": "normal", "panorama_mode": "no", "render_continuous": false, "scatters": [], "scene": "IPY_MODEL_2ddb3d27aaa542e3ae8d81057dfc22d3", "selection_mode": "replace", "selector": "lasso", "show": "Volume", "specular_coefficient": 0.5, "specular_exponent": 5.0, "stereo": false, "style": {"axes": {"color": "red", "label": {"color": "white"}, "ticklabel": {"color": "white"}, "visible": false}, "background-color": "black", "box": {"visible": false}}, "volumes": [], "width": 1000, "xlabel": "x", "xlim": [-42.198246002197266, 34.386314392089844], "ylabel": "y", "ylim": [-42.198246002197266, 34.386314392089844], "zlabel": "z", "zlim": [-42.198246002197266, 34.386314392089844]}}, "7b9a0dba8ace47faaedfdae69c7590cc": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "232feb0e3fbe4ea5a2f921ca4e4979c8": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_fef860ddbacf40e49fa127bca49a9550"], "layout": "IPY_MODEL_7b9a0dba8ace47faaedfdae69c7590cc"}}, "e19d922ef3c84c9c8e224b372600acf6": {"model_name": "ShaderMaterialModel", "model_module": "jupyter-threejs", "model_module_version": "^2.1.0", "state": {"_model_module": "jupyter-threejs", "_model_module_version": "^2.1.0", "_model_name": "ShaderMaterialModel", "_view_count": null, "_view_module": null, "_view_module_version": "", "_view_name": null, "alphaTest": 0.0, "blendDst": "OneMinusSrcAlphaFactor", "blendDstAlpha": 0.0, "blendEquation": "AddEquation", "blendEquationAlpha": 0.0, "blendSrc": "SrcAlphaFactor", "blendSrcAlpha": 0.0, "blending": "NormalBlending", "clipIntersection": false, "clipShadows": false, "clipping": false, "clippingPlanes": [], "colorWrite": true, "defines": null, "depthFunc": "LessEqualDepth", "depthTest": true, "depthWrite": true, "dithering": false, "extensions": {}, "flatShading": false, "fog": false, "fragmentShader": "", "lights": false, "linewidth": 1.0, "morphNormals": false, "morphTargets": false, "name": "", "opacity": 1.0, "overdraw": 0.0, "polygonOffset": false, "polygonOffsetFactor": 0.0, "polygonOffsetUnits": 0.0, "precision": null, "premultipliedAlpha": false, "shadowSide": null, "side": "FrontSide", "skinning": false, "transparent": false, "type": "ShaderMaterial", "uniforms": {}, "uniformsNeedUpdate": false, "vertexColors": "NoColors", "vertexShader": "", "visible": true, "wireframe": false, "wireframeLinewidth": 1.0}}, "712796bd012e4695a107009fed9e75ab": {"model_name": "ShaderMaterialModel", "model_module": "jupyter-threejs", "model_module_version": "^2.1.0", "state": {"_model_module": "jupyter-threejs", "_model_module_version": "^2.1.0", "_model_name": "ShaderMaterialModel", "_view_count": null, "_view_module": null, "_view_module_version": "", "_view_name": null, "alphaTest": 0.0, "blendDst": "OneMinusSrcAlphaFactor", "blendDstAlpha": 0.0, "blendEquation": "AddEquation", "blendEquationAlpha": 0.0, "blendSrc": "SrcAlphaFactor", "blendSrcAlpha": 0.0, "blending": "NormalBlending", "clipIntersection": false, "clipShadows": false, "clipping": false, "clippingPlanes": [], "colorWrite": true, "defines": null, "depthFunc": "LessEqualDepth", "depthTest": true, "depthWrite": true, "dithering": false, "extensions": {}, "flatShading": false, "fog": false, "fragmentShader": "", "lights": false, "linewidth": 1.0, "morphNormals": false, "morphTargets": false, "name": "", "opacity": 1.0, "overdraw": 0.0, "polygonOffset": false, "polygonOffsetFactor": 0.0, "polygonOffsetUnits": 0.0, "precision": null, "premultipliedAlpha": false, "shadowSide": null, "side": "DoubleSide", "skinning": false, "transparent": false, "type": "ShaderMaterial", "uniforms": {}, "uniformsNeedUpdate": false, "vertexColors": "NoColors", "vertexShader": "", "visible": true, "wireframe": false, "wireframeLinewidth": 1.0}}, "07eaa6045ea34570a1c2a3a03b93d4ff": {"model_name": "MeshModel", "model_module": "ipyvolume", "model_module_version": "~0.5.2", "state": {"_model_module": "ipyvolume", "_model_module_version": "~0.5.2", "_model_name": "MeshModel", "_view_count": null, "_view_module": "ipyvolume", "_view_module_version": "~0.5.2", "_view_name": "MeshView", "color": [{"dtype": "float32", "shape": [204, 4]}], "line_material": "IPY_MODEL_e19d922ef3c84c9c8e224b372600acf6", "lines": [{"dtype": "uint32", "shape": [404]}], "material": "IPY_MODEL_712796bd012e4695a107009fed9e75ab", "sequence_index": 0, "texture": null, "triangles": null, "u": null, "v": null, "visible": true, "x": [{"dtype": "float32", "shape": [204]}], "y": [{"dtype": "float32", "shape": [204]}], "z": [{"dtype": "float32", "shape": [204]}]}, "buffers": [{"data": "AAAAAAEAAAABAAAAAgAAAAIAAAADAAAAAwAAAAQAAAAEAAAABQAAAAUAAAAGAAAABgAAAAcAAAAHAAAACAAAAAgAAAAJAAAACQAAAAoAAAAKAAAACwAAAAsAAAAMAAAADAAAAA0AAAANAAAADgAAAA4AAAAPAAAADwAAABAAAAAQAAAAEQAAABEAAAASAAAAEgAAABMAAAATAAAAFAAAABQAAAAVAAAAFQAAABYAAAAWAAAAFwAAABcAAAAYAAAAGAAAABkAAAAZAAAAGgAAABoAAAAbAAAAGwAAABwAAAAcAAAAHQAAAB0AAAAeAAAAHgAAAB8AAAAfAAAAIAAAACAAAAAhAAAAIQAAACIAAAAiAAAAIwAAACMAAAAkAAAAJAAAACUAAAAlAAAAJgAAACYAAAAnAAAAJwAAACgAAAAoAAAAKQAAACkAAAAqAAAAKgAAACsAAAArAAAALAAAACwAAAAtAAAALQAAAC4AAAAuAAAALwAAAC8AAAAwAAAAMAAAADEAAAAxAAAAMgAAADIAAAAzAAAAMwAAADQAAAA0AAAANQAAADUAAAA2AAAANgAAADcAAAA3AAAAOAAAADgAAAA5AAAAOQAAADoAAAA6AAAAOwAAADsAAAA8AAAAPAAAAD0AAAA9AAAAPgAAAD4AAAA/AAAAPwAAAEAAAABAAAAAQQAAAEEAAABCAAAAQgAAAEMAAABDAAAARAAAAEQAAABFAAAARQAAAEYAAABGAAAARwAAAEcAAABIAAAASAAAAEkAAABJAAAASgAAAEoAAABLAAAASwAAAEwAAABMAAAATQAAAE0AAABOAAAATgAAAE8AAABPAAAAUAAAAFAAAABRAAAAUQAAAFIAAABSAAAAUwAAAFMAAABUAAAAVAAAAFUAAABVAAAAVgAAAFYAAABXAAAAVwAAAFgAAABYAAAAWQAAAFkAAABaAAAAWgAAAFsAAABbAAAAXAAAAFwAAABdAAAAXQAAAF4AAABeAAAAXwAAAF8AAABgAAAAYAAAAGEAAABhAAAAYgAAAGIAAABjAAAAYwAAAGQAAABkAAAAZQAAAGYAAABnAAAAZwAAAGgAAABoAAAAaQAAAGkAAABqAAAAagAAAGsAAABrAAAAbAAAAGwAAABtAAAAbQAAAG4AAABuAAAAbwAAAG8AAABwAAAAcAAAAHEAAABxAAAAcgAAAHIAAABzAAAAcwAAAHQAAAB0AAAAdQAAAHUAAAB2AAAAdgAAAHcAAAB3AAAAeAAAAHgAAAB5AAAAeQAAAHoAAAB6AAAAewAAAHsAAAB8AAAAfAAAAH0AAAB9AAAAfgAAAH4AAAB/AAAAfwAAAIAAAACAAAAAgQAAAIEAAACCAAAAggAAAIMAAACDAAAAhAAAAIQAAACFAAAAhQAAAIYAAACGAAAAhwAAAIcAAACIAAAAiAAAAIkAAACJAAAAigAAAIoAAACLAAAAiwAAAIwAAACMAAAAjQAAAI0AAACOAAAAjgAAAI8AAACPAAAAkAAAAJAAAACRAAAAkQAAAJIAAACSAAAAkwAAAJMAAACUAAAAlAAAAJUAAACVAAAAlgAAAJYAAACXAAAAlwAAAJgAAACYAAAAmQAAAJkAAACaAAAAmgAAAJsAAACbAAAAnAAAAJwAAACdAAAAnQAAAJ4AAACeAAAAnwAAAJ8AAACgAAAAoAAAAKEAAAChAAAAogAAAKIAAACjAAAAowAAAKQAAACkAAAApQAAAKUAAACmAAAApgAAAKcAAACnAAAAqAAAAKgAAACpAAAAqQAAAKoAAACqAAAAqwAAAKsAAACsAAAArAAAAK0AAACtAAAArgAAAK4AAACvAAAArwAAALAAAACwAAAAsQAAALEAAACyAAAAsgAAALMAAACzAAAAtAAAALQAAAC1AAAAtQAAALYAAAC2AAAAtwAAALcAAAC4AAAAuAAAALkAAAC5AAAAugAAALoAAAC7AAAAuwAAALwAAAC8AAAAvQAAAL0AAAC+AAAAvgAAAL8AAAC/AAAAwAAAAMAAAADBAAAAwQAAAMIAAADCAAAAwwAAAMMAAADEAAAAxAAAAMUAAADFAAAAxgAAAMYAAADHAAAAxwAAAMgAAADIAAAAyQAAAMkAAADKAAAAygAAAMsAAAA=", "encoding": "base64", "path": ["lines", 0, "data"]}]}, "7c61551b63fd4b259b6b238fb142e784": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "eaffdadaed6d4e398f62b698df77f890": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "3c4dbd21c6ab4db08ffa8838a74afe2f": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": false, "description": "threshold", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_7c61551b63fd4b259b6b238fb142e784", "max": 98.91178131103516, "min": 98.91178131103516, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_eaffdadaed6d4e398f62b698df77f890", "value": 98.91178131103516}}, "ac3da481e147425c8c4c490046f6e0f8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "659d287f960c4f32a8664a33c7c7c78b": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_3c4dbd21c6ab4db08ffa8838a74afe2f", "IPY_MODEL_aeff87d2bdf14255a1a239fc75bedbea"], "layout": "IPY_MODEL_ac3da481e147425c8c4c490046f6e0f8"}}, "0bc1161fa4c0418196414088be72120a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "aeff87d2bdf14255a1a239fc75bedbea": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_0bc1161fa4c0418196414088be72120a", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Daniel Bullock<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

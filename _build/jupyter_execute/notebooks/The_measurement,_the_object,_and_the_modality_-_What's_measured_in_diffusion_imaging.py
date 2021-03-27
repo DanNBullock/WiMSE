@@ -1,24 +1,18 @@
-#!/usr/bin/env python
-# coding: utf-8
+# The measurement, the object, and the modality - Whats in measured in diffusion imaging
 
-# # The measurement, the object, and the modality - Whats in measured in diffusion imaging
-# 
-# **Extending the logic of a data structure** 
-# 
-# _Stretching a data object across another dimension_
-# 
-# Previously, when we discussed the data structure of a T1 we noted that it was a 3 dimensional data structure representing a 3 dimensional object.  Likewise we noted that jpeg imgaes were a 2 (ish, in the case of color) dimensional data represenetation.  In a manner of speaking, the 3-dimensional data structure is just an extension of the same data representation practice as the 2D image.  If we were able to go from 2 dimensional to 3 dimensional, can we go from 3 to 4?
-# 
-# Thinking back to a 2 dimensional image, it's possible to extend these objects across the temporal dimension to create an ordered sequence of images.  This could be something like a [Zoetrope](https://en.wikipedia.org/wiki/Zoetrope), or, perhaps more straighforwardly, a movie. In the case of MRI data, we could also extend this data object across the temporal dimension to obtain something like a 3 dimensional movie.  This is, in essence, the idea behind [fMRI](https://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging), though the activity we are viewing evolve over time with that imaging modality is [Blood-oxygen-level-dependent(BOLD)](https://en.wikipedia.org/wiki/Blood-oxygen-level-dependent_imaging#:~:text=Blood%2Doxygen%2Dlevel%2Ddependent%20imaging%2C%20or%20BOLD%2D,active%20at%20any%20given%20time.), rather than surface reflectance.  For now though, its enough to know that we can extend certian data types (i.e. digital photography images and MRI Volumes/NIFTIs) across the temporal dimenson.  But this isn't the *only* manner in which we can extend them.
-# 
-# **Rather than taking a sequence of images across time, what if we simply rotated the object in place?**
-# 
-# Let's consider this possibility in the case of 2D images and, for the sake of consistency with our previous examples, lets use the world as an example.  In this case, we'll pretend that we've placed a satellite in orbit around the equator *but* it's "stationary" such that Earth appears to be rotating at such a speed that it completes a full rotation every 24 hours.  In a sense, this is basically the same effect as rotating a stationary object in front of a camera.  As the world rotates, we take an image every so often until one full rotation has been made.  By doing this we have compiled a sequence of images that depict the same object from a number of angles.  Furthermore, this would allow us to make some decent inferences about the surface structure of the 3D object from the compilation of 2D images.
-# 
-# Lets go ahead and explore this notion by looking at the images from a gif depicting a rotating earth.  Run the next block of code, which contains some code needed to explore a gif, and then use the interactive slider in the subsequent block to rotate around the Earth and get a sense of how a sequence of 2D images can give you information about the structure of a 3D object.
+**Extending the logic of a data structure** 
 
-# In[1]:
+_Stretching a data object across another dimension_
 
+Previously, when we discussed the data structure of a T1 we noted that it was a 3 dimensional data structure representing a 3 dimensional object.  Likewise we noted that jpeg imgaes were a 2 (ish, in the case of color) dimensional data represenetation.  In a manner of speaking, the 3-dimensional data structure is just an extension of the same data representation practice as the 2D image.  If we were able to go from 2 dimensional to 3 dimensional, can we go from 3 to 4?
+
+Thinking back to a 2 dimensional image, it's possible to extend these objects across the temporal dimension to create an ordered sequence of images.  This could be something like a [Zoetrope](https://en.wikipedia.org/wiki/Zoetrope), or, perhaps more straighforwardly, a movie. In the case of MRI data, we could also extend this data object across the temporal dimension to obtain something like a 3 dimensional movie.  This is, in essence, the idea behind [fMRI](https://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging), though the activity we are viewing evolve over time with that imaging modality is [Blood-oxygen-level-dependent(BOLD)](https://en.wikipedia.org/wiki/Blood-oxygen-level-dependent_imaging#:~:text=Blood%2Doxygen%2Dlevel%2Ddependent%20imaging%2C%20or%20BOLD%2D,active%20at%20any%20given%20time.), rather than surface reflectance.  For now though, its enough to know that we can extend certian data types (i.e. digital photography images and MRI Volumes/NIFTIs) across the temporal dimenson.  But this isn't the *only* manner in which we can extend them.
+
+**Rather than taking a sequence of images across time, what if we simply rotated the object in place?**
+
+Let's consider this possibility in the case of 2D images and, for the sake of consistency with our previous examples, lets use the world as an example.  In this case, we'll pretend that we've placed a satellite in orbit around the equator *but* it's "stationary" such that Earth appears to be rotating at such a speed that it completes a full rotation every 24 hours.  In a sense, this is basically the same effect as rotating a stationary object in front of a camera.  As the world rotates, we take an image every so often until one full rotation has been made.  By doing this we have compiled a sequence of images that depict the same object from a number of angles.  Furthermore, this would allow us to make some decent inferences about the surface structure of the 3D object from the compilation of 2D images.
+
+Lets go ahead and explore this notion by looking at the images from a gif depicting a rotating earth.  Run the next block of code, which contains some code needed to explore a gif, and then use the interactive slider in the subsequent block to rotate around the Earth and get a sense of how a sequence of 2D images can give you information about the structure of a 3D object.
 
 # this section of code is necessary in order to extract specific frames from a gif sequence
 # go ahead and run it and move to the next section
@@ -97,10 +91,6 @@ def processImage(path):
         print("saving %s frame %d, %s %s" % (path, i, im.size, im.tile))
         frame.save('%s-%d.png' % (''.join(os.path.basename(path).split('.')[:-1]), i), 'PNG')
 
-
-# In[2]:
-
-
 from PIL import Image
 from PIL import GifImagePlugin
 from ipywidgets import interact, interactive, fixed, interact_manual
@@ -130,7 +120,7 @@ print(gifFrameNum/3)
 framesGenerator=getFrames(worldGif)
 
 def update(frameSelect):
-    get_ipython().run_line_magic('matplotlib', 'inline')
+    %matplotlib inline
     caughtFrame=next(itertools.islice(framesGenerator, frameSelect, None))
     imshow(np.asarray(caughtFrame))
     
@@ -140,11 +130,6 @@ def update(frameSelect):
 frameSelect=IntSlider(min=1, max=gifFrameNum, step=1,continuous_update=False)    
 
 interact(update, frameSelect=frameSelect)
-
-
-# 
-
-# In[ ]:
 
 
 

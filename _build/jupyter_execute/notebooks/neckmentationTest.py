@@ -1,13 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 cd /Users/plab/Documents/gitDir/WMA_pyTools
-
-
-# In[2]:
 
 
 import WMA_pyFuncs
@@ -21,22 +12,10 @@ from dipy.segment.clustering import QuickBundles
 from dipy.segment.metric import ResampleFeature
 from dipy.segment.metric import AveragePointwiseEuclideanMetric
 
-
-# In[3]:
-
-
 #streamlines=nib.streamlines.load('/Users/plab/Documents/ipynb/exampleData/smallTractogram.tck')
 streamlines=nib.streamlines.load('/Users/plab/Downloads/5c5d35e2f5d2a10052842847/track.tck')
 
-
-# In[4]:
-
-
 neckClusters=WMA_pyFuncs.neckmentation(streamlines.streamlines)
-
-
-# In[ ]:
-
 
 #get tractogram from the Tck holder
 sourceTractogram=streamlines.tractogram
@@ -86,7 +65,7 @@ def plotTract(tractIn):
     #renderer.set_camera(position=(-176.42, 118.52, 128.20),
     #               focal_point=(113.30, 128.31, 76.56),
     #                view_up=(0.18, 0.00, 0.98))
-    get_ipython().run_line_magic('matplotlib', 'inline')
+    %matplotlib inline
     renderer.add(stream_actor)
     
     window.show(renderer, size=(600, 600), reset_camera=True)
@@ -95,21 +74,15 @@ def updateFunction(clusterIndex):
         
     currentIndexes=neckClusters.clusters[clusterIndex].indices
     subTractogram=extractSubTractogram(sourceTractogram,currentIndexes)
-    get_ipython().run_line_magic('matplotlib', 'inline')
+    %matplotlib inline
     plotParcellationConnectionWidget(subTractogram.streamlines)
 
-
-# In[ ]:
 
 
 streamCountVec=np.zeros(len(neckClusters))    
 for iClusters in range(len(neckClusters)):
     streamCountVec[iClusters]=len(neckClusters.clusters[iClusters].indices)
 print(np.argsort(streamCountVec))
-
-
-# In[ ]:
-
 
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import IntSlider
@@ -118,16 +91,6 @@ from ipywidgets import IntSlider
 interact(updateFunction, 
          clusterIndex=IntSlider(min=0, max=len(neckClusters), step=1,continuous_update=False)
         )
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
 
 
 

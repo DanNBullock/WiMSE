@@ -1,48 +1,65 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>White Matter Segmentation Education (WiMSE) &#8212; White Matter Segmentation Education (WiMSE)</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/togglebutton.js"></script>
-    <script type="text/javascript" src="_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="_static/copybutton.js"></script>
-    <script type="text/javascript" src="_static/sphinx-book-theme.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" type="text/javascript" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Author and Funding information" href="Author_and_funding_information.html" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
 
 
 
@@ -62,22 +79,19 @@
   <h1 class="site-logo" id="site-title">White Matter Segmentation Education (WiMSE)</h1>
   
 </a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
-
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
- <li class="toctree-l1">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1 current active">
   <a class="reference internal" href="#">
    White Matter Segmentation Education (WiMSE)
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Front matter
  </span>
@@ -99,14 +113,14 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Building intuitions with digital images
  </span>
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/Intro_to_discretized_image_representation_&amp;_maps.html">
+  <a class="reference internal" href="notebooks/Intro_to_discretized_image_representation_%26_maps.html">
    Introduction to discritized image representation and maps
   </a>
  </li>
@@ -126,14 +140,14 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Working with NIfTI data
  </span>
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/How_to_represent_the_brain's_anatomy_-_as_a_volume.html">
+  <a class="reference internal" href="notebooks/How_to_represent_the_brain%27s_anatomy_-_as_a_volume.html">
    How to represent the brain’s anatomy - as a volume
   </a>
  </li>
@@ -148,7 +162,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   White matter and tractography
  </span>
@@ -160,7 +174,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/The_measurement,_the_object,_and_the_modality_-_What's_measured_in_diffusion_imaging.html">
+  <a class="reference internal" href="notebooks/The_measurement%2C_the_object%2C_and_the_modality_-_What%27s_measured_in_diffusion_imaging.html">
    The measurement, the object, and the modality - Whats in measured in diffusion imaging
   </a>
  </li>
@@ -175,7 +189,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Segmenting tractography
  </span>
@@ -216,9 +230,7 @@
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -247,11 +259,11 @@
             <i class="fas fa-arrow-up"></i>
         </button>
         
-        <div class="dropdown-buttons-trigger">
+        
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         
@@ -263,8 +275,8 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
+
         <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -282,7 +294,8 @@
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
@@ -291,6 +304,7 @@
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
         <div class="tocsection onthispage pt-5 pb-3">
             <i class="fas fa-list"></i> Contents
         </div>
@@ -321,6 +335,7 @@
 </ul>
 
         </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -333,7 +348,7 @@
 <p>A practical, hands on guide to the logic and practice of digital white matter segmentation</p>
 <div class="section" id="what-is-this">
 <h2>What is this?<a class="headerlink" href="#what-is-this" title="Permalink to this headline">¶</a></h2>
-<p>This resource is a collection of <a class="reference external" href="https://jupyter.org/">jupyer notebooks</a> notebooks designed to build intuitions for and provide training in digital white matter segmentation.  The modern-day practice of digital white matter segmentation is as much about programming as it is about neuroanatomy, which is why the medium of <a class="reference external" href="https://jupyter.org/">jupyer notebooks</a> has been chosen.  In this way, users are able to view commented code alongside text explaining the context, goals, and implications of what is being done.  <em>However, there’s a catch to this!</em>.  Because interactivity is key to many of these lessons, <strong>you will often need to click the rocket-ship symbol at the top of the page to open a <a class="reference external" href="https://mybinder.org/">binder</a></strong>.  This will allow you to actually <strong>run and interact with code in your browser!</strong>, which, in turn, will give you a better understanding of <em>how</em> the code is operating.</p>
+<p>This resource is a collection of <a class="reference external" href="https://jupyter.org/">jupyer notebooks</a> notebooks designed to build intuitions for and provide training in digital white matter segmentation.  The modern-day practice of digital white matter segmentation is as much about programming as it is about neuroanatomy, which is why the medium of <a class="reference external" href="https://jupyter.org/">jupyer notebooks</a> has been chosen.  In this way, users are able to view commented code alongside text explaining the context, goals, and implications of what is being done.  <em>However, there’s a catch to this!</em>  Because interactivity is key to many of these lessons, <strong>you will often need to click the rocket-ship symbol at the top of the page to open a <a class="reference external" href="https://mybinder.org/">binder</a></strong>.  This will allow you to actually <strong>run and interact with code in your browser!</strong>, which, in turn, will give you a better understanding of <em>how</em> the code is operating.</p>
 </div>
 <div class="section" id="how-is-it-structured">
 <h2>How is it structured?<a class="headerlink" href="#how-is-it-structured" title="Permalink to this headline">¶</a></h2>
@@ -406,7 +421,10 @@
       </div>
     </div>
 
-    <script src="_static/js/index.js"></script>
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
     
   </body>
 </html>

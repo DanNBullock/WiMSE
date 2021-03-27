@@ -1,6 +1,6 @@
 # White Matter Segmentation Education - WiMSE
 
-This set of notebooks has been developed to provide a guide to performing digital segmentations of white matter.  It's lessons are designed for advanced undergraduates, advanced STEM students, or persons wanting to become more familiar with the process of the digital segmentation of white matter.  These lessons begin by building a strong foundation of intuitions based on everyday data representations.  Having established this, it moves towards neuroimaging-specific data formats and their use.  Finally, it moves to tractograms and segmentations, demonstrating basic concepts and characteristics, and even allowing users to perform some rudamentary interactive segmentations. 
+This set of notebooks has been developed to provide a guide to performing digital segmentations of white matter.  The lessons contained here are designed for advanced undergraduates, advanced STEM students, or persons wanting to become more familiar with the process of the digital segmentation of white matter.  These lessons begin by building a strong foundation of intuitions based on everyday data representations.  Having established this, it moves towards neuroimaging-specific data formats and their use.  Finally, it moves to tractograms and segmentations, demonstrating basic concepts and characteristics, and even allowing users to perform some rudamentary interactive segmentations. 
 
 ## Chapter Summaries 
  

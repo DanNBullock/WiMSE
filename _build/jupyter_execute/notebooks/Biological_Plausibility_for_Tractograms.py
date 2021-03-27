@@ -1,32 +1,26 @@
-#!/usr/bin/env python
-# coding: utf-8
+# Biological Plausibility for Tractograms
 
-# # Biological Plausibility for Tractograms
-# 
-# In the previous chapter, we considered an approach to parcellation that iteratively went through pairings of the labels in a volumetric parcellation atlas and assigned streamlines to groups based on those pairings.  By examining the result of this process we were able to make several insights.  One of these is that many of the streamlines found in tractograms are not **biologically plausible**.  What do we mean by this?
-# 
-# ## What does it mean for a streamline to be biologically plausible
-# 
-# In the previous chapter we presented the following criteria for a streamline to be considered biologically plausible
-# 
-# > it must terminate in reasonable areas and follow a sensible path as it traverses the brain
-# 
-# But what do we mean by these criteria?
-# 
-# ### "terminate in reasonable areas"
-# 
-# As we noted in a previous chapter describing the biological role of white matter, axons connect neurons to one another.  As such, an axon must begin and end in areas of the brain which house neurons.  Because streamlines ostensibly "represent" collections of axons, streamlines are expected to do the same.  With that in mind, although many areas of the brain that do house neuronal bodies, there are some areas which definitionally do not.  As such we can exclude streamlines which terminate in these areas from any subsequent segmentation, because they couldn't possibly represent a collection of axons.  Lets list a few of these areas below
-# 
-# - Hemispheric white matter 
-# - Ventricles
-# - "Unknown" areas
-# - "Unlabeled" areas (i.e. values of 0)
-# - On the midline of the corpus callosum
-# 
-# Lets reuse some of the code from the previous chapter to consider these.  Once the code has processed, and you can interact with the widget, take a look at collections of streamlines that are associated with areas in the above list.  Although these may not seem particularly remarkable upon visual inspection, they are nonetheless biologically implausible.
+In the previous chapter, we considered an approach to parcellation that iteratively went through pairings of the labels in a volumetric parcellation atlas and assigned streamlines to groups based on those pairings.  By examining the result of this process we were able to make several insights.  One of these is that many of the streamlines found in tractograms are not **biologically plausible**.  What do we mean by this?
 
-# In[1]:
+## What does it mean for a streamline to be biologically plausible (for an individual streamline)
 
+In the previous chapter we presented the following criteria for a streamline to be considered biologically plausible
+
+> it must terminate in reasonable areas and follow a sensible path as it traverses the brain
+
+But what do we mean by these criteria?
+
+### "terminate in reasonable areas"
+
+As we noted in a previous chapter describing the biological role of white matter, axons connect neurons to one another.  As such, an axon must begin and end in areas of the brain which house neurons.  Because streamlines ostensibly "represent" collections of axons, streamlines are expected to do the same.  With that in mind, although many areas of the brain that do house neuronal bodies, there are some areas which definitionally do not.  As such we can exclude streamlines which terminate in these areas from any subsequent segmentation, because they couldn't possibly represent a collection of axons.  Lets list a few of these areas below
+
+- Hemispheric white matter 
+- Ventricles
+- "Unknown" areas
+- "Unlabeled" areas (i.e. values of 0)
+- On the midline of the corpus callosum
+
+Lets reuse some of the code from the previous chapter to consider these.  Once the code has processed, and you can interact with the widget, take a look at collections of streamlines that are associated with areas in the above list.  Although these may not seem particularly remarkable upon visual inspection, they are nonetheless biologically implausible.
 
 #this code ensures that we can navigate the WiMSE repo across multiple systems
 import subprocess
@@ -80,11 +74,7 @@ M, grouping=utils.connectivity_matrix(streamsObjIN.tractogram.streamlines, atlas
 
 resetTable=remappingFrame.reset_index()
 
-
-# Now that the segemetation has been performed we can visualize the results
-
-# In[2]:
-
+Now that the segemetation has been performed we can visualize the results
 
 dropDownList=list(zip(currentParcellationEntries['LabelName:'].to_list(), currentParcellationEntries['#No.'].to_list()))
 
@@ -135,7 +125,7 @@ def plotTract(tractIn):
     #renderer.set_camera(position=(-176.42, 118.52, 128.20),
     #               focal_point=(113.30, 128.31, 76.56),
     #                view_up=(0.18, 0.00, 0.98))
-    get_ipython().run_line_magic('matplotlib', 'inline')
+    %matplotlib inline
     renderer.add(stream_actor)
     
     window.show(renderer, size=(600, 600), reset_camera=True)
@@ -149,7 +139,7 @@ def updateFunction(regionIndex1,regionIndex2):
     if (currentRenumberIndex1,currentRenumberIndex2) in grouping.keys(): 
         currentIndexes=grouping[currentRenumberIndex1,currentRenumberIndex2]
         subTractogram=extractSubTractogram(sourceTractogram,currentIndexes)
-        get_ipython().run_line_magic('matplotlib', 'inline')
+        %matplotlib inline
         plotParcellationConnectionWidget(subTractogram.streamlines)
     else:
         print('connection not present')
@@ -165,23 +155,19 @@ interact(updateFunction,
          regionIndex2=Dropdown(options=dropDownList, value=2, description="region2"),
         )
 
+If you look closely at the example streamline collections, you may also notice some streamlines that seem particularly... odd.  This brings us to our other criterion.
 
-# If you look closely at the example streamline collections, you may also notice some streamlines that seem particularly... odd.  This brings us to our other criterion.
-# 
-# ### "follow a sensible path as it traverses the brain"
-# 
-# As noted in our discussion of the biological characteristics of axons, although they are very small they nonetheless occupy space.  For this reason, longer axons take up more room than shorter axons.  Many researchers [cite pareto optimality and such] have explored the costs associated with increasingly large volumes of white matter, and one overarching observation is that there is a general efficiency to the paths taken by axons:  they don't meander about unnecessarily or take wild detours.  Moreover, as an axon becomes longer, so too does the amount of time needed to transmit signals down it.  On an evolutionary scale, those delays can mean the difference between life and death.  As such we see that there are multiple selection pressures which might preference efficient white matter connections.  How can we identify streamlines which best reflect this characteristic?
-# 
-# #### What ISN'T a sensible path?
-# 
-# In the above visualization, if you select "Left-Cerebral-White-Matter" for both endpoints (which is admittedly already a biologically implausible category) you'll notice that three streamlines appear to cross the corpus callosum into the right hemisphere, but then do a 180 and return to the left hemisphere.  It's safe to assume that an axon (much less a collection of axons) wouldn't do this.  In the same way that we applied a mask to the image examples in previous chapters, is there a way for us to apply a filter to the tractogram to select only those streamlines that are doing something implausible like this? 
-# 
-# In our chapter introducing streamlines (The voxel and the streamline) two of the measures we computed were the displacement and length of the streamline.  By creating a ratio of these values we can compute the "efficiency" of a streamline--the degree to which the actual route taken by the streamline approaches a straight line (the most efficient way in which the streamline could connect the two points).  It must be admitted from the outset that this isn't actually the minimum *biologically plausible* route that the streamline could take.  The route taken by a maximally efficient streamline (i.e. a line) could very well take the streamline straight across ventricles, sulci, or cerebrospinal fluid.  All of these would be impossible in an actual brain, but in this null model of maximal efficiency, it's a useful starting point.
-# 
-# In the code block below we'll compute the efficiency for all of the streamlines in our tractogram and then utilize an interactive plot to visualize those streamlines that are below a the provided threshold efficiency value.  Try manually entering a value of .05 to see particularly inefficient streamlines.
+### "follow a sensible path as it traverses the brain"
 
-# In[3]:
+As noted in our discussion of the biological characteristics of axons, although they are very small they nonetheless occupy space.  For this reason, longer axons take up more room than shorter axons.  Many researchers [cite pareto optimality and such] have explored the costs associated with increasingly large volumes of white matter, and one overarching observation is that there is a general efficiency to the paths taken by axons:  they don't meander about unnecessarily or take wild detours.  Moreover, as an axon becomes longer, so too does the amount of time needed to transmit signals down it.  On an evolutionary scale, those delays can mean the difference between life and death.  As such we see that there are multiple selection pressures which might preference efficient white matter connections.  How can we identify streamlines which best reflect this characteristic?
 
+#### What ISN'T a sensible path?
+
+In the above visualization, if you select "Left-Cerebral-White-Matter" for both endpoints (which is admittedly already a biologically implausible category) you'll notice that three streamlines appear to cross the corpus callosum into the right hemisphere, but then do a 180 and return to the left hemisphere.  It's safe to assume that an axon (much less a collection of axons) wouldn't do this.  In the same way that we applied a mask to the image examples in previous chapters, is there a way for us to apply a filter to the tractogram to select only those streamlines that are doing something implausible like this? 
+
+In our chapter introducing streamlines (The voxel and the streamline) two of the measures we computed were the displacement and length of the streamline.  By creating a ratio of these values we can compute the "efficiency" of a streamline--the degree to which the actual route taken by the streamline approaches a straight line (the most efficient way in which the streamline could connect the two points).  It must be admitted from the outset that this isn't actually the minimum *biologically plausible* route that the streamline could take.  The route taken by a maximally efficient streamline (i.e. a line) could very well take the streamline straight across ventricles, sulci, or cerebrospinal fluid.  All of these would be impossible in an actual brain, but in this null model of maximal efficiency, it's a useful starting point.
+
+In the code block below we'll compute the efficiency for all of the streamlines in our tractogram and then utilize an interactive plot to visualize those streamlines that are below a the provided threshold efficiency value.  Try manually entering a value of .05 to see particularly inefficient streamlines.
 
 #initalize vector
 streamlineEfficiencies=np.zeros(len(streamsObjIN.tractogram.streamlines))
@@ -256,7 +242,7 @@ def updateFunction(thresholdVal):
     #get the indexes of the relevant streamlines and convert it to a useful format
     currentIndexes=np.squeeze(np.argwhere(streamlineEfficiencies<thresholdVal))
     subTractogram=extractSubTractogram(sourceTractogram,currentIndexes)
-    get_ipython().run_line_magic('matplotlib', 'inline')
+    %matplotlib inline
     plotParcellationConnectionWidget(subTractogram.streamlines)
 
 
@@ -269,7 +255,9 @@ interact(updateFunction,
         )
 #NOTE: EFFECIENCY SLIDER APPEARS TO BE BE BROKEN, STEP SIZE ISN'T RESPONSIVE TO PARAMETER INPUT
 
+Another example, crosses into other hemisphere but then turns back
 
-# ## Other Concerns for Biological Plausibility
-# 
-# ## Why care about biological plausibility, and what to do about it
+## Biological Plausibility beyond single streamlines
+
+Individual streamlines can be assessed for their relative consistency with our understanding of the general chacteristics of axons and bundles, 
+## Why care about biological plausibility, and what to do about it
