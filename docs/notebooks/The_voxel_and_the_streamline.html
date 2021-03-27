@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The voxel and the streamline &#8212; White Matter Segmentation Education (WiMSE)</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The source tractogram" href="The_source_tractogram.html" />
+    <link rel="prev" title="The measurement, the object, and the modality - Whats in measured in diffusion imaging" href="The_measurement%2C_the_object%2C_and_the_modality_-_What%27s_measured_in_diffusion_imaging.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">White Matter Segmentation Education (WiMSE)</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landingPage.html">
+   White Matter Segmentation Education (WiMSE)
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Front matter
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Author_and_funding_information.html">
+   Author and Funding information
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapterSummaries.html">
+   White Matter Segmentation Education - WiMSE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Building_Bridges.html">
+   Building bridges from the familiar to the unfamiliar
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Building intuitions with digital images
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_to_discretized_image_representation_%26_maps.html">
+   Introduction to discritized image representation and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Aligning_two_images.html">
+   Aligning two images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multi_object_maps_in_images.html">
+   Multi object maps in images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_consideration_of_jpegs_and_brain_images.html">
+   A consideration of jpegs and brain images
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Working with NIfTI data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="How_to_represent_the_brain%27s_anatomy_-_as_a_volume.html">
+   How to represent the brain’s anatomy - as a volume
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_quick_demonstration_of_linear_affine_transformations_in_3-D.html">
+   A quick demonstration of linear affine transformations in 3-D
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="How_to_interpret_a_volumetric_brain_segmentation.html">
+   How to interpret a volumetric brain segmentation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  White matter and tractography
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Highways_of_the_brain.html">
+   Highways of the brain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_measurement%2C_the_object%2C_and_the_modality_-_What%27s_measured_in_diffusion_imaging.html">
+   The measurement, the object, and the modality - Whats in measured in diffusion imaging
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The voxel and the streamline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_source_tractogram.html">
+   The source tractogram
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Segmenting tractography
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_first_segmentation.html">
+   A first segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Biological_Plausibility_for_Tractograms.html">
+   Biological Plausibility for Tractograms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html">
+   Segmenting Tracts - Conceptualy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html#why-segment-a-tract">
+   Why segment a tract
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ROIs_as_tools.html">
+   ROIs as tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Using_ROIs_as_tools.html">
+   <em>
+    Using
+   </em>
+   ROIs as tools
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/The_voxel_and_the_streamline.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        
+        <a class="edit-button" href="https://github.com/DanNBullock/WiMSE/edit/master/notebooks/The_voxel_and_the_streamline.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DanNBullock/WiMSE/master?urlpath=tree/notebooks/The_voxel_and_the_streamline.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-s-in-a-streamline">
+   What’s in a streamline?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-some-observations-we-can-make">
+     What are some observations we can make?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-voxel-and-the-streamline">
+<h1>The voxel and the streamline<a class="headerlink" href="#the-voxel-and-the-streamline" title="Permalink to this headline">¶</a></h1>
+<p>In our earlier chapters we considered the manner in which a particular voxel of a T1 NIfTI image represented some quantative feature of the measured volume/brain.  Representing white matter is somewhat different though.  The key features of white matter that we’d like to capture with our representation are (minimally) its connectivity and its traversal.  In this chapter we’ll look at how our data representation of white matter acheives this.</p>
+<div class="section" id="what-s-in-a-streamline">
+<h2>What’s in a streamline?<a class="headerlink" href="#what-s-in-a-streamline" title="Permalink to this headline">¶</a></h2>
+<p>Before moving into a discussion of <strong>how</strong> our model of white matter anatomy is generated, we should consider an essential difference between the data representation of the T1 and the data reprsentation of white matter (i.e. tractography):</p>
+<p>T1 images and other NIfTI data objects represent the brain with voxel-value pairings, such that each volume of represented space is associated with a quantative measure of that space.  As an arbitrary example, within some spatial frame of reference (i.e. scanner space, ACPC space, etc) a measured volume represented in the nifti image’s data field at coordinate (128,120, 80) could have value of 125.32.  Relatedly, this is in much the same fashion that the 2 dimensional images that we discussed previously represent each area of depicted space with a value (or in the case of a standard color image, 3 values corresponding to RGB values).  Our most common method for representing white matter, which we refer to as “<a class="reference external" href="https://en.wikipedia.org/wiki/Tractography">Tractography</a>”, <strong>does not</strong> operate in this fashion.  To see why lets refer back to the table that was provided just before we began our consideration of digital photography.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Digital Photography</strong></p></th>
+<th class="head"><p><strong>Structural Brain Imaging (T1)</strong></p></th>
+<th class="head"><p><strong>Diffusion Imaging (DWI)</strong></p></th>
+<th class="head"><p><strong>Tractography</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>Data Token</em></p></td>
+<td><p>digital photo image</p></td>
+<td><p>structural brain image (T1)</p></td>
+<td><p>diffusion image (DWI)</p></td>
+<td><p>tractogram</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Object represented</em></p></td>
+<td><p>visual scene</p></td>
+<td><p>cranium / brain</p></td>
+<td><p>cranium / brain</p></td>
+<td><p>white matter of brain</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Source system</em></p></td>
+<td><p>camera</p></td>
+<td><p>MRI scanner</p></td>
+<td><p>MRI scanner</p></td>
+<td><p>Mathematical model</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Source phenomena</em></p></td>
+<td><p>reflected light</p></td>
+<td><p>water / magnetic properties</p></td>
+<td><p>water movement</p></td>
+<td><p>orientation interpolation</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Property of interest</em></p></td>
+<td><p>topography</p></td>
+<td><p>volumetric occupancy</p></td>
+<td><p>tissue structure</p></td>
+<td><p>putative axon collection traversal</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>File extension</em></p></td>
+<td><p>.jpg, .png …</p></td>
+<td><p>.nifti, nii.gz</p></td>
+<td><p>(dwi) .nifti, nii.gz</p></td>
+<td><p>.fg, .trk, .tck</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Metadata</em></p></td>
+<td><p>exif</p></td>
+<td><p>header</p></td>
+<td><p>header</p></td>
+<td><p>varies by format</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Data size</em></p></td>
+<td><p>100s kb - 1s MB</p></td>
+<td><p>~2.5 - 5 MB</p></td>
+<td><p>50 MB - 1.5 GB</p></td>
+<td><p>500 MB - 10 GB</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data dimensionality</em></p></td>
+<td><p>“2D”(3 RGB layers)</p></td>
+<td><p>3D</p></td>
+<td><p>4D</p></td>
+<td><p>1D nested?</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Data “atoms”</em></p></td>
+<td><p>pixels</p></td>
+<td><p>voxels</p></td>
+<td><p>voxel-angle</p></td>
+<td><p>vectors (streamlines)</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data “atom” content</em></p></td>
+<td><p>integer</p></td>
+<td><p>float</p></td>
+<td><p>float</p></td>
+<td><p>ordered float sequence (nodes)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the data “atoms” of tractography are <strong>streamlines</strong>.  The term <strong>streamline</strong> is borrowed from the field of <a class="reference external" href="https://en.wikipedia.org/wiki/Fluid_dynamics">fluid dynamics</a>, where it has a <a class="reference external" href="https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines">disipline-specific connotation</a>.  In the field(s) of white matter anatomy and tractography though, it has quite another meaning:</p>
+<p>In this context, a streamline is an ordered sequence of nodes (roughly in line with the <a class="reference external" href="https://en.wikipedia.org/wiki/Graph_theory">graph theoretic</a> sense of <a class="reference external" href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">“node”</a> in 3 dimensional space.  The specific numerical values describing the positions of the nodes are, like the specification of the anterior or posterior comissure in a NIfTI affine, referenced to a specific coordinate scheme (typically the source DWI scan).  Although there are a finite number of these nodes in any given streamline, they should nonetheless be understood as represnting a <strong>smooth</strong> and <strong>continuous</strong> path through the white matter of a corresponding brain. This path <strong>should not</strong> be interpreted as representing a <strong>single</strong> axon.  The scans whose data we are basing our streamline models off of can not resolve details as fine as single axons, nor can our models realistically generate the number streamlines that would be necessary to do this.  As such, it would be better to interpret a streamline as “our best guess as to the path of traversal for a collection of axons continuously oriented in the same direction”. The specifics of how these guesses are generated fom DWI scan data are discussed elsewhere (within the context of tractography generation algorithms), but for now this description is sufficient to begin considering <em>how</em> streamlines and collections of streamlines represent the brain’s white matter.</p>
+<p><strong>Lets consider how the data constituting a streamline is arranged</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1">#this code ensures that we can navigate the WiMSE repo across multiple systems</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="c1">#get top directory path of the current git repository, under the presumption that </span>
+<span class="c1">#the notebook was launched from within the repo directory</span>
+<span class="n">gitRepoPath</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;rev-parse&#39;</span><span class="p">,</span> <span class="s1">&#39;--show-toplevel&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1">#move to the top of the directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">)</span>
+
+<span class="c1"># load a tractography file with a single streamline in it</span>
+<span class="n">streamsObjIN</span><span class="o">=</span><span class="n">nib</span><span class="o">.</span><span class="n">streamlines</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">,</span><span class="s1">&#39;exampleData&#39;</span><span class="p">,</span><span class="s1">&#39;singleStream.tck&#39;</span><span class="p">))</span>
+
+<span class="c1"># determine the number of streamlines</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 142, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above, we have loaded a .tck file (“singleStream.tck”) and then printed out the dimensions of the object storing streamlines.  We see that it is 1 by 142 by 3.  This indicates that there is 1 streamline with 142 nodes, and there are X, Y, and Z coordinates for each of these nodes.  This is a fairly unique tractography file, in that it only has one streamline in it.  Typically, a tractography file will contain many more streamlines than this.  Indeed, in the case of a tractography file that is representing an entire brain’s white matter, it will likely have millions of streamlines.  For now though, we’ll focus on just one streamline to get a sense of what a streamline is, data-wise.  Let’s look at its contents more closely.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-24.345537  -14.523892   -8.740357 ]
+ [-24.392138  -14.639726   -8.734354 ]
+ [-24.438295  -14.755743   -8.728482 ]
+ [-24.48406   -14.871921   -8.722707 ]
+ [-24.529167  -14.988346   -8.716753 ]
+ [-24.573574  -15.105032   -8.710636 ]
+ [-24.61724   -15.22199    -8.704371 ]
+ [-24.660135  -15.339226   -8.697976 ]
+ [-24.702229  -15.456745   -8.691468 ]
+ [-24.743504  -15.57455    -8.684866 ]
+ [-24.783949  -15.6926365  -8.678185 ]
+ [-24.823565  -15.811001   -8.671444 ]
+ [-24.862356  -15.929635   -8.664656 ]
+ [-24.900343  -16.048529   -8.657834 ]
+ [-24.937683  -16.167614   -8.650796 ]
+ [-24.974573  -16.28681    -8.643291 ]
+ [-25.011003  -16.40612    -8.635358 ]
+ [-25.046928  -16.525555   -8.626987 ]
+ [-25.08225   -16.64513    -8.618095 ]
+ [-25.11697   -16.764843   -8.608702 ]
+ [-25.151089  -16.884691   -8.598831 ]
+ [-25.184608  -17.004671   -8.588513 ]
+ [-25.217533  -17.124779   -8.57778  ]
+ [-25.249868  -17.24501    -8.566666 ]
+ [-25.28162   -17.365366   -8.555206 ]
+ [-25.312813  -17.485834   -8.543404 ]
+ [-25.34344   -17.606415   -8.531267 ]
+ [-25.373491  -17.727108   -8.518812 ]
+ [-25.402964  -17.847912   -8.50606  ]
+ [-25.431854  -17.968828   -8.493034 ]
+ [-25.460161  -18.089857   -8.47977  ]
+ [-25.487883  -18.210999   -8.466306 ]
+ [-25.515018  -18.332256   -8.452693 ]
+ [-25.541569  -18.453634   -8.438994 ]
+ [-25.56753   -18.575138   -8.425287 ]
+ [-25.593287  -18.696667   -8.41142  ]
+ [-25.619036  -18.818178   -8.397394 ]
+ [-25.644724  -18.939705   -8.383386 ]
+ [-25.67027   -19.061289   -8.369609 ]
+ [-25.695566  -19.18298    -8.3563175]
+ [-25.72044   -19.304842   -8.343841 ]
+ [-25.74459   -19.426975   -8.3326435]
+ [-25.767447  -19.549526   -8.32348  ]
+ [-25.787771  -19.672731   -8.317768 ]
+ [-25.802948  -19.796804   -8.318474 ]
+ [-25.813503  -19.921198   -8.32478  ]
+ [-25.823494  -20.045637   -8.3311   ]
+ [-25.832926  -20.170126   -8.337328 ]
+ [-25.841787  -20.294666   -8.343361 ]
+ [-25.85004   -20.419262   -8.349109 ]
+ [-25.857626  -20.543917   -8.354475 ]
+ [-25.864464  -20.668634   -8.359358 ]
+ [-25.870451  -20.793417   -8.363635 ]
+ [-25.875479  -20.918266   -8.367138 ]
+ [-25.879526  -21.043179   -8.3695345]
+ [-25.88524   -21.168018   -8.366783 ]
+ [-25.89204   -21.292543   -8.358273 ]
+ [-25.898825  -21.416754   -8.346004 ]
+ [-25.90546   -21.540686   -8.33111  ]
+ [-25.911985  -21.664383   -8.31433  ]
+ [-25.918459  -21.787884   -8.296143 ]
+ [-25.92493   -21.911219   -8.27687  ]
+ [-25.931437  -22.034414   -8.256736 ]
+ [-25.938002  -22.157492   -8.235902 ]
+ [-25.944502  -22.280466   -8.214458 ]
+ [-25.950615  -22.403414   -8.192747 ]
+ [-25.955324  -22.526531   -8.171658 ]
+ [-25.958242  -22.649837   -8.151357 ]
+ [-25.958834  -22.773342   -8.132087 ]
+ [-25.956362  -22.897032   -8.114206 ]
+ [-25.949839  -23.020836   -8.098239 ]
+ [-25.938107  -23.144564   -8.084877 ]
+ [-25.920225  -23.267862   -8.074748 ]
+ [-25.896273  -23.39035    -8.067804 ]
+ [-25.867468  -23.511896   -8.063135 ]
+ [-25.83501   -23.632565   -8.059896 ]
+ [-25.798471  -23.752098   -8.0586815]
+ [-25.758726  -23.870611   -8.058978 ]
+ [-25.716679  -23.988321   -8.060194 ]
+ [-25.672953  -24.105412   -8.061893 ]
+ [-25.627918  -24.222002   -8.06378  ]
+ [-25.581781  -24.338161   -8.065653 ]
+ [-25.53464   -24.453918   -8.06736  ]
+ [-25.486496  -24.569267   -8.068777 ]
+ [-25.437271  -24.684162   -8.069796 ]
+ [-25.386778  -24.79851    -8.070305 ]
+ [-25.334389  -24.912      -8.070331 ]
+ [-25.279263  -25.024187   -8.070087 ]
+ [-25.221102  -25.13483    -8.069634 ]
+ [-25.159952  -25.24385    -8.068978 ]
+ [-25.096195  -25.351366   -8.068094 ]
+ [-25.030352  -25.457613   -8.066935 ]
+ [-24.962929  -25.56286    -8.065446 ]
+ [-24.895397  -25.66803    -8.06347  ]
+ [-24.82872   -25.773733   -8.060975 ]
+ [-24.762932  -25.879982   -8.0581   ]
+ [-24.698093  -25.986807   -8.055033 ]
+ [-24.634308  -26.094265   -8.052024 ]
+ [-24.570715  -26.201815   -8.048277 ]
+ [-24.507187  -26.309364   -8.043544 ]
+ [-24.44374   -26.416906   -8.0377035]
+ [-24.38041   -26.524443   -8.0306225]
+ [-24.317251  -26.63198    -8.022162 ]
+ [-24.25435   -26.73954    -8.012188 ]
+ [-24.191824  -26.84715    -8.000564 ]
+ [-24.129818  -26.954859   -7.9871745]
+ [-24.068525  -27.062727   -7.9719224]
+ [-24.008204  -27.170849   -7.9547224]
+ [-23.949224  -27.279366   -7.9354706]
+ [-23.892159  -27.388372   -7.9134264]
+ [-23.837934  -27.497742   -7.8865376]
+ [-23.789228  -27.608145   -7.853919 ]
+ [-23.751478  -27.720598   -7.8144937]
+ [-23.712652  -27.831722   -7.7724357]
+ [-23.666574  -27.939821   -7.729818 ]
+ [-23.614794  -28.045101   -7.6866918]
+ [-23.558985  -28.148113   -7.643115 ]
+ [-23.500004  -28.24922    -7.599255 ]
+ [-23.43828   -28.34862    -7.5552692]
+ [-23.37401   -28.446377   -7.5112495]
+ [-23.307257  -28.542458   -7.467234 ]
+ [-23.237457  -28.636475   -7.4234843]
+ [-23.164362  -28.728014   -7.3798666]
+ [-23.08826   -28.81684    -7.33578  ]
+ [-23.009224  -28.902548   -7.290701 ]
+ [-22.927338  -28.98475    -7.2442007]
+ [-22.842869  -29.063303   -7.196039 ]
+ [-22.75624   -29.138376   -7.146192 ]
+ [-22.667902  -29.210335   -7.0947795]
+ [-22.578234  -29.279589   -7.041973 ]
+ [-22.487535  -29.346518   -6.987942 ]
+ [-22.395945  -29.411478   -6.93302  ]
+ [-22.30307   -29.47489    -6.878447 ]
+ [-22.208897  -29.53686    -6.8244452]
+ [-22.113443  -29.597542   -6.771236 ]
+ [-22.016758  -29.657124   -6.719015 ]
+ [-21.918926  -29.71581    -6.6679306]
+ [-21.820066  -29.773819   -6.618062 ]
+ [-21.720448  -29.831354   -6.569166 ]
+ [-21.620424  -29.888525   -6.520669 ]
+ [-21.520205  -29.945408   -6.472243 ]
+ [-21.419994  -30.002062   -6.423529 ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above output we see the X, Y, and Z coordinates for each node (across each row).</p>
+<div class="section" id="what-are-some-observations-we-can-make">
+<h3>What are some observations we can make?<a class="headerlink" href="#what-are-some-observations-we-can-make" title="Permalink to this headline">¶</a></h3>
+<p>Working with the assumption that these are ACPC-based coordinates (which is reasonable, given that negative values are not possible in an <a class="reference external" href="https://www.slicer.org/wiki/Coordinate_systems#Image_coordinate_system">image-space coordinate system</a>), we can infer severeal positional characteristics of our streamline by noting the sign of the node coordinates, which are all negative.  That all of these coordinates are negative indicates that this streamline is located in the left hemisphere (from the X coordinates), in the posterior of the brain (from the Y coordinates), and in the inferior portion of the brain (from the Z coordinates).  Additionally, by looking at the relative sequencing and variability of the coordinates, we can further infer that this is an anterior-posterior oriented (i.e. primarily along the Y axis) tract due to the orderly progression of coordinate values in the second column.</p>
+<p>In order to learn more about this streamline we’ll need to perform more rigorous assesments of its quantative characteristics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># compute the distance between the respective X Y and Z coordinates of each node</span>
+<span class="n">nodeDimDiffs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">#treat each of these as the side of a 3 dimensional triangle, and, as we</span>
+<span class="c1">#did in the chapter with satellite ocean masking, hypotenuse</span>
+<span class="c1">#compute elementwise square</span>
+<span class="n">elementWiseSquares</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">nodeDimDiffs</span><span class="p">)</span>
+
+<span class="c1">#compute the sum for each row (i.e. node distance)</span>
+<span class="n">rowSquareSums</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">elementWiseSquares</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#compute the square root of these values</span>
+<span class="c1">#NOTE: these are the internode distances</span>
+<span class="n">rowRootSquareSums</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rowSquareSums</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;internode distances&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rowRootSquareSums</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> average internode distance&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rowRootSquareSums</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> standard deviation of internode distances&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">rowRootSquareSums</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> total distance traversed by streamline (in mm)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rowRootSquareSums</span><span class="p">))</span>
+
+<span class="c1">#now, for the sake of some more advanced characterization of the streamline,</span>
+<span class="c1">#lets also consider it&#39;s displacement</span>
+<span class="c1">#get first and last en</span>
+<span class="n">endpoint1</span><span class="o">=</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">,:]</span>
+<span class="n">endpoint2</span><span class="o">=</span><span class="n">streamsObjIN</span><span class="o">.</span><span class="n">tractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
+<span class="c1">#obtain the difference between these points</span>
+<span class="n">firstLastNodeDimDiff</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">endpoint1</span><span class="p">,</span><span class="n">endpoint2</span><span class="p">)</span>
+<span class="c1">#compute the hypotenuse between these points</span>
+<span class="n">streamlineDisplacement</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">firstLastNodeDimDiff</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> total displacement of streamline (in mm)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">streamlineDisplacement</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>internode distances
+[0.12499993 0.12500018 0.12500003 0.12499992 0.12499992 0.12500054
+ 0.12500055 0.125      0.12500049 0.12499979 0.12499985 0.12499981
+ 0.12500088 0.12500054 0.12499945 0.12500031 0.12500091 0.1250001
+ 0.12499938 0.12500045 0.12500079 0.12500036 0.12499896 0.12499981
+ 0.12499946 0.12499985 0.12500045 0.12499925 0.12500037 0.12500092
+ 0.125      0.12500043 0.1250007  0.12500015 0.1249997  0.1249991
+ 0.12499946 0.12500042 0.1250006  0.12499929 0.12500067 0.1250004
+ 0.12500092 0.1249998  0.12499969 0.12499952 0.12500083 0.12500086
+ 0.1250009  0.1250006  0.12500042 0.12499931 0.12499961 0.12500079
+ 0.12500079 0.12500063 0.12499908 0.12499984 0.12500063 0.12500058
+ 0.12499927 0.12499949 0.12500079 0.12499909 0.12499955 0.1249994
+ 0.12500031 0.1250003  0.1249998  0.12499984 0.124999   0.12499958
+ 0.125001   0.12499958 0.12499934 0.12499939 0.12500054 0.12500057
+ 0.12499987 0.125      0.12500052 0.12499986 0.12500057 0.12499981
+ 0.12500067 0.12499937 0.12499901 0.12499936 0.12500046 0.1250011
+ 0.12500054 0.12500037 0.125      0.12500103 0.12500073 0.12499992
+ 0.12499958 0.12500012 0.1250006  0.1249992  0.12500036 0.12499992
+ 0.1249998  0.12499911 0.12500007 0.12499985 0.1249996  0.12500012
+ 0.12499988 0.12499957 0.12500033 0.12500088 0.12499954 0.12499929
+ 0.12499985 0.12500025 0.125      0.12499937 0.12499946 0.12499955
+ 0.12500083 0.12499956 0.12499978 0.12499962 0.12499981 0.12499988
+ 0.12500052 0.12500015 0.12500007 0.12499993 0.12500076 0.12499977
+ 0.12500033 0.12499958 0.12500027 0.12499945 0.12500033 0.1250001
+ 0.12500057 0.12499898 0.12499911]
+
+ average internode distance
+0.12500003
+
+ standard deviation of internode distances
+5.480883e-07
+
+ total distance traversed by streamline (in mm)
+17.625004
+
+ total displacement of streamline (in mm)
+15.816918
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above we can observe a number of quantative features of our streamline.</p>
+<p>By looking at the collection of internode distances we can get a sense of the regularity of the node spacing for this streamline.  They all appear to be about .125 mm apart, as indicated by the average internode distance and the extremely low standard deviation for this value.  This is attributable to the method by which most tractography is generated.  Specifically, many tractography generation algorithms feature a parameter which defines the internode distance (often referred to as “step size”).  This value is particularly small (i.e. fine grained) considering that the voxel size for our data source (dMRI) is likely between 1.5 and 2 mm.  this means that many of the same nodes are based on the same data reading and so the implied precision of this streamline likely exceeds the actual precision of our source data.  It’s also worth noting that not all streamlines or tractograms have evenly spaced nodes.  Some algorithms or methods resample streamlines in such a way that areas with sharper curvatures (e.g. more change) have more nodes, and straighter portions have fewer nodes.  As we’ll note in later lessons, this could have unintended consequences when performing other analyses.</p>
+<p>Another set of features worth considering are the total traversal distance and total displacement of the streamline.  The total traversal distance value is, essentially, the “length” of the streamline.  Were we to treat the streamline as though it were a wire, it would be the total length of wire needed to form the streamline.  Alternatively, the total displacement value of the streamline is the distance between its first and last node.  There are several things to note about the relation between these values.  First and foremost, the total displacement is <em>necessarily</em> less than or equal to distance traversed.  In the case of a perfectly straight line, these two values would be equal, but any amount of curvature or deviation leads to the length being longer than the displacement.  As a consequence of this, the relative ratio of these two values can also give you a sense of how curved and/or “efficient” the streamline is.  If the displacement is much smaller than the distance traveled, it suggests that the streamline is very curved and that the endpoints are quite close to one another (at least relative to the total path-length traversed by the streamline).  Conversely, if the two are closer in value, this suggests that the streamline is relatively straight and does not curve much as it traverses the brain.</p>
+<p>Thus far we have looked at a single streamline, but in order model the entirety of the brain’s white matter, we need many of these streamlines.  In many cases our streamline models contain several million streamlines, and this number increases as the computational resources available to our field improves.  In the next chapter we’ll look at a whole brain tractogram to get a sense of what individual streamlines come to form when they are amalgamated into a tractogram structure.  In the end, what we’ll find is that we need a way to limit our consideration of the tractogram to meaningful subsets of streamlines.  In making this observation we’ll set the stage for our first attempt at a white matter parcellation/segmentation.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="The_measurement%2C_the_object%2C_and_the_modality_-_What%27s_measured_in_diffusion_imaging.html" title="previous page">The measurement, the object, and the modality - Whats in measured in diffusion imaging</a>
+    <a class='right-next' id="next-link" href="The_source_tractogram.html" title="next page">The source tractogram</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Daniel Bullock<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aligning two images &#8212; White Matter Segmentation Education (WiMSE)</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multi object maps in images" href="Multi_object_maps_in_images.html" />
+    <link rel="prev" title="Introduction to discritized image representation and maps" href="Intro_to_discretized_image_representation_%26_maps.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">White Matter Segmentation Education (WiMSE)</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landingPage.html">
+   White Matter Segmentation Education (WiMSE)
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Front matter
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Author_and_funding_information.html">
+   Author and Funding information
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapterSummaries.html">
+   White Matter Segmentation Education - WiMSE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Building_Bridges.html">
+   Building bridges from the familiar to the unfamiliar
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Building intuitions with digital images
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_to_discretized_image_representation_%26_maps.html">
+   Introduction to discritized image representation and maps
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Aligning two images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multi_object_maps_in_images.html">
+   Multi object maps in images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_consideration_of_jpegs_and_brain_images.html">
+   A consideration of jpegs and brain images
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Working with NIfTI data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="How_to_represent_the_brain%27s_anatomy_-_as_a_volume.html">
+   How to represent the brain’s anatomy - as a volume
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_quick_demonstration_of_linear_affine_transformations_in_3-D.html">
+   A quick demonstration of linear affine transformations in 3-D
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="How_to_interpret_a_volumetric_brain_segmentation.html">
+   How to interpret a volumetric brain segmentation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  White matter and tractography
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Highways_of_the_brain.html">
+   Highways of the brain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_measurement%2C_the_object%2C_and_the_modality_-_What%27s_measured_in_diffusion_imaging.html">
+   The measurement, the object, and the modality - Whats in measured in diffusion imaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_voxel_and_the_streamline.html">
+   The voxel and the streamline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="The_source_tractogram.html">
+   The source tractogram
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Segmenting tractography
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_first_segmentation.html">
+   A first segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Biological_Plausibility_for_Tractograms.html">
+   Biological Plausibility for Tractograms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html">
+   Segmenting Tracts - Conceptualy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html#why-segment-a-tract">
+   Why segment a tract
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ROIs_as_tools.html">
+   ROIs as tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Using_ROIs_as_tools.html">
+   <em>
+    Using
+   </em>
+   ROIs as tools
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/Aligning_two_images.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        
+        <a class="edit-button" href="https://github.com/DanNBullock/WiMSE/edit/master/notebooks/Aligning_two_images.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DanNBullock/WiMSE/master?urlpath=tree/notebooks/Aligning_two_images.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-masks-overlain">
+   Plotting the masks overlain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-sorts-of-trends-or-regularities-do-you-notice-in-the-disagreement-between-the-two-maps">
+     What sorts of trends or regularities do you notice in the disagreement between the two maps?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-s-with-this-pattern-we-are-observing-above-how-would-you-explain-this-apparent-shadowing-issue">
+     What’s with this pattern we are observing above?  How would you explain this apparent “shadowing” issue?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-x-and-y-shifts-necessary-to-acheive-alignment">
+     What are the x and y shifts necessary to acheive alignment?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-this-relates-to-neuroimaging">
+     How this relates to neuroimaging
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="aligning-two-images">
+<h1>Aligning two images<a class="headerlink" href="#aligning-two-images" title="Permalink to this headline">¶</a></h1>
+<p>In the previous chapter we developed an algorithm for computing the distance between colors, and used this to apply a threshold to our image, thereby developing a “mask” of water on the surface of the earth.  But what if we wanted to compare our mask to another image, for example, to a mask someone else developed?  In such a case we would need to ensure that our two images overlapped appropriately.  Lets try and accomplish that in this lesson.</p>
+<p>We’ll begin by replicating the mask you made in the previous lesson.  Either try and recall the value you used previously, or interact with the image in order to develop a new one.</p>
+<p><strong>NOTE: the mask you make here (using the specified threshold) will be used in subsequent sections. If the mask is not set well here, you won’t get good results later.</strong></p>
+<p><strong>ALSO IMPORTANT: once the mask is to your liking DO NOT run the cell again (as this will reset the threshold to 0)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#lets begin by setting up paths and files</span>
+
+<span class="c1">#this code ensures that we can navigate the WiMSE repo across multiple systems</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="n">imshow</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#get top directory path of the current git repository, under the presumption that </span>
+<span class="c1">#the notebook was launched from within the repo directory</span>
+<span class="n">gitRepoPath</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;rev-parse&#39;</span><span class="p">,</span> <span class="s1">&#39;--show-toplevel&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1">#move to the top of the directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">)</span>
+
+<span class="c1">#file name of standard map of the world</span>
+<span class="n">firstMapName</span><span class="o">=</span><span class="s1">&#39;Earthmap1000x500.jpg&#39;</span>
+
+<span class="c1">#file name of grayscale map of the world</span>
+<span class="n">grayscaleMapName</span><span class="o">=</span><span class="s1">&#39;World_map_blank_without_borders.svg.png&#39;</span>
+
+<span class="c1">#import PIL package</span>
+<span class="kn">import</span> <span class="nn">PIL</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span>
+
+<span class="c1">#establish paths to first image</span>
+<span class="n">firstMapPath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">,</span><span class="s1">&#39;images&#39;</span><span class="p">,</span><span class="n">firstMapName</span><span class="p">)</span> 
+<span class="n">firstMap</span><span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">firstMapPath</span><span class="p">)</span>
+<span class="c1">#set first image data as array</span>
+<span class="n">firstMapArray</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">firstMap</span><span class="p">)</span>
+<span class="c1">#get the shape</span>
+<span class="n">firstMapShape</span><span class="o">=</span><span class="n">firstMapArray</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1">#NOW EXTRACT PARTICULAR COLOR INFORMATION</span>
+
+<span class="c1">#get the atlanticPixel color</span>
+<span class="n">atlanticColor</span><span class="o">=</span><span class="n">firstMapArray</span><span class="p">[</span><span class="mi">450</span><span class="p">,</span><span class="mi">400</span><span class="p">]</span>
+
+<span class="c1">#make the initial difference computation</span>
+<span class="n">zeroBlueMask</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">firstMapArray</span><span class="p">,</span><span class="n">atlanticColor</span><span class="p">)</span>
+
+<span class="c1">#COMPUTE THE COLOR DISTANCE</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#quick and dirty general use hypoteuse algorithm, can be used for 2d or 3D</span>
+<span class="k">def</span> <span class="nf">multiDHypot</span><span class="p">(</span><span class="n">coords1</span><span class="p">,</span><span class="n">coords2</span><span class="p">):</span>
+    <span class="n">dimDisplace</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">coords1</span><span class="p">,</span><span class="n">coords2</span><span class="p">)</span>
+    <span class="n">elementNum</span><span class="o">=</span><span class="n">dimDisplace</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">elementSquare</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">dimDisplace</span><span class="p">)</span>
+    <span class="n">elementSquareSum</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">elementSquare</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">elementNum</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">hypotLeng</span><span class="o">=</span><span class="n">dimDisplace</span>
+    <span class="k">elif</span> <span class="n">elementNum</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">hypotLeng</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">elementSquareSum</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">elementNum</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
+        <span class="n">hypotLeng</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">elementSquareSum</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hypotLeng</span>
+
+<span class="c1">#initalize distance storage structure</span>
+<span class="n">colorDistMeasures</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(([</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]))</span>
+
+<span class="c1">#iteratively apply the distance computation</span>
+<span class="k">for</span> <span class="n">iRows</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">iColumns</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="c1">#extract the current pixel</span>
+        <span class="n">curPixelVal</span><span class="o">=</span><span class="n">zeroBlueMask</span><span class="p">[</span><span class="n">iRows</span><span class="p">,</span><span class="n">iColumns</span><span class="p">]</span>
+        
+        <span class="c1">#compute the color distance for this pixel, and store it in the corresponding stpot</span>
+        <span class="c1">#in colorDistMeasures, use this if your input above was firstMapArray</span>
+        <span class="c1">#Sidenote:  This may require additional code modifications</span>
+        <span class="c1">#colorDistMeasures[iRows,iColumns]=multiDHypot(curPixelVal,atlanticColor)</span>
+    
+        <span class="c1">#compute the color distance for this pixel, and store it in the corresponding stpot</span>
+        <span class="c1">#in colorDistMeasures, use this if your input above was zeroBlueMask</span>
+        <span class="c1">#we use [0 0 0 ] as our input because zeroBlueMask has already had the atlantic blue</span>
+        <span class="c1">#subtracted from it</span>
+        <span class="n">colorDistMeasures</span><span class="p">[</span><span class="n">iRows</span><span class="p">,</span><span class="n">iColumns</span><span class="p">]</span><span class="o">=</span><span class="n">multiDHypot</span><span class="p">(</span><span class="n">curPixelVal</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1">#data structure formatting for plotting</span>
+<span class="n">flattenedDistances</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">colorDistMeasures</span><span class="p">)</span>
+
+<span class="c1">#CREATE THE MASK</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">IntSlider</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">FloatSlider</span>
+
+<span class="c1">#function for modifying the plot via the input cutVal</span>
+<span class="k">def</span> <span class="nf">updatePlots</span><span class="p">(</span><span class="n">DistanceArray</span><span class="p">,</span><span class="n">cutVal</span><span class="p">):</span>
+
+    <span class="c1">#modify input data structure</span>
+    <span class="n">flattenedDistances</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">DistanceArray</span><span class="p">)</span>
+    
+    <span class="c1">#set plot features for histogram with cutVal line</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">flattenedDistances</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance from ocean color&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distributon of RGB color distance from Atlantic pixel color&#39;</span><span class="p">)</span>
+    <span class="n">xposition</span> <span class="o">=</span> <span class="p">[</span><span class="n">cutVal</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">xc</span> <span class="ow">in</span> <span class="n">xposition</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xc</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+     
+    <span class="c1">#compute binarized mask for values below cutVal</span>
+    <span class="n">naieveOceanMask</span><span class="o">=</span><span class="n">DistanceArray</span><span class="o">&lt;</span><span class="n">cutVal</span>
+    
+    <span class="c1">#plot the image that results</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">imshow</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    
+    <span class="c1"># Pie chart, where the slices will be ordered and plotted counter-clockwise:</span>
+    <span class="n">maskLabels</span> <span class="o">=</span> <span class="s1">&#39;Presumed water&#39;</span><span class="p">,</span> <span class="s1">&#39;Presumed land&#39;</span>
+    <span class="n">maskSizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="o">==</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="c1">#implement pie chart plot here</span>
+
+<span class="c1">#create the function to manipulate</span>
+<span class="k">def</span> <span class="nf">updateCut</span><span class="p">(</span><span class="n">cutVal</span><span class="p">):</span>
+    <span class="n">updatePlots</span><span class="p">(</span><span class="n">colorDistMeasures</span><span class="p">,</span><span class="n">cutVal</span><span class="p">)</span>
+
+<span class="c1">#establish the cutVal variable</span>
+<span class="n">cutVal</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">flattenedDistances</span><span class="p">),</span> <span class="nb">max</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">flattenedDistances</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1">#establish interactivity</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">updateCut</span><span class="p">,</span> <span class="n">cutVal</span><span class="o">=</span><span class="n">cutVal</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "882075a0f19f4c06b92ec7d8665d9608", "version_major": 2, "version_minor": 0}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.updateCut(cutVal)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, lets take a look at <a class="reference external" href="https://commons.wikimedia.org/wiki/File:World_map_blank_without_borders.svg">a map that was generated <em>specifically</em> for the purpose of demarcating land and water</a>.  We’ll also print out some information about the image, like its dimensions and color properties.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grayscaleMapPath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">,</span><span class="s1">&#39;images&#39;</span><span class="p">,</span><span class="n">grayscaleMapName</span><span class="p">)</span> 
+<span class="n">grayscaleMap</span><span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">grayscaleMapPath</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grayscaleMap</span><span class="o">.</span><span class="n">format</span><span class="p">,</span><span class="n">grayscaleMap</span><span class="o">.</span><span class="n">size</span> <span class="p">,</span> <span class="n">grayscaleMap</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">grayscaleMapDim</span><span class="o">=</span><span class="n">grayscaleMap</span><span class="o">.</span><span class="n">size</span>
+
+<span class="c1">#quick computation to obtain native aspect ratio approximation relative to preeceding image&#39;s 2:1</span>
+<span class="n">grayscaleMapApsectRatio</span><span class="o">=</span><span class="n">grayscaleMapDim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">grayscaleMapDim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ratio of width to height&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grayscaleMapApsectRatio</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1">#in order to display in jupyter, some trickery is necessary</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">grayscaleMap</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">grayscaleMapApsectRatio</span><span class="o">*</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PNG (4378, 2435) RGBA
+
+Ratio of width to height
+1.797946611909651
+</pre></div>
+</div>
+<img alt="../_images/Aligning_two_images_3_1.png" src="../_images/Aligning_two_images_3_1.png" />
+</div>
+</div>
+<p>From the above output plot we can note that its simply a binary grayscale output, with white indicating water and grey indicating land.  Although the data is stored in a RGBA format (and thus leverages data across <strong>4</strong> different color channels) really, this same output could be accomplished using a single, 2d array as there are only two different colors being displayed.  In fact, in order to compare this to the result we generated, we’ll have to convert it into a binary mask (a data array that contains only 1s and 0s, indicating true and false values respectively).  As such the 4 channels ultimately don’t matter that much in this image.</p>
+<p>However, it also seems that the dimensions and aspect ratio of this image are different than the first image.  Although this is still a map depicting the world, we can now notice that are axes are about 4 times larger than the previous image.  This means that each pixel of this map is representing about 1/16th as much  surface area as the previous image.  Even if we were to simply shrink the image, we would still have a problem overlaying it with the first image due to the discrepancy in aspect ratio. As such,if are to successfully overlay the images on to one another in order to compare them, we will have to resize the figure so that it is of the same dimensions and aspect ratio as our generated mask.</p>
+<p>Lets do that now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#resize the image</span>
+<span class="n">grayscaleResized</span><span class="o">=</span><span class="n">grayscaleMap</span><span class="o">.</span><span class="n">resize</span><span class="p">([</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">resample</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">#do the plotting</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">grayscaleResizedData</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">grayscaleResized</span><span class="p">)</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">grayscaleResizedData</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Aligning_two_images_5_0.png" src="../_images/Aligning_two_images_5_0.png" />
+</div>
+</div>
+<p>Note that the axes are now the same as the previous satellite image. Now that we have it resized, lets convert it to a 2D mask like we did previously.  This time though, we don’t need to apply a specific threshold because there are only really two values in the image: gray and white.</p>
+<p>Lets plot this output in the same fashion we did the mask we obatined from the satellite.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create binarized, a simple sum will give us the output we seek,</span>
+<span class="c1"># as there are only two distinct color values in the plot</span>
+<span class="n">flatBinarized</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">grayscaleResizedData</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">flatBinarized</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Aligning_two_images_7_0.png" src="../_images/Aligning_two_images_7_0.png" />
+</div>
+</div>
+<div class="section" id="plotting-the-masks-overlain">
+<h2>Plotting the masks overlain<a class="headerlink" href="#plotting-the-masks-overlain" title="Permalink to this headline">¶</a></h2>
+<p>Now lets plot our two masks (user generated version and provided version) together in the plot.  Here we’ll change the colors that we are using.  Red (i.e. “problem”) pixels will indicate that there is a disagreement between the two masks.  This will occur when one says that the pixel is water while the other says that it is land.  Yellow pixels (i.e. “OK”) will indicate pixels in which the two masks agree with one another, in that they both either indicate “land” or “water”</p>
+<p>Lets take a look at that now</p>
+<div class="section" id="what-sorts-of-trends-or-regularities-do-you-notice-in-the-disagreement-between-the-two-maps">
+<h3>What sorts of trends or regularities do you notice in the disagreement between the two maps?<a class="headerlink" href="#what-sorts-of-trends-or-regularities-do-you-notice-in-the-disagreement-between-the-two-maps" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#apply the mask</span>
+<span class="n">naieveOceanMask</span><span class="o">=</span><span class="n">colorDistMeasures</span><span class="o">&gt;</span><span class="n">cutVal</span><span class="o">.</span><span class="n">value</span>
+<span class="c1">#create binary mask for new file</span>
+<span class="n">obtainedOceanMask</span><span class="o">=</span><span class="n">flatBinarized</span><span class="o">==</span><span class="mi">0</span>
+<span class="c1">#find the differences between the two </span>
+<span class="n">discrepancyMapping</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">obtainedOceanMask</span><span class="p">,</span><span class="n">naieveOceanMask</span><span class="p">))</span>
+
+<span class="c1">#do the plotting</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">discrepancyMapping</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Aligning_two_images_9_0.png" src="../_images/Aligning_two_images_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="what-s-with-this-pattern-we-are-observing-above-how-would-you-explain-this-apparent-shadowing-issue">
+<h3>What’s with this pattern we are observing above?  How would you explain this apparent “shadowing” issue?<a class="headerlink" href="#what-s-with-this-pattern-we-are-observing-above-how-would-you-explain-this-apparent-shadowing-issue" title="Permalink to this headline">¶</a></h3>
+<p>It appears that the two images are not aligned properly.  Although their resolutions are the same (500 x 1000), this does not appear to be sufficeint to guarentee that they are showing the same exact areas in the same exact pixels.  Given that this is a sphere we could imagine that this is because the “unfolded” map is roated to the left or right a bit, or maybe shifted up or down.  One way to think about this is that the 0,0 point of the two maps, corresponding to the intersection of the equator and the prime maridian, are not aligned.  Lets move these maps around and see if we can adjust them into alignment by moving one of the two images.</p>
+<p>Your goal in the next interactive section will be to maximize the amount of yellow (agreement) being shown in the image below.  You should attempt to maximize the amount of the pie chart indicating agree, and minimize the amount of the pie chart indicating disagree.</p>
+</div>
+<div class="section" id="what-are-the-x-and-y-shifts-necessary-to-acheive-alignment">
+<h3>What are the x and y shifts necessary to acheive alignment?<a class="headerlink" href="#what-are-the-x-and-y-shifts-necessary-to-acheive-alignment" title="Permalink to this headline">¶</a></h3>
+<p>The xOffset slider will move the the mask that you generated earlier left or right (on top of the land mask that was provided), the yOffset will move your mask up or down.</p>
+<p>Remember:  There are multiple ways to manipulate the slider.  You can use your mouse directly, you can use the arrow keys of your keyboard, or you can enter a number directtly</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">IntSlider</span>
+
+<span class="c1">#make the plot</span>
+<span class="k">def</span> <span class="nf">plot_mapDiscrepancy</span><span class="p">(</span><span class="n">map1</span><span class="p">,</span><span class="n">map2</span><span class="p">):</span> 
+    <span class="n">discrepancyMapping</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">map1</span><span class="p">,</span><span class="n">map2</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">matplotlib</span> inline
+    <span class="n">imshow</span><span class="p">(</span><span class="n">discrepancyMapping</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+    
+    <span class="c1"># Pie chart, where the slices will be ordered and plotted counter-clockwise:</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="s1">&#39;Agree&#39;</span><span class="p">,</span> <span class="s1">&#39;Disagree&#39;</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">discrepancyMapping</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">discrepancyMapping</span><span class="o">==</span><span class="mi">0</span><span class="p">)]</span>
+
+    <span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span>  <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.3f%%</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>  <span class="c1"># Equal aspect ratio ensures that pie is drawn as a circle.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="c1">#update the plot via input values     </span>
+<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">):</span>
+    <span class="n">naieveOceanMaskMoved</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="p">,</span><span class="n">yOffset</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">naieveOceanMaskMoved</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">naieveOceanMaskMoved</span><span class="p">,</span><span class="n">xOffset</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plot_mapDiscrepancy</span><span class="p">(</span><span class="n">obtainedOceanMask</span><span class="p">,</span><span class="n">naieveOceanMaskMoved</span><span class="p">)</span>
+
+<span class="c1">#establish interactivity</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="n">xOffset</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>  <span class="n">yOffset</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8d1735e0a5634bb1a5c0a8a7c5416dc6", "version_major": 2, "version_minor": 0}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.update(xOffset, yOffset)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>It seems that the lowest mismatch percentage you can get is around 17%, which occurs at -28 x offset and -9 y offset.  What accounts for the remaining mismatch?  Part of it likely has to do with how our mask was made (and the threshold value we chose), and that it likely wasnn’t entirely perfect.</p>
+<p>One major source of discrepancy is the fact that sea ice is not the color of water, but is not included in the purpose-made land mask we obtained either.  Hence our algorithm considers it “land” (because it is not the color of water), even though the gray colored mask (the provided mask) is specific to land (which ice does not count as).</p>
+<p>Finally, one final source is likely that the two maps, even if they were to have their equator and prime maridian lined up, may not be warped (reshaped from a surface that covers a sphere) in exactly the same way.  Theoretically we could attempt to apply a <strong>nonlinear warp</strong> (we’ll come back to this concept in later lessons) to try and align the two images, but this would be beyond the scope of this introduction to digital image representations and masks.</p>
+</div>
+<div class="section" id="how-this-relates-to-neuroimaging">
+<h3>How this relates to neuroimaging<a class="headerlink" href="#how-this-relates-to-neuroimaging" title="Permalink to this headline">¶</a></h3>
+<p>In the next lesson we will see a more complex version of a mask, one which is not binary, but instead features multiple different categories.  That is, instead of just trying to label one thing (i.e. “water”) we will try and use the same general approach to label multiple things.  This capability is something that is used in neuroimaging quite frequently.  For example, we often wish to label particular parts of a neuroimaging scan as being some specific part of the brain (e.g. “frontal lobe”, “angular gyrus”, or “thalamus” etc.).  We’ll explore this possibility in 2D with another map in the next lesson.  In later lessons we’ll explicitly look at these “multi category masks” (i.e. <strong>parcellations</strong>) in brains.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Intro_to_discretized_image_representation_%26_maps.html" title="previous page">Introduction to discritized image representation and maps</a>
+    <a class='right-next' id="next-link" href="Multi_object_maps_in_images.html" title="next page">Multi object maps in images</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Daniel Bullock<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
