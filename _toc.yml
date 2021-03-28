@@ -8,7 +8,6 @@
 
 - part: Building intuitions with digital images
   chapters:
-  - file: notebooks/Why_are_we_talking_about_JPEGs
   - file: notebooks/Intro_to_discretized_image_representation_&_maps
   - file: notebooks/Aligning_two_images
   - file: notebooks/Multi_object_maps_in_images
@@ -21,8 +20,6 @@
   
 - part: White matter and tractography
   chapters:
-  - file: notebooks/Highways_of_the_brain
-  - file: notebooks/The_measurement,_the_object,_and_the_modality_-_What's_measured_in_diffusion_imaging
   - file: notebooks/The_voxel_and_the_streamline
   - file: notebooks/The_source_tractogram
   
@@ -30,6 +27,9 @@
   chapters:
   - file: notebooks/A_first_segmentation
   - file: notebooks/Biological_Plausibility_for_Tractograms
-  - file: notebooks/Segmenting_Tracts-Conceptualy
   - file: notebooks/ROIs_as_tools
   - file: notebooks/Using_ROIs_as_tools
+  - file: notebooks/A_second_segmentation-categorical_segmentation
+  - file: notebooks/Advanced_anatomically-based_segmentation
+  - file: notebooks/Example_Segmentation-uncinate_fasiculus.ipynb
+  - file: notebooks/Example_Segmentation-IFOF
