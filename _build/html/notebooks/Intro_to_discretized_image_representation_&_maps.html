@@ -155,11 +155,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="A_quick_demonstration_of_linear_affine_transformations_in_3-D.html">
-   A quick demonstration of linear affine transformations in 3-D
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="How_to_interpret_a_volumetric_brain_segmentation.html">
    How to interpret a volumetric brain segmentation
   </a>
@@ -171,16 +166,6 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="Highways_of_the_brain.html">
-   Highways of the brain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="The_measurement%2C_the_object%2C_and_the_modality_-_What%27s_measured_in_diffusion_imaging.html">
-   The measurement, the object, and the modality - Whats in measured in diffusion imaging
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="The_voxel_and_the_streamline.html">
    The voxel and the streamline
@@ -209,16 +194,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html">
-   Segmenting Tracts - Conceptualy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html#why-segment-a-tract">
-   Why segment a tract
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ROIs_as_tools.html">
    ROIs as tools
   </a>
@@ -229,6 +204,26 @@
     Using
    </em>
    ROIs as tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_second_segmentation-categorical_segmentation.html">
+   A second segmentation - categorical segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Advanced_anatomically-based_segmentation.html">
+   Advanced anatomically-based segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Example_Segmentation-uncinate_fasiculus.html">
+   Example Segmentation: uncinate fasiculus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Example_Segmentation-IFOF.html">
+   Example Segmentation: inferior fronto-occipital fasiculus (IFOF)
   </a>
  </li>
 </ul>
@@ -798,9 +793,9 @@ North Africa pixel RGB Value
     <span class="n">updatePlots</span><span class="p">(</span><span class="n">bigPixel</span><span class="p">)</span>
     
 <span class="c1"># create the interactive objects</span>
-<span class="n">redVal</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">greenVal</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">blueVal</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">redVal</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">greenVal</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">49</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">blueVal</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">69</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1">#establish interactivity</span>
 <span class="n">interact</span><span class="p">(</span><span class="n">updateBigPixel</span><span class="p">,</span> <span class="n">redVal</span><span class="o">=</span><span class="n">redVal</span><span class="p">,</span><span class="n">greenVal</span><span class="o">=</span><span class="n">greenVal</span><span class="p">,</span><span class="n">blueVal</span><span class="o">=</span><span class="n">blueVal</span><span class="p">)</span> 
@@ -1295,7 +1290,7 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
 <span class="n">cutVal</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">flattenedDistances</span><span class="p">),</span> <span class="nb">max</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">flattenedDistances</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1">#establish interactivity</span>
-<span class="n">interact</span><span class="p">(</span><span class="n">updateCut</span><span class="p">,</span> <span class="n">cutVal</span><span class="o">=</span><span class="n">cutVal</span><span class="p">)</span> 
+<span class="n">interact</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">updateCut</span><span class="p">,</span> <span class="n">cutVal</span><span class="o">=</span><span class="n">cutVal</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>

@@ -206,9 +206,9 @@ def updateBigPixel(redVal,greenVal,blueVal):
     updatePlots(bigPixel)
     
 # create the interactive objects
-redVal=FloatSlider(min=0, max=255, step=1,continuous_update=False)
-greenVal=FloatSlider(min=0, max=255, step=1,continuous_update=False)
-blueVal=FloatSlider(min=0, max=255, step=1,continuous_update=False)
+redVal=FloatSlider(value=14, min=0, max=255, step=1,continuous_update=False)
+greenVal=FloatSlider(value=49, min=0, max=255, step=1,continuous_update=False)
+blueVal=FloatSlider(value=69, min=0, max=255, step=1,continuous_update=False)
 
 #establish interactivity
 interact(updateBigPixel, redVal=redVal,greenVal=greenVal,blueVal=blueVal) 
@@ -602,7 +602,7 @@ def updateCut(cutVal):
 cutVal=FloatSlider(min=np.min(flattenedDistances), max=np.max(flattenedDistances), step=1,continuous_update=False)
 
 #establish interactivity
-interact(updateCut, cutVal=cutVal) 
+interact(value=50,updateCut, cutVal=cutVal) 
 
 **NOTE: Make sure your mask is good before continuing to subsequent sections**
 

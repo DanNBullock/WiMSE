@@ -56,7 +56,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="A quick demonstration of linear affine transformations in 3-D" href="A_quick_demonstration_of_linear_affine_transformations_in_3-D.html" />
+    <link rel="next" title="How to interpret a volumetric brain segmentation" href="How_to_interpret_a_volumetric_brain_segmentation.html" />
     <link rel="prev" title="A consideration of jpegs and brain images" href="A_consideration_of_jpegs_and_brain_images.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -153,11 +153,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="A_quick_demonstration_of_linear_affine_transformations_in_3-D.html">
-   A quick demonstration of linear affine transformations in 3-D
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="How_to_interpret_a_volumetric_brain_segmentation.html">
    How to interpret a volumetric brain segmentation
   </a>
@@ -169,16 +164,6 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="Highways_of_the_brain.html">
-   Highways of the brain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="The_measurement%2C_the_object%2C_and_the_modality_-_What%27s_measured_in_diffusion_imaging.html">
-   The measurement, the object, and the modality - Whats in measured in diffusion imaging
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="The_voxel_and_the_streamline.html">
    The voxel and the streamline
@@ -207,16 +192,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html">
-   Segmenting Tracts - Conceptualy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Segmenting_Tracts-Conceptualy.html#why-segment-a-tract">
-   Why segment a tract
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ROIs_as_tools.html">
    ROIs as tools
   </a>
@@ -227,6 +202,26 @@
     Using
    </em>
    ROIs as tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_second_segmentation-categorical_segmentation.html">
+   A second segmentation - categorical segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Advanced_anatomically-based_segmentation.html">
+   Advanced anatomically-based segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Example_Segmentation-uncinate_fasiculus.html">
+   Example Segmentation: uncinate fasiculus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Example_Segmentation-IFOF.html">
+   Example Segmentation: inferior fronto-occipital fasiculus (IFOF)
   </a>
  </li>
 </ul>
@@ -686,8 +681,8 @@ Coordinates of posterior commisure
 </div>
 </div>
 </div>
-<p>You’ll notice that the upper left hand value (-1.), which specifies the voxel resolution of the Y dimension, is negative.  This is as opposed to the values found for the Y and Z dimension resolutions, which are postitive.  Considered in conjunction with the information in the first three rows for the rightmost column (the <strong>qoffset_</strong> information from the header), this indicates that a flip in the X dimension is present.  This is why the <em>np.abs</em> function was used earlier when computing the posterior commisure location (NOTE: this strategy will not work for all affine flip cases, but did work in this case).  For more detailed examinations and considerations of affine transforms for neuroimaging data [links]</p>
-<p>Now that we have developed a good sense of the information stored in a T1 NIfTI image, lets follow in the footsteps of our lessons looking at two dimensional digital images, and see how a <strong>parcellation</strong> can be implemented using three dimensional NIfTI data.</p>
+<p>You’ll notice that the upper left hand value (-1.), which specifies the voxel resolution of the Y dimension, is negative.  This is as opposed to the values found for the Y and Z dimension resolutions, which are postitive.  Considered in conjunction with the information in the first three rows for the rightmost column (the <strong>qoffset_</strong> information from the header), this indicates that a flip in the X dimension is present.  This is why the <em>np.abs</em> function was used earlier when computing the posterior commisure location (NOTE: this strategy will not work for all affine flip cases, but did work in this case).  For more detailed examinations and considerations of affine transforms for neuroimaging data consider looking at dipy’s <a class="reference external" href="https://www.dipy.org/documentation/1.0.0./examples_built/affine_registration_3d/">documentation on the subject</a>.</p>
+<p>Now that we have developed a good sense of the information stored in a T1 NIfTI image, move on to think about how tractography data is different than this.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -719,7 +714,7 @@ Coordinates of posterior commisure
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="A_consideration_of_jpegs_and_brain_images.html" title="previous page">A consideration of jpegs and brain images</a>
-    <a class='right-next' id="next-link" href="A_quick_demonstration_of_linear_affine_transformations_in_3-D.html" title="next page">A quick demonstration of linear affine transformations in 3-D</a>
+    <a class='right-next' id="next-link" href="How_to_interpret_a_volumetric_brain_segmentation.html" title="next page">How to interpret a volumetric brain segmentation</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

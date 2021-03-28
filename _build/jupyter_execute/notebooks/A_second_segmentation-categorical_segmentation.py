@@ -196,7 +196,8 @@ Thinking back to our earlier conceptual discussion of segmentations, this consti
 
 Perhaps one of the key insights that this guide endeavors to impart upon users is that even the best segmentation algorithm can't find what isn't there.  If the input tractome doesn't contain amongst its many candidate features (e.g. streamlines) some semblance of the structure of interest, then no amount of clever criteria application will be able to extract it.  But what's a quick way to check if the source of your problem is the tractome or the segmentation?  By looking at a categorical segmentation and the general category that the structure would be associated with, its possible to get a good sense of whether the isn't even there to be segmented, or if your specific segmentation implementation is missing it.  As an example of how to perform this check, consider the case in which either you or a downstream segmentation consumer notices that the inferior fronto-occipital fasiculus (IFOF) derived from a segmentation looks particularly weak or anemic.  To determine whether the issue is the tractography or the segmentation, all one needs to do is look at the "occipital to frontal" (or vice versa) category and see whether there are long range streamlines running along the inferiror of the tractome.  If they are there, but not in the segmented IFOF, this suggests that the segmentation is at fault.  If they are not visible in the general category, or if there are very few of them, this suggests that the tractography is at fault.  Below you will find a non-exhaustive table of some major white matter structures and the categories they are associated with:
 
-(taken from the brainlife [categorical segmentation app](https://doi.org/10.25663/brainlife.app.249) [readme](https://github.com/brainlife/app-streamlineCategorySegmentation/edit/2.0/README.md)
+(taken from the brainlife [categorical segmentation app](https://doi.org/10.25663/brainlife.app.249) [readme](https://github.com/brainlife/app-streamlineCategorySegmentation/edit/2.0/README.md))
+
 | **Tract Name** | **Corresponding Category** |
 | --- | --- |
 | Arcuate | Fronto-temporal |
@@ -220,3 +221,4 @@ In cases where you are attempting to segment a relatively large tractome (i.e. m
 ## Next steps using anatomy information
 
 Having considered some initial ways to use anatomical information by applying a gross-anatomy categorical segmentation, we can now move on to thinking about more advanced and finer-grained applications using anatomical information in white matter segmentation.
+

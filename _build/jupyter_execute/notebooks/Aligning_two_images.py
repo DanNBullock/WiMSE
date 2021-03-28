@@ -6,7 +6,7 @@ We'll begin by replicating the mask you made in the previous lesson.  Either try
 
 **NOTE: the mask you make here (using the specified threshold) will be used in subsequent sections. If the mask is not set well here, you won't get good results later.**
 
-**ALSO IMPORTANT: once the mask is to your liking DO NOT run the cell again (as this will reset the threshold to 0)**
+**ALSO IMPORTANT: once the mask is to your liking DO NOT run the cell again (as this will reset the threshold)**
 
 #lets begin by setting up paths and files
 
@@ -133,7 +133,7 @@ def updateCut(cutVal):
     updatePlots(colorDistMeasures,cutVal)
 
 #establish the cutVal variable
-cutVal=FloatSlider(min=np.min(flattenedDistances), max=np.max(flattenedDistances), step=1,continuous_update=False)
+cutVal=FloatSlider(value=20, min=np.min(flattenedDistances), max=np.max(flattenedDistances), step=1,continuous_update=False)
 
 #establish interactivity
 interact(updateCut, cutVal=cutVal) 

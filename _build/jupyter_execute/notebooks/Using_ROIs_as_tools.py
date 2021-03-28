@@ -359,8 +359,6 @@ instructionList=list(['Include','Exclude'])
 interact(updateFunction, \
     instruction=Dropdown(options=instructionList, description="instruction"))
 
-
-
 ## Once more, but this time with a sphere
 
 Lets try performing another cursory segmentation, but this time we'll us a sphere.  Because of how a sphere works in practice (at least as a singleton criteria) we'll constrain the demo to using the ROI as an **inclusion** criterion.  As such we'll perform the segmentation in two steps, only one of which is interactive:

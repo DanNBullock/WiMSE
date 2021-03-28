@@ -16,4 +16,4 @@ This is inherently a community resource, and we welcome comments and contributio
 
 ## TEMPORARY NOTICE:  UNDER CONSTRUCTION
 
-Currently (9/25/2020), this resource is under construction and so some lessons may be incomplete or may not be completely functional.  Work is ongoing and a roughly complete version of this is expected by mid December 2020.
+Currently, this resource is under construction and always moving towards improvements.  As such, expect the addition of new chapters and additional polish in the coming months.

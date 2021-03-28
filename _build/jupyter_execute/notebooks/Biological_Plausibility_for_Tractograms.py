@@ -255,9 +255,4 @@ interact(updateFunction,
         )
 #NOTE: EFFECIENCY SLIDER APPEARS TO BE BE BROKEN, STEP SIZE ISN'T RESPONSIVE TO PARAMETER INPUT
 
-Another example, crosses into other hemisphere but then turns back
-
-## Biological Plausibility beyond single streamlines
-
-Individual streamlines can be assessed for their relative consistency with our understanding of the general chacteristics of axons and bundles, 
-## Why care about biological plausibility, and what to do about it
+Lets move on to a consideration of how to use ROIS
