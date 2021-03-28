@@ -17,7 +17,6 @@
 - part: Working with NIfTI data
   chapters:
   - file: notebooks/How_to_represent_the_brain's_anatomy_-_as_a_volume
-  - file: notebooks/A_quick_demonstration_of_linear_affine_transformations_in_3-D
   - file: notebooks/How_to_interpret_a_volumetric_brain_segmentation
   
 - part: White matter and tractography
