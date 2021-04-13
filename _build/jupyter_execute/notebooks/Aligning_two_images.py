@@ -138,7 +138,7 @@ cutVal=FloatSlider(value=20, min=np.min(flattenedDistances), max=np.max(flattene
 #establish interactivity
 interact(updateCut, cutVal=cutVal) 
 
-Now, lets take a look at [a map that was generated *specifically* for the purpose of demarcating land and water](https://commons.wikimedia.org/wiki/File:World_map_blank_without_borders.svg).  We'll also print out some information about the image, like its dimensions and color properties.
+Now, let's take a look at [a map that was generated *specifically* for the purpose of demarcating land and water](https://commons.wikimedia.org/wiki/File:World_map_blank_without_borders.svg).  We'll also print out some information about the image, like its dimensions and color properties.
 
 grayscaleMapPath=os.path.join(gitRepoPath,'images',grayscaleMapName) 
 grayscaleMap= Image.open(grayscaleMapPath)
@@ -159,11 +159,11 @@ imshow(np.asarray(grayscaleMap))
 fig = plt.gcf()
 fig.set_size_inches(15, grayscaleMapApsectRatio*15)
 
-From the above output plot we can note that its simply a binary grayscale output, with white indicating water and grey indicating land.  Although the data is stored in a RGBA format (and thus leverages data across **4** different color channels) really, this same output could be accomplished using a single, 2d array as there are only two different colors being displayed.  In fact, in order to compare this to the result we generated, we'll have to convert it into a binary mask (a data array that contains only 1s and 0s, indicating true and false values respectively).  As such the 4 channels ultimately don't matter that much in this image.
+From the above output plot we can note that it's simply a binary grayscale output, with white indicating water and grey indicating land.  Although the data is stored in a RGBA format (and thus leverages data across **4** different color channels) really, this same output could be accomplished using a single, 2d array as there are only two different colors being displayed.  In fact, in order to compare this to the result we generated, we'll have to convert it into a binary mask (a data array that contains only 1s and 0s, indicating true and false values respectively).  As such the 4 channels ultimately don't matter that much in this image.
 
-However, it also seems that the dimensions and aspect ratio of this image are different than the first image.  Although this is still a map depicting the world, we can now notice that are axes are about 4 times larger than the previous image.  This means that each pixel of this map is representing about 1/16th as much  surface area as the previous image.  Even if we were to simply shrink the image, we would still have a problem overlaying it with the first image due to the discrepancy in aspect ratio. As such,if are to successfully overlay the images on to one another in order to compare them, we will have to resize the figure so that it is of the same dimensions and aspect ratio as our generated mask.
+However, it also seems that the dimensions and aspect ratio of this image are different than the first image.  Although this is still a map depicting the world, we can now notice that the axes are about 4 times larger than the previous image.  This means that each pixel of this map is representing about 1/16th as much  surface area as the previous image.  Even if we were to simply shrink the image, we would still have a problem overlaying it with the first image due to the discrepancy in aspect ratio. As such, if we are to successfully overlay the images on to one another in order to compare them, we will have to resize the figure so that it is of the same dimensions and aspect ratio as our generated mask.
 
-Lets do that now.
+Let's do that now.
 
 #resize the image
 grayscaleResized=grayscaleMap.resize([firstMapShape[1],firstMapShape[0]], resample=0)
@@ -191,7 +191,7 @@ fig.set_size_inches(15, 30)
 
 Now lets plot our two masks (user generated version and provided version) together in the plot.  Here we'll change the colors that we are using.  Red (i.e. "problem") pixels will indicate that there is a disagreement between the two masks.  This will occur when one says that the pixel is water while the other says that it is land.  Yellow pixels (i.e. "OK") will indicate pixels in which the two masks agree with one another, in that they both either indicate "land" or "water" 
 
-Lets take a look at that now
+Let's take a look at that now
 
 #### What sorts of trends or regularities do you notice in the disagreement between the two maps?
 
@@ -209,15 +209,15 @@ fig.set_size_inches(15, 30)
 
 #### What's with this pattern we are observing above?  How would you explain this apparent "shadowing" issue?
 
-It appears that the two images are not aligned properly.  Although their resolutions are the same (500 x 1000), this does not appear to be sufficeint to guarentee that they are showing the same exact areas in the same exact pixels.  Given that this is a sphere we could imagine that this is because the "unfolded" map is roated to the left or right a bit, or maybe shifted up or down.  One way to think about this is that the 0,0 point of the two maps, corresponding to the intersection of the equator and the prime maridian, are not aligned.  Lets move these maps around and see if we can adjust them into alignment by moving one of the two images. 
+It appears that the two images are not aligned properly.  Although their resolutions are the same (500 x 1000), this does not appear to be sufficient to guarantee that they are showing the same exact areas in the same exact pixels.  Given that this is a sphere we could imagine that this is because the "unfolded" map is rotated to the left or right a bit, or maybe shifted up or down.  One way to think about this is that the 0,0 point of the two maps, corresponding to the intersection of the equator and the prime meridian, are not aligned.  Let's move these maps around and see if we can adjust them into alignment by moving one of the two images. 
 
-Your goal in the next interactive section will be to maximize the amount of yellow (agreement) being shown in the image below.  You should attempt to maximize the amount of the pie chart indicating agree, and minimize the amount of the pie chart indicating disagree.
+Your goal in the next interactive section will be to maximize the amount of yellow (agreement) being shown in the image below.  You should attempt to maximize the amount of the pie chart indicating agreement, and minimize the amount of the pie chart indicating disagreement.
 
-#### What are the x and y shifts necessary to acheive alignment?
+#### What are the x and y shifts necessary to achieve alignment?
 
-The xOffset slider will move the the mask that you generated earlier left or right (on top of the land mask that was provided), the yOffset will move your mask up or down. 
+The xOffset slider will move the mask that you generated earlier left or right (on top of the land mask that was provided), the yOffset will move your mask up or down. 
 
-Remember:  There are multiple ways to manipulate the slider.  You can use your mouse directly, you can use the arrow keys of your keyboard, or you can enter a number directtly
+Remember:  There are multiple ways to manipulate the slider.  You can use your mouse directly, you can use the arrow keys of your keyboard, or you can enter a number directly
 
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import IntSlider
@@ -250,11 +250,11 @@ def update(xOffset, yOffset):
 interact(update, xOffset=IntSlider(min=-30, max=30, step=1,continuous_update=False),  yOffset=IntSlider(min=-30, max=30, step=1,continuous_update=False))
 
 
-It seems that the lowest mismatch percentage you can get is around 17%, which occurs at -28 x offset and -9 y offset.  What accounts for the remaining mismatch?  Part of it likely has to do with how our mask was made (and the threshold value we chose), and that it likely wasnn't entirely perfect.
+It seems that the lowest mismatch percentage you can get is around 17%, which occurs at -28 x offset and -9 y offset.  What accounts for the remaining mismatch?  Part of it likely has to do with how our mask was made (and the threshold value we chose), and that it likely wasn't entirely perfect.
 
 One major source of discrepancy is the fact that sea ice is not the color of water, but is not included in the purpose-made land mask we obtained either.  Hence our algorithm considers it "land" (because it is not the color of water), even though the gray colored mask (the provided mask) is specific to land (which ice does not count as).
 
-Finally, one final source is likely that the two maps, even if they were to have their equator and prime maridian lined up, may not be warped (reshaped from a surface that covers a sphere) in exactly the same way.  Theoretically we could attempt to apply a **nonlinear warp** (we'll come back to this concept in later lessons) to try and align the two images, but this would be beyond the scope of this introduction to digital image representations and masks.
+Finally, one final source is likely that the two maps, even if they were to have their equator and prime meridian lined up, may not be warped (reshaped from a surface that covers a sphere) in exactly the same way.  Theoretically we could attempt to apply a **nonlinear warp** (we'll come back to this concept in later lessons) to try and align the two images, but this would be beyond the scope of this introduction to digital image representations and masks.
 
 #### How this relates to neuroimaging
 

@@ -122,7 +122,7 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Intro_to_discretized_image_representation_%26_maps.html">
-   Introduction to discritized image representation and maps
+   Introduction to discretized image representation and maps
   </a>
  </li>
  <li class="toctree-l1">
@@ -216,12 +216,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Example_Segmentation-uncinate_fasiculus.html">
-   Example Segmentation: uncinate fasiculus
+   Example Segmentation: uncinate fasciculus
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Example_Segmentation-IFOF.html">
-   Example Segmentation: inferior fronto-occipital fasiculus (IFOF)
+   Example Segmentation: inferior fronto-occipital fasciculus (IFOF)
   </a>
  </li>
 </ul>
@@ -449,7 +449,7 @@
 </script></div>
 </div>
 <p>What you should see (after zooming in) is a random collection of colored “strings” floating in space.  Each of these strings represents the tractography algorithm’s (the algorithm that generated all of the streamliens in the tractogram) best guess as to where there’s “likely” a coherent bundle of axons.  Although it’s difficult to tell from this visualization the coloring of these lines corresponds to the direction in which the streamline is primarily traveling.  Green indicates that the streamline is primarily anterior-posteriorly oriented, blue indicates that the streamline is primarily superior-inferiorly oriented, and red indicates that the streamline is primarily left-right oriented.</p>
-<p>To get a beter sense of the meaning of these colors, and how these individual streamlines can come together to reprsent the white matter of the brain, it’s useful to look at the entire tractogram</p>
+<p>To get a better sense of the meaning of these colors, and how these individual streamlines can come together to represent the white matter of the brain, it’s useful to look at the entire tractogram</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -464,11 +464,11 @@
 {"model_id": "203bcf427204486782327ac1187bc8ad", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-<p>Thats quite a mess!  Even so, we can begin to see how the streamlines come together to represent the white matter of the brain. Keep in mind though that we only have a fraction of the streamlines that we would typically use to model a brain’s white matter.  Regardless, what now?</p>
+<p>That’s quite a mess!  Even so, we can begin to see how the streamlines come together to represent the white matter of the brain. Keep in mind though that we only have a fraction of the streamlines that we would typically use to model a brain’s white matter.  Regardless, what now?</p>
 <div class="section" id="now-that-we-have-a-whole-brain-tractogram-how-do-we-garner-insight">
 <h2>Now that we have a whole brain tractogram how do we garner insight?<a class="headerlink" href="#now-that-we-have-a-whole-brain-tractogram-how-do-we-garner-insight" title="Permalink to this headline">¶</a></h2>
-<p>As it turns out there are really only a limited number of quantative assesments that can be applied directly to a whole tractography object.  For example you could create a histogram of the streamline lengths composing the tractogram, but this wouldn’t give you very useful insight about the brain.</p>
-<p>The problem we face here is not unlike the problem we faced when dealing with digital images.  In those cases we needed to to some form of post-processing in order to obtain more quantative and</p>
+<p>As it turns out there are really only a limited number of quantitative assessments that can be applied directly to a whole tractography object.  For example you could create a histogram of the streamline lengths composing the tractogram, but this wouldn’t give you very useful insight about the brain.</p>
+<p>The problem we face here is not unlike the problem we faced when dealing with digital images.  In those cases we needed to do some form of post-processing in order to obtain more quantative and specific measurements.  This brings us to the topic of white matter segmentation.</p>
 </div>
 </div>
 

@@ -4,7 +4,7 @@ A practical, hands on guide to the logic and practice of digital white matter se
 
 ## What is this?
 
-This resource is a collection of [jupyer notebooks](https://jupyter.org/) notebooks designed to build intuitions for and provide training in digital white matter segmentation.  The modern-day practice of digital white matter segmentation is as much about programming as it is about neuroanatomy, which is why the medium of [jupyer notebooks](https://jupyter.org/) has been chosen.  In this way, users are able to view commented code alongside text explaining the context, goals, and implications of what is being done.  *However, there's a catch to this!*  Because interactivity is key to many of these lessons, **you will often need to click the rocket-ship symbol at the top of the page to open a [binder](https://mybinder.org/)**.  This will allow you to actually **run and interact with code in your browser!**, which, in turn, will give you a better understanding of *how* the code is operating.
+This resource is a collection of [jupyer notebooks](https://jupyter.org/) notebooks designed to build intuitions for and provide training in digital white matter segmentation.  The modern-day practice of digital white matter segmentation is as much about programming as it is about neuroanatomy, which is why the medium of [jupyer notebooks](https://jupyter.org/) has been chosen.  In this way, users are able to view commented code alongside text explaining the context, goals, and implications of what is being done.  *However, there's a catch to this!*  Because interactivity is key to many of these lessons, **you will often need to click the rocket-ship symbol at the top of the page to open a [binder](https://mybinder.org/)**.  This will allow you to actually **run and interact with code in your browser** which, in turn, will give you a better understanding of *how* the code is operating.
 
 ## How is it structured?
 
@@ -17,3 +17,7 @@ This is inherently a community resource, and we welcome comments and contributio
 ## TEMPORARY NOTICE:  UNDER CONSTRUCTION
 
 Currently, this resource is under construction and always moving towards improvements.  As such, expect the addition of new chapters and additional polish in the coming months.
+
+```python
+
+```

@@ -1,12 +1,12 @@
 # Multi object maps in images
 
-In the previous lesson we began by looking at what sort of data a JPEG image stores.  After an initial exploration of this, we considered an example case of what opportunties this data affords us.  We saw that we could use the information contained within the colors to do things like select those specific pixels which corresponded to water.  Quite importantly, we also began to get a sense of how we could move images relative to one another such that the pixels were as close to depicting the same peices of the earth's surface as possible.
+In the previous lesson we began by looking at what sort of data a JPEG image stores.  After an initial exploration of this, we considered an example case of what opportunities this data affords us.  We saw that we could use the information contained within the colors to do things like select those specific pixels which corresponded to water.  Quite importantly, we also began to get a sense of how we could move images relative to one another such that the pixels were as close to depicting the same pieces of the earth's surface as possible.
 
-In this lesson we will build on these insights in a fairly specific fashion.  Previously, we were only selecting those pixels which corresponded to the ocean.  But what if we wanted to select pixels that corresponded to *other* aspects of the world?  Say, for example, I had a political map which somehow uniquely indicated a country of interest, and wished to perform an analysis on the sattalite image pixels that corresponded to this country.  How would I go about doing this?
+In this lesson we will build on these insights in a fairly specific fashion.  Previously, we were only selecting those pixels which corresponded to the ocean.  But what if we wanted to select pixels that corresponded to *other* aspects of the world?  Say, for example, I had a political map which somehow uniquely indicated a country of interest, and wished to perform an analysis on the satellite image pixels that corresponded to this country.  How would I go about doing this?
 
-In this lesson we'll be using maps of the united states to explore this capability.  We are shifting our focus from the entire world to the United states, in order to avoid as much of the skewing problems we observed in the previous lesson as possible (though we'll see that we can't entirely get away from them here either).
+In this lesson we'll be using maps of the United States to explore this capability.  We are shifting our focus from the entire world to the United states, in order to avoid as much of the skewing problems we observed in the previous lesson as possible (though we'll see that we can't entirely get away from them here either).
 
-Lets begin by setting the path names, and establishing a standard image size for what we'll be looking at.
+Let's begin by setting the path names, and establishing a standard image size for what we'll be looking at.
 
 #lets begin by setting up paths and files
 
@@ -33,7 +33,7 @@ usPolitical='Map_of_USA_with_states_modified.png'
 #an image resolution that's a good comprimize between the two images we will be looking at
 standardResize=[600,1000]
 
-Lets plot the [satallite photo of the United States](https://en.m.wikipedia.org/wiki/File:USA-satellite.jpg).  As before, we will select a water pixel (500,50; off the coast of the Baja peninsula) that will be used to create a surface water map, as in the previous chapter.  However, we'll also be building upon this by using this mask to help us narrow our consideration of a map.  For now though, lets inspect the map.
+Lets plot the [satellite photo of the United States](https://en.m.wikipedia.org/wiki/File:USA-satellite.jpg).  As before, we will select a water pixel (500,50; off the coast of the Baja peninsula) that will be used to create a surface water map, as in the previous chapter.  However, we'll also be building upon this by using this mask to help us narrow our consideration of a map.  For now though, let's inspect the map.
 
 #loading image processing and manipulation package Pillow
 # https://pillow.readthedocs.io/en/stable/
@@ -71,9 +71,9 @@ WaterColor=geoResizeData[500,50]
 print('RGB value for water pixel ([500,50])')
 print(WaterColor)
 
-Above, we see a standard satallite image of the continental united states.  Lucky for us it seems that we'll be quite fortunate in trying to make a "water mask" as the color of water appears to be fairly uniform (except in the case of islands near the Bahamas).  We will use this water mask to align this image with another map, as the coasts will provide us with some helpful discrete borders to align with.
+Above, we see a standard satellite image of the continental United States.  Lucky for us it seems that we'll be quite fortunate in trying to make a "water mask" as the color of water appears to be fairly uniform (except in the case of islands near the Bahamas).  We will use this water mask to align this image with another map, as the coasts will provide us with some helpful discrete borders to align with.
 
-As we did in the prevous lesson, lets go ahead and compute the color distances from this water color.  We'll then plot these distances as we did previously, so we can get a sense of the range of color distances in the map.
+As we did in the previous lesson, lets go ahead and compute the color distances from this water color.  We'll then plot these distances as we did previously, so we can get a sense of the range of color distances in the map.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -117,7 +117,7 @@ fig2.colorbar(heatPlot)
 fig2.set_size_inches(18.5, 10.5)
 
 
-It seems that the ocean is fairly uniform, but the continental united states is a bit less so, such that many areas appear to be getting close to distances contained in the ocean.  Also there appears to be a good deal of jpeg artifacting, as discussed in previous chapters (note the "blocky" color fuzz that is visible in coastal areas).  Will this issues cause a problem when we try and make a mask?  
+It seems that the ocean is fairly uniform, but the continental United States is a bit less so, such that many areas appear to be getting close to distances contained in the ocean.  Also there appears to be a good deal of jpeg artifacting, as discussed in previous chapters (note the "blocky" color fuzz that is visible in coastal areas).  Will this issue cause a problem when we try to make a mask?  
 
 Lets try and come up with a good threshold color distance we can use to make a mask for this data.  Keep in mind that this is only a rough approximation, and that we aren't going to get a perfect mask with this method.
 
@@ -176,7 +176,7 @@ interact(updateCut, geoCutVal=geoCutVal)
 
 It seems that a value around 5 should be just fine for this map.  In fact, there's actually a fairly large range of values that could work for this mask.  The areas where your choice will have the most impact will be on the coasts and the Great Lakes.
 
-Now that we have our mask for our geographic data, look at the other map we will be attempting to align to this.  Below, we'll load the data, convert it to a RGB image, resize it so that it is the same size as the geographic map, and then extract the color value for a reprsentative water pixel (taken from roughly the same location in this map as it was from the previous map). 
+Now that we have our mask for our geographic data, look at the other map we will be attempting to align to this.  Below, we'll load the data, convert it to a RGB image, resize it so that it is the same size as the geographic map, and then extract the color value for a representative water pixel (taken from roughly the same location in this map as it was from the previous map). 
 
 #establish path to political map
 politicalMapPath=os.path.join(gitRepoPath,'images',usPolitical)   
@@ -218,9 +218,9 @@ print('RGB value for water pixel [500,50]')
 print(politicalWater)
 print('')
 
-Above, we see a political map of the United Staes, with individual states colored in a semi-random (no adjacent divisions are colored the same) fashion.  Interestingly, the color scheme for this map appears to be rather limited, in that there are actually only a very limited number (6, in total) of unique colors being used.  This is something we can use to our advantage.  As we will see later, we can treat each of these colors just as we did with the ocean color in the previous lesson and select those specific pixels (i.e. states) that correspond to the color in question.
+Above, we see a political map of the United States, with individual states colored in a semi-random (no adjacent divisions are colored the same) fashion.  Interestingly, the color scheme for this map appears to be rather limited, in that there are actually only a very limited number (6, in total) of unique colors being used.  This is something we can use to our advantage.  As we will see later, we can treat each of these colors just as we did with the ocean color in the previous lesson and select those specific pixels (i.e. states) that correspond to the color in question.
 
-For now though, lets plot the color distance map for this map.
+For now though, let's plot the color distance map for this map.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -261,7 +261,7 @@ fig3=plt.gcf()
 fig3.colorbar(heatPlot)
 fig3.set_size_inches(18.5, 10.5)
 
-As before, lets try and establish a threshold value to isolate water that works well for this political map.
+As before, let's try and establish a threshold value to isolate water that works well for this political map.
 
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import IntSlider
@@ -347,7 +347,7 @@ With a bit of experimentation, it should be possible to get the disagreement per
 
 **Why did we bother aligning these two images?** 
 
-Lets think back to the original political map, and in particular, the histogram of color distnaces.  Notice anything about the shape?  It's rather jagged, with only a few columns represented to any signifigant degree.  This is because there is a very limited number of colors occuring in the map, and thus a very limited number of distances from the color of water in the map.  Lets consider some of those values below.
+Let's think back to the original political map, and in particular, the histogram of color distances.  Notice anything about the shape?  It's rather jagged, with only a few columns represented to any significant degree.  This is because there is a very limited number of colors occuring in the map, and thus a very limited number of distances from the color of water in the map.  Let's consider some of those values below.
 
 #extract representative pixels and color values for each unique color (of interest)
 pinkPixel=politicalResizedData[150,100]
@@ -386,7 +386,7 @@ fig.set_size_inches(15, 30)
 
 Compare the color swatches above to the political map found earlier.  You should find that all the colors used to paint states (in addition to the color used to paint Mexico and Canada)
 
-Note that multiple states are colored by the same color, but the color is uniform within those states.  What if we were to treat these colors just as we did with the ocean, and select pixels that were equal to these colors?  What could we do with this ability?  Lets see what this does
+Note that multiple states are colored by the same color, but the color is uniform within those states.  What if we were to treat these colors just as we did with the ocean, and select pixels that were equal to these colors?  What could we do with this ability?  Let's see what this does
 
 #this may take a moment.
 
@@ -436,7 +436,7 @@ and, having done this, we created a "paint by numbers" representation of the pol
 
 selectionArray[currentColorArray<1]=iColors+1
 
-Now that we have this "paint by numbers" representation, lets look at unique "masks" that we can generate using this data.  In this case, yellow will indicate pixels matching the current color if interest, while blue will indicate pixels that *do not* match the current color of interest.
+Now that we have this "paint by numbers" representation, let's look at unique "masks" that we can generate using this data.  In this case, yellow will indicate pixels matching the current color if interest, while blue will indicate pixels that *do not* match the current color of interest.
 
 from ipywidgets import Dropdown
 
@@ -462,7 +462,7 @@ stateColor=Dropdown(options=[('orange',2) ,('pink',1) , ('red',3),('green',4),('
 #establish interactivity
 interact(updatePolPlot, stateColor=stateColor) 
 
-Lets think back to the masks for the geographic and political maps we made earlier and the way we aligned them.  Now that we have **both** a rough data alignment, **and** a method for indexing to specific subsets of pixels, can we extract the actual satellite geographic data (RGB values) using the "paint by numbers" representation, thereby pulling out certian sub-sections?
+Let's think back to the masks for the geographic and political maps we made earlier and the way we aligned them.  Now that we have **both** a rough data alignment, **and** a method for indexing to specific subsets of pixels, can we extract the actual satellite geographic data (RGB values) using the "paint by numbers" representation, thereby pulling out certain sub-sections?
 
 #first lets use np.roll to align the images.
 #It isn't the most elegant way to align the images for various reasons, but straightforward enough for our purposes
@@ -501,19 +501,16 @@ interact(updatePolPlot, stateColor=stateColor)
 
 ### Closing Remarks
 
-Admittedly, it's not a perfect alignment that we did, so the areas we are extracting aren't exactly on spot, but nonetheless you should have general idea of how we can use an aligmnent of two maps to leverage information from one to extract information from another.  For example, we could compute the average color of the terrain in the sub-section we've chosen.  Alternatively, if we used a population density map instead, we could roughly compute the number of people living in the pink, red, green, etc. states.
+Admittedly, it's not a perfect alignment that we did, so the areas we are extracting aren't exactly on spot, but nonetheless you should have a general idea of how we can use an alignment of two maps to leverage information from one to extract information from another.  For example, we could compute the average color of the terrain in the sub-section we've chosen.  Alternatively, if we used a population density map instead, we could roughly compute the number of people living in the pink, red, green, etc. states.
 
-Lets solidify a couple intuitons about what we did here:
+Let's solidify a couple intuitions about what we did here:
 
 First, we should remember that the satellite imagery was our **raw data** of sorts.  In this case, the **raw data** was simply 3 channels of RGB reflectance values (i.e. a "picture").  However, as alluded to above, it could have been population densities, demographic information, or any number of other data domains.  What matters is that the **raw data** is the data we wish to select sub-sections from (using the **parcellation**).
 
-Second, we should remember that the political mapping was a discrete mapping with (in essence) each pixel assigned to one of some limited number of categories.  In the political mapping the particular color assigned to a given state was arbitrary, but we could imagine it such that each state was colored with a *distinct* color such that there were 48 (it was a continental US map, after all) unique colors.  With this we could have indexed into the raw data for any *particular* state.  This act of dividing up a larger body into some number of discrete sections is a process that is referred to as **parcellation**.  In this way, data objects that contain this sort of information are **parcellation maps**, in that they establish a systematic and explicit correspondence (i.e. mapping) between **parcels** (i.e. specified sub-sections) of the larger whole, and some finite list of discrete entites (i.e. an ontology).  Furthermore, **parcellation maps** manifest this mapping relation because they "represent" the larger body in an analogue fashion, meaning that the structural (i.e. spatial) relations of the atomistic sub-components of the source entity are recapitualited by the corresponding elements of the **parcellation map**.  Basically, this just a formal way of describing what it is about **parcellations** that allows us to directly overlay them onto our raw data and then make use of them in the ways we have demonstrated and discussed.
+Second, we should remember that the political mapping was a discrete mapping with (in essence) each pixel assigned to one of some limited number of categories.  In the political mapping the particular color assigned to a given state was arbitrary, but we could imagine it such that each state was colored with a *distinct* color such that there were 48 (it was a continental US map, after all) unique colors.  With this we could have indexed into the raw data for any *particular* state.  This act of dividing up a larger body into some number of discrete sections is a process that is referred to as **parcellation**.  In this way, data objects that contain this sort of information are **parcellation maps**, in that they establish a systematic and explicit correspondence (i.e. mapping) between **parcels** (i.e. specified sub-sections) of the larger whole, and some finite list of discrete entities (i.e. an ontology).  Furthermore, **parcellation maps** manifest this mapping relation because they "represent" the larger body in an analogue fashion, meaning that the structural (i.e. spatial) relations of the atomistic sub-components of the source entity are recapitualited by the corresponding elements of the **parcellation map**.  Basically, this just a formal way of describing what it is about **parcellations** that allows us to directly overlay them onto our raw data and then make use of them in the ways we have demonstrated and discussed.
 
-Third, it is also important to remember that the usefulness of these parcellations is *highly* dependent on how well aligned they are to the entity they represent.  The less well aligned the parcellation is with its source entity, the less the correspondence relation between the parcellation and the source entity is preserved, and the less useful the parcellation can be.  In the case of geographic maps, a misalignment can result in innaccurate data extraction, but for some **raw data** and **parcellation** types, a mismatch can be like an indexing error in a data array. Indeed, this is the case with some ways of representing white matter parcellations, which we will discuss in more detail later.  
+Third, it is also important to remember that the usefulness of these parcellations is *highly* dependent on how well aligned they are to the entity they represent.  The less well aligned the parcellation is with its source entity, the less the correspondence relation between the parcellation and the source entity is preserved, and the less useful the parcellation can be.  In the case of geographic maps, a misalignment can result in inaccurate data extraction, but for some **raw data** and **parcellation** types, a mismatch can be like an indexing error in a data array. Indeed, this is the case with some ways of representing white matter parcellations, which we will discuss in more detail later.  
 
-Fourth, and finally, on the topic of **parcellations** and the list of sub-divisions they divide the larger body into, its also worth noting that a parcellation is only useful to the degree that we understand what the parcells correspoond to.  We didn't really need a guide to tell that the color divisions of the political map corresponded to various (arbitrary) collections of states, nor would we likely need something to tell us which state was which if each had a different color--in either case this is probaby because we are familiar with the borders of the states.  However, if our parcellation corresponded to a categorical or conceptual framework that we weren't familiar with, we would need some index, dictionary, or guide to tell us what each unique value of the "paint by numbers" mapping corresponded to and/or how the mapping was established.  Without such a guide it would be difficult to discern a particular parcellation from a randomized parcellation.
+Fourth, and finally, on the topic of **parcellations** and the list of sub-divisions they divide the larger body into, it's also worth noting that a parcellation is only useful to the degree that we understand what the parcells correspond to.  We didn't really need a guide to tell that the color divisions of the political map corresponded to various (arbitrary) collections of states, nor would we likely need something to tell us which state was which if each had a different color--in either case this is probably because we are familiar with the borders of the states.  However, if our parcellation corresponded to a categorical or conceptual framework that we weren't familiar with, we would need some index, dictionary, or guide to tell us what each unique value of the "paint by numbers" mapping corresponded to and/or how the mapping was established.  Without such a guide it would be difficult to discern a particular parcellation from a randomized parcellation.
 
 In the next section we will begin bridging into neuroimaging data.  We'll start this process by briefly setting up some intuitions about the similarities and differences between JPEG images and brain images, before moving on to a more explicit exploration of the particular data object features of brain images. 
-
-
-

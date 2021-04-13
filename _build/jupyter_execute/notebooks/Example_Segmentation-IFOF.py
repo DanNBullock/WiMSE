@@ -1,4 +1,4 @@
-# Example Segmentation: inferior fronto-occipital fasiculus (IFOF)
+# Example Segmentation: inferior fronto-occipital fasciculus (IFOF)
 
 NOTE:  This segmentation is taken almost verbatim from a [recent version of a matlab-based WMA segmentation](https://github.com/DanNBullock/wma_tools/blob/53a4d99b68b832257c55d5f1320dc7266cc8c270/Segmentations/bsc_segmentAntPostTracts_v4.m#L322)
 
@@ -208,18 +208,18 @@ rightBool[hemiGrouping[2,2]]=True
 
 ## Establish more specific endpoint criteria (loosely)
 
-As it turns out, we do not actually need to include additional endpoint criteria for the IFOF given how distinct it is.  The only other streamlines in this category are extremely dorsal to the IFOF candidates, and are most likely associated with the superior longitudinal fasiculus (SLF) (although there has been some debate as to the existance of a superior fronto-occipital fasciculus, it is currently accepted that no such structure exists in humans).  
+As it turns out, we do not actually need to include additional endpoint criteria for the IFOF given how distinct it is.  The only other streamlines in this category are extremely dorsal to the IFOF candidates, and are most likely associated with the superior longitudinal fasciculus (SLF) (although there has been some debate as to the existence of a superior fronto-occipital fasciculus, it is currently accepted that no such structure exists in humans).  
 
 As such we can move on to using other anatomical criteria.
 
 ## Other anatomical criteria
 
-One of the most characteristic features of the IFOF is the 'dip' that occurs adjacent to the lenticular nucleus, near the [claustrum](https://en.wikipedia.org/wiki/Claustrum).  Overall, our goal will be to apply an exclusion plane to prevent streamlines from traversing the dorsal portion of the brain's white matter.  In order to enshrine that as a criteria we have approach it in several steps.
+One of the most characteristic features of the IFOF is the 'dip' that occurs adjacent to the lenticular nucleus, near the [claustrum](https://en.wikipedia.org/wiki/Claustrum).  Overall, our goal will be to apply an exclusion plane to prevent streamlines from traversing the dorsal portion of the brain's white matter.  In order to enshrine that as a criteria we have to approach it in several steps.
 
 ### Lenticular-dip criteria 
 
 #### Lenticular-dip criteria  - segmentation logic
-First, we have to specify the rostro-caudal location of where we want to ensure that this dip takes place.  The dip is near to its lowest around the middle (along the rostro-caudal axis) of the lenticular nucleus.  This, as it turns out, is about the anterior border of the thalamus.  Insofar as the dorso-ventral positioning of this feature, the top of the [globus paladus](https://en.wikipedia.org/wiki/Globus_pallidus) can serve as a relatively generous limitation (in that the dip typically occurs inferior to this plane; see pg 204 of Mai, Majtanik, & Paxinos 2016).  Note that, in order to use this combination of anatomical features, we will need use the sliceROIwithPlane function.
+First, we have to specify the rostro-caudal location of where we want to ensure that this dip takes place.  The dip is near to its lowest around the middle (along the rostral-caudal axis) of the lenticular nucleus.  This, as it turns out, is about the anterior border of the thalamus.  Insofar as the dorso-ventral positioning of this feature, the top of the [globus paladus](https://en.wikipedia.org/wiki/Globus_pallidus) can serve as a relatively generous limitation (in that the dip typically occurs inferior to this plane; see pg 204 of Mai, Majtanik, & Paxinos 2016).  Note that, in order to use this combination of anatomical features, we will need to use the sliceROIwithPlane function.
     
 
 anteriorThalPlane=WMA_pyFuncs.planarROIFromAtlasLabelBorder(atlasImg,10, 'anterior')
@@ -242,13 +242,13 @@ criteriaBarPlot.set(xlabel='streamline count (log)', ylabel='category',xscale='l
 
 #### Lenticular-dip criteria  - observations
 
-Looking at the above graph, we can note that this criteria had a relatively dramatic effect.  However, given that this was the application of a simple exclusion plane (which we have seen with much less dramatic effect before), we might be curious as to why it acheived this effect.  Remember back to how we loaded particular tractograms earlier, which featured streamlines in excess of 100 mm.  As it turns out, there's a relatively limited number of ways for streamlines to acheive that length, and running the entire rostro-caudal span of the white matter appears to be a fairly common way to do this.  By applying a fairly stringent partial planar criteria (in that only a small porton of the coronal cross-section of the white matter has been spared) along the rostro-caudal axis, we have really limited where the streamlines can go.  Indeed, this criteria, combined with the categorical requirement, is all that we need to actually segment the IFOF.  As such, we can move on to visualizing the resultant tract.
+Looking at the above graph, we can note that this criteria had a relatively dramatic effect.  However, given that this was the application of a simple exclusion plane (which we have seen with much less dramatic effect before), we might be curious as to why it achieved this effect.  Remember back to how we loaded particular tractograms earlier, which featured streamlines in excess of 100 mm.  As it turns out, there's a relatively limited number of ways for streamlines to achieved that length, and running the entire rostro-caudal span of the white matter appears to be a fairly common way to do this.  By applying a fairly stringent partial planar criteria (in that only a small portion of the coronal cross-section of the white matter has been spared) along the rostral-caudal axis, we have really limited where the streamlines can go.  Indeed, this criteria, combined with the categorical requirement, is all that we need to actually segment the IFOF.  As such, we can move on to visualizing the resultant tract.
 
 ## Combine criteria and visualize
 
 Below, we will selectively apply the criteria we have created and visualize the output.
 
-Note that, although we can't really see the impact of the lenticular-dip when looking at it on its own, the effect becomes apparent when we look at in in combination with the fonto-occipital category.
+Note that, although we can't really see the impact of the lenticular-dip when looking at it on its own, the effect becomes apparent when we look at it in combination with the fronto-occipital category.
 
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import SelectMultiple
@@ -281,6 +281,3 @@ def updateSeg(commandIn):
 #establish interactivity
 interact(updateSeg, commandIn=SelectMultiple(options=criteriaList,value=criteriaList[0:-1], description='criteria',continuous_update=False,disabled=False))
 
-
-
-##  Moving on

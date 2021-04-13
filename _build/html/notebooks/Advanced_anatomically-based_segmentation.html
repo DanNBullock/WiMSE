@@ -56,7 +56,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example Segmentation: uncinate fasiculus" href="Example_Segmentation-uncinate_fasiculus.html" />
+    <link rel="next" title="Example Segmentation: uncinate fasciculus" href="Example_Segmentation-uncinate_fasiculus.html" />
     <link rel="prev" title="A second segmentation - categorical segmentation" href="A_second_segmentation-categorical_segmentation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -122,7 +122,7 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Intro_to_discretized_image_representation_%26_maps.html">
-   Introduction to discritized image representation and maps
+   Introduction to discretized image representation and maps
   </a>
  </li>
  <li class="toctree-l1">
@@ -216,12 +216,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Example_Segmentation-uncinate_fasiculus.html">
-   Example Segmentation: uncinate fasiculus
+   Example Segmentation: uncinate fasciculus
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Example_Segmentation-IFOF.html">
-   Example Segmentation: inferior fronto-occipital fasiculus (IFOF)
+   Example Segmentation: inferior fronto-occipital fasciculus (IFOF)
   </a>
  </li>
 </ul>
@@ -373,7 +373,7 @@
                 
   <div class="section" id="advanced-anatomically-based-segmentation">
 <h1>Advanced anatomically-based segmentation<a class="headerlink" href="#advanced-anatomically-based-segmentation" title="Permalink to this headline">¶</a></h1>
-<p>Now that we have established how to use ROIs and anatomical information <em>independently</em> of one another, its time to legerage these capabilities in conjunction with one another.  To begin, we’ll start by reflecting on our ability to extract labeled volumes of a parcellation as an ROI.</p>
+<p>Now that we have established how to use ROIs and anatomical information <em>independently</em> of one another, it’s time to leverage these capabilities in conjunction with one another.  To begin, we’ll start by reflecting on our ability to extract labeled volumes of a parcellation as an ROI.</p>
 <div class="section" id="the-first-step-extracting-a-given-roi">
 <h2>The first step: extracting a given ROI<a class="headerlink" href="#the-first-step-extracting-a-given-roi" title="Permalink to this headline">¶</a></h2>
 <p>Below, we’ll demonstrate essentially the same widget and capability as we observed in the “ROIs_as_tools” chapter.  This will allow you to familiarize yourself with the various anatomical labels featured in the DK2009 atlas and their locations in the example brain.</p>
@@ -468,9 +468,9 @@
 </div>
 <div class="section" id="translation-errors">
 <h2>Translation errors<a class="headerlink" href="#translation-errors" title="Permalink to this headline">¶</a></h2>
-<p>In previous chapters you may have noticed that we often selected locations for our ROIs (in particular planar ROIs) by referring to nearby, reference anatomical structures.  Despite this, even though we were chosing where to planar the planar ROIs in relation to these structures, we were nonetheless manually entering cordinates (based on trial and error or our best guesses).  This is less than ideal for several reasons.</p>
-<p>First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the milimeter offset from the <a class="reference external" href="https://en.wikipedia.org/wiki/Anterior_commissure">anterior commisure</a>.  This is is nice because it is subject specific and the units themsleves are quite familiar.  Alternatively, in some of the literature, <a class="reference external" href="https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates">MNI coordinates</a> are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error on top of all the many other sources of error in this field.  This hints at a second trouble as well.</p>
-<p>If we’re going to leave other investigators to their own devices on how to implment an interpretation of the relative anatomical description, then we have compounded the number of opportunities for “noise” to be added to our segmentation specification.  In doing so we make our segmentation less reliable overall.  But what if we didn’t have to do this?  What if, instead, we were able to <em>directly</em> use those anatomical structures to define our regions of interest?  How could we do that?</p>
+<p>In previous chapters you may have noticed that we often selected locations for our ROIs (in particular planar ROIs) by referring to nearby, reference anatomical structures.  Despite this, even though we were choosing where to planar the planar ROIs in relation to these structures, we were nonetheless manually entering coordinates (based on trial and error or our best guesses).  This is less than ideal for several reasons.</p>
+<p>First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the <a class="reference external" href="https://en.wikipedia.org/wiki/Anterior_commissure">anterior commisure</a>.  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, <a class="reference external" href="https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates">MNI coordinates</a> are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error on top of all the many other sources of error in this field.  This hints at a second trouble as well.</p>
+<p>If we’re going to leave other investigators to their own devices on how to implement an interpretation of the relative anatomical description, then we have compounded the number of opportunities for “noise” to be added to our segmentation specification.  In doing so we make our segmentation less reliable overall.  But what if we didn’t have to do this?  What if, instead, we were able to <em>directly</em> use those anatomical structures to define our regions of interest?  How could we do that?</p>
 <p>Lets try that.  Below, you’ll be able to select a anatomical structure <strong>and</strong> which of its borders to use to generate a planar ROI.  Of particular note should be the potential utility of subcortical structures in providing planar ROIs for our future white matter segmentations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -563,7 +563,7 @@
 </div>
 <div class="section" id="but-wait-there-s-more">
 <h2>But wait, there’s more!<a class="headerlink" href="#but-wait-there-s-more" title="Permalink to this headline">¶</a></h2>
-<p>At this point we <em>could</em> demonstrate the use of these full planar, anatomically defined ROIs to apply a single segmentation criteria (e.g. “intersect” or “not intersect” with the plane).  However, in practice, the segmentations resulting from the application of a single, anatomically defined, full planar ROI are not qualatatively different than previous applications of comparable, manually placed ROIs.  While previously, we were manually specifying where to place the planar ROI using (via selection of an ACPC coordinate), by using anatomically defined ROIs, were specifying a coordinate <em>implicitly</em> by selecting a given border of an anatomical region (i.e. superior, lateral, anterior, etc.).  The true pratcical utility (and complexity) comes from modifying anatomically defined ROIs <em>using other anatomically defined ROIs</em> (as we shall see next) and using multiple such ROIs to compose a segmentation algorithm for a full tract (as we shall see in the next chapter).</p>
+<p>At this point we <em>could</em> demonstrate the use of these full planar, anatomically defined ROIs to apply a single segmentation criteria (e.g. “intersect” or “not intersect” with the plane).  However, in practice, the segmentations resulting from the application of a single, anatomically defined, full planar ROI are not qualitatively different from previous applications of comparable, manually placed ROIs.  While previously, we were manually specifying where to place the planar ROI using (via selection of an ACPC coordinate), by using anatomically defined ROIs, were specifying a coordinate <em>implicitly</em> by selecting a given border of an anatomical region (i.e. superior, lateral, anterior, etc.).  The true practical utility (and complexity) comes from modifying anatomically defined ROIs <em>using other anatomically defined ROIs</em> (as we shall see next) and using multiple such ROIs to compose a segmentation algorithm for a full tract (as we shall see in the next chapter).</p>
 <p>As a warning, the interface may get a bit complicated here, but this is to be expected for advanced, anatomically-based segmentations.  After defining your modified planar ROI, we’ll use it as a segmentation criterion.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -689,8 +689,8 @@
 <p>In the above sections (and indeed in previous chapters) we have been making extensive use of planar ROIs in our segmentation demonstrations.  Additionally, in the chapter covering categorical segmentations, we demonstrated the ability to use endpoint termination areas (implicitly, via dipy’s connectome generation method).  While these are both commonly used methods for segmenting tracts, there are other anatomical features of tracts that can be leveraged</p>
 <div class="section" id="loose-endpoint-criteria">
 <h3>Loose endpoint criteria<a class="headerlink" href="#loose-endpoint-criteria" title="Permalink to this headline">¶</a></h3>
-<p>While it is possible to segement streamlines by applying a criteria specifying which labels their endpoints have to terminate in, its also possible to apply looser criteria to the endpoints.  For example, its possible to require that <strong>both</strong> endpoints be anterior to a particular anatomical feature.  Such a criterion would be useful for segmenting the uncinate fasciculus.  Alternatively you could require that only one endpoint (or, indeed neither) be found relative to some other anatomical structure.</p>
-<p>This method is different than the application of a planar ROI because it does not rely on intersection to select streamlines.  All that it does is check to determine which of the endpoint meet the dimensional/anatomical criteria.  This method has the added benefit of having a <strong>much</strong> smaller computational footprint, as no eucledian distances are calculated.</p>
+<p>While it is possible to segment streamlines by applying a criteria specifying which labels their endpoints have to terminate in, it’s also possible to apply looser criteria to the endpoints.  For example, it’s possible to require that <strong>both</strong> endpoints be anterior to a particular anatomical feature.  Such a criterion would be useful for segmenting the uncinate fasciculus.  Alternatively you could require that only one endpoint (or, indeed neither) be found relative to some other anatomical structure.</p>
+<p>This method is different from the application of a planar ROI because it does not rely on intersection to select streamlines.  All that it does is check to determine which of the endpoints meet the dimensional/anatomical criteria.  This method has the added benefit of having a <strong>much</strong> smaller computational footprint, as non eucledian distances are calculated.</p>
 <p>Below we’ll use the same ROI as was created earlier though, for this application, we will skip the cutting step and the primary anatomical border will be treated as a full planar ROI.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -780,7 +780,7 @@
 </div>
 <div class="section" id="midpoints-and-necks">
 <h3>Midpoints and “necks”<a class="headerlink" href="#midpoints-and-necks" title="Permalink to this headline">¶</a></h3>
-<p>In addition to utilizing endpoints as a criteira, we can also use the midpoints of tracts.  Traditionally, white matter tracts are understood to possess a “neck” which, as the idiom implies, is the point at which the cross-sectional area (considered perpendicular to the direction that the composite axons are running) reaches its minimum.  This anatomical feature is often described in both tractography and disection-based characterizations of white matter tracts.  Although this feature isn’t always found at the “midpoint” of the tract, it is typically near the average midpoint of the tract.  As such, we can reasonably use this as proxy for the neck, and subject this characteristic to criteria in order to segment streamlines.</p>
+<p>In addition to utilizing endpoints as a criteria, we can also use the midpoints of tracts.  Traditionally, white matter tracts are understood to possess a “neck” which, as the idiom implies, is the point at which the cross-sectional area (considered perpendicular to the direction that the composite axons are running) reaches its minimum.  This anatomical feature is often described in both tractography and dissection-based characterizations of white matter tracts.  Although this feature isn’t always found at the “midpoint” of the tract, it is typically near the average midpoint of the tract.  As such, we can reasonably use this as a proxy for the neck, and subject this characteristic to criteria in order to segment streamlines.</p>
 <p>Below, we’ll once more use the same planar ROI that was established earlier, but this time we’ll consider the relative position requirement as applied to the midpoint.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -901,7 +901,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="A_second_segmentation-categorical_segmentation.html" title="previous page">A second segmentation - categorical segmentation</a>
-    <a class='right-next' id="next-link" href="Example_Segmentation-uncinate_fasiculus.html" title="next page">Example Segmentation: uncinate fasiculus</a>
+    <a class='right-next' id="next-link" href="Example_Segmentation-uncinate_fasiculus.html" title="next page">Example Segmentation: uncinate fasciculus</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

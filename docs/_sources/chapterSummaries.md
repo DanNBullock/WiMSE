@@ -1,6 +1,6 @@
 # White Matter Segmentation Education - WiMSE
 
-This set of notebooks has been developed to provide a guide to performing digital segmentations of white matter.  The lessons contained here are designed for advanced undergraduates, advanced STEM students, or persons wanting to become more familiar with the process of the digital segmentation of white matter.  These lessons begin by building a strong foundation of intuitions based on everyday data representations.  Having established this, it moves towards neuroimaging-specific data formats and their use.  Finally, it moves to tractograms and segmentations, demonstrating basic concepts and characteristics, and even allowing users to perform some rudamentary interactive segmentations. 
+This set of notebooks has been developed to provide a guide to performing digital segmentations of white matter.  The lessons contained here are designed for advanced undergraduates, advanced STEM students, or persons wanting to become more familiar with the process of the digital segmentation of white matter.  These lessons begin by building a strong foundation of intuitions based on everyday data representations.  Having established this, it moves towards neuroimaging-specific data formats and their use.  Finally, it moves to tractograms and segmentations, demonstrating basic concepts and characteristics, and even allowing users to perform some rudimentary interactive segmentations. 
 
 ## Chapter Summaries 
  
@@ -12,7 +12,7 @@ If this notebook is about the computational study of white matter, why are we ta
 
 #### Intro to discretized image representation & maps
 
-In this chapter we begin our exploration of image data with an example that will likely be familiar to many readers: a digital photograph. We'll begin by looking at the how the data is arranged within the image data object, what its constituent data entries are, and how those features relate to the image we encounter on our screen.  We'll then move to an exploration of how the quantitive features of the image data can be leveraged to select certain sub-sections of the image via a process referred to as "masking"
+In this chapter we begin our exploration of image data with an example that will likely be familiar to many readers: a digital photograph. We'll begin by looking at how the data is arranged within the image data object, what its constituent data entries are, and how those features relate to the image we encounter on our screen.  We'll then move to an exploration of how the quantitative features of the image data can be leveraged to select certain sub-sections of the image via a process referred to as "masking"
 
 #### Aligning two images
 
@@ -40,7 +40,7 @@ In this chapter we consider very briefly how to implement linear transforms and 
 
 #### Highways of the brain
 
-In this chapter we move on from our consideration of volumetric/NIfTI based neuroimaging data and begin to consider white mater and tractography.  Here, we provide a brief introduction to relevant anatomical concepts related to white matter.  This is primarly a discussion of anatomy, and so no code interactivity is present.
+In this chapter we move on from our consideration of volumetric/NIfTI based neuroimaging data and begin to consider white matter and tractography.  Here, we provide a brief introduction to relevant anatomical concepts related to white matter.  This is primarily a discussion of anatomy, and so no code interactivity is present.
 
 #### The measurement, the object, and the modality - What's measured in diffusion imaging
 
@@ -52,7 +52,7 @@ In this chapter we take a look at the actual data characteristics of a streamlin
 
 #### The source tractogram
 
-In this chapter we take a look at a whole brain tractoram.  And note its characteristics as an amalgum of component streamlines.  Our chief takeaway is that we'll need a systematic method to divide up the tractogram in order to extract any insights from it.
+In this chapter we take a look at a whole brain tractoram.  And note its characteristics as an amalgam of component streamlines.  Our chief takeaway is that we'll need a systematic method to divide up the tractogram in order to extract any insights from it.
 
 ### Segmenting tractography
 
@@ -62,4 +62,4 @@ In this chapter we introduce the notion of a tractoram segmentation.  We'll use 
 
 #### A categorical segmentation
 
-In this chapter we examine another approach to tractogram segmentation.  This time we use larger amalgums of areas than the previous chapter to form regions like the frontal, parietal, occipital, and temporal lobes.  We'll note that anatomically coherent strucutres begin to emerge from this approach, and consider how this could serve as a first step towards the segmentation of anatomically coherent white matter structures.
+In this chapter we examine another approach to tractogram segmentation.  This time we use larger amalgams of areas than the previous chapter to form regions like the frontal, parietal, occipital, and temporal lobes.  We'll note that anatomically coherent structures begin to emerge from this approach, and consider how this could serve as a first step towards the segmentation of anatomically coherent white matter structures.

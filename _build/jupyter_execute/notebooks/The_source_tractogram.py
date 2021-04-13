@@ -34,8 +34,6 @@ Above we see the total number of streamlines contained within this tractogram.  
 
 Lets plot a random selection of 10 of these streamlines so we can get a sense of what streamlines look like when visualized
 
-
-
 randomIndexes=np.random.randint(streamCount, size= 10)
 
 #quick and dirty tractogram subsetter by Brad Caron
@@ -94,15 +92,15 @@ plotParcellationConnectionWidget(subTractogram.streamlines)
 
 What you should see (after zooming in) is a random collection of colored "strings" floating in space.  Each of these strings represents the tractography algorithm's (the algorithm that generated all of the streamliens in the tractogram) best guess as to where there's "likely" a coherent bundle of axons.  Although it's difficult to tell from this visualization the coloring of these lines corresponds to the direction in which the streamline is primarily traveling.  Green indicates that the streamline is primarily anterior-posteriorly oriented, blue indicates that the streamline is primarily superior-inferiorly oriented, and red indicates that the streamline is primarily left-right oriented.
 
-To get a beter sense of the meaning of these colors, and how these individual streamlines can come together to reprsent the white matter of the brain, it's useful to look at the entire tractogram
+To get a better sense of the meaning of these colors, and how these individual streamlines can come together to represent the white matter of the brain, it's useful to look at the entire tractogram
 
 %matplotlib inline
 plotParcellationConnectionWidget(streamsObjIN.streamlines)
 
-Thats quite a mess!  Even so, we can begin to see how the streamlines come together to represent the white matter of the brain. Keep in mind though that we only have a fraction of the streamlines that we would typically use to model a brain's white matter.  Regardless, what now?
+That's quite a mess!  Even so, we can begin to see how the streamlines come together to represent the white matter of the brain. Keep in mind though that we only have a fraction of the streamlines that we would typically use to model a brain's white matter.  Regardless, what now?
 
 #### Now that we have a whole brain tractogram how do we garner insight?
 
-As it turns out there are really only a limited number of quantative assesments that can be applied directly to a whole tractography object.  For example you could create a histogram of the streamline lengths composing the tractogram, but this wouldn't give you very useful insight about the brain.
+As it turns out there are really only a limited number of quantitative assessments that can be applied directly to a whole tractography object.  For example you could create a histogram of the streamline lengths composing the tractogram, but this wouldn't give you very useful insight about the brain.
 
-The problem we face here is not unlike the problem we faced when dealing with digital images.  In those cases we needed to to some form of post-processing in order to obtain more quantative and 
+The problem we face here is not unlike the problem we faced when dealing with digital images.  In those cases we needed to do some form of post-processing in order to obtain more quantative and specific measurements.  This brings us to the topic of white matter segmentation.

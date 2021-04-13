@@ -1,14 +1,14 @@
-# Introduction to discritized image representation and maps
+# Introduction to discretized image representation and maps
 
 ## Why a satellite image?
 
-If you've happened to scroll over this lesson you'll note that we're strting by looking at satellite images.  Surely, given that we're studying the brain, wouldn't it be more appropriate to look at an image of a brain?  If our goal was to jump straight in to learning about the brain, maybe, but as we noted earlier, our first goal is to learn about image formats.  While some of us may have been looking at pictures of the brain for years now--perhaps even decades--it's almost guarenteed have been looking at pictures of the world for far longer.  As such, we're beginning with pictures of the world, which we presumably have deeper-seated intuitions about.
+If you've happened to scroll over this lesson you'll note that we're starting by looking at satellite images.  Surely, given that we're studying the brain, wouldn't it be more appropriate to look at an image of a brain?  If our goal was to jump straight into learning about the brain, maybe, but as we noted earlier, our first goal is to learn about image formats.  While some of us may have been looking at pictures of the brain for years now--perhaps even decades--it's almost guaranteed have been looking at pictures of the world for far longer.  As such, we're beginning with pictures of the world, which we presumably have deeper-seated intuitions about.
 
 In the following sections we'll consider how the actual data in the JPEG structure corresponds to things like oceans, forests and other types of [biomes](https://en.wikipedia.org/wiki/Biome).  We'll see how we can use our intuitions to bridge the gap between the raw data and our existing understanding of the world itself (i.e. the subject of the satellite photography).
 
-Ultimately, what we will be illustrating are the processes of **spatial translation** (moving an object in space) and **masking** (the selection or "indexing" of related sub-components from a larger whole).  These concepts are introduced here in 2D using the sattilite image, but as later lessons will show, these concepts are central to our use of neuroimaging data.  As a primary example of this, when whe initially use an MRI scanner to obtain an image of a persons head, we also get data about the persons neck, head, skull and other tissues that *are not* the brain.  However, when we do our analyses, we only want to look at data that relates to the brain.  As such, we have to "**mask** out" those spatial regions of the scan data we are not interseted in.  Doing so ensures that we only extract data from the structures/areas of interest.  This lesson provides an introduction to this process with landmasses.
+Ultimately, what we will be illustrating are the processes of **spatial translation** (moving an object in space) and **masking** (the selection or "indexing" of related sub-components from a larger whole).  These concepts are introduced here in 2D using the satellite image, but as later lessons will show, these concepts are central to our use of neuroimaging data.  As a primary example of this, when we initially use an MRI scanner to obtain an image of a person's head, we also get data about the persons neck, head, skull and other tissues that *are not* the brain.  However, when we do our analyses, we only want to look at data that relates to the brain.  As such, we have to "**mask** out" those spatial regions of the scan data we are not interested in.  Doing so ensures that we only extract data from the structures/areas of interest.  This lesson provides an introduction to this process with landmasses.
 
-Lets begin by loading and plotting [a satellite image](https://commons.wikimedia.org/wiki/File:Earthmap1000x500.jpg) now.
+Let's begin by loading and plotting [a satellite image](https://commons.wikimedia.org/wiki/File:Earthmap1000x500.jpg) now.
 
 #this code ensures that we can navigate the WiMSE repo across multiple systems
 import subprocess
@@ -55,9 +55,9 @@ fig.set_size_inches(15, 30)
 
 
 
-Here we see a satellite image of the world just like any other that you've seen before.  Note though, that it is bordered by numbered axes, with zeros in the upper (for the Y axis) and lower (for the X axis) left-hand corners. This is becase we have loaded it here in a jupyter notebook, which treats it just like any other pixel-wise plot that could be generated from code or data.  As such, the labeling numbers we see tracking the pixel rows in columns in the image.  From rom this plotting we can see that our code has loaded the image as a 500 pixel tall by 1000 pixel wide object.
+Here we see a satellite image of the world just like any other that you've seen before.  Note though, that it is bordered by numbered axes, with zeros in the upper (for the Y axis) and lower (for the X axis) left-hand corners. This is because we have loaded it here in a jupyter notebook, which treats it just like any other pixel-wise plot that could be generated from code or data.  As such, the labeling numbers we see tracking the pixel rows in columns in the image.  From this plotting we can see that our code has loaded the image as a 500 pixel tall by 1000 pixel wide object.
 
-Take note of how, specificially, the row and column numberings are associated with the plotted image.  We can see that the top row is labled zero, while the final row is unlabled, but nonetheless corresponds to 500.  Likewise, the first column is labeled zero, but the final (unlabeled) column is corresponds to 1000.  Though this method of orientation may feel unintuitive, this is how data is plotted with [matplotlib](https://matplotlib.org/) (the code library we are using to view these images).
+Take note of how, specifically, the row and column numberings are associated with the plotted image.  We can see that the top row is labeled zero, while the final row is unlabeled, but nonetheless corresponds to 500.  Likewise, the first column is labeled zero, but the final (unlabeled) column corresponds to 1000.  Though this method of orientation may feel unintuitive, this is how data is plotted with [matplotlib](https://matplotlib.org/) (the code library we are using to view these images).
 
 Lets use some additional python functions to extract the "raw" data being used to generate this plot and examine it.  We'll begin by looking at the dimensions of the image according to the python function (which reports image dimensions), and we'll look at the dimensions of the underlying data itself.
 
@@ -82,10 +82,10 @@ The **first output** we get reads as follows:
 This provides us with several details.  It comes from the python functions associated with loading and viewing images.
 
  - **JPEG**:  Indicates the file type, which could have also been PNG for example.
- - **(1000, 500)**: This quantity indicates the resolution of of the image.  The first number indicates how many pixels wide it is, while the second indicates how tall it is in pixels.
+ - **(1000, 500)**: This quantity indicates the resolution of the image.  The first number indicates how many pixels wide it is, while the second indicates how tall it is in pixels.
  - **RGB**:  Indicates the color component channels that are being combined to create the image.  Here we see that there are three of these channels and they correspond to the Red (R), Green (G), and Blue (B).
 
-The **second ouput** reads as "(500, 1000, 3)" and indicates the dimensions of the image's *actual* data reprsentation.
+The **second output** reads as "(500, 1000, 3)" and indicates the dimensions of the image's *actual* data representation.
 
 Here we see that it is a **3** dimensional array.  This may come as a surprise given that the image is clearly **2** dimensional.  The first two values (500 and 1000) correspond to the height and width of the image, and are flipped from the output of the previous report.  This is something to be mindful of when investigating data structures, as the norms for ordering dimensions vary from function to function and programming language to programming language.  The final value, **(3)**, is something new though.  This corresponds to the aforementioned color channels for the image.  This value is 3 because this is an *RGB* based image.  Had the final entry of the first output been *CMYK* (Cyan Magenta Yellow Black) the size of the final dimension would have been 4 instead of 3.  Typically though, CMYK is used for printed (or to be printed) mediums.
 
@@ -111,12 +111,12 @@ fig.set_size_inches(15, 30)
 
 ##  Why three layers?
 
-Each of these color layers looks somewhat similar but contain slightly different information.  For example, if you look closely at the red image, you'll notice that it does not exhibit the same equatorial "darkening" that the green and blue images do.  Other differences are visbile between green and blue images, though they are more subtle.  For example Lake Victoria (in the eastern part of central Africa, at about 600 X and 250 Y) is visible in the green channel but not in the blue channel.  Although these three channels are all carrying information about the world, they each constitute  distinct bodies of information.  This information is combined by our the setup of our computer monitors, and we perceive the resultant combination as the coherent depiction of the planet that we're all familiar with.
+Each of these color layers looks somewhat similar but contain slightly different information.  For example, if you look closely at the red image, you'll notice that it does not exhibit the same equatorial "darkening" that the green and blue images do.  Other differences are visible between green and blue images, though they are more subtle.  For example Lake Victoria (in the eastern part of central Africa, at about 600 X and 250 Y) is visible in the green channel but not in the blue channel.  Although these three channels are all carrying information about the world, they each constitute  distinct bodies of information.  This information is combined by the setup of our computer monitors, and we perceive the resultant combination as the coherent depiction of the planet that we're all familiar with.
 
 
 #### What happens when you look at a specific pixel across the color layers?
 
-Lets look at the data stored across these three layers, in several specific pixels from the map:
+Let's look at the data stored across these three layers, in several specific pixels from the map:
  - the upper left of the map [0,0]
  - the atlantic ocean [450,400]
  - the United States [150,200]
@@ -152,7 +152,7 @@ print('')
 
 ## What's in a pixel?
 
-In the code block above we have querried the entries for the specified pixels and obtined these results:
+In the code block above we have queried the entries for the specified pixels and obtained these results:
 
  - [0,0], which is the upper leftmost pixel = [214 213 227]
  - [150,400], which is in the Atlantic = [14 49 69]
@@ -160,7 +160,7 @@ In the code block above we have querried the entries for the specified pixels an
  - [80,700], which is in western Russia = [65 74 45]
  - [180,550], which is in north Africa = [204 170 125]
 
-Below the label description for each pixel is the color value (between 0 and 255) for the red, green, and blue channels respectively.  A 0 would indicate no presence of the color, while a 255 would constitute the maximal presense of the color.
+Below the label description for each pixel is the color value (between 0 and 255) for the red, green, and blue channels respectively.  A 0 would indicate no presence of the color, while a 255 would constitute the maximal presence of the color.
 
 Thus, for each of these pixels we have obtained a 1 by 3 output, which corresponds to the RGB value for each pixel.  
 
@@ -168,7 +168,7 @@ Thus, for each of these pixels we have obtained a 1 by 3 output, which correspon
 (NOTE: you can also simply enter the number beside the slider, rather than dragging it, if you prefer.)
 
 #### What colors do you get for these points?
-Use the color sliders for RGB values from the code below to determine what color corresponds to the selected pixels.  This will help you interpret what the numbers are actually indicating for that pixel.  You can use the sattilite image adjacent to the color plot to get a sense of where the color might be occuring in the image.
+Use the color sliders for RGB values from the code below to determine what color corresponds to the selected pixels.  This will help you interpret what the numbers are actually indicating for that pixel.  You can use the satellite image adjacent to the color plot to get a sense of where the color might be occurring in the image.
 
  - upper leftmost pixel   [214 213 227] : ?
 
@@ -213,7 +213,7 @@ blueVal=FloatSlider(value=69, min=0, max=255, step=1,continuous_update=False)
 #establish interactivity
 interact(updateBigPixel, redVal=redVal,greenVal=greenVal,blueVal=blueVal) 
 
-Ultimately, you should get obtain the colors presented in the swatches below, which are the pixel colors plotted along large vertical swath.  Each color swatch corresponds to the color of the respective pixel.
+Ultimately, you should obtain the colors presented in the swatches below, which are the pixel colors plotted along a large vertical swath.  Each color swatch corresponds to the color of the respective pixel.
 
 #### What are the colors for these pixels?
 
@@ -254,7 +254,7 @@ You should get approximately the following colors:
 
  - north Africa pixel                    : Yellow-orange
 
-Given that our JPEG above is of a geographic satellite map of the world, these colors correspond to the color (refleted visible light) of the surface of the earth in that area (As viewed from space, roughly speaking).  With this information we can make educated guesses as to the types of environments associated with each of these locations using the color information.
+Given that our JPEG above is of a geographic satellite map of the world, these colors correspond to the color (reflected visible light) of the surface of the earth in that area (As viewed from space, roughly speaking).  With this information we can make educated guesses as to the types of environments associated with each of these locations using the color information.
 
 #### What types of environments are found at each of these pixels?
 (feel free to leverage the location information provided with the label/description of the pixel's source)
@@ -294,9 +294,9 @@ fig.set_size_inches(15, 30)
 | _western Russia_ | Green | Forests |
 | _north Africa_ | Orange | Desert | 
 
-As we can see, its pretty straightforward to infer the envornment type from the color of the pixel.  Keep in mind that, although we are abstracting from the visible color (a visible property resulting from the RGB value information represented) to a color name (a categorical label), we've essentially applied this environmental label in virtue of a quantative property, specifically the RGB value.  This is a *very* interesting capability, particularly when we describe it a bit more generally:
+As we can see, its pretty straightforward to infer the environment type from the color of the pixel.  Keep in mind that, although we are abstracting from the visible color (a visible property resulting from the RGB value information represented) to a color name (a categorical label), we've essentially applied this environmental label in virtue of a quantitative property, specifically the RGB value.  This is a *very* interesting capability, particularly when we describe it a bit more generally:
 
-We can **systematically** apply a **categorical label** using **quantative information**
+We can **systematically** apply a **categorical label** using **quantitative information**
 
 #### How might we use this here with the satellite data?
 Consider for a moment the sorts of things we could now do with the data from our satellite image.
@@ -305,7 +305,7 @@ One thing you might wonder is:
 
 #### Can we select all of the pixels that correspond to a specific biome?
 
-Well, yes.  Although some environment types exhibit variability in their coloring (in that they exhibit a range of RGB color values), others are fairly homogenous, and therefore easier to find systematically.  
+Well, yes.  Although some environment types exhibit variability in their coloring (in that they exhibit a range of RGB color values), others are fairly homogeneous, and therefore easier to find systematically.  
 
 #### Which environment is the most homogenous?
 Which environment type would be covered by the narrowest range of color values?
@@ -379,20 +379,20 @@ First thing to note: 1031 is a relatively small proportion of 500,000.  If the e
 
 #### A possible explanation?
 
-One thing to consider is that there are a lot of different combinations of colors that could represent water.  Indeed, there's a decent amount of variability visible in the initial satellite image--it's not just one color.  Given how we were couting pixels, if a value was off by even one unit (for any of the color channels!), it wouldn't have been counted above.  This explains how we only got about .2 % of the surface pixels--only .2% of the pixels on the map *exactly* match the pixel we chose.
+One thing to consider is that there are a lot of different combinations of colors that could represent water.  Indeed, there's a decent amount of variability visible in the initial satellite image--it's not just one color.  Given how we were counting pixels, if a value was off by even one unit (for any of the color channels!), it wouldn't have been counted above.  This explains how we only got about .2 % of the surface pixels--only .2% of the pixels on the map *exactly* match the pixel we chose.
 
 #### So how do we find the remaining 70.8% of pixels?
 
-Our "naive", semi-mathematical method for finding pixels that were the exactsame as "Atlantic blue" provides a big hint as to how we could acheive this.  
+Our "naive", semi-mathematical method for finding pixels that were the exact same as "Atlantic blue" provides a big hint as to how we could achieve this.  
 
 #### How did we count the number of "Atlantic blue" pixels?
-(look back at the preceeding code block and use the commented code to see how the "search" (for matches) and count was implemented)
+(look back at the preceding code block and use the commented code to see how the "search" (for matches) and count was implemented)
 
 ### Checking our math
 
 Our total count was reported by printing the contents of the **totalExact** variable.  This variable, in turn was computed by counting the number of non-zero entries in the **exactColorMask** variable.  What was stored in the **exactColorMask** variable and how was it generated? 
 
-**exactColorMask** was generated by subtracting the "Atlantic blue" RGB value [14 49 69] from *each* pixel in the original image and then (after summing the absolute value of this difference across all three color channels) looking for pixels which had **no** difference (i.e. were **exctly** 0).  
+**exactColorMask** was generated by subtracting the "Atlantic blue" RGB value [14 49 69] from *each* pixel in the original image and then (after summing the absolute value of this difference across all three color channels) looking for pixels which had **no** difference (i.e. were **exactly** 0).  
 
 Thus in pixels that were *precisely* "Atlantic blue" we had  the following computational/mathematical situation:  
 
@@ -409,7 +409,7 @@ That seems a bit harsh.  Do we really need to throw out color values that are "c
 
 Well, the answer to these questions depends on our ability to systematically define (i.e. operationalize) the notion of "close" we are referring to here.
 
-#### How can can we define "close" in a math-like way?
+#### How can we define "close" in a math-like way?
 
 ##  Using trigonometry to compute color distances
 
@@ -417,13 +417,13 @@ When we ran the "Atlantic blue" algorithm described above, we essentially treate
 
 "Is this Atlantic blue" --> if "Atlantic blue"-currentPixel==0, **yes**, otherwise **no** 
 
-However, keen eyes will note that the most direct output of our method (the initial subtraction result, stored in the variable **zeroBlueMask**) *is not* actualy binarzed.  That is, we don't *actually* get only "yes" or "no" answers from the difference computation. Instead, we apply an additional computations to the **zeroBlueMask** (and store the results in **blueDiffSum** and **exactColorMask**).  
+However, keen eyes will note that the most direct output of our method (the initial subtraction result, stored in the variable **zeroBlueMask**) *is not* actually binarized.  That is, we don't *actually* get only "yes" or "no" answers from the difference computation. Instead, we apply an additional computations to the **zeroBlueMask** (and store the results in **blueDiffSum** and **exactColorMask**).  
 
 **Is there something in zeroBlueMask that we can make use of to determine "close" colors?"
 
 #### What do we actually get from "zeroBlueMask=np.subtract(firstMapArray,atlanticColor)"
 
-Instead of storing 1 or 0 (binary "Yes/TRUE" or "No/False"), for each pixel, it's a 1x3 vector that corresponds to the mathematical difference between the RGB values for "Atlantic blue" and that the RGB values for the relevant pixel. When all of these differeces are stored in the same arrangment as the original image, we get a very familiar output when we check the dimensions of this structure (**zeroBlueMask**)
+Instead of storing 1 or 0 (binary "Yes/TRUE" or "No/False"), for each pixel, it's a 1x3 vector that corresponds to the mathematical difference between the RGB values for "Atlantic blue" and that the RGB values for the relevant pixel. When all of these differences are stored in the same arrangement as the original image, we get a very familiar output when we check the dimensions of this structure (**zeroBlueMask**)
 
 print('Dimensions of zeroBlueMask variable:')
 print(np.asarray(zeroBlueMask).shape)
@@ -432,7 +432,7 @@ In 1031 cases (i.e. for 1031 pixels) the difference between the "Atlantic blue" 
 
 We can think about those colors as being "1" away from "Atlantic blue".  How many pixels are "off-by-one" like this?  To check this, we would need to look at the **blueDiffSum** variable, which has summed the cross-channel differences into a single value.  In this 2 dimensional structure, we would be looking for values equal to 1.
 
-NOTE: in the code block below, you'll note that the variable **offByValue** is set to 2.  This is despite our immediately preceeding discussion focusing on pixels that were "off-by-one".  The reason for this discrepancy is that, as it turns out, there are no pixel values that are *just* one numerical value off from the "Atlantic blue" value we are looking for.  As such, in order to find *any* additional pixels, we have to increase this "off-by" number (below represented by the **offByValue** variable) to 2.  The likely cause of this is a phenomenon known as "JPEG compression" which is a specialized process used by image handling & processing programs which attempts to "shrink" the storage size of the image by algorithmically recoloring nearby pixels.  The exact mechanism behind this process is beyond the scope of this lesson, but feel free to do a search on one's own to find out more.
+NOTE: in the code block below, you'll note that the variable **offByValue** is set to 2.  This is despite our immediately preceding discussion focusing on pixels that were "off-by-one".  The reason for this discrepancy is that, as it turns out, there are no pixel values that are *just* one numerical value off from the "Atlantic blue" value we are looking for.  As such, in order to find *any* additional pixels, we have to increase this "off-by" number (below represented by the **offByValue** variable) to 2.  The likely cause of this is a phenomenon known as "JPEG compression" which is a specialized process used by image handling & processing programs which attempts to "shrink" the storage size of the image by algorithmically recoloring nearby pixels.  The exact mechanism behind this process is beyond the scope of this lesson, but feel free to do a search on one's own to find out more.
 
 print('Dimensions of blueDiffSum variable:')
 print(np.asarray(blueDiffSum).shape)
@@ -463,10 +463,10 @@ print('')
 
 
 #### A rough first step
-In the above code block, we counted how many pixels were off by some small amount (default=2) from the "Atlantic blue" color value.  Note that, algorithmically speaking, we were kind of doing this in a rough fashion:  we were simply summing the differences from the specified RGB values across all dimensions.  This was not a particularly sophisticated method and it treats some distance senarios (i.e. [1 1 1] and [0 0 3]) as the exact same, even though these are "different kinds of differences".  That being said, it does hint a structured framework for considering these color differences.
+In the above code block, we counted how many pixels were off by some small amount (default=2) from the "Atlantic blue" color value.  Note that, algorithmically speaking, we were kind of doing this in a rough fashion:  we were simply summing the differences from the specified RGB values across all dimensions.  This was not a particularly sophisticated method and it treats some distance scenarios (i.e. [1 1 1] and [0 0 3]) as the exact same, even though these are "different kinds of differences".  That being said, it does hint at a structured framework for considering these color differences.
 
 #### Can we generalize this concept?
-If we think about this a bit more geometrically, we could treat the RGB values as the axes of an XYZ plot.  In such a fashion, each color could be placed in this arrangment in accordance with their X (red), Y (green), and Z (blue) coordinates.  Colors could then have their "distance" computed by seeing how far away they are from one another in this spatial arrangement.  In this way we would be computing the *hypotenuse* formed the 3 dimensional right triangle formed by the differences in color values.  The formula would look roughly like this
+If we think about this a bit more geometrically, we could treat the RGB values as the axes of an XYZ plot.  In such a fashion, each color could be placed in this arrangement in accordance with their X (red), Y (green), and Z (blue) coordinates.  Colors could then have their "distance" computed by seeing how far away they are from one another in this spatial arrangement.  In this way we would be computing the *hypotenuse* formed the 3 dimensional right triangle formed by the differences in color values.  The formula would look roughly like this
 
 "Color Hypotenuse Distance"=$\sqrt{(R^2 +G^2 + B^2 )}$
 
@@ -478,7 +478,7 @@ B="Blue Difference"=BlueVal1-BlueVal2
 
 This constitutes a good method we can systematically use to compute pixels' color distance from "Atlantic blue"!
 
-Lets impliment some code that does exactly this.  Next, we'll apply that code compute the color distance from the "Atlantic blue" value.  After that, we will then plot a histogram of these differences to get a sense of the distribution of color distances from "Atlantic blue" in the image.  Finally we'll also look at these distances mapped on to the original satellite image to get a sense of where these differences (and similarities) are occuring.
+Let's implement some code that does exactly this.  Next, we'll apply that code to compute the color distance from the "Atlantic blue" value.  After that, we will then plot a histogram of these differences to get a sense of the distribution of color distances from "Atlantic blue" in the image.  Finally we'll also look at these distances mapped on to the original satellite image to get a sense of where these differences (and similarities) are occuring.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -539,7 +539,7 @@ fig2.colorbar(heatPlot)
 
 ##  Visualizing color distances
 
-Above are the two plots that are generated by the preceeding code.  The first of these plots the distribution of color distances from "Atlantic blue" found in the satellite image.  Thus, in total, the various bars of this graph should collectively represent distance calculations from all 500 x 1000 = 500,000 pixels.  From this same histogram plot we can also see that there appear to be three or four partially overlapping "clusters":
+Above are the two plots that are generated by the preceding code.  The first of these plots the distribution of color distances from "Atlantic blue" found in the satellite image.  Thus, in total, the various bars of this graph should collectively represent distance calculations from all 500 x 1000 = 500,000 pixels.  From this same histogram plot we can also see that there appear to be three or four partially overlapping "clusters":
 
 -   0    to  ~75
 -  ~100  to  ~230
@@ -548,7 +548,7 @@ Above are the two plots that are generated by the preceeding code.  The first of
 
 These likely correspond to colors/environment-types that cover large portions of the Earth.  
 
-#### The big cluster, from 0 to 75 is the one we are intested in, and to see why we can look at the plot below the histogram.
+#### The big cluster, from 0 to 75 is the one we are interested in, and to see why we can look at the plot below the histogram.
 
 In the plot below the histogram we see a differently colored view of the satellite image.  Here, instead of visible light, we are plotting the numerical color distance from "Atlantic blue".  Referencing the colorbar to the right, we see that most of the ocean is less than 100 "distance units" from the "Atlantic blue" color.  
 
@@ -556,7 +556,7 @@ What if we selected only those pixels that were *less than* some specified dista
 
 #### What's the ideal distance from "Atlantic blue" to capture as many water pixels as possible and as few land pixels as possible?
 
-Below we'll establish a threshold value for selecting the pixels of interest.  Use the slider bar to move the threshold along the histogram.  Pixels that are *less than* the specified color distance from "Atlantic blue" will be displayed in **yellow**, while those that are *greater than* the specified color distance will be displayed in **blue-purple**.  Your goal is to select the ideal threshold value that best (and most selectively) finds water pixels.  There are multiple ways to manipulate the slider:  You can use your mouse directly, you can use the arrow keys of your keyboard, or you can enter a number directtly.
+Below we'll establish a threshold value for selecting the pixels of interest.  Use the slider bar to move the threshold along the histogram.  Pixels that are *less than* the specified color distance from "Atlantic blue" will be displayed in **yellow**, while those that are *greater than* the specified color distance will be displayed in **blue-purple**.  Your goal is to select the ideal threshold value that best (and most selectively) finds water pixels.  There are multiple ways to manipulate the slider:  You can use your mouse directly, you can use the arrow keys of your keyboard, or you can enter a number directly.
 
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import IntSlider
@@ -608,7 +608,7 @@ interact(value=50,updateCut, cutVal=cutVal)
 
 ## Making an ocean mask
 
-Above, you've used the slider bar to try and select a color distance value which isolates just the water pixels.  The histogram plot is the same as the one from the previous cell, however the red bar indicates where in the distribution your current threshold is.  The second plot is the "mask" that you've created, in which **yellow** pixels indicate all of those pixels whose color distance is **less** than the threshold value you've set and the **purple-blue** pixles indicate all of those pixels whose color distance is **greater** than the threshold value you've set.  In this way, the yellow pixels represent those pixels that you deem suffecently close to "Atlantic blue", while the purple-blue ones are deemed too far from "Atlantic blue" to plausably be considered water pixels.
+Above, you've used the slider bar to try and select a color distance value which isolates just the water pixels.  The histogram plot is the same as the one from the previous cell, however the red bar indicates where in the distribution your current threshold is.  The second plot is the "mask" that you've created, in which **yellow** pixels indicate all of those pixels whose color distance is **less** than the threshold value you've set and the **purple-blue** pixels indicate all of those pixels whose color distance is **greater** than the threshold value you've set.  In this way, the yellow pixels represent those pixels that you deem sufficiently close to "Atlantic blue", while the purple-blue ones are deemed too far from "Atlantic blue" to plausibly be considered water pixels.
 
 #### What is the ideal threshold value?
 
@@ -620,11 +620,11 @@ Additionally, as you move the threshold around (beyond what would be needed to m
 
 -    0    to  ~75    = water
 -   ~100  to  ~230   = grasslands, lighter forests
--   ~230  to  ~290   = mountians, darker forests, & deserts
+-   ~230  to  ~290   = mountains, darker forests, & deserts
 -   ~300  to  ~340   = ice
 
 #### A good guess as to the best threshold value
 
 A value between 63 and 80 seems to do well for selecting water, see which one you feel works best.
 
-In this lesson we practiced with the creation of a mask using a threshold value on our image.  In the next lesson, we'll try and compare the mask we generated to a preexisting mask of the planet's water.  What we'll learn is that before the comparison can even be made, a bit of adjustment needs to be made, in order to ensure correspondance between the two images.  This will prove to be a very important insight, as this process of ensuring correspondance between two images is central to digital investigations of brain anatomy.
+In this lesson we practiced with the creation of a mask using a threshold value on our image.  In the next lesson, we'll try and compare the mask we generated to a preexisting mask of the planet's water.  What we'll learn is that before the comparison can even be made, a bit of adjustment needs to be made, in order to ensure correspondence between the two images.  This will prove to be a very important insight, as this process of ensuring correspondence between two images is central to digital investigations of brain anatomy.

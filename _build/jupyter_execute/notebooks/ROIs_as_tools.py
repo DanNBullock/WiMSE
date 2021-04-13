@@ -1,14 +1,14 @@
 # ROIs as tools
 
-In our previous chapters on images and NiFTIs the elementary action of "masking" was discussed.  In essence, what we were doing there was selecting a subset of the object's elements based on the application of some quantative criteria.  In the digital 2-D image we used distance from a color, while in the brain NiFTI case we used whether or not a particular voxel corresponded to a given label in an associated parcellation.  Conceptually we're not doing anything that different in the case of tractograms and streamlines:  we want to subselect some finite number of the streamlines in a tractogram in accordance with an explicitly selected criterion.  So how do we do that?  We use a Region of Interest (ROI) (and a streamline's relation to it).  Lets consider ROIs a bit more closely.
+In our previous chapters on images and NiFTIs the elementary action of "masking" was discussed.  In essence, what we were doing there was selecting a subset of the object's elements based on the application of some quantitative criteria.  In the digital 2-D image we used distance from a color, while in the brain NiFTI case we used whether or not a particular voxel corresponded to a given label in an associated parcellation.  Conceptually we're not doing anything that different in the case of tractograms and streamlines:  we want to subselect some finite number of the streamlines in a tractogram in accordance with an explicitly selected criterion.  So how do we do that?  We use a Region of Interest (ROI) (and a streamline's relation to it).  Let's consider ROIs a bit more closely.
 
 ### What is an ROI?
 
-In practice, a Region of Interest can be stored in a number of ways, but the specifics of this are beyond the scope of our purpose.  What we want to know is "what is the fundamental characteristic of an ROI that makes it of use to us?".  At its heart, an ROI, in the context of streamline/tractogram segmentation, is a [point cloud](https://en.wikipedia.org/wiki/Point_cloud): a set of X, Y, and Z coordinates corresponding to points in the same relative coordinate space as your tractogram. Whereas the streamlines of a tractogram are an ordered sequence of coordinates, the coordinates of an ROI are not in any particular order.  Typically, they are used to define a particular volume of space and are sampled in a regular fashion, forming a 3-D lattice.  Often times these take the shape of a sphere or plane.  In a moment, we will begin by creating an example (and formatless) planar ROI. 
+In practice, a Region of Interest can be stored in a number of ways, but the specifics of this are beyond the scope of our purpose.  What we want to know is "what is the fundamental characteristic of an ROI that makes it of use to us?".  At its heart, an ROI, in the context of streamline/tractogram segmentation, is a [point cloud](https://en.wikipedia.org/wiki/Point_cloud): a set of X, Y, and Z coordinates corresponding to points in the same relative coordinate space as your tractogram. Whereas the streamlines of a tractogram are an ordered sequence of coordinates, the coordinates of an ROI are not in any particular order.  Typically, they are used to define a particular volume of space and are sampled in a regular fashion, forming a 3-D lattice.  Oftentimes these take the shape of a sphere or plane.  In a moment, we will begin by creating an example (and formatless) planar ROI. 
 
 ## ROIs in practice
 
-It is worth noting that the [ROI description provided above](#what_is_an_roi?) is quite general, and imposes only the most limited constraints on what an ROI could actually be.  For example, there is nothing precluding an investigator from creating a single point ROI, or at the other extreme, an ROI spanning the entire reference volume (i.e. the volume of space that the ROI is sub-selecting from).  In practice though, there are certian general categories of ROIs that tend to be used, due to the kinds of kinds of queries/applications they can be used for.  Lets consider a few of these now:
+It is worth noting that the [ROI description provided above](#what_is_an_roi?) is quite general, and imposes only the most limited constraints on what an ROI could actually be.  For example, there is nothing precluding an investigator from creating a single point ROI, or at the other extreme, an ROI spanning the entire reference volume (i.e. the volume of space that the ROI is sub-selecting from).  In practice though, there are certain general categories of ROIs that tend to be used, due to the kinds of queries/applications they can be used for.  Let's consider a few of these now:
 
 ### A planar ROI
 
@@ -17,7 +17,7 @@ A _full_ plane is a special case of a region of interest.  Specifically, it cons
 - 1. The coordinate of interest
 - 2. The dimension of interest
 
-Lets interact with an example at **-20** in the **X** plane.  Note the use of _WMA_pyFuncs.makePlanarROI_ with these inputs to generate the desired ROI.  As you move the X slider (labeled _xCoord_) throught the X dimension, notice that the entire saggital image changes color, indicating the presence of the ROI/mask. 
+Lets interact with an example at **-20** in the **X** plane.  Note the use of _WMA_pyFuncs.makePlanarROI_ with these inputs to generate the desired ROI.  As you move the X slider (labeled _xCoord_) through the X dimension, notice that the entire sagittal image changes color, indicating the presence of the ROI/mask. 
 
 #this code ensures that we can navigate the WiMSE repo across multiple systems
 import subprocess
@@ -114,7 +114,7 @@ interact(rotateAndPlotWrapper, \
 
 ### A spherical ROI
  
-The construction of a spherical ROI proceeds in much the same was as a planar roi, except the point cloud lattice now extends in 3 dimensions.  There are two important characteristics for a spherical ROI which can, in essence, sum up (or be used to generate) the sphere.
+The construction of a spherical ROI proceeds in much the same way as a planar roi, except the point cloud lattice now extends in 3 dimensions.  There are two important characteristics for a spherical ROI which can, in essence, sum up (or be used to generate) the sphere.
 
 - 1.  The center coordinate
 - 2.  The radius
@@ -175,16 +175,16 @@ interact(rotateAndPlotWrapper, \
 
 ### An anatomically defined ROI
 
-Finally, and certianly not lastly, we can generate ROIs by using pre-existing anatomical atlases.  We only need provide the following:
+Finally, and certainly not lastly, we can generate ROIs by using pre-existing anatomical atlases.  We only need provide the following:
 
 - A reference anatomical atlas/parcellation (volumetric)
 - An indicator of which label we would like extracted (typically a name or an integer)
 
 This turns out to be an extremely useful capability which we will explore in subsequent chapters.  Below you'll be able to select the anatomically related ROI and view its location in the brain.
 
-Remember back to the example of a multi object map from when we were considering 2 dimensional satellite images (chapter "Multi object maps in images").  This is, in essence, the same sort of masking operation, except that (1) we're now doing it in 3 dimensions and (2) we are no longer having to use color-distance as a proxy as the labeled entires are provided directly to is un the form of integer labels (see chapter "How to interpret a volumetric brain segmentation" for a review)
+Remember back to the example of a multi object map from when we were considering 2 dimensional satellite images (chapter "Multi object maps in images").  This is, in essence, the same sort of masking operation, except that (1) we're now doing it in 3 dimensions and (2) we are no longer having to use color-distance as a proxy as the labeled entries are provided directly to us in the form of integer labels (see chapter "How to interpret a volumetric brain segmentation" for a review)
 
-Note:  Its possible to modify anatomically defined ROIs in the same fashion as we modified planar and spherical ROIs previously.  We'll save that for a more advanced lesson though.
+Note:  It's possible to modify anatomically defined ROIs in the same fashion as we modified planar and spherical ROIs previously.  We'll save that for a more advanced lesson though.
 
 #establish path to t1
 atlasPath=os.path.join(gitRepoPath,'exampleData','parc.nii.gz')
@@ -228,6 +228,3 @@ interact(rotateAndPlotWrapper, \
     xCoord=IntSlider(min=np.min(convertedBoundCoords[:,0].astype(int)), max=np.max(convertedBoundCoords[:,0].astype(int)), step=1,continuous_update=False),  \
     yCoord=IntSlider(min=np.min(convertedBoundCoords[:,1].astype(int)), max=np.max(convertedBoundCoords[:,1].astype(int)), step=1,continuous_update=False), \
     zCoord=IntSlider(min=np.min(convertedBoundCoords[:,2].astype(int)), max=np.max(convertedBoundCoords[:,2].astype(int)), step=1,continuous_update=False))
-
-
-
