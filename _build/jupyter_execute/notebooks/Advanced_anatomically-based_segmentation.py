@@ -4,7 +4,7 @@ Now that we have established how to use ROIs and anatomical information _indepen
 
 ## The first step: extracting a given ROI
 
-Below, we'll demonstrate essentially the same widget and capability as we observed in the "ROIs_as_tools" chapter.  This will allow you to familiarize yourself with the various anatomical labels featured in the DK2009 atlas and their locations in the example brain.
+Below, we'll demonstrate essentially the same widget and capability as we observed in the "ROIs_as_tools" chapter.  This will allow you to familiarize yourself with the various anatomical labels featured in the [DK2009 atlas](https://doi.org/10.1016/j.neuroimage.2010.06.010) and their locations in the example brain.
 
 #this code ensures that we can navigate the WiMSE repo across multiple systems
 import subprocess
@@ -14,10 +14,13 @@ import os
 #the notebook was launched from within the repo directory
 gitRepoPath=subprocess.check_output(['git', 'rev-parse', '--show-toplevel']).decode('ascii').strip()
 
-#move to the top of the directory
-os.chdir(gitRepoPath)
+#establish path to the wma_tools repo
+wma_toolsDirPath=os.path.join(gitRepoPath,'wma_pyTools')   
 
-import wma_pyTools.WMA_pyFuncs
+#change to the wma_tools path, load the function set, then change back to the top directory
+os.chdir(wma_toolsDirPath)
+import WMA_pyFuncs
+os.chdir(gitRepoPath)
 
 import nibabel as nib
 import numpy as np
@@ -86,9 +89,9 @@ interact(rotateAndPlotWrapper, \
 
 In previous chapters you may have noticed that we often selected locations for our ROIs (in particular planar ROIs) by referring to nearby, reference anatomical structures.  Despite this, even though we were choosing where to planar the planar ROIs in relation to these structures, we were nonetheless manually entering coordinates (based on trial and error or our best guesses).  This is less than ideal for several reasons.
 
-First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the [anterior commisure](https://en.wikipedia.org/wiki/Anterior_commissure).  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, [MNI coordinates](https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates) are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error on top of all the many other sources of error in this field.  This hints at a second trouble as well.
+First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the [anterior commisure](https://en.wikipedia.org/wiki/Anterior_commissure).  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, [MNI coordinates](https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates) are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error (due to the requisite translations to or from this spatial standard) on top of all the many other sources of error in this field.  This hints at a second trouble as well.
 
-If we're going to leave other investigators to their own devices on how to implement an interpretation of the relative anatomical description, then we have compounded the number of opportunities for "noise" to be added to our segmentation specification.  In doing so we make our segmentation less reliable overall.  But what if we didn't have to do this?  What if, instead, we were able to _directly_ use those anatomical structures to define our regions of interest?  How could we do that?
+If we're going to leave other investigators to their own devices on how to implement an interpretation of the relative anatomical description of a tract, then we have compounded the number of opportunities for "noise" to be added to our segmentation specification.  In doing so we make our segmentation less reliable overall.  But what if we didn't have to do this?  What if, instead, we were able to _directly_ use those anatomical structures to define our regions of interest?  How could we do that?
 
 Lets try that.  Below, you'll be able to select a anatomical structure **and** which of its borders to use to generate a planar ROI.  Of particular note should be the potential utility of subcortical structures in providing planar ROIs for our future white matter segmentations.
 

@@ -1,14 +1,16 @@
 # _Using_ ROIs as tools
 
-In the previous chapter ("ROIs as tools") we considered ROIs as tools _independent of any specific application_ .  This gave us a feel for both their characteristics as data objects (and how they are generated/formed) _as well as_ the manner in which they represent particular volumes of space in the brain.  Establishing this conceptual link and how to leverage ROI tools in concert with our knowledge of brain anatomy is _essential_ to performing advanced, automated, and high-quality white matter anatomy segmentations
+In the previous chapter ("ROIs as tools") we considered ROIs as potential tools _independent of any specific application_ .  This gave us a feel for both their characteristics as data objects (and how they are generated/formed) _as well as_ the manner in which they represent particular volumes of space in the brain.  Taking the additional steps of establishing this conceptual link and how to leverage ROI tools in concert with our knowledge of brain anatomy is _essential_ to performing advanced, automated, and high-quality white matter anatomy segmentations
 
-Thus, having established **what** an ROI is let's begin to take a look at how to use them.  We'll begin with perhaps the most common form of an ROI, a planar ROI.
+Thus, having established **what** an ROI is, let's begin to take a look at how to use them.  We'll begin with perhaps the most common form of an ROI, a planar ROI.
 
 ## A first pass use of an ROI in a segmentation
 
 In the previous chapter ("ROIs as tools") we initially generated (planar) ROIs by arbitrarily selecting a dimension and a coordinate.  For a first pass demonstration of using an ROI to sub-select streamlines we can adopt the same strategy.
 
-In the interactive visualization below you will be able to select a coordinate, dimension _and_ an instruction as to whether you would like to **include** or **exclude** streamlines that pass through the plane you have created.  **Be warned**:  if you select a criteria that is particularly generous (in that it sub-selects many streamlines) the selection and/or visualization process may take a moment to execute.  Given that a single exclusion criteria can only be so effective, this is more likely to be an issue using **exclude** than **include**.
+In the interactive visualization below you will be able to select a coordinate, dimension _and_ an instruction as to whether you would like to **include** or **exclude** streamlines that pass through the plane you have created.  
+
+**Be warned**:  if you select a criteria that is _particularly_ generous (in that it sub-selects many streamlines, as would likely happen with an axial/transverse plane) the selection and/or visualization process may take a moment to execute.  Given that a single exclusion criteria can only be so effective, this is more likely to be an issue using **exclude** than **include**.
 
 The next three code cells are divided in such a way as to facilitate ease of use.  They are:
 
@@ -54,15 +56,11 @@ t1DimBounds=WMA_pyFuncs.returnMaskBoundingBoxVoxelIndexes(fullMask)
 #convert the coords to subject space in order set max min values for interactive visualization
 convertedBoundCoords=nib.affines.apply_affine(t1img.affine,t1DimBounds)
 
-
 smallTractogramPath=os.path.join(gitRepoPath,'exampleData','smallTractogram.tck')
 streamsObjIN=nib.streamlines.load(smallTractogramPath)
 
 #get tractogram from the Tck holder
 sourceTractogram=streamsObjIN.tractogram
-
-
-
 
 #ROI definition cell: defines the ROI for later use
 
@@ -145,9 +143,7 @@ def plotSegmentedStreamsWidget(subTractogram):
          'box': {'visible': True}}
     #plot it
     sw.plot(display_fraction=1, width=1000, height=1000, style=style, percentile=0)
-    #sw.plot(display_fraction=1, width=1000, height=1000, percentile=0)
-    
-
+    #sw.plot(display_fraction=1, width=1000, height=1000, percentile=0 
     
 def updateFunction(instruction):
     import numpy as np
@@ -170,9 +166,6 @@ def updateFunction(instruction):
     #curFig=ipyv.pylab.gcf()
     #ipyv.pylab.view(distance=100)
     
-
-        
-    
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import Dropdown
 from ipywidgets import IntSlider
@@ -187,7 +180,7 @@ interact(updateFunction, \
 
 ### Considering the output of a single planar ROI
 
-As you might be able to tell, the use of a single planar ROI does not return a coherent segmentation.  Indeed, typically most segmentations require a number of criteria in order to return a coherent anatomical structure (i.e. a white matter tract).  Furthermore, even when performing a multi criteria segmentation, it turns out that a _full_ planar ROI is still too coarse (particularly when used as an _inclusion_ criteria--as an exclusion criteria, it can suffice just fine).  In effect (though not quite, as will be discussed later), all that one is doing with a full planar ROI is indexing _all_ streamlines which traverse the specified coordinate.  This is not a very delicate operation.  In the next section we'll consider how to use partial planar ROIs (as we were introduced to in the previous chapter) and see how much more useful they can be.
+As you might be able to tell, the use of a single planar ROI does not tend return a coherent segmentation.  Indeed, typically most segmentations require a number of criteria in order to return a coherent anatomical structure (i.e. a white matter tract).  Furthermore, even when performing a multi-criteria segmentation, it turns out that a _full_ planar ROI is often still too coarse (particularly when used as an _inclusion_ criteria--as an exclusion criteria, it can suffice just fine).  In effect (though not quite, as will be discussed later), all that one is doing with a full planar ROI is indexing _all_ streamlines which traverse the specified coordinate.  This is not a very delicate operation.  In the next section we'll consider how to use _partial_ planar ROIs (as we were introduced to in the previous chapter) and see how much more useful they can be.
 
 ## A modified planar ROI
 
@@ -205,9 +198,9 @@ Indeed, this is a more complicated action than the creation of a simple planar R
 - 2.  Attempting to request coordinates that are outside of the dimension's bounds.
 - 3.  Attempting to keep a portion of a plane that does not have a sensible interpretation with respect to the source plane (i.e. trying to keep the "anterior" portion of a cut Y plane)
 
-The code below attempts to return informative feedback when malform requests have been made, but it is likely still possible to create such requests which will not return informative feedback.
+The code below attempts to return informative feedback when malformed requests have been made, but it is likely still possible to create such requests which will not return informative feedback.
 
-For an informative demo, try and segment the streamlines passing superior to the corpus callosum.  This means setting the following parameters:
+For an _informative_ demo, try and segment the streamlines passing superior to the corpus callosum.  This means setting the following parameters:
 
 - 1.  planeCoord=-26
 - 2.  dimension=y
@@ -260,11 +253,11 @@ from ipywidgets import IntSlider
 dimList=list(['x','y','z'])
 portionList=list(['posterior','anterior','caudal','rostral', 'medial','lateral','left', 'right','inferior','superior'])
 
-dimension=Dropdown(options=dimList, description="dimension for initial plane")
-planeCoord=IntSlider(min=np.min(convertedBoundCoords.astype(int)), max=np.max(convertedBoundCoords.astype(int)), step=1,continuous_update=False)
-cutDim=Dropdown(options=dimList, description="dimension for cut plane")
-cutCoord=IntSlider(min=np.min(convertedBoundCoords.astype(int)), max=np.max(convertedBoundCoords.astype(int)), step=1,continuous_update=False)
-keepPortion=Dropdown(options=portionList, description="portion of initial plane to keep")   
+dimension=Dropdown(options=dimList, value=dimList[1], description="dimension for initial plane")
+planeCoord=IntSlider(value=-26,min=np.min(convertedBoundCoords.astype(int)), max=np.max(convertedBoundCoords.astype(int)), step=1,continuous_update=False)
+cutDim=Dropdown(options=dimList, value=dimList[2],description="dimension for cut plane")
+cutCoord=IntSlider(value=24,min=np.min(convertedBoundCoords.astype(int)), max=np.max(convertedBoundCoords.astype(int)), step=1,continuous_update=False)
+keepPortion=Dropdown(options=portionList,value=portionList[9], description="portion of initial plane to keep")   
 
 interact(genAndViewPlanarROI, \
     dimension=dimension, \
@@ -322,8 +315,6 @@ def plotSegmentedStreamsWidget(subTractogram):
     sw.plot(display_fraction=1, width=1000, height=1000, style=style, percentile=0)
     #sw.plot(display_fraction=1, width=1000, height=1000, percentile=0)
     
-
-    
 def updateFunction(instruction):
     import numpy as np
     import matplotlib.pyplot as plt  
@@ -344,9 +335,6 @@ def updateFunction(instruction):
     
     #curFig=ipyv.pylab.gcf()
     #ipyv.pylab.view(distance=100)
-    
-
-        
     
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import Dropdown
@@ -402,9 +390,9 @@ from ipywidgets import IntSlider
 #    sphereXCoord.max=np.max(convertedBoundCoords[:,0]).astype(int)+sphereRadius
 #    https://ipywidgets.readthedocs.io/en/latest/examples/Using%20Interact.html#Arguments-that-are-dependent-on-each-other
 
-sphereRadius=IntSlider(min=1, max=30, step=1,continuous_update=False,description="sphere radius")
+sphereRadius=IntSlider(min=1, max=30, value=5,step=1,continuous_update=False,description="sphere radius")
 sphereXCoord=IntSlider(min=np.min(convertedBoundCoords[:,0]).astype(int), max=np.max(convertedBoundCoords[:,0]).astype(int), step=1,continuous_update=False,description="sphere X coordinate")
-sphereYCoord=IntSlider(min=np.min(convertedBoundCoords[:,1]).astype(int), max=np.max(convertedBoundCoords[:,1]).astype(int), step=1,continuous_update=False,description="sphere Y coordinate")
+sphereYCoord=IntSlider(value=25,min=np.min(convertedBoundCoords[:,1]).astype(int), max=np.max(convertedBoundCoords[:,1]).astype(int), step=1,continuous_update=False,description="sphere Y coordinate")
 sphereZCoord=IntSlider(min=np.min(convertedBoundCoords[:,2]).astype(int), max=np.max(convertedBoundCoords[:,2]).astype(int), step=1,continuous_update=False,description="sphere Z coordinate")
 
 interact(genAndViewSphereROI, \
@@ -477,26 +465,30 @@ The output of a sphere-based segmentation (and its sensibility/interpretability)
 
 #### How generous is a sphere?
 
-Although a planar ROI spans an entire dimension, and thus manifests as a point cloud with tens of thousands of coordinates (~182^2=33124 in the case of a Y plane ROI using the current T1 image as a reference), only a fraction of those coordinates overlap with voxels that could validly carry streamlines.  As an illustration of this we can note that a Y plane at coordinate value 32 would overlap with about 3320 valid voxels, which would be comparable to a spherical ROI with a with radius of about 9.3 mm (though, as should be clear by this point, when operating with NiFTI based ROIs we are exclusively working with integer based values).  The true difference between these two methods becomes more stark when we consider what the application of a single criteria of either kind essentially translates to for human users.
+Although a planar ROI spans an entire dimension, and thus manifests as a point cloud with tens of thousands of coordinates (~182^2=33124 in the case of a Y plane ROI using the current T1 image as a reference), only a fraction of those coordinates overlap with voxels that could validly carry streamlines.  As an illustration of this we can note that a Y plane at coordinate value 32 would overlap with about 3320 **valid** voxels, which would be comparable to a spherical ROI with a with radius of about 9.3 mm (though, as should be clear by this point, when operating with NiFTI based ROIs we are exclusively working with integer based values).  The true difference between these two methods becomes more stark when we consider what the application of a single criteria of either kind essentially translates to for typical users.
 
 ### What are we doing when we segment with a sphere or a plane?
 
-In either the spherical or planar case, when we use an ROI as an _inclusion_ criteria to segment streamlines we are **essentially\*** asking if any streamlines traverse the volumes that correspond to those ROIs.  When we use an ROI as an _exclusion_ criteria we are essentially (and, in fact, [actually](https://github.com/DanNBullock/wma_pyTools/blob/eedc973f8810d9f449b704c1e1d45bb05ab3902c/WMA_pyFuncs.py#L715)) just negating this output.  Regardless, in the case of the planar ROI this basically* boils down to whether or not the streamline crosses the plane in question.  The use of a spherical ROI is a bit more complicated though, in that it essentially segments any streamline that comes within the specified radius value of the centroid point.  Thus, in a manner of speaking, a spherical ROI is better thought of as indicating an extremely specific point in the brain (the specified centroid value) _and_ an associated value (in the form of the radius) relating to uncertainty or variability--a tolerance of sort.  For example, if you were relatively certain about the route traversed by your track of interest you might provide a particularly conservative value.  On the other end of the spectrum, if you were less sure, you could provide a more generous value, and then attempt to further constrain your streamlines by the application of additional segmentation criteria.
+In either the spherical or planar ROI case, when we use an ROI as an _inclusion_ criteria to segment streamlines we are **essentially\*** asking if any streamlines traverse the volumes that correspond to those ROIs.  When we use an ROI as an _exclusion_ criteria we are essentially (and, in fact, [actually](https://github.com/DanNBullock/wma_pyTools/blob/eedc973f8810d9f449b704c1e1d45bb05ab3902c/WMA_pyFuncs.py#L715)) just negating this output.  Regardless, in the case of the planar ROI this basically* boils down to whether or not the streamline crosses the plane in question.  The use of a spherical ROI is a bit more complicated though, in that it essentially selects any streamline that comes within the specified radius value of the centroid point.  Thus, in a manner of speaking, a spherical ROI is better thought of as indicating an extremely specific point in the brain (the specified centroid value) _and_ an associated value (in the form of the radius) relating to uncertainty or variability--a tolerance of sort.  For example, if you were relatively certain about the route traversed by your track of interest you might provide a particularly conservative value.  On the other end of the spectrum, if you were less sure, you could provide a more generous value, and then attempt to further constrain your streamlines by the application of additional segmentation criteria.
 
 ## Practical notes on ROI use (up to this point)
 
 Thus far, the usage cases of ROIs for segmentation have necessarily relied on the user to specify a coordinate.  As such the manner in which we have defined and used ROIs for segmentation is decidedly "manual".  If our goal is to develop reliable, high-quality (and possibly automatable) segmentations, then we'll need to do better.  Manual segmentation is still a viable approach, and one which is often applied in medical settings (when performed by experts).  Typically such individuals place their planar and spherical ROIs by referring to an anatomical scan (i.e. a T1) and selecting their coordinates based on positions relative to landmark structures.  Indeed this insight will prove to be central as we develop our anatomically-based segmentaton abilities in later chapters.
 
-Before we move on to anatomically-based segmentations, we need to make note of some general concerns that apply to segmentations generally.
+Before we move on to anatomically-based segmentations though, we need to make note of some general concerns that apply to segmentations generally.
 
 ## Those pesky asterisks 
 
-Earlier in this chapter, you may have noticed that several asterisks were used to qualify what was actually going on when a segmentation criteria was applied.  The notion of "traversal" and "intersection" was appealed to, but we never really provided details as to what sort of mathematical operation was being performed when we applied a segmentation criterion. In essence: we do this by determining, for each streamline, if **any** coordinate from the streamline is within some distance threshold (i.e. .5 mm) of any coordinate of the ROI.  In practice, this ends up being moderately computationally expensive.  Why?  Because, for each coordinate of the streamline, our intersection algorithm has to compute the distance between that coordinate, and each coordinate of the ROI (which equals [number of streamline nodes] * [number of ROI coordinates] computations). Indeed, one of the algorithmic speed-ups we use is [only considering streamlines that have **any** nodes within the ROI bounds](https://github.com/DanNBullock/wma_pyTools/blob/eedc973f8810d9f449b704c1e1d45bb05ab3902c/WMA_pyFuncs.py#L656) and, among those streamlines, [only those nodes that fall within the ROI bounds](https://github.com/DanNBullock/wma_pyTools/blob/eedc973f8810d9f449b704c1e1d45bb05ab3902c/WMA_pyFuncs.py#L704).  Given that we're having to compute the distances between all coordinates in an ROI and all nodes in streamline, it might seem like we should sample either of these a bit more sparsely.  That would be a bad idea insofar as segmentation is concerned.  To see why, let's consider two important caveats about how segmentation is performed. 
+Earlier in this chapter, you may have noticed that an asterisk was used to qualify what was _actually_ going on when a segmentation criteria was applied.  The notion of "traversal" and "intersection" was appealed to, but we never _really_ provided details as to what sort of mathematical operation was being performed when we applied a segmentation criterion.
+
+In essence: we do this by determining, for each streamline, if **any** coordinate from the streamline is within some distance threshold (i.e. .5 mm) of any coordinate of the ROI.  In practice, this ends up being moderately computationally expensive.  Why?  Because, for each coordinate of the streamline, our intersection algorithm has to compute the distance between that coordinate, and each coordinate of the ROI (which equals [number of streamline nodes] * [number of ROI coordinates] computations). Indeed, one of the algorithmic speed-ups we use is [only considering streamlines that have **any** nodes within the ROI bounds](https://github.com/DanNBullock/wma_pyTools/blob/eedc973f8810d9f449b704c1e1d45bb05ab3902c/WMA_pyFuncs.py#L656) and, among those streamlines, [only those nodes that fall within the ROI bounds](https://github.com/DanNBullock/wma_pyTools/blob/eedc973f8810d9f449b704c1e1d45bb05ab3902c/WMA_pyFuncs.py#L704).  Given that we're having to compute the distances between all coordinates in an ROI and all nodes in streamline, it might seem like we should sample either of these a bit more sparsely.  That would be a bad idea insofar as segmentation is concerned.  To see why, let's consider two important caveats about how segmentation is performed. 
 
 ### Segmentation caveat 1 - the tolerance distance
+
 A careful and attentive reader of the preceding paragraph will note that the mathematical operation we described doesn't actually directly map on to the notion of "traversal".  Indeed, as it turns out there are certain circumstances where the operation would return a true (i.e. "this streamline meets the specified criteria") for a given streamline even though the streamline didn't actually "intersect" or "traverse" the ROI.  How?  Imagine that we had a planar ROI and a streamline that traveled perfectly perpendicular with it, such that it got to within the threshold distance of the planar ROI _but never actually crossed it_.  Indeed, the streamline doesn't even need to travel alongside the planar ROI the entire time--it could just move to within the threshold distance, and then move away again (so long as at least one node meets this criteria).  In either case the algorithm we just described would still return a True for that streamline.  But this isn't the only problem.
 
 ### Segmentation caveat 2 - not all streamlines are created (or stored) equal
-In addition to the aforementioned possibility, it's also possible that this algorithm (which is, in essence, the one that is typically used in segmentation) might **fail to detect** a streamline that we would consider to be intersecting with the ROI.  How?  If we think back to our previous discussion of step-sizes between streamline nodes, we realize that it's possible for there to actually be fairly sizable amounts of distance between nodes, particularly if the streamlines have been ["compressed"](https://dipy.org/documentation/1.0.0./examples_built/streamline_length/).  If the inter-node distance is enough to where the streamline "traverses" the ROI (i.e. there are nodes on either side of the ROI), but no individual node is within the distance threshold, then the algorithm will fail to detect this intersection.  For example, if the nearest nodes on either side of a planar ROI are 2 mm from the plane, but the threshold distance is .5, the "intersection" will go unnoticed.  This is particularly an issue with planar ROIs, but less so with fuller, volumetric ROIS (e.g. spheres).  
+
+In addition to the aforementioned possibility, it's also possible that this algorithm (which is, in essence, the one that is typically used in segmentation) might **fail to detect** a streamline that we would consider to be intersecting with the ROI.  How?  If we think back to our previous discussion of step-sizes between streamline nodes, we realize that it's possible for there to actually be fairly sizable amounts of distance between nodes, particularly if the streamlines have been ["compressed"](https://dipy.org/documentation/1.0.0./examples_built/streamline_length/).  If the inter-node distance is enough to where the streamline "traverses" the ROI (i.e. there are nodes on either side of the ROI), but no individual node is within the distance threshold, then the algorithm will fail to detect this intersection.  For example, if the nearest nodes on either side of a planar ROI are 2 mm from the plane, but the threshold distance is .5, the "intersection" will go unnoticed.  This is particularly an issue with planar ROIs, but less so with fuller, volumetric ROIS (e.g. spheres).  This issue has been investigated by other researchers as well ([Rheault, F., Houde, J. C., & Descoteaux, M., 2017](https://doi.org/10.3389/fninf.2017.00042), [Presseau, C., Jodoin, P. M., Houde, J. C., & Descoteaux, M., 2015](https://doi.org/10.1016/j.neuroimage.2014.12.058))
 
 For the moment, there's really nothing we can do about these possibilities.  In the first case, we may not be too worried about it, since .5 is pretty close, and we'd probably be comfortable calling that an intersection.  In the latter case, we're probably not comfortable with that outcome, but we can safeguard against it by ensuring that our streamlines are sampled at a rate that takes into account the threshold distance of our intersection algorithm.  Regardless, having made note of these issues, we can move on to anatomically based segmentations.

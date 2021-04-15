@@ -1,6 +1,6 @@
 # Aligning two images
 
-In the previous chapter we developed an algorithm for computing the distance between colors, and used this to apply a threshold to our image, thereby developing a "mask" of water on the surface of the earth.  But what if we wanted to compare our mask to another image, for example, to a mask someone else developed?  In such a case we would need to ensure that our two images overlapped appropriately.  Lets try and accomplish that in this lesson.
+In the previous chapter we developed an [algorithm](https://en.wikipedia.org/wiki/Algorithm) for [computing the distance between colors](https://en.wikipedia.org/wiki/Color_difference), and used this to apply a threshold to our image, thereby developing a "mask" of water on the surface of the Earth.  But what if we wanted to compare our mask to another image, for example, to a mask someone else developed?  In such a case we would need to ensure that our two images overlapped appropriately. Lets try and accomplish that in this lesson, using a very simple example of an [affine transform](https://en.wikipedia.org/wiki/Affine_transformation).
 
 We'll begin by replicating the mask you made in the previous lesson.  Either try and recall the value you used previously, or interact with the image in order to develop a new one.
 
@@ -140,6 +140,7 @@ interact(updateCut, cutVal=cutVal)
 
 Now, let's take a look at [a map that was generated *specifically* for the purpose of demarcating land and water](https://commons.wikimedia.org/wiki/File:World_map_blank_without_borders.svg).  We'll also print out some information about the image, like its dimensions and color properties.
 
+#file pathing and image information
 grayscaleMapPath=os.path.join(gitRepoPath,'images',grayscaleMapName) 
 grayscaleMap= Image.open(grayscaleMapPath)
 print(grayscaleMap.format,grayscaleMap.size , grayscaleMap.mode)
@@ -149,7 +150,7 @@ grayscaleMapDim=grayscaleMap.size
 
 #quick computation to obtain native aspect ratio approximation relative to preeceding image's 2:1
 grayscaleMapApsectRatio=grayscaleMapDim[0]/grayscaleMapDim[1]
-print('Ratio of width to height')
+print('Ratio of width to height (aspect ratio)')
 print(grayscaleMapApsectRatio)
 print('')
 
@@ -161,7 +162,7 @@ fig.set_size_inches(15, grayscaleMapApsectRatio*15)
 
 From the above output plot we can note that it's simply a binary grayscale output, with white indicating water and grey indicating land.  Although the data is stored in a RGBA format (and thus leverages data across **4** different color channels) really, this same output could be accomplished using a single, 2d array as there are only two different colors being displayed.  In fact, in order to compare this to the result we generated, we'll have to convert it into a binary mask (a data array that contains only 1s and 0s, indicating true and false values respectively).  As such the 4 channels ultimately don't matter that much in this image.
 
-However, it also seems that the dimensions and aspect ratio of this image are different than the first image.  Although this is still a map depicting the world, we can now notice that the axes are about 4 times larger than the previous image.  This means that each pixel of this map is representing about 1/16th as much  surface area as the previous image.  Even if we were to simply shrink the image, we would still have a problem overlaying it with the first image due to the discrepancy in aspect ratio. As such, if we are to successfully overlay the images on to one another in order to compare them, we will have to resize the figure so that it is of the same dimensions and aspect ratio as our generated mask.
+However, it also seems that the dimensions and [aspect ratio](https://en.wikipedia.org/wiki/Aspect_ratio_(image)) of this image are different than the first image.  Although this is still a map depicting the world, we can now notice that the axes are about 4 times larger than the previous image.  This means that each pixel of this map is representing about 1/16th as much surface area as the previous image.  Even if we were to simply shrink the image, we would still have a problem overlaying it with the first image due to the discrepancy in aspect ratio. As such, if we are to successfully overlay the images on to one another in order to compare them, we will have to [resize](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.resize) the figure so that it is of the same dimensions and aspect ratio as our generated mask.
 
 Let's do that now.
 
@@ -175,9 +176,9 @@ imshow(np.asarray(grayscaleResizedData))
 fig = plt.gcf()
 fig.set_size_inches(15, 30)
 
-Note that the axes are now the same as the previous satellite image. Now that we have it resized, lets convert it to a 2D mask like we did previously.  This time though, we don't need to apply a specific threshold because there are only really two values in the image: gray and white. 
+Note that the axes are now the same as the previous satellite image. Now that we have it resized, lets convert it to a 2-D mask like we did previously.  This time though, we don't need to apply a specific threshold because there are only really two values in the image: gray and white. 
 
-Lets plot this output in the same fashion we did the mask we obatined from the satellite.
+Let's plot this output in the same fashion we did the mask we obatined from the satellite.
 
 #create binarized, a simple sum will give us the output we seek,
 # as there are only two distinct color values in the plot
@@ -209,7 +210,7 @@ fig.set_size_inches(15, 30)
 
 #### What's with this pattern we are observing above?  How would you explain this apparent "shadowing" issue?
 
-It appears that the two images are not aligned properly.  Although their resolutions are the same (500 x 1000), this does not appear to be sufficient to guarantee that they are showing the same exact areas in the same exact pixels.  Given that this is a sphere we could imagine that this is because the "unfolded" map is rotated to the left or right a bit, or maybe shifted up or down.  One way to think about this is that the 0,0 point of the two maps, corresponding to the intersection of the equator and the prime meridian, are not aligned.  Let's move these maps around and see if we can adjust them into alignment by moving one of the two images. 
+It appears that the two images are not aligned properly.  Although their resolutions are the same (500 x 1000), this does not appear to be sufficient to guarantee that they are showing the same exact areas in the same exact pixels.  Given that the world is a [spheroid](https://en.wikipedia.org/wiki/Spheroid) we could imagine that this is because the ["unfolded" map](https://en.wikipedia.org/wiki/Cylindrical_equal-area_projection) is rotated to the left or right a bit, or maybe shifted up or down.  One way to think about this is that the [0,0 point](https://en.wikipedia.org/wiki/Null_Island) of the two maps, corresponding to the intersection of the [equator](https://en.wikipedia.org/wiki/Equator) and the [prime meridian](https://en.wikipedia.org/wiki/Prime_meridian), are not aligned.  Let's move these maps around and see if we can adjust them into alignment by moving one of the two images. 
 
 Your goal in the next interactive section will be to maximize the amount of yellow (agreement) being shown in the image below.  You should attempt to maximize the amount of the pie chart indicating agreement, and minimize the amount of the pie chart indicating disagreement.
 
@@ -217,7 +218,7 @@ Your goal in the next interactive section will be to maximize the amount of yell
 
 The xOffset slider will move the mask that you generated earlier left or right (on top of the land mask that was provided), the yOffset will move your mask up or down. 
 
-Remember:  There are multiple ways to manipulate the slider.  You can use your mouse directly, you can use the arrow keys of your keyboard, or you can enter a number directly
+Remember:  There are multiple ways to manipulate the slider.  You can use your mouse directly, you can use the arrow keys of your keyboard, or you can enter a number directly.
 
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import IntSlider
@@ -254,9 +255,8 @@ It seems that the lowest mismatch percentage you can get is around 17%, which oc
 
 One major source of discrepancy is the fact that sea ice is not the color of water, but is not included in the purpose-made land mask we obtained either.  Hence our algorithm considers it "land" (because it is not the color of water), even though the gray colored mask (the provided mask) is specific to land (which ice does not count as).
 
-Finally, one final source is likely that the two maps, even if they were to have their equator and prime meridian lined up, may not be warped (reshaped from a surface that covers a sphere) in exactly the same way.  Theoretically we could attempt to apply a **nonlinear warp** (we'll come back to this concept in later lessons) to try and align the two images, but this would be beyond the scope of this introduction to digital image representations and masks.
+Finally, one final source is likely that the two maps, even if they were to have their equator and prime meridian lined up, may not be [warped](https://en.wikipedia.org/wiki/Map_projection) (reshaped from a surface that covers a sphere) in exactly the same way.  Theoretically we could attempt to apply a **nonlinear warp**--see [Ashburn and Friston, 1999](https://doi.org/10.1002/(SICI)1097-0193(1999)7:4%3C254::AID-HBM4%3E3.0.CO;2-G) or [Toga, 1999](https://doi.org/10.1016/B978-0-12-692535-7.X5074-5) for more--to try and align the two images, but this would be beyond the scope of this introduction to digital image representations and masks.
 
 #### How this relates to neuroimaging
 
-
-In the next lesson we will see a more complex version of a mask, one which is not binary, but instead features multiple different categories.  That is, instead of just trying to label one thing (i.e. "water") we will try and use the same general approach to label multiple things.  This capability is something that is used in neuroimaging quite frequently.  For example, we often wish to label particular parts of a neuroimaging scan as being some specific part of the brain (e.g. "frontal lobe", "angular gyrus", or "thalamus" etc.).  We'll explore this possibility in 2D with another map in the next lesson.  In later lessons we'll explicitly look at these "multi category masks" (i.e. **parcellations**) in brains.
+In the next lesson we will see a more complex version of a mask, one which is not binary, but instead features multiple different categories.  That is, instead of just trying to label one thing (i.e. "water" vs "not water") we will try and use the same general approach to label multiple things.  This capability is something that is used in neuroimaging quite frequently.  For example, we often wish to label particular parts of a neuroimaging scan as being some specific part of the brain (e.g. "frontal lobe", "angular gyrus", or "thalamus" etc.).  We'll explore this possibility in 2-D with another map in the next lesson.  In later lessons we'll explicitly look at these "multi category masks" (i.e. **parcellations**) in brains ([Eickhoff, S.B., Yeo, B.T.T. & Genon, S, 2018](https://doi.org/10.1038/s41583-018-0071-7)).

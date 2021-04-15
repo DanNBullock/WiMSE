@@ -32,7 +32,7 @@ print(streamCount)
 
 Above we see the total number of streamlines contained within this tractogram.  Typically we would want a million or more in order to adequately cover the entire white matter of the brain.  Here though, we are working with a smaller number as it is easier to use in a notebook.
 
-Lets plot a random selection of 10 of these streamlines so we can get a sense of what streamlines look like when visualized
+Lets plot a random selection of 10 of these streamlines so we can get a sense of what streamlines look like when visualized.
 
 randomIndexes=np.random.randint(streamCount, size= 10)
 
@@ -90,14 +90,14 @@ subTractogram=extractSubTractogram(streamsObjIN,randomIndexes)
 %matplotlib inline
 plotParcellationConnectionWidget(subTractogram.streamlines)
 
-What you should see (after zooming in) is a random collection of colored "strings" floating in space.  Each of these strings represents the tractography algorithm's (the algorithm that generated all of the streamliens in the tractogram) best guess as to where there's "likely" a coherent bundle of axons.  Although it's difficult to tell from this visualization the coloring of these lines corresponds to the direction in which the streamline is primarily traveling.  Green indicates that the streamline is primarily anterior-posteriorly oriented, blue indicates that the streamline is primarily superior-inferiorly oriented, and red indicates that the streamline is primarily left-right oriented.
+What you should see (after zooming in) is a random collection of colored "strings" floating in space.  Each of these strings represents the tractography algorithm’s (the algorithm that generated all of the streamliens in the tractogram) best guess as to where there's "likely" a coherent bundle of axons.  Although it's difficult to tell from this visualization the coloring of these lines corresponds to the direction in which the streamline is primarily traveling.  Green indicates that the streamline is primarily anterior-posteriorly oriented, blue indicates that the streamline is primarily superior-inferiorly oriented, and red indicates that the streamline is primarily left-right oriented.
 
-To get a better sense of the meaning of these colors, and how these individual streamlines can come together to represent the white matter of the brain, it's useful to look at the entire tractogram
+To get a better sense of the meaning of these colors, and how these individual streamlines can come together to represent the white matter of the brain, it's useful to look at the entire tractogram.
 
 %matplotlib inline
 plotParcellationConnectionWidget(streamsObjIN.streamlines)
 
-That's quite a mess!  Even so, we can begin to see how the streamlines come together to represent the white matter of the brain. Keep in mind though that we only have a fraction of the streamlines that we would typically use to model a brain's white matter.  Regardless, what now?
+That's quite a mess!  Even so, we can begin to see how the streamlines come together to represent the white matter of the brain. Keep in mind though, that we only have a fraction of the streamlines that we would typically use to model a brain's white matter.  Regardless, what now?
 
 #### Now that we have a whole brain tractogram how do we garner insight?
 

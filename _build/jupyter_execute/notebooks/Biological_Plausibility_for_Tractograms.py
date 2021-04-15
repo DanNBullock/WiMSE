@@ -155,19 +155,19 @@ interact(updateFunction,
          regionIndex2=Dropdown(options=dropDownList, value=2, description="region2"),
         )
 
-If you look closely at the example streamline collections, you may also notice some streamlines that seem particularly... odd.  This brings us to our other criterion.
+If you look closely at certian example streamline collections (e.g. the default Left-Cerebral-White-Matter to Left-Cerebral-White-Matter streamlines, in the anterior of the brain), you may also notice some streamlines that seem particularly... odd.  This brings us to our other criterion.
 
 ### "follow a sensible path as it traverses the brain"
 
-As noted in our discussion of the biological characteristics of axons, although they are very small they nonetheless occupy space.  For this reason, longer axons take up more room than shorter axons.  Many researchers [cite pareto optimality and such] have explored the costs associated with increasingly large volumes of white matter, and one overarching observation is that there is a general efficiency to the paths taken by axons:  they don't meander about unnecessarily or take wild detours.  Moreover, as an axon becomes longer, so too does the amount of time needed to transmit signals down it.  On an evolutionary scale, those delays can mean the difference between life and death.  As such we see that there are multiple selection pressures which might prefer efficient white matter connections.  How can we identify streamlines which best reflect this characteristic?
+As noted in our discussion of the biological characteristics of axons, although they are very small they nonetheless occupy space.  For this reason, longer axons take up more room than shorter axons.  Many researchers (e.g. [Avena-Koenigsberger et al., 2014](https://doi.org/10.1098/rstb.2013.0530), [Wang et al., 2008](https://doi.org/10.1523/JNEUROSCI.5559-05.2008)) have explored the costs associated with increasingly large volumes of white matter, and one overarching observation is that there is a general efficiency to the paths taken by axons:  they don't meander about unnecessarily or take wild detours.  Moreover, as an axon becomes longer, so too does the amount of time needed to transmit signals down it.  On an evolutionary scale, those delays can mean the difference between life and death.  As such we see that there are multiple selection pressures which might prefer efficient white matter connections.  How can we identify streamlines which best reflect this characteristic?
 
 #### What ISN'T a sensible path?
 
-In the above visualization, if you select "Left-Cerebral-White-Matter" for both endpoints (which is admittedly already a biologically implausible category) you'll notice that three streamlines appear to cross the corpus callosum into the right hemisphere, but then do a 180 and return to the left hemisphere.  It's safe to assume that an axon (much less a collection of axons) wouldn't do this.  In the same way that we applied a mask to the image examples in previous chapters, is there a way for us to apply a filter to the tractogram to select only those streamlines that are doing something implausible like this? 
+In the above visualization, if you select "Left-Cerebral-White-Matter" for both endpoints (which is admittedly already a biologically implausible category) you'll notice that two or three streamlines appear to cross the corpus callosum into the right hemisphere, but then do a 180 and return to the left hemisphere.  It's safe to assume that an axon (much less a collection of axons) wouldn't do this.  In the same way that we applied a mask to the image examples in previous chapters, is there a way for us to apply a filter to the tractogram to select only those streamlines that are doing something implausible like this? 
 
 In our chapter introducing streamlines (The voxel and the streamline) two of the measures we computed were the displacement and length of the streamline.  By creating a ratio of these values we can compute the "efficiency" of a streamline--the degree to which the actual route taken by the streamline approaches a straight line (the most efficient way in which the streamline could connect the two points).  It must be admitted from the outset that this isn't actually the minimum *biologically plausible* route that the streamline could take.  The route taken by a maximally efficient streamline (i.e. a line) could very well take the streamline straight across ventricles, sulci, or cerebrospinal fluid.  All of these would be impossible in an actual brain, but in this null model of maximal efficiency, it's a useful starting point.
 
-In the code block below we'll compute the efficiency for all of the streamlines in our tractogram and then utilize an interactive plot to visualize those streamlines that are below  the provided threshold efficiency value.  Try manually entering a value of .05 to see particularly inefficient streamlines.
+In the code block below we'll compute the efficiency for all of the streamlines in our tractogram and then utilize an interactive plot to visualize those streamlines that are below  the provided threshold efficiency value.  Try manually entering a value of .1 to see particularly inefficient streamlines.
 
 #initalize vector
 streamlineEfficiencies=np.zeros(len(streamsObjIN.tractogram.streamlines))
@@ -255,4 +255,4 @@ interact(updateFunction,
         )
 #NOTE: EFFECIENCY SLIDER APPEARS TO BE BE BROKEN, STEP SIZE ISN'T RESPONSIVE TO PARAMETER INPUT
 
-Lets move on to a consideration of how to use ROIS.
+Now that we have a better idea of what constitutes plausible streamlines, let's move on to a consideration of how we can use regions of interest (ROIs).

@@ -8,9 +8,9 @@ In the previous chapter we examined a single streamline.  In this chapter we wil
 
 As we seek to make our tractogram more manageable we find ourselves in a position similar to the one we were in when considering the satellite images.  Although we have an intuitive understanding with the familiar geography depicted in the satellite image, we nonetheless needed to narrow our consideration of the available data in order to make good use of it.  In the satellite case we performed an ocean-based mask, and in the NiFTI case we used an existing parcellation.  But how would we do this with a whole brain tractogram?  
 
-Perhaps we can leverage the analogy we used earlier when we referred to the white matter as the "highways of the brain".  If we consider the various regions of the brain (e.g. the ones we find in a parcellation) to be like the states of the United States, and the white matter to be the roads that connect them an approach presents itself.  Perhaps we could do a pairwise matching between all the places that the highways (or streamlines) start and finish.  After all, both white matter tracts and roads have to begin and end somewhere.
+Perhaps we can leverage an analogy with the highway system of the United States. If we consider the various regions of the brain (e.g. the ones we find in a parcellation) to be like the states of the United States, and the white matter to be the roads and highways that connect them, an approach presents itself.  We could perform a systematc process of pairwise matching wherein, for each pairing of states, we identify those roads and highways (or streamlines) that start and/or finish in those areas. After all, both white matter tracts and roads have to begin and end somewhere.
 
-To achieve our goal of tractogram sub-selection we can leverage the parcellation data we were looking at previously.  This data object assigns each voxel a label, and so we can--for each streamline--determine which labels its endpoints are closest to.  This will give us a mapping of streamlines which have ends in both regions A and B, A and C, C and B, and so on and so forth for all possible pairings of labels.
+To achieve our goal of tractogram sub-selection we can leverage the parcellation data we were looking at previously.  This data object assigns each voxel a label, and so we can--for each streamline--determine which labels its endpoints are closest to.  This will give us a mapping of streamlines which have ends in both regions A and B, A and C, C and B, and so on and so forth, for all possible pairings of labels.
 
 To begin we'll need to load up a parcellation:
 
@@ -48,7 +48,7 @@ currentParcellationEntries=FSTable.loc[currentIndexesBool]
 #currentParcellationEntries=currentParcellationEntries.reset_index(drop=True)
 currentParcellationEntries.tail(20)
 
-Now that we have the parcellation loaded, we can load our whole brain tractogram and perform the iterative assignment of streamlines to atlas labels.  In this way, each streamline will be assigned two numbers corresponding to the label number closest to its first and last node.  This method is at the heart of the burgeoning field of [connectomics](https://en.wikipedia.org/wiki/Connectomics).  As such, it is not surprising that a great deal of research and ingenuity has been applied to developing optimized software and algorithms for this approach.  In fact, [dipy](https://dipy.org/) has a very straightforward function for this: _dipy.tracking.utils.connectivity_matrix_ . 
+Now that we have the parcellation loaded, we can load our whole brain tractogram and perform the iterative assignment of streamlines to atlas labels.  In this way, each streamline will be assigned two numbers corresponding to the label number closest to its first and last node.  This method is at the heart of the burgeoning field of [connectomics](https://en.wikipedia.org/wiki/Connectomics) (e.g. [Bullmore, E., Sporns, O., 2009](https://doi.org/10.1038/nrn2575), [Behrens, T. E., & Sporns, O., 2012](https://doi.org/10.1016/j.conb.2011.08.005)).  As such, it is not surprising that a great deal of research and ingenuity has been applied to developing optimized software and algorithms for this approach.  In fact, [dipy](https://dipy.org/) has a very straightforward function for this: _dipy.tracking.utils.connectivity_matrix_ . 
 
 Lets apply [this method](https://dipy.org/documentation/1.0.0./examples_built/streamline_tools/) now and look at the outputs.  We'll also plot an interactive visualization of the parcellation that can help serve as a reference for these subdivisions.
 (Note, this is a non-trivial set of computations, and so executing the next block will take a moment.  Be careful not to try and run it multiple times.)
@@ -73,14 +73,14 @@ M, grouping=utils.connectivity_matrix(streamsObjIN.tractogram.streamlines, atlas
                         return_mapping=True,
                         mapping_as_streamlines=False)
 
-Now that we have performed that lengthy segmentation, let's take a quantitative look at how many streamlines are connecting each region.  We'll first do this using the standard method of [connectomics](https://en.wikipedia.org/wiki/Connectomics), a connectivity matrix.  In the brain connectivity matrix plot, each row/column corresponds to a brain area in a given parcellation.  Each entry (i.e. row X, column Y) is represented by a scaled color and corresponds to the measure of connectivity between those brain areas.  In the matrix we will plot below, that color value will correspond to the number of streamlines connecting those areas.
+Now that we have performed that lengthy segmentation, let's take a quantitative look at how many streamlines are connecting each region.  We'll first do this using the standard method of [connectomics](https://en.wikipedia.org/wiki/Connectomics), a connectivity matrix.  In the brain connectivity matrix plot, each row/column corresponds to a brain area in a given parcellation.  Each entry (i.e. row X, column Y; or edge measure) is associated with a particular measure, which is visually depicted by a color from a colormap, which reflects some measure of connectivity between those brain areas.  In the matrix we will plot below, that color value will correspond to the number of streamlines connecting those areas.
 
 As a warning, these plots are somewhat difficult to comprehend in that it is difficult to associate particular areas with a trend or insight.  Typically these plots are used to depict and infer general patterns in the overall connectivity arrangement of the brain.
 
 import seaborn as sns
 sns.heatmap(np.log1p(M))
 
-Here we'll also present the dataframe containing the remapped numberings (in the index column) to reference with the above figure.  Remember, each row corresponds (and column) corresponds to a specific label in the parcellation.  Due to the renumbering we performed, the index column of the below table, indicates which label is associated with which row of the above matrix figure.
+Here we'll also present the dataframe containing the remapped numberings (in the index column) to reference with the above figure.  Remember in the matrix plot, each row (and column) corresponds to a specific label in the parcellation.  Due to the renumbering we performed, the index column of the below table indicates which anatomical label is associated with which entry of the above matrix figure.
 
 import itables
 resetTable=remappingFrame.reset_index()
@@ -139,7 +139,7 @@ interact(plotCurrentLabelCounts,
          currLabel=Dropdown(options=dropDownList, value=2, description="region1"), 
         )
 
-Also, to help us remember the actual reference parcellation we'll plot the parcellaton in an interactive fashion below.
+Also, to help us remember the actual reference brain parcellation we'll plot the parcellaton in an interactive fashion below.
 
 from niwidgets import NiftiWidget
 
@@ -148,7 +148,7 @@ renumberedAtlasNifti=nib.Nifti1Image(relabeledAtlas, atlasImg.affine, atlasImg.h
 atlas_widget = NiftiWidget(renumberedAtlasNifti)
 atlas_widget.nifti_plotter(colormap='nipy_spectral')
 
-Finally, let's allow ourselves to interact with streamlines between labels.  In the widget below you'll be able to select two labels from the freesurfer parcellation.  In some cases, the widget will inform you that there are no streamlines that connect those regions.  In other cases you'll be able to interact with the visualization for that collection of streamlines.  
+Finally, let's allow ourselves to interact with streamlines connecting particular pairs of labels.  In the widget below you'll be able to select two labels from the FreeSurfer parcellation.  In some cases, the widget will inform you that there are no streamlines that connect those regions.  In other cases you'll be able to interact with the visualization for that collection of streamlines.  
 
 **Be sure to zoom in, as the visualization tends to start from a distant position.**
 
@@ -233,7 +233,7 @@ interact(updateFunction,
 In the above figures and widgets we have depicted the source parcellation, and the resulting map of which streamlines connect to which areas in that parcellations.  There are a few overarching things we ought to note about this:
 
 - All streamlines are assigned:  There are no streamlines that are not associated with 2 labels (one per endpoint).
-- "Accurate" labeling of streamlines is **hugely** dependent on the streamline tractogram being appropriately aligned with the parcellation.  If there is a misalignment (i.e. a flip, or a translation on a particular dimension).
+- "Accurate" labeling of streamlines is **hugely** dependent on the streamline tractogram being appropriately aligned with the parcellation.  If there is a misalignment (i.e. a flip, or a translation on a particular dimension) the labels attributed to streamlines may not be at all appropriate.
 - Given that a streamline is supposed to represent a collection of axons, a streamline must also subject to many of the same constraints that axons are.  Prime among these is that the streamline be **biologically plausible**.  This means that, among other things, it must terminate in reasonable areas and follow a sensible path as it traverses the brain.
 
-Let's explore this notion of **biological plausibility** in the next chapter, as it is key to a preliminary thresholding/cleaning that permits subsequent, anatomically guided segmentations.
+Let's explore this notion of **biological plausibility** in the next chapter, as it is key to a preliminary thresholding/cleaning of our tractography which permits subsequent, anatomically guided segmentations.

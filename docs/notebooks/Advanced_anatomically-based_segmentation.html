@@ -376,7 +376,7 @@
 <p>Now that we have established how to use ROIs and anatomical information <em>independently</em> of one another, it’s time to leverage these capabilities in conjunction with one another.  To begin, we’ll start by reflecting on our ability to extract labeled volumes of a parcellation as an ROI.</p>
 <div class="section" id="the-first-step-extracting-a-given-roi">
 <h2>The first step: extracting a given ROI<a class="headerlink" href="#the-first-step-extracting-a-given-roi" title="Permalink to this headline">¶</a></h2>
-<p>Below, we’ll demonstrate essentially the same widget and capability as we observed in the “ROIs_as_tools” chapter.  This will allow you to familiarize yourself with the various anatomical labels featured in the DK2009 atlas and their locations in the example brain.</p>
+<p>Below, we’ll demonstrate essentially the same widget and capability as we observed in the “ROIs_as_tools” chapter.  This will allow you to familiarize yourself with the various anatomical labels featured in the <a class="reference external" href="https://doi.org/10.1016/j.neuroimage.2010.06.010">DK2009 atlas</a> and their locations in the example brain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#this code ensures that we can navigate the WiMSE repo across multiple systems</span>
@@ -387,10 +387,13 @@
 <span class="c1">#the notebook was launched from within the repo directory</span>
 <span class="n">gitRepoPath</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;rev-parse&#39;</span><span class="p">,</span> <span class="s1">&#39;--show-toplevel&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-<span class="c1">#move to the top of the directory</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">)</span>
+<span class="c1">#establish path to the wma_tools repo</span>
+<span class="n">wma_toolsDirPath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">,</span><span class="s1">&#39;wma_pyTools&#39;</span><span class="p">)</span>   
 
-<span class="kn">import</span> <span class="nn">wma_pyTools.WMA_pyFuncs</span>
+<span class="c1">#change to the wma_tools path, load the function set, then change back to the top directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">wma_toolsDirPath</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">WMA_pyFuncs</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">gitRepoPath</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -459,7 +462,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "7d3b66cb18c74592a02ccbbaa68a40cf", "version_major": 2, "version_minor": 0}
+{"model_id": "087869665b1d43eaa0aad8815eed64a7", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.rotateAndPlotWrapper(roiNum, xCoord, yCoord, zCoord)&gt;
 </pre></div>
 </div>
@@ -469,8 +472,8 @@
 <div class="section" id="translation-errors">
 <h2>Translation errors<a class="headerlink" href="#translation-errors" title="Permalink to this headline">¶</a></h2>
 <p>In previous chapters you may have noticed that we often selected locations for our ROIs (in particular planar ROIs) by referring to nearby, reference anatomical structures.  Despite this, even though we were choosing where to planar the planar ROIs in relation to these structures, we were nonetheless manually entering coordinates (based on trial and error or our best guesses).  This is less than ideal for several reasons.</p>
-<p>First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the <a class="reference external" href="https://en.wikipedia.org/wiki/Anterior_commissure">anterior commisure</a>.  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, <a class="reference external" href="https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates">MNI coordinates</a> are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error on top of all the many other sources of error in this field.  This hints at a second trouble as well.</p>
-<p>If we’re going to leave other investigators to their own devices on how to implement an interpretation of the relative anatomical description, then we have compounded the number of opportunities for “noise” to be added to our segmentation specification.  In doing so we make our segmentation less reliable overall.  But what if we didn’t have to do this?  What if, instead, we were able to <em>directly</em> use those anatomical structures to define our regions of interest?  How could we do that?</p>
+<p>First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the <a class="reference external" href="https://en.wikipedia.org/wiki/Anterior_commissure">anterior commisure</a>.  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, <a class="reference external" href="https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates">MNI coordinates</a> are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error (due to the requisite translations to or from this spatial standard) on top of all the many other sources of error in this field.  This hints at a second trouble as well.</p>
+<p>If we’re going to leave other investigators to their own devices on how to implement an interpretation of the relative anatomical description of a tract, then we have compounded the number of opportunities for “noise” to be added to our segmentation specification.  In doing so we make our segmentation less reliable overall.  But what if we didn’t have to do this?  What if, instead, we were able to <em>directly</em> use those anatomical structures to define our regions of interest?  How could we do that?</p>
 <p>Lets try that.  Below, you’ll be able to select a anatomical structure <strong>and</strong> which of its borders to use to generate a planar ROI.  Of particular note should be the potential utility of subcortical structures in providing planar ROIs for our future white matter segmentations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
