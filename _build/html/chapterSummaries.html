@@ -225,6 +225,18 @@
   </a>
  </li>
 </ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Epilogue
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Closing_Thoughts.html">
+   Closing Thoughts
+  </a>
+ </li>
+</ul>
 
 </nav> <!-- To handle the deprecated key -->
 
@@ -312,15 +324,15 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-bridges-from-the-familiar-to-the-unfamiliar">
+     Building bridges from the familiar to the unfamiliar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#building-intuitions-with-digital-images">
      Building intuitions with digital images
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-are-we-talking-about-jpegs">
-       Why are we talking about JPEGs
-      </a>
-     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#intro-to-discretized-image-representation-maps">
        Intro to discretized image representation &amp; maps
@@ -354,8 +366,8 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-quick-demonstration-of-linear-affine-transformations-in-3-d">
-       A quick demonstration of linear affine transformations in 3-D
+      <a class="reference internal nav-link" href="#how-to-interpret-a-volumetric-brain-segmentation">
+       How to interpret a volumetric brain segmentation
       </a>
      </li>
     </ul>
@@ -365,16 +377,6 @@
      White matter and tractography
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#highways-of-the-brain">
-       Highways of the brain
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-measurement-the-object-and-the-modality-what-s-measured-in-diffusion-imaging">
-       The measurement, the object, and the modality - What’s measured in diffusion imaging
-      </a>
-     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#the-voxel-and-the-streamline">
        The voxel and the streamline
@@ -398,8 +400,50 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-categorical-segmentation">
-       A categorical segmentation
+      <a class="reference internal nav-link" href="#biological-plausibility-for-tractograms">
+       Biological Plausibility for Tractograms
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rois-as-tools">
+       ROIs as tools
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#using-rois-as-tools">
+       Using ROIs as tools
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-second-segmentation-categorical-segmentation">
+       A second segmentation - categorical segmentation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#advanced-anatomically-based-segmentation">
+       Advanced anatomically-based segmentation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-segmentation-uncinate-fasciculus">
+       Example Segmentation: uncinate fasciculus
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-segmentation-inferior-fronto-occipital-fasciculus-ifof">
+       Example Segmentation: inferior fronto-occipital fasciculus (IFOF)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#epilogue">
+     Epilogue
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#closing-thoughts">
+       Closing Thoughts
       </a>
      </li>
     </ul>
@@ -422,12 +466,12 @@
 <p>This set of notebooks has been developed to provide a guide to performing digital segmentations of white matter.  The lessons contained here are designed for advanced undergraduates, advanced STEM students, or persons wanting to become more familiar with the process of the digital segmentation of white matter.  These lessons begin by building a strong foundation of intuitions based on everyday data representations.  Having established this, it moves towards neuroimaging-specific data formats and their use.  Finally, it moves to tractograms and segmentations, demonstrating basic concepts and characteristics, and even allowing users to perform some rudimentary interactive segmentations.</p>
 <div class="section" id="chapter-summaries">
 <h2>Chapter Summaries<a class="headerlink" href="#chapter-summaries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="building-bridges-from-the-familiar-to-the-unfamiliar">
+<h3>Building bridges from the familiar to the unfamiliar<a class="headerlink" href="#building-bridges-from-the-familiar-to-the-unfamiliar" title="Permalink to this headline">¶</a></h3>
+<p>In this introductory chapter we build the conceptual foundations for our endeavor with WiMSE.  We set out to explain the rationale behind expending a great deal of effort building intuitions and elaborating analogies.  Although this chapter covers a number of abstract concepts, the themes and topics that are discussed here will reappear throughout the subsequent chapters as we develop our segmentation skills.  By keeping this discussion in the back of our minds, we’ll be able to orient ourselves with the overarching endeavor even as we focus on the details of the particular lessons in front of us.</p>
+</div>
 <div class="section" id="building-intuitions-with-digital-images">
 <h3>Building intuitions with digital images<a class="headerlink" href="#building-intuitions-with-digital-images" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="why-are-we-talking-about-jpegs">
-<h4>Why are we talking about JPEGs<a class="headerlink" href="#why-are-we-talking-about-jpegs" title="Permalink to this headline">¶</a></h4>
-<p>If this notebook is about the computational study of white matter, why are we taking about image data formats? In this chapter relationships between images, representations, and data objects are introduced. Across various data formats (e.g. digital photographs, T1 images, DWI, &amp; tractography), we’ll note analogous traits which will help us build intuitions as we progress through subsequent chapters.</p>
-</div>
 <div class="section" id="intro-to-discretized-image-representation-maps">
 <h4>Intro to discretized image representation &amp; maps<a class="headerlink" href="#intro-to-discretized-image-representation-maps" title="Permalink to this headline">¶</a></h4>
 <p>In this chapter we begin our exploration of image data with an example that will likely be familiar to many readers: a digital photograph. We’ll begin by looking at how the data is arranged within the image data object, what its constituent data entries are, and how those features relate to the image we encounter on our screen.  We’ll then move to an exploration of how the quantitative features of the image data can be leveraged to select certain sub-sections of the image via a process referred to as “masking”</p>
@@ -451,21 +495,13 @@
 <h4>How to represent the brain’s anatomy - as a volume<a class="headerlink" href="#how-to-represent-the-brain-s-anatomy-as-a-volume" title="Permalink to this headline">¶</a></h4>
 <p>In this chapter we shift from a consideration of 2 dimensional, color digital photographs to MRI data stored in a NIfTI.  Although there are a number of conceptual similarities between these data modalities, there are also a number of important distinctions which we consider here.  We also take a look at the affine information contained within the NIfTI header, and reflect on its relevance to aligning 2 dimensional images.</p>
 </div>
-<div class="section" id="a-quick-demonstration-of-linear-affine-transformations-in-3-d">
-<h4>A quick demonstration of linear affine transformations in 3-D<a class="headerlink" href="#a-quick-demonstration-of-linear-affine-transformations-in-3-d" title="Permalink to this headline">¶</a></h4>
-<p>In this chapter we consider very briefly how to implement linear transforms and rotations in 3 dimensions.  Given that there are <a class="reference external" href="https://nipy.org/nibabel/coordinate_systems.html">other, more detailed resources available</a>, this is primarily a hands on demonstration so that users can become familiar with the concept.</p>
+<div class="section" id="how-to-interpret-a-volumetric-brain-segmentation">
+<h4>How to interpret a volumetric brain segmentation<a class="headerlink" href="#how-to-interpret-a-volumetric-brain-segmentation" title="Permalink to this headline">¶</a></h4>
+<p>In this chapter we reflect back on our previous encounters with 2-D parcellations, and expand this to 3-D parcellations.  Many of the same insights that we made in that lesson are repeated once more.  Now though, we are beginning to focus on how these methods are implemented in the special case of studying the brain.</p>
 </div>
 </div>
 <div class="section" id="white-matter-and-tractography">
 <h3>White matter and tractography<a class="headerlink" href="#white-matter-and-tractography" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="highways-of-the-brain">
-<h4>Highways of the brain<a class="headerlink" href="#highways-of-the-brain" title="Permalink to this headline">¶</a></h4>
-<p>In this chapter we move on from our consideration of volumetric/NIfTI based neuroimaging data and begin to consider white matter and tractography.  Here, we provide a brief introduction to relevant anatomical concepts related to white matter.  This is primarily a discussion of anatomy, and so no code interactivity is present.</p>
-</div>
-<div class="section" id="the-measurement-the-object-and-the-modality-what-s-measured-in-diffusion-imaging">
-<h4>The measurement, the object, and the modality - What’s measured in diffusion imaging<a class="headerlink" href="#the-measurement-the-object-and-the-modality-what-s-measured-in-diffusion-imaging" title="Permalink to this headline">¶</a></h4>
-<p>In this chapter we introduce the Diffusion Weighted Imaging (DWI) scan.  Harkening back to our discussions of digital images, we use the concept of a GIF and taking photographs of a rotating object to help explain how a DWI scan captures information about the structure of the brain.</p>
-</div>
 <div class="section" id="the-voxel-and-the-streamline">
 <h4>The voxel and the streamline<a class="headerlink" href="#the-voxel-and-the-streamline" title="Permalink to this headline">¶</a></h4>
 <p>In this chapter we take a look at the actual data characteristics of a streamline, the elementary component of a tractogram.  We look at a single streamline and demonstrate several mathematical characteristics that it has.</p>
@@ -479,11 +515,42 @@
 <h3>Segmenting tractography<a class="headerlink" href="#segmenting-tractography" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="a-first-segmentation">
 <h4>A first segmentation<a class="headerlink" href="#a-first-segmentation" title="Permalink to this headline">¶</a></h4>
-<p>In this chapter we introduce the notion of a tractoram segmentation.  We’ll use a parcellation to determine what areas streamlines connect an assign them to tracts accordingly. We’ll note that this is a viable way to divide up a tractogarm, but observe that there may be methods that pull out more anatomically coherent structures</p>
+<p>In this chapter we introduce the notion of a tractoram segmentation.  We’ll use a parcellation to determine what areas streamlines connect and assign them to tracts accordingly. We’ll note that this is a viable way to divide up a tractogarm, but observe that there may be methods that pull out more anatomically coherent structures</p>
 </div>
-<div class="section" id="a-categorical-segmentation">
-<h4>A categorical segmentation<a class="headerlink" href="#a-categorical-segmentation" title="Permalink to this headline">¶</a></h4>
-<p>In this chapter we examine another approach to tractogram segmentation.  This time we use larger amalgams of areas than the previous chapter to form regions like the frontal, parietal, occipital, and temporal lobes.  We’ll note that anatomically coherent structures begin to emerge from this approach, and consider how this could serve as a first step towards the segmentation of anatomically coherent white matter structures.</p>
+<div class="section" id="biological-plausibility-for-tractograms">
+<h4>Biological Plausibility for Tractograms<a class="headerlink" href="#biological-plausibility-for-tractograms" title="Permalink to this headline">¶</a></h4>
+<p>In this chapter we explore the notion of “Biological Plausibility” and consider its relevance to segmenting the brain.  We take a closer look at examples of how tractography and streamlines can manifest biologically implausible characteristics.  This provides us with a framework for thinking about the manner in which the model features that are streamlines are still accountable to the standards of biology.</p>
+</div>
+<div class="section" id="rois-as-tools">
+<h4>ROIs as tools<a class="headerlink" href="#rois-as-tools" title="Permalink to this headline">¶</a></h4>
+<p>In this chapter we begin to consider the tools that we will primarily be using to interact with streamlines and tractograms:  Regions of Interest (ROIs).  Although we avoid the subject of specific formats, we nonetheless develop a keen understanding of ROIs’ data-structure and tool-based characteristics.</p>
+</div>
+<div class="section" id="using-rois-as-tools">
+<h4>Using ROIs as tools<a class="headerlink" href="#using-rois-as-tools" title="Permalink to this headline">¶</a></h4>
+<p>With our understanding of ROIs firmly established, we next move on to actually making use of them to select streamlines.  Here we get our first taste of manual and interactive segmentation as we make use of both planar and spherical ROIs.</p>
+</div>
+<div class="section" id="a-second-segmentation-categorical-segmentation">
+<h4>A second segmentation - categorical segmentation<a class="headerlink" href="#a-second-segmentation-categorical-segmentation" title="Permalink to this headline">¶</a></h4>
+<p>In this chapter we examine another approach to full-tractogram segmentation.  This time we use larger amalgams of areas than the previous chapter to form regions like the frontal, parietal, occipital, and temporal lobes.  We’ll note that anatomically coherent structures begin to emerge from this approach, and consider how this could serve as a first step towards the segmentation of anatomically coherent white matter structures.</p>
+</div>
+<div class="section" id="advanced-anatomically-based-segmentation">
+<h4>Advanced anatomically-based segmentation<a class="headerlink" href="#advanced-anatomically-based-segmentation" title="Permalink to this headline">¶</a></h4>
+<p>In this chapter we being to learn some of the more arcane and specialized techniques associated with white matter segmentation.  These advanced techniques leverage many of the things we have learned in previous lessons, but here we see that the result can be more than the sum of the parts.  Indeed, with the right set-up we note that by adding the individual tools together, the process of segmentation actually gets easier (in a sense) rather than more complicated.</p>
+</div>
+<div class="section" id="example-segmentation-uncinate-fasciculus">
+<h4>Example Segmentation: uncinate fasciculus<a class="headerlink" href="#example-segmentation-uncinate-fasciculus" title="Permalink to this headline">¶</a></h4>
+<p>Having established and demonstrated our toolkit, we move on to our first segmentation demonstration:  the Uncinate Fasciculus.  In this chapter we discuss both the anatomy logic and the code logic that underlies the implementation of our segmentation.  In doing so, we provide our first example of a generalized segmentation framework.</p>
+</div>
+<div class="section" id="example-segmentation-inferior-fronto-occipital-fasciculus-ifof">
+<h4>Example Segmentation: inferior fronto-occipital fasciculus (IFOF)<a class="headerlink" href="#example-segmentation-inferior-fronto-occipital-fasciculus-ifof" title="Permalink to this headline">¶</a></h4>
+<p>Having segmented the Uncinate Fasciculus, we look to repeat our success with the inferior fronto-occipital fasciculus (IFOF).  We replicate the general structure and approach used in the previous chapter, thereby solidifying the general segmentation approach.</p>
+</div>
+</div>
+<div class="section" id="epilogue">
+<h3>Epilogue<a class="headerlink" href="#epilogue" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="closing-thoughts">
+<h4>Closing Thoughts<a class="headerlink" href="#closing-thoughts" title="Permalink to this headline">¶</a></h4>
+<p>In this brief chapter we look back on the broad endeavor we have made throughout this lesson set.  Some themes are reflected upon, and we close by looking to our aspirations for the future.</p>
 </div>
 </div>
 </div>

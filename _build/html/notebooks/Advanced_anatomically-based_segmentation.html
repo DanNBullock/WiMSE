@@ -225,6 +225,18 @@
   </a>
  </li>
 </ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Epilogue
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Closing_Thoughts.html">
+   Closing Thoughts
+  </a>
+ </li>
+</ul>
 
 </nav> <!-- To handle the deprecated key -->
 
@@ -462,7 +474,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "087869665b1d43eaa0aad8815eed64a7", "version_major": 2, "version_minor": 0}
+{"model_id": "3b52b3acc54d4e3a819de7c8b8efa221", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.rotateAndPlotWrapper(roiNum, xCoord, yCoord, zCoord)&gt;
 </pre></div>
 </div>
@@ -557,7 +569,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5752d7c9c12c41c899f5dd9e8f0853eb", "version_major": 2, "version_minor": 0}
+{"model_id": "9656df4b24f94a708a4053aba48dc225", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.anatomyPlanePlotWrapper(roiNum, relativeBorder, xCoord, yCoord, zCoord)&gt;
 </pre></div>
 </div>
@@ -591,11 +603,11 @@
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">IntSlider</span>
 
-<span class="n">primaryRoiNum</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">dropDownList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;primaryPlane&quot;</span><span class="p">)</span>
-<span class="n">relativeBorder</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">portionList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;anterior&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;relative border&quot;</span><span class="p">)</span>
-<span class="n">cutRoiNum</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">dropDownList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;cutPlane&quot;</span><span class="p">)</span>
-<span class="n">cutBorder</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">portionList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;superior&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;relative border&quot;</span><span class="p">)</span>
-<span class="n">keepPortion</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">portionList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;superior&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;portion2keep&quot;</span><span class="p">)</span>
+<span class="n">primaryRoiNum</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">dropDownList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;primaryStruc&quot;</span><span class="p">)</span>
+<span class="n">relativeBorder</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">portionList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">portionList</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;brimaryStrucBorder&quot;</span><span class="p">)</span>
+<span class="n">cutRoiNum</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">dropDownList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;cutRefStruc&quot;</span><span class="p">)</span>
+<span class="n">cutBorder</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">portionList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">portionList</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;cutRefStrucBorder&quot;</span><span class="p">)</span>
+<span class="n">keepPortion</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">portionList</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">portionList</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;portion2keep&quot;</span><span class="p">)</span>
 
 <span class="n">interact</span><span class="p">(</span><span class="n">anatomyPlanePlotWrapper</span><span class="p">,</span> \
     <span class="n">primaryRoiNum</span><span class="o">=</span><span class="n">primaryRoiNum</span><span class="p">,</span> \
@@ -611,7 +623,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "12225ec566d04a2b8c6a6aebc77bef95", "version_major": 2, "version_minor": 0}
+{"model_id": "c712128a2b5642daada7c39def4227b9", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.anatomyPlanePlotWrapper(primaryRoiNum, relativeBorder, cutRoiNum, cutBorder, keepPortion, xCoord, yCoord, zCoord)&gt;
 </pre></div>
 </div>
@@ -681,20 +693,20 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c8298e24fe7446f0b478dea5192472b3", "version_major": 2, "version_minor": 0}
+{"model_id": "5c90290d019a452d9c58c880e2c04e33", "version_major": 2, "version_minor": 0}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "cce1100f6f5d4102957d4ea66f2b8533", "version_major": 2, "version_minor": 0}
+{"model_id": "5f2ae03fff9741849012beef519e7114", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
 <div class="section" id="using-other-anatomical-features-of-tracts">
 <h2>Using other anatomical features of tracts<a class="headerlink" href="#using-other-anatomical-features-of-tracts" title="Permalink to this headline">¶</a></h2>
-<p>In the above sections (and indeed in previous chapters) we have been making extensive use of planar ROIs in our segmentation demonstrations.  Additionally, in the chapter covering categorical segmentations, we demonstrated the ability to use endpoint termination areas (implicitly, via dipy’s connectome generation method).  While these are both commonly used methods for segmenting tracts, there are other anatomical features of tracts that can be leveraged</p>
+<p>In the above sections (and indeed in previous chapters) we have been making extensive use of planar ROIs in our segmentation demonstrations.  Additionally, in the chapter covering categorical segmentations, we demonstrated the ability to use endpoint termination areas (implicitly, via <a class="reference external" href="https://dipy.org/documentation/1.0.0./examples_built/streamline_tools/">DIPY’s connectome generation method</a>).  While these are both commonly used methods for segmenting tracts, there are other anatomical features of tracts that can be leveraged.</p>
 <div class="section" id="loose-endpoint-criteria">
 <h3>Loose endpoint criteria<a class="headerlink" href="#loose-endpoint-criteria" title="Permalink to this headline">¶</a></h3>
-<p>While it is possible to segment streamlines by applying a criteria specifying which labels their endpoints have to terminate in, it’s also possible to apply looser criteria to the endpoints.  For example, it’s possible to require that <strong>both</strong> endpoints be anterior to a particular anatomical feature.  Such a criterion would be useful for segmenting the uncinate fasciculus.  Alternatively you could require that only one endpoint (or, indeed neither) be found relative to some other anatomical structure.</p>
-<p>This method is different from the application of a planar ROI because it does not rely on intersection to select streamlines.  All that it does is check to determine which of the endpoints meet the dimensional/anatomical criteria.  This method has the added benefit of having a <strong>much</strong> smaller computational footprint, as non eucledian distances are calculated.</p>
-<p>Below we’ll use the same ROI as was created earlier though, for this application, we will skip the cutting step and the primary anatomical border will be treated as a full planar ROI.</p>
+<p>While it is possible to segment streamlines by applying a criteria specifying which labels their endpoints are required to terminate in, it’s also possible to apply less stringent criteria to the endpoints.  For example, it’s possible to require that <strong>both</strong> endpoints be anterior to a particular anatomical feature.  Such a criterion would be useful for segmenting the <a class="reference external" href="https://en.wikipedia.org/wiki/Uncinate_fasciculus">Uncinate Fasciculus</a>.  Alternatively you could require that only one endpoint (or, indeed neither) be found positioned relative to some other anatomical structure.</p>
+<p>This method is different from the application of a planar ROI because it does not rely on intersection to select streamlines.  All that it does is check to determine which of the endpoints meet the dimensional/anatomical criteria.  This method has the added benefit of having a <strong>much</strong> smaller computational footprint, as no extensive pointwise euclidean distance computations are calculated.</p>
+<p>Below we’ll use the same ROI as was created earlier. However, for this application, we will skip the cutting step and the primary anatomical border will be treated as a full planar ROI.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#seg via endpoint</span>
@@ -774,7 +786,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "277c52d3114d4ed999ccdf459b54eaad", "version_major": 2, "version_minor": 0}
+{"model_id": "690e95e703a04e65a450f2fda219163c", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.updateFunc(anatomyOption, endpointInstruction)&gt;
 </pre></div>
 </div>
@@ -783,7 +795,7 @@
 </div>
 <div class="section" id="midpoints-and-necks">
 <h3>Midpoints and “necks”<a class="headerlink" href="#midpoints-and-necks" title="Permalink to this headline">¶</a></h3>
-<p>In addition to utilizing endpoints as a criteria, we can also use the midpoints of tracts.  Traditionally, white matter tracts are understood to possess a “neck” which, as the idiom implies, is the point at which the cross-sectional area (considered perpendicular to the direction that the composite axons are running) reaches its minimum.  This anatomical feature is often described in both tractography and dissection-based characterizations of white matter tracts.  Although this feature isn’t always found at the “midpoint” of the tract, it is typically near the average midpoint of the tract.  As such, we can reasonably use this as a proxy for the neck, and subject this characteristic to criteria in order to segment streamlines.</p>
+<p>In addition to utilizing endpoints as a criteria, we can also use the midpoints of tracts.  Traditionally, white matter tracts are understood to possess a “neck” which, as the idiom implies, is the point at which the cross-sectional area (considered perpendicular to the direction that the composite axons are traversing) reaches its minimum–a constriction point.  This anatomical feature is often described in both tractography and dissection-based characterizations of white matter tracts.  Although this feature isn’t always found at the “midpoint” of the tract (i.e. the average middle node between streamline endpoints), it is typically <em>near</em> the average midpoint of the tract.  As such, we can reasonably use this as a proxy for the neck, and subject this characteristic to criteria assessments in order to segment streamlines.</p>
 <p>Below, we’ll once more use the same planar ROI that was established earlier, but this time we’ll consider the relative position requirement as applied to the midpoint.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -861,7 +873,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0217aca32570441ab451c976a43ce15e", "version_major": 2, "version_minor": 0}
+{"model_id": "63ac372c53de44ee85e22996e40c8602", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.updateFunc(anatomyOption)&gt;
 </pre></div>
 </div>
@@ -871,7 +883,7 @@
 </div>
 <div class="section" id="closing-discussion">
 <h2>Closing discussion<a class="headerlink" href="#closing-discussion" title="Permalink to this headline">¶</a></h2>
-<p>Now that we have demonstrated some of the fundamental building blocks for an anatomical segmentation, lets go ahead and implement an anatomically based segmentation for a particular tract.  In this case, we’ll start with the <a class="reference external" href="https://en.wikipedia.org/wiki/Uncinate_fasciculus">uncinate fasiciculus</a>.</p>
+<p>In this chapter we demonstrated how to use the brain’s anatomy to guide segmentation.  As we have noted before though, segmenting a coherent white matter structure typically takes the application of several criteria.  In the next two chapters we’ll actually perform a segmentation for two such structures. We’ll start with the <a class="reference external" href="https://en.wikipedia.org/wiki/Uncinate_fasciculus">uncinate fasiciculus</a>.</p>
 </div>
 </div>
 

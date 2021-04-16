@@ -1,12 +1,12 @@
 # Example Segmentation: uncinate fasciculus
 
-NOTE:  This segmentation is taken almost verbatim from a [recent version of a matlab-based WMA segmentation](https://github.com/DanNBullock/wma_tools/blob/53a4d99b68b832257c55d5f1320dc7266cc8c270/Segmentations/bsc_segmentAntPostTracts_v4.m#L76)
+NOTE:  This segmentation is taken almost verbatim from a [recent version of the matlab-version of WMA segmentation](https://github.com/DanNBullock/wma_tools/blob/53a4d99b68b832257c55d5f1320dc7266cc8c270/Segmentations/bsc_segmentAntPostTracts_v4.m#L76-L207).
 
 ## Beginning with practical considerations and limitations
 
-Before truly beginning the segmentation of the uncinate fasciculus, there's some setup that we need to do.  Among these steps are the loading of the relevant atlas and candidate tractome(s).  Astute observers may note that the loading process we use here is decidedly more... convoluted than normal.  This is due to the use of a workaround related to github's limitation of a 100 MB file size limit.  As such we'll be loading up 4 sub tractomes--divided up by streamline length--and then combine them into one.  As a further note, traditionally when we segment we want to have a very rich tractome to segment from so that our segmented tracts can be as full as possible.  In this case though, we are somewhat constrained by our medium, and so the tracts that segment will be significantly less full than they would typically be. One additional consideration to keep in mind is the length of the target tract.  
+Before truly beginning the segmentation of the [Uncinate Fasciculus](https://en.wikipedia.org/wiki/Uncinate_fasciculus), there's some setup that we need to do.  Among these steps are the loading of the relevant atlas and candidate tractome(s).  Astute observers may note that the loading process we use here is decidedly more... convoluted than normal.  This is due to the use of a workaround related to github's limitation of a 100 MB file size limit.  As such, we'll be loading up 4 individual sub tractomes--divided up by streamline length--and then we'll combine them into one.  As a further note, traditionally when we segment we want to have a very rich tractome to segment from so that our segmented tracts can be as full as possible.  In this case though, we are somewhat constrained by our medium, and so the tracts that we segment will be _significantly_ less full than they would typically be. 
 
-Traditional tractography generation methods have a very low minimum streamline length (e.g. 10 mm).  Due to the stochastic nature of streamline generation, it is more likely to generate small streamlines than it is to generate long ones, because each additional node increases the probability that the node is "not viable" and thus the streamline fails to complete the generation process (an example of a [conjunct probability](https://en.wikipedia.org/wiki/Conditional_probability)).  However, we aren't looking for just any streamline, we are looking for a streamline which could be a member of the uncinate fasciculus.  As such, we know the general range of streamlines we would be looking for (~40 to 100 mm).  This is something to keep in mind when generating one's candidate tractome:  **in most cases, for major white matter tracts, shorter streamlines will not contribute to better segmentation outcomes**.  Instead, they will simply add to the file size of the tractogram and increase computation time.
+One additional consideration to keep in mind is the length of the target tract.  Traditional tractography generation methods have a very low minimum streamline length (e.g. 10 mm).  Due to the stochastic nature of streamline generation, it is more likely to generate small streamlines than it is to generate long ones, because each additional node increases the probability that the node is "not viable" and thus the streamline fails to complete the generation process (an example of a [conjunct probability](https://en.wikipedia.org/wiki/Conditional_probability)).  However, we aren't looking for just any streamline, we are looking for a streamline which could be a member of the Uncinate Fasciculus.  As such, we know the general range of streamlines we would be looking for (~40 to 100 mm).  This is something to keep in mind when generating one's candidate tractome:  **in most cases, for major white matter tracts, shorter streamlines will not contribute to better segmentation outcomes**.  Instead, they will simply add to the file size of the tractogram and increase computation time.
 
 Lets move to this piecewise loading process.
 
@@ -103,7 +103,7 @@ hemiM, hemiGrouping=utils.connectivity_matrix(sourceTractogram.streamlines, hemi
 
 ## Establishing the category
 
-The Uncinate is definitionally a fronto-temporal tract.  Although we could be more specific than this, and note that it connects the anterior temporal poles, we needn't actually be this specific for the purposes of applying a categorical segmentation.  Instead, we can simply use the existing fronto-temporal category.
+The Uncinate is definitionally a fronto-temporal tract.  Although we could be more specific than this, and note that it occupies the anterior temporal poles, we needn't actually be this specific for the purposes of applying a categorical segmentation.  Instead, we can simply use the existing fronto-temporal category.
 
 Below, we'll visualize the relevant category.
 
@@ -199,14 +199,14 @@ leftBool[hemiGrouping[1,1]]=True
 rightBool[hemiGrouping[2,2]]=True
 
 ## Establish more specific endpoint criteria (loosely)
-In order to prevent certain spurious streamlines (potentially implausible, and certainly not part of the uncinate) we can include some additional segmentation logic to exclude these streamlines *while also not being so strict as to make the segmentation brittle or overdetermined*.  Two of these loose endpoint criteria will be necessary for the uncinate.  Given that we require the posterior cluster of streamlines to be located in the anterior temporal region we can implement criteria relative to the  dorso-ventral axis and the rostro-caudal axis. 
+In order to prevent certain spurious streamlines (potentially implausible, and certainly not part of the Uncinate) we can include some additional segmentation logic to exclude these streamlines *while also not being so strict as to make the segmentation [brittle](https://en.wikipedia.org/wiki/Brittle_system) or [overdetermined](https://en.wikipedia.org/wiki/Overdetermined_system)*.  Two of these loose endpoint criteria will be necessary for the Uncinate.  Given that we require the posterior cluster of streamlines to be located in the anterior temporal region we can implement criteria relative to the dorso-ventral axis and the rostro-caudal axis. 
  
 ###  Dorso-ventral endpoint criteria
 
 #### Dorso-ventral criteria - segmentation logic
 
-In general, the endpoints of the uncinate are fairly low in the brain.
-Furthermore, we note that the arc of the uncinate occurs relatively close to the amygdala.  Because the streamlines of the uncinate approach from the ventral side of the amygdala (as they then proceed anteriorly to the frontal lobes), and reach their apex at around the top of the amygdala, it is necessarily the case that at least one endpoint of these streamlines (namely the posterior/inferior endpoint) is below the top of the amygdala.  Therefore, it is logically necessary that it is *not* the case that both streamline endpoints are superior to the top of the amygdala (or else it couldn't engage in the arcing behavior).  Lets translate this into segmentation logic.
+In general, the endpoints of the Uncinate are fairly low in the brain.
+Furthermore, we note that the arc of the Uncinate occurs relatively close to the amygdala.  Because the streamlines of the uncinate approach from the ventral side of the [amygdala](https://en.wikipedia.org/wiki/Amygdala) (as they then proceed anteriorly to the frontal lobes), and reach their apex at around the top of the amygdala, it is necessarily the case that at least one endpoint of these streamlines (namely the posterior/inferior endpoint) is _below_ the top of the amygdala.  Therefore, it is logically necessary that it is *not* the case that both streamline endpoints are superior to the top of the amygdala (or else it couldn't engage in the arcing behavior).  Lets translate this into segmentation logic.
 
 First we will begin by generating a plane from the top of the amygdala.  Then we find all streamlines that have **both** streamline endpoints above this plane (we'll negate this criteria later, to adhere to our logic). Note, using the plane in this way is different than requiring neither streamline to be above this plane.  **This logical operation still permits maximally one endpoint per streamline to be above this plane** .
 
@@ -229,17 +229,16 @@ criteriaBarPlot.set(xlabel='streamline count (log)', ylabel='category',xscale='l
 
 ####  Dorso-ventral criteria - observations
 
-From the bar plot above, we see that the application of this criteria impacted some categories of streamlines more than others.  Note that, when computing the impact of this criteria we negated the output (using np.logical_not) just as we will do when we actually utilize this output boolean vector to compute the final segmentation.  The parietal, and frontal, and occipital categories all exhibit a reduction in streamlines, whereas the temporal category appears to maintain most of its members (as would be expected for the more ventral structure).
+From the bar plot above, we see that the application of this criteria impacted some categories of streamlines more than others.  Note that, when computing the impact of this criteria we negated the output (using [np.logical_not](https://numpy.org/doc/stable/reference/generated/numpy.logical_not.html)) just as we will do when we actually utilize this output boolean vector to compute the final segmentation.  The parietal, and frontal, and occipital categories all exhibit a reduction in streamlines, whereas the temporal category appears to maintain most of its members (as would be expected for the more ventral structure).
 
 ### Rostro-caudal endpoint criteria
 
 ####  Rostro-caudal criteria - segmentation logic
 
-In general, the endpoints of the uncinate are fairly *anterior* in the brain as we noted above, the arc of the uncinate occurs relatively close to the amygdala. This is true of the rostro-caudal axis as well. The streamlines of the uncinate have all begun to arc forward anterior of the posterior of the border of the amygdala.  A consequence, similar to the one noted (in bold) in the dorso-ventral criteria discussion, is that it is *not* the case that both endpoints are posterior of this posterior amygdala border.  Lets translate this into segmentation logic.
+In general, the endpoints of the Uncinate are fairly *anterior* in the brain as we noted above, the arc of the Uncinate occurs relatively close to the amygdala. This is true of the rostro-caudal axis as well. The streamlines of the Uncinate have all begun to arc forward anterior of the posterior of the border of the amygdala.  A consequence, similar to the one noted (in bold) in the dorso-ventral criteria discussion, is that it is *not* the case that both endpoints are posterior of this posterior amygdala border.  Lets translate this into segmentation logic.
 
-We will begin by generating a plane from the posterior of the amygdala.  Next, we will use this to find all streamlines that have both streamline endpoints posterior to this plane (we'll negate this criteria later, to adhere to our logic). Note, this is different than requiring neither streamline to be anterior to this plane.  **This logical operation still permits maximally one endpoint per streamline to be posterior to
+We will begin by generating a plane from the posterior of the amygdala.  Next, we will use this to find all streamlines that have both streamline endpoints posterior to this plane (we'll negate this criteria later, to adhere to our logic). Note, this is different than requiring _neither_ streamline to be anterior to this plane.  **This logical operation still permits maximally one endpoint per streamline to be posterior to
 this plane**.
-
 
 # Begin by generating a plane from the top of the amygdala
 amygdalaPosteriorPlane=WMA_pyFuncs.planarROIFromAtlasLabelBorder(atlasImg,18, 'posterior')
@@ -270,8 +269,7 @@ The predominantly impacted categories in this instance are the occipital and cer
 
 #### midpoint rostro-caudal criteria - segmentation logic
 
-If the arc of the uncinate occurs anterior to the posterior border of the amygdala, it stands to reason that the midpoint of those streamlines would also occur anterior to this border.  Even in the case of more sigmoidally shaped streamlines (as opposed to u or j shaped), which do occur and have their endpoints potentially posterior to the posterior amygdala, the midpoint would still be anterior of this border if the anterior endpoint is to terminate in the anterior frontal lobes.  This can rather straightforwardly be translated into segmentation logic.
-    
+If the arc of the Uncinate occurs anterior to the posterior border of the amygdala, it stands to reason that the midpoint of those streamlines would also occur anterior to this border.  Even in the case of more [sigmoidally](https://en.wikipedia.org/wiki/Sigmoid_function) shaped streamlines (as opposed to u or j shaped), which do occur and have their endpoints potentially posterior to the posterior of the amygdala, the midpoint would still be anterior of this border if the anterior endpoint is to terminate in the anterior frontal lobes.  This can rather straightforwardly be translated into segmentation logic.
 
 # Now we find all streamlines that the midpoint anterior of the same posterior amigdala plane we made earlier.
 midpointAntOfPosteriorAmygBool=WMA_pyFuncs.applyMidpointCriteria(sourceTractogram.streamlines,amygdalaPosteriorPlane,'anterior');
@@ -289,15 +287,15 @@ criteriaBarPlot.set(xlabel='streamline count (log)', ylabel='category',xscale='l
 
 #### #### midpoint rostro-caudal criteria - observations
 
-Note that, in this case, we did not negate the outcome of the boolean vector.  This is because the output we obtained (midpoints anterior of the posterior amygdala) **is** what we want.  The primarily impacted categories are occipital and cerebellar (by a wide margin), but also parietal and temporal, to a lesser extent.
+Note that, in this case, we **did not** negate the outcome of the boolean vector.  This is because the output we obtained (midpoints anterior of the posterior amygdala) **is** what we want.  The primarily impacted categories are occipital and cerebellar (by a wide margin), but also parietal and temporal, to a lesser extent.
 
 ### posterior non-traversal criteria
 
 #### posterior non-traversal criteria - segmentation logic
 
-As it should have been clear by now the category segmentation is insufficient to isolate the uncinate.  You can refer back to the category visualization from earlier in this chapter to confirm this for yourself.  Note that the majority of the non-uncinate streamlines in the fronto-temporal category appear to be streamlines of the arcuate fasciculus.  How can we exclude these fibers?  By applying a plane that selectively targets the arcuate streamlines.
+As it should have been clear by now the category segmentation is insufficient to isolate the Uncinate.  You can refer back to the category visualization from earlier in this chapter to confirm this for yourself.  Note that the majority of the non-Uncinate streamlines in the fronto-temporal category appear to be streamlines of the [Arcuate Fasciculus](https://en.wikipedia.org/wiki/Arcuate_fasciculus).  How can we exclude these streamlines?  By applying a plane that selectively targets the Arcuate streamlines.
 
-Subcortical structures, like the thalamus (and amygdala), tend to be relatively invariant in their location across subjects.  This is likely due to their proximity to the anterior commissure and their comparative cross-subject homology (as compared to the gyri and sulci of the cortex).  This is fortunate for us, because it looks like all of the arcuate-like fibers extend *past* the posterior of the thalamus.  Lets generate a planar ROI that we can use as an exclusion criterion.
+Subcortical structures, like the [Thalamus](https://en.wikipedia.org/wiki/Thalamus) (and amygdala), tend to be relatively invariant in their location across subjects.  This is likely due to their proximity to the [anterior commissure](https://en.wikipedia.org/wiki/Anterior_commissure) (which serves as a central orientation point) and their comparative cross-subject [homology](https://en.wikipedia.org/wiki/Homology_(biology)) (as compared to the gyri and sulci of the cortex).  This is fortunate for us, because it looks like all of the Arcuate-like streamlines extend *past* the posterior of the thalamus.  Lets generate a planar ROI that we can use as an exclusion criterion.
 
 posteriorThalPlane=WMA_pyFuncs.planarROIFromAtlasLabelBorder(atlasImg,10, 'posterior')
 
@@ -315,13 +313,13 @@ criteriaBarPlot.set(xlabel='streamline count (log)', ylabel='category',xscale='l
 
 #### posterior non-traversal criteria - observations
 
-Interestingly, this criteria doesn't appear to have much of an effect.  Basically all we have done is excluded any streamline that crosses a specific plane (the posterior border of the thalamus), and as it turns out the overwhelming majority of streamlines don't do this.  In truth though, this criteria was targeting a very specific structure: the arcuate fasciculus, which was partially visible in the fronto-temporal category at the start of this chapter.
+Interestingly, this criteria doesn't appear to have much of an effect.  Basically all we have done is excluded any streamline that crosses a specific plane (the posterior border of the thalamus), and as it turns out the overwhelming majority of streamlines don't do this.  In truth though, this criteria was targeting a very specific structure: the [Arcuate Fasciculus](https://en.wikipedia.org/wiki/Arcuate_fasciculus), which was partially visible in the fronto-temporal category at the start of this chapter.  Only a limited number of streamlines correspond to this, but it's nonetheless important that we exclude them, in order to get a good segmentation.
 
 ## Combine criteria and visualize
 
 Below, we will selectively apply the criteria we have created and visualize the output.  You'll notice that this is a different widget than we have used previously.  To toggle a specific criteria from the list press control and click on the associated criteria name.  You can also shift click to select a range of criteria at once.  Also note that, because this is a widget within a widget, this visualization may take a moment to update when you change options.
 
-The default criteria selection for this visualization results in the plotting of the right uncinate fasciculus.  You can switch between the left and right hemisphere criteria, but note that if both are activated then no streamlines will be plotted (by definition, there are no streamlines that are in both hemispheres that are also contained entirely within a single hemisphere).  It is interesting to observe just how close the pairing of the category criteria and the posterior traversal criteria get to segmenting this tract, however additional criteria are necessary to exclude those few fibers which remain dorsal to the uncinate.
+The default criteria selection for this visualization results in the plotting of the right Uncinate Fasciculus.  You can switch between the left and right hemisphere criteria, but note that if both are activated then no streamlines will be plotted (by definition, there are no streamlines that are in both hemispheres that are also contained entirely within a single hemisphere).  It is interesting to observe just how close the pairing of the category criteria and the posterior traversal criteria get to segmenting this tract, however additional criteria are necessary to exclude those few fibers which remain dorsal to the Uncinate.
 
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import SelectMultiple
@@ -361,7 +359,7 @@ interact(updateSeg, commandIn=SelectMultiple(options=criteriaList,value=criteria
 
 ## Quantitative assessment
 
-In the plot below, you'll be able to select whatever combination of criteria you chose and view their impact on the overall count of streamlines in each category.  As was discussed in the chapter on categorical segmentations, you'll notice that the application of the category-specific criteria has the largest effect.  However, designing segmentations isn't just about quantity (of streamlines excluded) it's also about quality.
+In the plot below, you'll be able to select whatever combination of criteria you chose and view their impact on the overall count of streamlines in each category.  As was discussed in the chapter on categorical segmentations, you'll notice that the application of the category-specific criteria has the largest effect.  However, designing segmentations isn't just about quantity (of streamlines excluded) it's also about quality, which is why we need the other criteria as well.
 
 def barPlotCriteria(commandIn):
     import numpy as np
@@ -385,9 +383,9 @@ interact(barPlotCriteria, commandIn=SelectMultiple(options=criteriaList,descript
 
 ## Designing for edge cases
 
-In many cases, after the application of only a few criteria, most of the non-target streamlines will be removed **however** aberrant streamlines may still remain.  In order to remove these, the inclusion of additional, carefully targeted criteria should be applied.  These criteria should be designed in such a way that they are generalizable to all subjects and would be an accurate criteria for the target tract **whether or not** the aberrant streamlines are present in a particular case.  This is why, in some cases, it may appear that "pointless" criteria have been included: in previous cases and/or in other subjects, aberrant streamlines needed to be excluded.  Unfortunately this turns out to be one of the tricker parts of designing segmentations.
+In many cases, after the application of only a few criteria, most of the non-target streamlines will be removed **however** aberrant streamlines may still remain.  In order to remove these, the inclusion of additional, carefully targeted criteria should be applied.  These criteria should be designed in such a way that they are generalizable to all subjects and would be an accurate criteria for the target tract **whether or not** the aberrant streamlines are present in a particular case.  This is why, in some cases, it may appear that "pointless" criteria have been included: in previous cases and/or in other subjects, aberrant streamlines needed to be excluded.  Unfortunately this turns out to be one of the tricker (and unending) parts of designing segmentations.
 
-As was noted in the section on biological plausibility, the more biologically plausible your input tractome is, the easier time you'll have segmenting.  This is because, as the traversal patterns and general architecture of streamlines becomes less constrained, more and more edge cases with unusual or aberrant streamlines will occur.  As such, it is difficult to know when a segmentation has been "completed"--it's always a possibility that you will encounter a particularly wild or unruly tractome with unexpected streamlines that need to be contended with.  Generally speaking though, it's possible to develop broadly effective segmentations using a finite (typically around six or so) number of criteria.
+As was noted in the section on biological plausibility, the more biologically plausible your input tractome is, the easier time you'll have segmenting.  This is because, as the traversal patterns and general architecture of streamlines becomes less constrained, more and more edge cases with unusual or aberrant streamlines will occur.  As such, it is difficult to know when a segmentation has been "finalized"--it's always a possibility that you will encounter a particularly wild or unruly tractome with unexpected streamlines that need to be contended with.  A particularly devious individual will almost always be able to come up with a counter example streamline which meets your currently implemented criteria, but still doesn't correspond to your structure of interest. Generally speaking though, it's possible to develop broadly effective segmentations using a finite (typically around six or so) number of criteria.
 
 ##  Moving on
 

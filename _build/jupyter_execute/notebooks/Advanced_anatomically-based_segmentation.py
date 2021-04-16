@@ -198,11 +198,11 @@ from ipywidgets import Dropdown
 from ipywidgets import interact, interactive, fixed, interact_manual
 from ipywidgets import IntSlider
 
-primaryRoiNum=Dropdown(options=dropDownList, value=10, description="primaryPlane")
-relativeBorder=Dropdown(options=portionList, value='anterior', description="relative border")
-cutRoiNum=Dropdown(options=dropDownList, value=255, description="cutPlane")
-cutBorder=Dropdown(options=portionList, value='superior', description="relative border")
-keepPortion=Dropdown(options=portionList, value='superior', description="portion2keep")
+primaryRoiNum=Dropdown(options=dropDownList, value=10, description="primaryStruc")
+relativeBorder=Dropdown(options=portionList, value=portionList[9], description="brimaryStrucBorder")
+cutRoiNum=Dropdown(options=dropDownList, value=255, description="cutRefStruc")
+cutBorder=Dropdown(options=portionList, value=portionList[1], description="cutRefStrucBorder")
+keepPortion=Dropdown(options=portionList, value=portionList[1], description="portion2keep")
 
 interact(anatomyPlanePlotWrapper, \
     primaryRoiNum=primaryRoiNum, \
@@ -274,15 +274,15 @@ plotSegmentedStreamsWidget(streamsToPlot.streamlines)
 
 ## Using other anatomical features of tracts
 
-In the above sections (and indeed in previous chapters) we have been making extensive use of planar ROIs in our segmentation demonstrations.  Additionally, in the chapter covering categorical segmentations, we demonstrated the ability to use endpoint termination areas (implicitly, via dipy's connectome generation method).  While these are both commonly used methods for segmenting tracts, there are other anatomical features of tracts that can be leveraged
+In the above sections (and indeed in previous chapters) we have been making extensive use of planar ROIs in our segmentation demonstrations.  Additionally, in the chapter covering categorical segmentations, we demonstrated the ability to use endpoint termination areas (implicitly, via [DIPY's connectome generation method](https://dipy.org/documentation/1.0.0./examples_built/streamline_tools/)).  While these are both commonly used methods for segmenting tracts, there are other anatomical features of tracts that can be leveraged.
 
 ### Loose endpoint criteria
 
-While it is possible to segment streamlines by applying a criteria specifying which labels their endpoints have to terminate in, it's also possible to apply looser criteria to the endpoints.  For example, it's possible to require that **both** endpoints be anterior to a particular anatomical feature.  Such a criterion would be useful for segmenting the uncinate fasciculus.  Alternatively you could require that only one endpoint (or, indeed neither) be found relative to some other anatomical structure.
+While it is possible to segment streamlines by applying a criteria specifying which labels their endpoints are required to terminate in, it's also possible to apply less stringent criteria to the endpoints.  For example, it's possible to require that **both** endpoints be anterior to a particular anatomical feature.  Such a criterion would be useful for segmenting the [Uncinate Fasciculus](https://en.wikipedia.org/wiki/Uncinate_fasciculus).  Alternatively you could require that only one endpoint (or, indeed neither) be found positioned relative to some other anatomical structure.
 
-This method is different from the application of a planar ROI because it does not rely on intersection to select streamlines.  All that it does is check to determine which of the endpoints meet the dimensional/anatomical criteria.  This method has the added benefit of having a **much** smaller computational footprint, as non eucledian distances are calculated.
+This method is different from the application of a planar ROI because it does not rely on intersection to select streamlines.  All that it does is check to determine which of the endpoints meet the dimensional/anatomical criteria.  This method has the added benefit of having a **much** smaller computational footprint, as no extensive pointwise euclidean distance computations are calculated.
 
-Below we'll use the same ROI as was created earlier though, for this application, we will skip the cutting step and the primary anatomical border will be treated as a full planar ROI.
+Below we'll use the same ROI as was created earlier. However, for this application, we will skip the cutting step and the primary anatomical border will be treated as a full planar ROI.
 
 #seg via endpoint
 
@@ -359,7 +359,7 @@ interact(updateFunc, \
 
 ### Midpoints and "necks"
 
-In addition to utilizing endpoints as a criteria, we can also use the midpoints of tracts.  Traditionally, white matter tracts are understood to possess a "neck" which, as the idiom implies, is the point at which the cross-sectional area (considered perpendicular to the direction that the composite axons are running) reaches its minimum.  This anatomical feature is often described in both tractography and dissection-based characterizations of white matter tracts.  Although this feature isn't always found at the "midpoint" of the tract, it is typically near the average midpoint of the tract.  As such, we can reasonably use this as a proxy for the neck, and subject this characteristic to criteria in order to segment streamlines.
+In addition to utilizing endpoints as a criteria, we can also use the midpoints of tracts.  Traditionally, white matter tracts are understood to possess a "neck" which, as the idiom implies, is the point at which the cross-sectional area (considered perpendicular to the direction that the composite axons are traversing) reaches its minimum--a constriction point.  This anatomical feature is often described in both tractography and dissection-based characterizations of white matter tracts.  Although this feature isn't always found at the "midpoint" of the tract (i.e. the average middle node between streamline endpoints), it is typically _near_ the average midpoint of the tract.  As such, we can reasonably use this as a proxy for the neck, and subject this characteristic to criteria assessments in order to segment streamlines.
 
 Below, we'll once more use the same planar ROI that was established earlier, but this time we'll consider the relative position requirement as applied to the midpoint.
 
@@ -435,4 +435,4 @@ interact(updateFunc, \
 
 ## Closing discussion
 
-Now that we have demonstrated some of the fundamental building blocks for an anatomical segmentation, lets go ahead and implement an anatomically based segmentation for a particular tract.  In this case, we'll start with the [uncinate fasiciculus](https://en.wikipedia.org/wiki/Uncinate_fasciculus).
+In this chapter we demonstrated how to use the brain's anatomy to guide segmentation.  As we have noted before though, segmenting a coherent white matter structure typically takes the application of several criteria.  In the next two chapters we'll actually perform a segmentation for two such structures. We'll start with the [uncinate fasiciculus](https://en.wikipedia.org/wiki/Uncinate_fasciculus).

@@ -17,7 +17,3 @@ This is inherently a community resource, and we welcome comments and contributio
 ## TEMPORARY NOTICE:  UNDER CONSTRUCTION
 
 Currently, this resource is under construction and always moving towards improvements.  As such, expect the addition of new chapters and additional polish in the coming months.
-
-```python
-
-```
