@@ -33,3 +33,7 @@
   - file: notebooks/Advanced_anatomically-based_segmentation
   - file: notebooks/Example_Segmentation-uncinate_fasiculus.ipynb
   - file: notebooks/Example_Segmentation-IFOF
+
+- part: Epilogue
+  chapters:
+  - file: notebooks/Closing_Thoughts
