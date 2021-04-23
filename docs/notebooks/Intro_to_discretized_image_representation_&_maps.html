@@ -575,7 +575,7 @@
 <h2>Why a satellite image?<a class="headerlink" href="#why-a-satellite-image" title="Permalink to this headline">¶</a></h2>
 <p>If you’ve happened to scroll over this lesson you’ll note that we’re starting by looking at satellite images.  Surely, given that we’re studying the brain, wouldn’t it be more appropriate to look at an image of a brain?  If our goal was to jump straight into learning about the brain, maybe, but as we noted earlier, our first goal is to learn about image formats.  This is because many of the things we can do with 2-D images we can also do with 3-D images.  While some of us may have been looking at pictures of the brain for years now–perhaps even decades–it’s almost guaranteed that we’ve been looking at pictures of the world for far longer.  As such, we’re beginning with pictures of the world, which we presumably have deeper-seated intuitions about.</p>
 <p>In the following sections we’ll consider how the actual data in the digital image structure corresponds to things like oceans, forests and other types of <a class="reference external" href="https://en.wikipedia.org/wiki/Biome">biomes</a>.  We’ll see how we can use our intuitions to bridge the gap between the raw, numerical data and our existing understanding of the world itself (i.e. the subject of the satellite photography).</p>
-<p>Ultimately, what we will be illustrating are the processes of <strong>spatial translation</strong> (moving an object in space) and <strong>masking</strong> (the selection or “indexing” of related sub-components from a larger whole).  These concepts are introduced here in 2D using the satellite image, but as later lessons will show, these concepts are absolutely fundamental to our use of neuroimaging data.  As a quick illustration of this, when we initially use an MRI scanner to obtain an image of a person’s head, we also get data about the persons neck, head, skull and other tissues that <em>are not</em> the brain.  However, when we do our analyses, we only want to look at data that relates to the brain.  As such, we have to “<strong>mask</strong> out” those spatial regions of the scan data that we are not interested in.  Doing so ensures that we only extract data from the structures/areas of interest.  Before we get there though, let’s build our intuitions.  We’ll begin here with an introduction to this process with the ocean and landmasses.</p>
+<p>Ultimately, what we will be illustrating are the processes of <strong>spatial translation</strong> (moving an object in space) and <strong>masking</strong> (the selection or “indexing” of related sub-components from a larger whole).  These concepts are introduced here in 2D using the satellite image, but as later lessons will show, these concepts are absolutely fundamental to our use of neuroimaging data.  As a quick illustration of this, when we initially use an MRI scanner to obtain an image of a person’s head, we also get data about the person’s neck, head, skull and other tissues that <em>are not</em> the brain.  However, when we do our analyses, we only want to look at data that relates to the brain.  As such, we have to “<strong>mask</strong> out” those spatial regions of the scan data that we are not interested in.  Doing so ensures that we only extract data from the structures/areas of interest.  Before we get there though, let’s build our intuitions.  We’ll begin here with an introduction to this process with the ocean and landmasses.</p>
 <p>Let’s begin by loading and plotting <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Earthmap1000x500.jpg">a satellite image</a> now.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -629,7 +629,7 @@
 <p>Here we see a satellite image of the world just like any other that you’ve seen before.  Note though, that it is bordered by numbered axes, with zeros in the upper (for the Y axis) and lower (for the X axis) left-hand corners. This is because we have loaded it here in a jupyter notebook, which treats it just like any other pixel-wise plot that could be generated from code or data.  As such, the labeling numbers we see tracking the pixel rows in columns in the image.  It’s just that, in this case, the color for each data point (in each row and column) corresponds to the color of the earth’s surface at that location.  From this plotting we can see that our code has loaded the image as a 500 pixel tall by 1000 pixel wide object.</p>
 <p>Take note of how, <em>specifically</em>, the row and column numberings are associated with the plotted image.  We can see that the top row is labeled zero, while the final row is unlabeled, but nonetheless corresponds to 500.  Likewise, the first column is labeled zero, but the final (unlabeled) column corresponds to 1000.  Though this method of orientation may feel unintuitive, this is how data is plotted with <a class="reference external" href="https://matplotlib.org/">matplotlib</a> (the code library we are using to view these images) (<a class="reference external" href="https://doi.org/10.1109/MCSE.2007.55">Hunter, JD, 2007</a>).</p>
 <p>Lets use some additional <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html">python functions</a> to extract the <a class="reference external" href="https://en.wikipedia.org/wiki/RGB_color_model">“raw” data</a> being used to generate this plot and examine it.  We’ll begin by looking at the dimensions of the image according to the python function (which reports image dimensions), and we’ll look at the dimensions of the underlying data itself.</p>
-<p>**Do we expect these two entries to be the same or different–is the data structure <em>exactly</em> the same size as the image?  Why or why not?</p>
+<p><strong>Do we expect these two entries to be the same or different–is the data structure <em>exactly</em> the same size as the image?  Why or why not?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
@@ -663,7 +663,7 @@ Dimensions of array
 <p>This provides us with several details.  It comes from the default python functions associated with inspecting data objects and their characteristics.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/JPEG"><strong>JPEG</strong></a>:  Indicates the file type, which could have also been <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> for example.</p></li>
-<li><p><strong>(1000, 500)</strong>: This quantity indicates the (resolution of the image)[<a class="reference external" href="https://en.wikipedia.org/wiki/Image_resolution">https://en.wikipedia.org/wiki/Image_resolution</a>].  The first number indicates how many pixels wide it is, while the second indicates how tall it is in pixels.</p></li>
+<li><p><strong>(1000, 500)</strong>: This quantity indicates the <a class="reference external" href="https://en.wikipedia.org/wiki/Image_resolution">resolution of the image</a>.  The first number indicates how many pixels wide it is, while the second indicates how tall it is in pixels.</p></li>
 <li><p><strong>RGB</strong>:  Indicates the <a class="reference external" href="https://en.wikipedia.org/wiki/RGB_color_model">color component channels</a> that are being combined to create the image.  Here we see that there are three of these channels and they correspond to the Red (R), Green (G), and Blue (B).</p></li>
 </ul>
 <p>The <strong>second output</strong> reads as “(500, 1000, 3)” and indicates the dimensions of the image’s <em>actual</em> data representation.  That is, the structured and quantitative information that preserves the relevant correspondances with the source entity/object.</p>
@@ -825,7 +825,7 @@ North Africa pixel RGB Value
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "8d8689d3bcb44fd991564d6d3f3531b3", "version_major": 2, "version_minor": 0}
+{"model_id": "5881bf9784e248b2811850d187735509", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.updateBigPixel(redVal, greenVal, blueVal)&gt;
 </pre></div>
 </div>
@@ -900,7 +900,7 @@ North Africa pixel RGB Value
 <span class="c1">#russiaPixel=firstMapArray[80,700]</span>
 <span class="c1">#northAfricaPixel=firstMapArray[180,550]</span>
 
-<span class="c1">#begin painting the array, remember 0 indexing, extracting 100x100 squares from origional image</span>
+<span class="c1">#begin painting the array, remember 0 indexing, extracting 100x100 squares from original image</span>
 <span class="n">sectionArray</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">,:]</span><span class="o">=</span><span class="n">firstMapArray</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">,:]</span>
 <span class="n">sectionArray</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span><span class="mi">100</span><span class="p">:</span><span class="mi">199</span><span class="p">,:]</span><span class="o">=</span><span class="n">firstMapArray</span><span class="p">[</span><span class="mi">400</span><span class="p">:</span><span class="mi">499</span><span class="p">,</span><span class="mi">350</span><span class="p">:</span><span class="mi">449</span><span class="p">,:]</span>
 <span class="n">sectionArray</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span><span class="mi">200</span><span class="p">:</span><span class="mi">299</span><span class="p">,:]</span><span class="o">=</span><span class="n">firstMapArray</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">199</span><span class="p">,</span><span class="mi">150</span><span class="p">:</span><span class="mi">249</span><span class="p">,:]</span>
@@ -982,7 +982,7 @@ North Africa pixel RGB Value
 <h3><em>How</em> can we find all pixels of that type?<a class="headerlink" href="#how-can-we-find-all-pixels-of-that-type" title="Permalink to this headline">¶</a></h3>
 <p>Well, before we can actually try to identify all of the ocean pixels, we first have to determine which data point–that is, which specific pixel–we will treat as <em>the</em> quintessential ocean color.  In essence, this should be the “average” ocean color, the middle-ground between all ocean pixels.  For our purposes here we can just stick with the color we selected for the Atlantic pixel.  However, we should keep in mind that this will also pick up fresh water bodies as well, as their color properties aren’t vastly different from the oceans (we can’t really detect fresh and salt water bodies using these methods).</p>
 <p>Lets go ahead and set the color of that pixel (14 49 69) as a variable and then count how many pixels that <em>exact</em> color value corresponds to.</p>
-<p>We’ll print out the number of candidate pixels below (i.e. the number of pixels in the image), along with the number that matched the variable we set.  Keep in mind that what we’re counting here are those pixels that <em>exactly</em> that color.</p>
+<p>We’ll print out the number of candidate pixels below (i.e. the number of pixels in the image), along with the number that matched the variable we set.  Keep in mind that what we’re counting here are those pixels that are <em>exactly</em> that color.</p>
 </div>
 <div class="section" id="how-many-pixels-do-you-expect-this-to-be">
 <h3>How many pixels do you expect this to be?<a class="headerlink" href="#how-many-pixels-do-you-expect-this-to-be" title="Permalink to this headline">¶</a></h3>
@@ -1013,7 +1013,7 @@ North Africa pixel RGB Value
 <span class="c1">#counts the number of nonzero (not false) values in mask array</span>
 <span class="n">totalExact</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">exactColorMask</span><span class="p">)</span>
 
-<span class="c1">#extract the image dimensions from the image dimenion variable obtained earlier</span>
+<span class="c1">#extract the image dimensions from the image dimension variable obtained earlier</span>
 <span class="n">imgDimY</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">imgDimX</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
@@ -1073,7 +1073,7 @@ Percentage of total pixels:
 </div>
 <div class="section" id="checking-our-math">
 <h3>Checking our math<a class="headerlink" href="#checking-our-math" title="Permalink to this headline">¶</a></h3>
-<p>Our total count was reported by printing the contents of the <strong>totalExact</strong> variable.  This variable, in turn was computed by counting the number of non-zero entries in the <strong>exactColorMask</strong> variable.  What was stored in the <strong>exactColorMask</strong> variable and how was it generated?</p>
+<p>Our total count was reported by printing the contents of the <strong>totalExact</strong> variable.  This variable, in turn, was computed by counting the number of non-zero entries in the <strong>exactColorMask</strong> variable.  What was stored in the <strong>exactColorMask</strong> variable and how was it generated?</p>
 <p><strong>exactColorMask</strong> was generated by subtracting the “Atlantic blue” RGB value [14 49 69] from <em>each</em> pixel in the original image and then (after summing the absolute value of this difference across all three color channels) looking for pixels which had <strong>no</strong> difference (i.e. were <strong>exactly</strong> 0).</p>
 <p>Thus in pixels that were <em>precisely</em> “Atlantic blue” we had  the following computational/mathematical situation:</p>
 <p>[Atlantic blue]-[Atlantic blue] == [14 49 69] - [14 49 69] = [0 0 0]</p>
@@ -1092,9 +1092,9 @@ Percentage of total pixels:
 </div>
 <div class="section" id="using-trigonometry-to-compute-color-distances">
 <h2>Using trigonometry to compute color distances<a class="headerlink" href="#using-trigonometry-to-compute-color-distances" title="Permalink to this headline">¶</a></h2>
-<p>When we ran the “Atlantic blue” algorithm described above, we essentially treated the output as binarized.  What is meant by this (“binarized”) is that that the answer to our question (“Is this Atlantic blue”) was either <strong>Yes</strong> or <strong>No</strong>–there was no middle ground to the potential answers to this question.  There wasn’t an option for “sort of”.  The <em>only</em> case in which the answer wasn’t <strong>No</strong>  was when the “difference” between “Atlantic blue” and the pixel in question was exactly zero, in which case the answer was <strong>Yes</strong>.  To rephrase this question as a <a class="reference external" href="https://en.wikipedia.org/wiki/Pseudocode">pseudo-code</a> <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_expression">if statement</a>:</p>
+<p>When we ran the “Atlantic blue” algorithm described above, we essentially treated the output as binarized.  What is meant by this (“binarized”) is that the answer to our question (“Is this Atlantic blue”) was either <strong>Yes</strong> or <strong>No</strong>–there was no middle ground to the potential answers to this question.  There wasn’t an option for “sort of”.  The <em>only</em> case in which the answer wasn’t <strong>No</strong>  was when the “difference” between “Atlantic blue” and the pixel in question was exactly zero, in which case the answer was <strong>Yes</strong>.  To rephrase this question as a <a class="reference external" href="https://en.wikipedia.org/wiki/Pseudocode">pseudo-code</a> <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_expression">if statement</a>:</p>
 <p>“Is this Atlantic blue” –&gt; if “Atlantic blue”-currentPixel==0, <strong>yes</strong>, otherwise <strong>no</strong></p>
-<p>However, keen eyes will note that the most direct output of our method (the initial subtraction result, stored in the variable <strong>zeroBlueMask</strong>) <em>is not</em> actually binarized.  That is, we don’t <em>actually</em> get only “yes” or “no” answers from the difference computation. Instead, we apply an additional computations to the <strong>zeroBlueMask</strong> (and store the results in <strong>blueDiffSum</strong> and <strong>exactColorMask</strong>) and then convert our answer to a binarized output.</p>
+<p>However, keen eyes will note that the most direct output of our method (the initial subtraction result, stored in the variable <strong>zeroBlueMask</strong>) <em>is not</em> actually binarized.  That is, we don’t <em>actually</em> get only “yes” or “no” answers from the difference computation. Instead, we apply an additional computation to the <strong>zeroBlueMask</strong> (and store the results in <strong>blueDiffSum</strong> and <strong>exactColorMask</strong>) and then convert our answer to a binarized output.</p>
 <p>**Is there something in the zeroBlueMask variable that we can make use of to determine “close” colors?”</p>
 <div class="section" id="what-do-we-actually-get-from-zerobluemask-np-subtract-firstmaparray-atlanticcolor">
 <h3>What do we actually get from “zeroBlueMask=np.subtract(firstMapArray,atlanticColor)”<a class="headerlink" href="#what-do-we-actually-get-from-zerobluemask-np-subtract-firstmaparray-atlanticcolor" title="Permalink to this headline">¶</a></h3>
@@ -1115,7 +1115,7 @@ Percentage of total pixels:
 </div>
 <p>In 1031 cases (i.e. for 1031 pixels) the difference between the “Atlantic blue” value [14 49 69] is [0 0 0]–zero for each color channel. However, for [14 49 70] it would be [0 0 1] and for [14 48 69] it would be [0 -1 0].</p>
 <p>We can think about those colors as being “1” away from “Atlantic blue”.  How many pixels are “off-by-one” like this?  To check this, we would need to look at the <strong>blueDiffSum</strong> variable, which has summed the cross-channel differences into a single value.  In this 2 dimensional structure, we would be looking for values equal to 1.</p>
-<p>NOTE: in the code block below, you’ll note that the variable <strong>offByValue</strong> is set to 2.  This is despite our immediately preceding discussion focusing on pixels that were “off-by-one”.  The reason for this discrepancy is that, as it turns out, there are no pixel values that are <em>just</em> one numerical value off from the “Atlantic blue” value we are looking for.  As such, in order to find <em>any</em> additional pixels, we have to increase this “off-by” number (below represented by the <strong>offByValue</strong> variable) to 2.  The likely cause of this is a phenomenon known as <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG#JPEG_compression">“JPEG compression”</a> which is a specialized process used by image handling &amp; processing programs which attempts to “shrink” the storage size of the image by algorithmically recoloring nearby pixels.  Feel free to modify the <strong>offByValue</strong> to demonstrate this for yourself.</p>
+<p>NOTE: in the code block below, you’ll note that the variable <strong>offByValue</strong> is set to 2.  This is despite our immediately preceding discussion focusing on pixels that were “off-by-one”.  The reason for this discrepancy is that, as it turns out, there are no pixel values that are <em>just</em> one numerical value off from the “Atlantic blue” value we are looking for.  As such, in order to find <em>any</em> additional pixels, we have to increase this “off-by” number (below represented by the <strong>offByValue</strong> variable) to 2.  The likely cause of this is a phenomenon known as <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG#JPEG_compression">JPEG compression</a> which is a specialized process used by image handling &amp; processing programs which attempts to “shrink” the storage size of the image by algorithmically recoloring nearby pixels.  Feel free to modify the <strong>offByValue</strong> to demonstrate this for yourself.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of blueDiffSum variable:&#39;</span><span class="p">)</span>
@@ -1170,7 +1170,7 @@ Percentage of total pixels off-by-some:
 </div>
 <div class="section" id="can-we-generalize-this-concept">
 <h3>Can we generalize this concept?<a class="headerlink" href="#can-we-generalize-this-concept" title="Permalink to this headline">¶</a></h3>
-<p>If we think about this a bit more geometrically, we could treat the RGB values as the axes of an XYZ plot.  In such a fashion, each color could be placed in this arrangement in accordance with their X (red), Y (green), and Z (blue) coordinates.  Colors could then have their “distance” computed by seeing how far away they are from one another in this spatial arrangement.  In this way we would be computing the <a class="reference external" href="https://en.wikipedia.org/wiki/Hypotenuse"><em>hypotenuse</em></a> formed the 3 dimensional right triangle formed by the differences in color values.  The formula would look roughly like this</p>
+<p>If we think about this a bit more geometrically, we could treat the RGB values as the axes of an XYZ plot.  In such a fashion, each color could be placed in this arrangement in accordance with their X (red), Y (green), and Z (blue) coordinates.  Colors could then have their “distance” computed by seeing how far away they are from one another in this spatial arrangement.  In this way we would be computing the <a class="reference external" href="https://en.wikipedia.org/wiki/Hypotenuse"><em>hypotenuse</em></a> formed by the 3 dimensional right triangle manifested by the differences in color values.  The formula would look roughly like this</p>
 <p>“Color Hypotenuse Distance”=<span class="math notranslate nohighlight">\(\sqrt{(R^2 +G^2 + B^2 )}\)</span></p>
 <p>where</p>
 <p>R=”Red Difference”=RedVal1-RedVal2<br />
@@ -1183,7 +1183,7 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1">#quick and dirty general use hypoteuse algorithm, can be used for 2d or 3D</span>
+<span class="c1">#quick and dirty general use hypotenuse algorithm, can be used for 2d or 3D</span>
 <span class="k">def</span> <span class="nf">multiDHypot</span><span class="p">(</span><span class="n">coords1</span><span class="p">,</span><span class="n">coords2</span><span class="p">):</span>
     <span class="n">dimDisplace</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">coords1</span><span class="p">,</span><span class="n">coords2</span><span class="p">)</span>
     <span class="n">elementNum</span><span class="o">=</span><span class="n">dimDisplace</span><span class="o">.</span><span class="n">size</span>
@@ -1197,7 +1197,7 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
         <span class="n">hypotLeng</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">elementSquareSum</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">hypotLeng</span>
 
-<span class="c1">#initalize distance storage structure</span>
+<span class="c1">#initialize distance storage structure</span>
 <span class="n">colorDistMeasures</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(([</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]))</span>
 
 <span class="c1">#iteratively apply the distance computation</span>
@@ -1206,7 +1206,7 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
         <span class="c1">#extract the current pixel</span>
         <span class="n">curPixelVal</span><span class="o">=</span><span class="n">zeroBlueMask</span><span class="p">[</span><span class="n">iRows</span><span class="p">,</span><span class="n">iColumns</span><span class="p">]</span>
         
-        <span class="c1">#compute the color distance for this pixel, and store it in the corresponding stpot</span>
+        <span class="c1">#compute the color distance for this pixel, and store it in the corresponding spot</span>
         <span class="c1">#in colorDistMeasures, use this if your input above was firstMapArray</span>
         <span class="c1">#Sidenote:  This may require additional code modifications</span>
         <span class="c1">#colorDistMeasures[iRows,iColumns]=multiDHypot(curPixelVal,atlanticColor)</span>
@@ -1222,12 +1222,12 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
 
 <span class="c1">#plotting code for histogram</span>
 <span class="n">ax1</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="c1">#NOTE: To get a visual sense of the aforementioned JPEG color coompression, set bins = 500 </span>
+<span class="c1">#NOTE: To get a visual sense of the aforementioned JPEG color compression, set bins = 500 </span>
 <span class="c1">#in the next line.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">flattenedDistances</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance from ocean color&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distributon of RGB color distance from Atlantic blue color&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of RGB color distance from Atlantic blue color&#39;</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mf">18.5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">)</span>
 
@@ -1240,7 +1240,7 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x121549d10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x11532f550&gt;
 </pre></div>
 </div>
 <img alt="../_images/Intro_to_discretized_image_representation_&amp;_maps_25_1.png" src="../_images/Intro_to_discretized_image_representation_&amp;_maps_25_1.png" />
@@ -1260,7 +1260,7 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
 <p>These likely correspond to colors/environment-types that cover large portions of the Earth.</p>
 <div class="section" id="the-big-cluster-from-0-to-75-is-the-one-we-are-interested-in-and-to-see-why-we-can-look-at-the-plot-below-the-histogram">
 <h3>The big cluster, from 0 to 75 is the one we are interested in, and to see why we can look at the plot below the histogram.<a class="headerlink" href="#the-big-cluster-from-0-to-75-is-the-one-we-are-interested-in-and-to-see-why-we-can-look-at-the-plot-below-the-histogram" title="Permalink to this headline">¶</a></h3>
-<p>In the plot below the histogram we see a differently colored view of the satellite image.  Here, instead of visible light, we are plotting the numerical <a class="reference external" href="https://en.wikipedia.org/wiki/Color_difference">color distance</a> from “Atlantic blue”.  Referencing the colorbar to the right, we see that most of the ocean is less than 100 “distance units” from the “Atlantic blue” color (oincidentally depicted in blue with this color mapping).</p>
+<p>In the plot below the histogram we see a differently colored view of the satellite image.  Here, instead of visible light, we are plotting the numerical <a class="reference external" href="https://en.wikipedia.org/wiki/Color_difference">color distance</a> from “Atlantic blue”.  Referencing the colorbar to the right, we see that most of the ocean is less than 100 “distance units” from the “Atlantic blue” color (coincidentally depicted in blue with this color mapping).</p>
 <p>What if we selected only those pixels that were <em>less than</em> some specified distance (e.g. 75 or 100) from “Atlantic blue”?</p>
 </div>
 <div class="section" id="what-s-the-ideal-distance-from-atlantic-blue-to-capture-as-many-water-pixels-as-possible-and-as-few-land-pixels-as-possible">
@@ -1283,7 +1283,7 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">flattenedDistances</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance from ocean color&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distributon of RGB color distance from Atlantic pixel color&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of RGB color distance from Atlantic pixel color&#39;</span><span class="p">)</span>
     <span class="n">xposition</span> <span class="o">=</span> <span class="p">[</span><span class="n">cutVal</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">xc</span> <span class="ow">in</span> <span class="n">xposition</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xc</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1291,17 +1291,17 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
     <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
      
     <span class="c1">#compute binarized mask for values below cutVal</span>
-    <span class="n">naieveOceanMask</span><span class="o">=</span><span class="n">DistanceArray</span><span class="o">&lt;</span><span class="n">cutVal</span>
+    <span class="n">naiveOceanMask</span><span class="o">=</span><span class="n">DistanceArray</span><span class="o">&lt;</span><span class="n">cutVal</span>
     
     <span class="c1">#plot the image that results</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">imshow</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="p">)</span>
+    <span class="n">imshow</span><span class="p">(</span><span class="n">naiveOceanMask</span><span class="p">)</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     
     <span class="c1"># Pie chart, where the slices will be ordered and plotted counter-clockwise:</span>
     <span class="n">maskLabels</span> <span class="o">=</span> <span class="s1">&#39;Presumed water&#39;</span><span class="p">,</span> <span class="s1">&#39;Presumed land&#39;</span>
-    <span class="n">maskSizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="o">==</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="n">maskSizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naiveOceanMask</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naiveOceanMask</span><span class="o">==</span><span class="mi">0</span><span class="p">)]</span>
     <span class="c1">#implement pie chart plot here</span>
 
 <span class="c1">#create the function to manipulate</span>
@@ -1318,7 +1318,7 @@ B=”Blue Difference”=BlueVal1-BlueVal2</p>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c482df7187bd4d518a15e68c4a3b8389", "version_major": 2, "version_minor": 0}
+{"model_id": "42a53eb76cfb40ddbcb35248c5b03030", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.updateCut(cutVal)&gt;
 </pre></div>
 </div>

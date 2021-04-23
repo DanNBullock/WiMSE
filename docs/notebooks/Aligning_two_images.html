@@ -427,7 +427,7 @@
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1">#quick and dirty general use hypoteuse algorithm, can be used for 2d or 3D</span>
+<span class="c1">#quick and dirty general use hypotenuse algorithm, can be used for 2d or 3D</span>
 <span class="k">def</span> <span class="nf">multiDHypot</span><span class="p">(</span><span class="n">coords1</span><span class="p">,</span><span class="n">coords2</span><span class="p">):</span>
     <span class="n">dimDisplace</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">coords1</span><span class="p">,</span><span class="n">coords2</span><span class="p">)</span>
     <span class="n">elementNum</span><span class="o">=</span><span class="n">dimDisplace</span><span class="o">.</span><span class="n">size</span>
@@ -441,7 +441,7 @@
         <span class="n">hypotLeng</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">elementSquareSum</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">hypotLeng</span>
 
-<span class="c1">#initalize distance storage structure</span>
+<span class="c1">#initialize distance storage structure</span>
 <span class="n">colorDistMeasures</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(([</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">firstMapShape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]))</span>
 
 <span class="c1">#iteratively apply the distance computation</span>
@@ -450,12 +450,12 @@
         <span class="c1">#extract the current pixel</span>
         <span class="n">curPixelVal</span><span class="o">=</span><span class="n">zeroBlueMask</span><span class="p">[</span><span class="n">iRows</span><span class="p">,</span><span class="n">iColumns</span><span class="p">]</span>
         
-        <span class="c1">#compute the color distance for this pixel, and store it in the corresponding stpot</span>
+        <span class="c1">#compute the color distance for this pixel, and store it in the corresponding spot</span>
         <span class="c1">#in colorDistMeasures, use this if your input above was firstMapArray</span>
         <span class="c1">#Sidenote:  This may require additional code modifications</span>
         <span class="c1">#colorDistMeasures[iRows,iColumns]=multiDHypot(curPixelVal,atlanticColor)</span>
     
-        <span class="c1">#compute the color distance for this pixel, and store it in the corresponding stpot</span>
+        <span class="c1">#compute the color distance for this pixel, and store it in the corresponding spot</span>
         <span class="c1">#in colorDistMeasures, use this if your input above was zeroBlueMask</span>
         <span class="c1">#we use [0 0 0 ] as our input because zeroBlueMask has already had the atlantic blue</span>
         <span class="c1">#subtracted from it</span>
@@ -480,7 +480,7 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">flattenedDistances</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance from ocean color&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distributon of RGB color distance from Atlantic pixel color&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of RGB color distance from Atlantic pixel color&#39;</span><span class="p">)</span>
     <span class="n">xposition</span> <span class="o">=</span> <span class="p">[</span><span class="n">cutVal</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">xc</span> <span class="ow">in</span> <span class="n">xposition</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xc</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -488,17 +488,17 @@
     <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
      
     <span class="c1">#compute binarized mask for values below cutVal</span>
-    <span class="n">naieveOceanMask</span><span class="o">=</span><span class="n">DistanceArray</span><span class="o">&lt;</span><span class="n">cutVal</span>
+    <span class="n">naiveOceanMask</span><span class="o">=</span><span class="n">DistanceArray</span><span class="o">&lt;</span><span class="n">cutVal</span>
     
     <span class="c1">#plot the image that results</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">imshow</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="p">)</span>
+    <span class="n">imshow</span><span class="p">(</span><span class="n">naiveOceanMask</span><span class="p">)</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     
     <span class="c1"># Pie chart, where the slices will be ordered and plotted counter-clockwise:</span>
     <span class="n">maskLabels</span> <span class="o">=</span> <span class="s1">&#39;Presumed water&#39;</span><span class="p">,</span> <span class="s1">&#39;Presumed land&#39;</span>
-    <span class="n">maskSizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="o">==</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="n">maskSizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naiveOceanMask</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naiveOceanMask</span><span class="o">==</span><span class="mi">0</span><span class="p">)]</span>
     <span class="c1">#implement pie chart plot here</span>
 
 <span class="c1">#create the function to manipulate</span>
@@ -515,7 +515,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "d8e5e7eaf39e4dfab7d1e7c6df5cca9f", "version_major": 2, "version_minor": 0}
+{"model_id": "e0595710e6f946e5acab31a9cf216322", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.updateCut(cutVal)&gt;
 </pre></div>
 </div>
@@ -532,7 +532,7 @@
 
 <span class="n">grayscaleMapDim</span><span class="o">=</span><span class="n">grayscaleMap</span><span class="o">.</span><span class="n">size</span>
 
-<span class="c1">#quick computation to obtain native aspect ratio approximation relative to preeceding image&#39;s 2:1</span>
+<span class="c1">#quick computation to obtain native aspect ratio approximation relative to preceding image&#39;s 2:1</span>
 <span class="n">grayscaleMapApsectRatio</span><span class="o">=</span><span class="n">grayscaleMapDim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">grayscaleMapDim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ratio of width to height (aspect ratio)&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">grayscaleMapApsectRatio</span><span class="p">)</span>
@@ -578,7 +578,7 @@ Ratio of width to height (aspect ratio)
 </div>
 </div>
 <p>Note that the axes are now the same as the previous satellite image. Now that we have it resized, lets convert it to a 2-D mask like we did previously.  This time though, we don’t need to apply a specific threshold because there are only really two values in the image: gray and white.</p>
-<p>Let’s plot this output in the same fashion we did the mask we obatined from the satellite.</p>
+<p>Let’s plot this output in the same fashion we did the mask we obtained from the satellite.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create binarized, a simple sum will give us the output we seek,</span>
@@ -604,11 +604,11 @@ Ratio of width to height (aspect ratio)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#apply the mask</span>
-<span class="n">naieveOceanMask</span><span class="o">=</span><span class="n">colorDistMeasures</span><span class="o">&gt;</span><span class="n">cutVal</span><span class="o">.</span><span class="n">value</span>
+<span class="n">naiveOceanMask</span><span class="o">=</span><span class="n">colorDistMeasures</span><span class="o">&gt;</span><span class="n">cutVal</span><span class="o">.</span><span class="n">value</span>
 <span class="c1">#create binary mask for new file</span>
 <span class="n">obtainedOceanMask</span><span class="o">=</span><span class="n">flatBinarized</span><span class="o">==</span><span class="mi">0</span>
 <span class="c1">#find the differences between the two </span>
-<span class="n">discrepancyMapping</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">obtainedOceanMask</span><span class="p">,</span><span class="n">naieveOceanMask</span><span class="p">))</span>
+<span class="n">discrepancyMapping</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">obtainedOceanMask</span><span class="p">,</span><span class="n">naiveOceanMask</span><span class="p">))</span>
 
 <span class="c1">#do the plotting</span>
 <span class="n">imshow</span><span class="p">(</span><span class="n">discrepancyMapping</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
@@ -656,9 +656,9 @@ Ratio of width to height (aspect ratio)
     
 <span class="c1">#update the plot via input values     </span>
 <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">):</span>
-    <span class="n">naieveOceanMaskMoved</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">naieveOceanMask</span><span class="p">,</span><span class="n">yOffset</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">naieveOceanMaskMoved</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">naieveOceanMaskMoved</span><span class="p">,</span><span class="n">xOffset</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plot_mapDiscrepancy</span><span class="p">(</span><span class="n">obtainedOceanMask</span><span class="p">,</span><span class="n">naieveOceanMaskMoved</span><span class="p">)</span>
+    <span class="n">naiveOceanMaskMoved</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">naiveOceanMask</span><span class="p">,</span><span class="n">yOffset</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">naiveOceanMaskMoved</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">naiveOceanMaskMoved</span><span class="p">,</span><span class="n">xOffset</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plot_mapDiscrepancy</span><span class="p">(</span><span class="n">obtainedOceanMask</span><span class="p">,</span><span class="n">naiveOceanMaskMoved</span><span class="p">)</span>
 
 <span class="c1">#establish interactivity</span>
 <span class="n">interact</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="n">xOffset</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>  <span class="n">yOffset</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
@@ -667,7 +667,7 @@ Ratio of width to height (aspect ratio)
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "bff02f5e6c21467db0860c7e732f9c8d", "version_major": 2, "version_minor": 0}
+{"model_id": "4c7265e490654ceab5f18073a895d70e", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.update(xOffset, yOffset)&gt;
 </pre></div>
 </div>

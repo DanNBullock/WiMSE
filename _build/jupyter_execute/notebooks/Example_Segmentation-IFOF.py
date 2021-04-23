@@ -219,7 +219,7 @@ One of the most characteristic features of the IFOF is the 'dip' that occurs adj
 ### Lenticular-dip criteria 
 
 #### Lenticular-dip criteria  - segmentation logic
-First, we have to specify the rostro-caudal location of where we want to ensure that this dip takes place.  The dip is near to its lowest around the middle (along the rostral-caudal axis) of the lenticular nucleus.  This, as it turns out, is about the anterior border of the thalamus.  Insofar as the dorso-ventral positioning of this feature, the top of the [globus paladus](https://en.wikipedia.org/wiki/Globus_pallidus) can serve as a relatively generous limitation (in that the dip typically occurs inferior to this plane; see pg 204 of Mai, Majtanik, & Paxinos 2016).  Note that, in order to use this combination of anatomical features, we will need to use the sliceROIwithPlane function.
+First, we have to specify the rostro-caudal location of where we want to ensure that this dip takes place.  The dip is near to its lowest around the middle (along the rostral-caudal axis) of the lenticular nucleus.  This, as it turns out, is about the anterior border of the thalamus.  Insofar as the dorso-ventral positioning of this feature, the top of the [globus pallidus](https://en.wikipedia.org/wiki/Globus_pallidus) can serve as a relatively generous limitation (in that the dip typically occurs inferior to this plane; see pg 204 of Mai, Majtanik, & Paxinos 2016).  Note that, in order to use this combination of anatomical features, we will need to use the sliceROIwithPlane function.
     
 
 anteriorThalPlane=WMA_pyFuncs.planarROIFromAtlasLabelBorder(atlasImg,10, 'anterior')
@@ -242,7 +242,7 @@ criteriaBarPlot.set(xlabel='streamline count (log)', ylabel='category',xscale='l
 
 #### Lenticular-dip criteria  - observations
 
-Looking at the above graph, we can note that this criteria had a relatively dramatic effect.  However, given that this was the application of a simple exclusion plane (which we have seen with much less dramatic effect before), we might be curious as to why it achieved this effect.  Remember back to how we loaded particular tractograms earlier, which featured streamlines in excess of 100 mm.  As it turns out, there's a relatively limited number of ways for streamlines to achieve that length, and running the entire rostro-caudal span of the white matter appears to be a fairly common way to do this.  By applying a fairly stringent partial planar criteria (in that only a small portion of the coronal cross-section of the white matter has been spared) along the rostral-caudal axis, we have imposed a strong limitation as where the streamlines can go.  Indeed, this criteria, combined with the categorical requirement, is all that we need to actually segment the IFOF.  As such, we can move on to visualizing the resultant tract.
+Looking at the above graph, we can note that this criteria had a relatively dramatic effect.  However, given that this was the application of a simple exclusion plane (which we have seen with much less dramatic effect before), we might be curious as to why it achieved this effect.  Remember back to how we loaded particular tractograms earlier, which featured streamlines in excess of 100 mm.  As it turns out, there's a relatively limited number of ways for streamlines to achieve that length, and running the entire rostro-caudal span of the white matter appears to be a fairly common way to do this.  By applying a fairly stringent partial planar criteria (in that only a small portion of the coronal cross-section of the white matter has been spared) along the rostral-caudal axis, we have imposed a strong limitation as to where the streamlines can go.  Indeed, this criteria, combined with the categorical requirement, is all that we need to actually segment the IFOF.  As such, we can move on to visualizing the resultant tract.
 
 ## Combine criteria and visualize
 
@@ -280,8 +280,6 @@ def updateSeg(commandIn):
 
 #establish interactivity
 interact(updateSeg, commandIn=SelectMultiple(options=criteriaList,value=criteriaList[0:-1], description='criteria',continuous_update=False,disabled=False))
-
-
 
 ## Wrapping up
 

@@ -44,11 +44,11 @@ FSTable=pd.read_csv(FSTablePath)
 currentIndexesBool=FSTable['#No.'].isin(uniqueAtlasEntries)
 #create new data frame with the relevant entries
 currentParcellationEntries=FSTable.loc[currentIndexesBool]
-#reset the indexes, whicj were disrupted by the previous operation
+#reset the indexes, which were disrupted by the previous operation
 #currentParcellationEntries=currentParcellationEntries.reset_index(drop=True)
 currentParcellationEntries.tail(20)
 
-Now that we have the parcellation loaded, we can load our whole brain tractogram and perform the iterative assignment of streamlines to atlas labels.  In this way, each streamline will be assigned two numbers corresponding to the label number closest to its first and last node.  This method is at the heart of the burgeoning field of [connectomics](https://en.wikipedia.org/wiki/Connectomics) (e.g. [Bullmore, E., Sporns, O., 2009](https://doi.org/10.1038/nrn2575), [Behrens, T. E., & Sporns, O., 2012](https://doi.org/10.1016/j.conb.2011.08.005)).  As such, it is not surprising that a great deal of research and ingenuity has been applied to developing optimized software and algorithms for this approach.  In fact, [dipy](https://dipy.org/) has a very straightforward function for this: _dipy.tracking.utils.connectivity_matrix_ . 
+Now that we have the parcellation loaded, we can load our whole brain tractogram and perform the iterative assignment of streamlines to atlas labels.  In this way, each streamline will be assigned two numbers corresponding to the label number closest to its first and last node.  This method is at the heart of the burgeoning field of [connectomics](https://en.wikipedia.org/wiki/Connectomics) (e.g. [Bullmore, E., Sporns, O., 2009](https://doi.org/10.1038/nrn2575), [Behrens, T. E., & Sporns, O., 2012](https://doi.org/10.1016/j.conb.2011.08.005)).  As such, it is not surprising that a great deal of research and ingenuity has been applied to developing optimized software and algorithms for this approach.  In fact, [dipy](https://dipy.org/) ([Garyfallidis et al. 2014](https://doi.org/10.3389/fninf.2014.00008)) has a very straightforward function for this: [_dipy.tracking.utils.connectivity_matrix_](https://github.com/dipy/dipy/blob/master/dipy/tracking/utils.py#L114-L247)\. 
 
 Lets apply [this method](https://dipy.org/documentation/1.0.0./examples_built/streamline_tools/) now and look at the outputs.  We'll also plot an interactive visualization of the parcellation that can help serve as a reference for these subdivisions.
 (Note, this is a non-trivial set of computations, and so executing the next block will take a moment.  Be careful not to try and run it multiple times.)
@@ -57,7 +57,7 @@ Lets apply [this method](https://dipy.org/documentation/1.0.0./examples_built/st
 smallTractogramPath=os.path.join(gitRepoPath,'exampleData','smallTractogram.tck')
 streamsObjIN=nib.streamlines.load(smallTractogramPath)
 
-#because of how dipy does connectivity matrtricies, we have to relabel the atlas
+#because of how dipy does connectivity matrices, we have to relabel the atlas
 remappingFrame=currentParcellationEntries.reset_index(drop=True)
 #establish a copy
 relabeledAtlas=atlasData.copy()
@@ -88,7 +88,6 @@ itables.show(resetTable,paging=True)
 
 In order to make the information in the matrix a bit more digestible, we can look at the information contained in each row/column as a bar graph.  Below we'll do this in an interactive fashion.  Be warned:  some rows have only a few connections and are fairly straightforward to view in this way, while others may have a large number of connections and may result in a particularly large bar plot.
 
-
 dropDownList=list(zip(currentParcellationEntries['LabelName:'].to_list(), currentParcellationEntries['#No.'].to_list()))
 
 def plotCurrentLabelCounts(currLabel):
@@ -100,11 +99,11 @@ def plotCurrentLabelCounts(currLabel):
     if currentRenumberIndex in np.asarray(list(grouping.keys())): 
         #get name to label plot
         currentInputName=currentParcellationEntries['LabelName:'].loc[currentParcellationEntries['#No.']==currLabel].values[0]
-        #turn the gouping keys (pairs of integers) into a dataframe
+        #turn the grouping keys (pairs of integers) into a dataframe
         allKeysFrame=pd.DataFrame.from_dict(grouping.keys())
         #extract from the keyList (of all pairings), a boolean vector corresponding those pairings where either value is the current label of interest
         currentBool=np.logical_or(allKeysFrame[0]==currentRenumberIndex,allKeysFrame[1]==currentRenumberIndex)
-        #because the values are lists of streamline indexes, we can get the lenght of these lists to count the number of streamlines 
+        #because the values are lists of streamline indexes, we can get the length of these lists to count the number of streamlines 
         streamCounts = [len(v) for v in grouping.values()]
         #extract those index pairs via the boolean vector
         currentPairs=allKeysFrame[currentBool].to_numpy()
@@ -160,7 +159,7 @@ sourceTractogram=streamsObjIN.tractogram
 def extractSubTractogram(sourceTractogram,indexes):
     #import relevant package
     import nibabel as nib
-    #extrect the desired streamlines into a new streamline object
+    #extract the desired streamlines into a new streamline object
     streamlines = sourceTractogram.streamlines[indexes]
     #establish tractogram object
     out_tractogram = nib.streamlines.tractogram.Tractogram(streamlines)
@@ -234,6 +233,6 @@ In the above figures and widgets we have depicted the source parcellation, and t
 
 - All streamlines are assigned:  There are no streamlines that are not associated with 2 labels (one per endpoint).
 - "Accurate" labeling of streamlines is **hugely** dependent on the streamline tractogram being appropriately aligned with the parcellation.  If there is a misalignment (i.e. a flip, or a translation on a particular dimension) the labels attributed to streamlines may not be at all appropriate.
-- Given that a streamline is supposed to represent a collection of axons, a streamline must also subject to many of the same constraints that axons are.  Prime among these is that the streamline be **biologically plausible**.  This means that, among other things, it must terminate in reasonable areas and follow a sensible path as it traverses the brain.
+- Given that a streamline is supposed to represent a collection of axons, a streamline must also be subject to many of the same constraints that axons are.  Prime among these is that the streamline be **biologically plausible**.  This means that, among other things, it must terminate in reasonable areas and follow a sensible path as it traverses the brain.
 
 Let's explore this notion of **biological plausibility** in the next chapter, as it is key to a preliminary thresholding/cleaning of our tractography which permits subsequent, anatomically guided segmentations.

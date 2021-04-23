@@ -1,4 +1,4 @@
--  ROI:
+-  ROI:  Region of Interest.  A particular 
 -  Tractome:
 -  Tractogram:
 -  Atlas:
@@ -9,6 +9,7 @@
 -  Mapping:
 -  NiFTI:
 -  Connectome:
+-  MRI
 -  DWI:
 -  Tract/White matter Tract:
 -  Affine:
@@ -19,6 +20,8 @@
 -  Bundle:
 -  Types:
 -  Tokens:
+-  T1 image:
+-  Operationalize / Operationalization:
 
 
 

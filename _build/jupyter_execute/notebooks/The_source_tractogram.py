@@ -103,4 +103,4 @@ That's quite a mess!  Even so, we can begin to see how the streamlines come toge
 
 As it turns out there are really only a limited number of quantitative assessments that can be applied directly to a whole tractography object.  For example you could create a histogram of the streamline lengths composing the tractogram, but this wouldn't give you very useful insight about the brain.
 
-The problem we face here is not unlike the problem we faced when dealing with digital images.  In those cases we needed to do some form of post-processing in order to obtain more quantative and specific measurements.  This brings us to the topic of white matter segmentation.
+The problem we face here is not unlike the problem we faced when dealing with digital images.  In those cases we needed to do some form of post-processing in order to obtain more quantitative and specific measurements.  This brings us to the topic of white matter segmentation.

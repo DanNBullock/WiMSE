@@ -84,7 +84,7 @@ Note how this is done by using _WMA_pyFuncs.makePlanarROI_ to make _knife\_roi_,
 
 #use a wma_tools function to make a planar roi.
 #roi_img=WMA_pyFuncs.makePlanarROI(t1img, -20 , 'x')
-#we already have this from the previous run, so lets use it here
+#we already have this from the previous run, so let's use it here
 
 #first though we need to generate a planar ROI to "cut" with
 knife_roi=WMA_pyFuncs.makePlanarROI(t1img, 0 , 'y')
@@ -108,9 +108,6 @@ interact(rotateAndPlotWrapper, \
     xCoord=IntSlider(min=np.min(convertedBoundCoords[:,0].astype(int)), max=np.max(convertedBoundCoords[:,0].astype(int)), step=1,continuous_update=False),  \
     yCoord=IntSlider(min=np.min(convertedBoundCoords[:,1].astype(int)), max=np.max(convertedBoundCoords[:,1].astype(int)), step=1,continuous_update=False), \
     zCoord=IntSlider(min=np.min(convertedBoundCoords[:,2].astype(int)), max=np.max(convertedBoundCoords[:,2].astype(int)), step=1,continuous_update=False))
-
-
-
 
 ### A spherical ROI
  
@@ -136,8 +133,6 @@ interact(rotateAndPlotWrapper, \
 xCoord=IntSlider(min=np.min(convertedBoundCoords[:,0].astype(int)), max=np.max(convertedBoundCoords[:,0].astype(int)), step=1,continuous_update=False),  \
 yCoord=IntSlider(min=np.min(convertedBoundCoords[:,1].astype(int)), max=np.max(convertedBoundCoords[:,1].astype(int)), step=1,continuous_update=False), \
 zCoord=IntSlider(min=np.min(convertedBoundCoords[:,2].astype(int)), max=np.max(convertedBoundCoords[:,2].astype(int)), step=1,continuous_update=False))
-
-
 
 ### A modified spherical ROI
 

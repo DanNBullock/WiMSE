@@ -56,7 +56,7 @@ currentParcellationEntries=FSTable.loc[currentIndexesBool]
 smallTractogramPath=os.path.join(gitRepoPath,'exampleData','smallTractogram.tck')
 streamsObjIN=nib.streamlines.load(smallTractogramPath)
 
-#because of how dipy does connectivity matrtricies, we have to relabel the atlas
+#because of how dipy does connectivity matrices, we have to relabel the atlas
 remappingFrame=currentParcellationEntries.reset_index(drop=True)
 #establish a copy
 relabeledAtlas=atlasData.copy()
@@ -85,7 +85,7 @@ sourceTractogram=streamsObjIN.tractogram
 def extractSubTractogram(sourceTractogram,indexes):
     #import relevant package
     import nibabel as nib
-    #extrect the desired streamlines into a new streamline object
+    #extract the desired streamlines into a new streamline object
     streamlines = sourceTractogram.streamlines[indexes]
     #establish tractogram object
     out_tractogram = nib.streamlines.tractogram.Tractogram(streamlines)
@@ -169,7 +169,7 @@ In our chapter introducing streamlines (The voxel and the streamline) two of the
 
 In the code block below we'll compute the efficiency for all of the streamlines in our tractogram and then utilize an interactive plot to visualize those streamlines that are below  the provided threshold efficiency value.  Try manually entering a value of .1 to see particularly inefficient streamlines.
 
-#initalize vector
+#initialize vector
 streamlineEfficiencies=np.zeros(len(streamsObjIN.tractogram.streamlines))
 
 for iStreamlines in range(len(streamsObjIN.tractogram.streamlines)):
@@ -251,8 +251,8 @@ from ipywidgets import FloatSlider
 
 #establish interactivity
 interact(updateFunction, 
-         thresholdVal=FloatSlider(value=np.mean(streamlineEfficiencies), min=0, max=1,step=.001, description="Efficiency Threshold", disabled=False, continuous_update=False, orientation='horizontal', readout=True, readout_format='.1f')
+         thresholdVal=FloatSlider(value=np.mean(streamlineEfficiencies), min=.001, max=1,step=.001, description="Efficiency Threshold", disabled=False, continuous_update=False, orientation='horizontal', readout=True, readout_format='.1f')
         )
-#NOTE: EFFECIENCY SLIDER APPEARS TO BE BE BROKEN, STEP SIZE ISN'T RESPONSIVE TO PARAMETER INPUT
+#NOTE: EFFICIENCY SLIDER APPEARS TO BE BE BROKEN, STEP SIZE ISN'T RESPONSIVE TO PARAMETER INPUT
 
 Now that we have a better idea of what constitutes plausible streamlines, let's move on to a consideration of how we can use regions of interest (ROIs).

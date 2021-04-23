@@ -10,7 +10,7 @@ Although our ultimate goal will be to develop an intuitive understanding of how 
 
 ### A reassurance to the initiated
 
-For more experienced users though, our upcoming discussion of the NIfTI format may seem out of place.   NIfTI data objects aren't used to store connectivity data, which is the essence of white matter (and the key feature that data formats for white matter attempt to capture).  While this is true, it is necessary to discuss NIfTI data structures for two important reasons:  (1)  The difficulties in segmenting white matter structures (in connectivity-centric data formats) are well highlighted by comparison to the process of segmentation volumetric structures (in NIfTI/volumetric-type formats) and (2) A good white matter segmentation method (e.g. White Matter Query Language (WMQL) ([Wassermann et al., 2013](https://doi.org/10.1007/978-3-642-40811-3_81) or [WMA_Tools](https://github.com/DanNBullock/wma_tools)) can make extensive use of information stored in or derived from NIfTI files (for example, [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/) parcellations).  Thus, our consideration of white matter segmentation will begin with digital images, proceed to NIfTI-type images (in this case T1 images), and then move on to the topics of tractography and segmentation.
+For more experienced users though, our upcoming discussion of the NIfTI format may seem out of place.   NIfTI data objects aren't used to store connectivity data, which is the essence of white matter (and the key feature that data formats for white matter attempt to capture).  While this is true, it is necessary to discuss NIfTI data structures for two important reasons:  (1)  The difficulties in segmenting white matter structures (in connectivity-centric data formats) are well highlighted by comparison to the process of segmentation volumetric structures (in NIfTI/volumetric-type formats) and (2) A good white matter segmentation method (e.g. White Matter Query Language (WMQL) ([Wassermann et al., 2013](https://doi.org/10.1007/978-3-642-40811-3_81) or [WMA_Tools](https://github.com/DanNBullock/wma_tools)) can make extensive use of information stored in or derived from NIfTI files (for example, [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/) ([Fischl 2012](https://doi.org/10.1016/j.neuroimage.2012.01.021)) parcellations ([Desikan et al. 2006](https://doi.org/10.1016/j.neuroimage.2006.01.021), [Fischl et al,. 2004](https://doi.org/10.1093/cercor/bhg087)).  Thus, our consideration of white matter segmentation will begin with digital images, proceed to NIfTI-type images (in this case T1 images), and then move on to the topics of tractography and segmentation.
 
 ## The big picture - A philosophy to segmentation
 
@@ -128,16 +128,16 @@ def generateMadlib(currentColumn):
     textToPrint='A fill-in-the-blank description of ' + curModality + ' :\n\n' + \
         'When we engage in research using ' + curModality + ' we are interested in learning more about a particular ' + curObjectR + \
         '.  However, in order to study the given ' + curObjectR + ' effectively, we need to preserve information (i.e. observations) about it for later analysis.' + \
-        '  In the case of ' + curModality + ' we typically use a(n) ' + curSourceSys + ' to obtain data about a ' +curObjectR +'. It is worth noting though, that our decision to use a '  + curSourceSys + \
+        '  In the case of ' + curModality + ' we typically use a(n) ' + curSourceSys + ' to obtain data about [a] ' +curObjectR +'. It is worth noting though, that our decision to use a '  + curSourceSys + \
         ' is based upon (1) the availability of viable alternatives and (2) the general property of the ' + curObjectR + ' (e.g. ' + curPropOfInt + ')' + \
         ' that we are interested in, or whatever more specific goals we may have.  Indeed, the kinds of scientific questions we can ask about ' + curObjectR + 's ' + \
         ' (or  ' +curImpInt+ ', or even ' + curImpCat + ') using ' + curModality + \
-        ' are delimited by the technical limitations of the' + curSourceSys + 's used,' + \
+        ' are delimited by the technical limitations of the ' + curSourceSys + 's used,' + \
         ' and so to then, are the general kinds of things that end up getting studied/characterized using '+ curModality + \
         '.  Resulting chicken-or-the-egg conundrums and streetlight effects notwithstanding, the ability to develop insights about '  + curObjectR + 's ' + \
         'using information about ' + curPropOfInt + ' derived from ' + curSourcePhe + ' has, in practice, proven to be useful for identifying ' + curImpInt + \
         ', and (by extension) ' + curImpCat + ', both in specific ' + curObjectR +'s and in ' + curObjectR + 's generally.' + \
-        '  Let's briefly consider how the data objects used in ' + curModality + ' facilitate this.\n\n' + \
+        '  Let\'s briefly consider how the data objects used in ' + curModality + ' facilitate this.\n\n' + \
         '  The scientific utility of '  + curModality + ' is underwritten by our ability to store, access, and modify information ' + \
         'contained within the standard data object used in this discipline, the ' + curDToken + '.' + \
         '  In each of these data objects information that was produced by a '+ curSourceSys +' measuring ' + curSourcePhe + ' is stored in a structured fashion.' + \
@@ -161,10 +161,6 @@ from ipywidgets import IntSlider
 
 #establish interactivity
 interact(generateMadlib, currentColumn=IntSlider(min=0, max=4, step=1,continuous_update=False))
-
-
-
-
 
 ## What to make of the Madlib
 

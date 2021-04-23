@@ -11,7 +11,7 @@ Note that, despite the 2-D digital image data being stored across three color ch
 
 Let's consider these features in a bit more detail.
 
-#lets begin by setting up paths and files
+#let's begin by setting up paths and files
 
 #this code ensures that we can navigate the WiMSE repo across multiple systems
 import subprocess
@@ -49,7 +49,7 @@ fig.set_size_inches(15, 10)
 from niwidgets import NiftiWidget
 from niwidgets import examplet1
 
-#pointing to a different nitfti, that doesn't have huge spaces between values, so that the colormap is discernable
+#pointing to a different NIfTI, that doesn't have huge spaces between values, so that the colormap is discernible
 t1Path=os.path.join(gitRepoPath,'exampleData','t1.nii.gz')
 
 t1_widget = NiftiWidget(t1Path)
@@ -57,7 +57,7 @@ t1_widget.nifti_plotter(colormap='gray')
 
 Let's begin our comparison by considering the dimensional differences between the data types.
 
-In the previous lessons we noted that our digital image data was stored in 3 layers corresponding to the RGB values mapped to each image pixel.  Thus, although the picture we viewed was two dimensional, the storage object was 3 dimensional (albeit somewhat shallow, at only three "layers" deep).  The image data component of a NIfTI is (typically, for static and/or structural images) a 3 dimensional structure, but this is not because it is storing color data.  Rather, the image data component of a NIfTI object is (typically) three dimensional because the representation the data is trying to capture is *actually* three dimensional in nature.  The individual image data components, which represent volumes of space and thus constitute (**voxels**)[https://en.wikipedia.org/wiki/Voxel] (rather than [pixels](https://en.wikipedia.org/wiki/Pixel)), preserve the spatial relations of the volumes they represent, and so adjacent data entries represent adjacent volumes of space across all three dimensions.  This is in the same way that adjacent pixels in two dimensional digital images represent adjacent regions of a scene.  The data contained in each of these voxel elements represents a characteristic of the volume it corresponds to, but the specific characteristic depends on the MRI scan that generated it, or (in cases of derived or synthetic data) the schema that was used to create the NIfTI data.
+In the previous lessons we noted that our digital image data was stored in 3 layers corresponding to the RGB values mapped to each image pixel.  Thus, although the picture we viewed was two dimensional, the storage object was 3 dimensional (albeit somewhat shallow, at only three "layers" deep).  The image data component of a NIfTI is (typically, for static and/or structural images) a 3 dimensional structure, but this is not because it is storing color data.  Rather, the image data component of a NIfTI object is (typically) three dimensional because the representation the data is trying to capture is *actually* three dimensional in nature.  The individual image data components, which represent volumes of space and thus constitute [**voxels**](https://en.wikipedia.org/wiki/Voxel) (rather than [pixels](https://en.wikipedia.org/wiki/Pixel)), preserve the spatial relations of the volumes they represent, and so adjacent data entries represent adjacent volumes of space across all three dimensions.  This is in the same way that adjacent pixels in two dimensional digital images represent adjacent regions of a scene.  The data contained in each of these voxel elements represents a characteristic of the volume it corresponds to, but the specific characteristic depends on the MRI scan that generated it, or (in cases of derived or synthetic data) the schema that was used to create the NIfTI data.
 
 As an exercise, we could imagine what it would be like if the NIfTI were to attempt to store something like color data in its object:  our resulting data object would be X by Y by Z by 3 (RGB) color channels in size.  Thus, if a NIfTI were to be storing color information it would  minimally have to be **four** dimensional. However, NIfTIs **are not** storing anything like color information, and so they are typically three dimensional, as in the case of a [T1 image](https://radiopaedia.org/articles/t1-weighted-image?lang=us), or 4 dimensional, as in the case of [fMRI](https://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging) (functional magnetic resonance imaging) and [DWI](https://en.wikipedia.org/wiki/Diffusion_MRI) (diffusion weighted imaging) data.
 

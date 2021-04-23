@@ -20,7 +20,7 @@ The next three code cells are divided in such a way as to facilitate ease of use
 
 In order to perform a preliminary segmentation operation you'll have to load the data in cell 1, define a plane in cell 2, and then apply and view the segmentation in cell 3.  Subsequent segmentation demonstrations in this chapter will not require you to reload the data, and so will only have portions corresponding to cells 2 and 3.
 
-IMPORTANT NOTE: given that the output of the ROI definition cell feeds in to the segmentation cell, the user is instructed to specify their ROI parameters **before** clicking through to the next cell.  Neglecting to do this (and/or rapidly clicking the run button) will run the ROI generation and applications steps with their default values, which may not always provide an informative demonstration.
+IMPORTANT NOTE: given that the output of the ROI definition cell feeds into the segmentation cell, the user is instructed to specify their ROI parameters **before** clicking through to the next cell.  Neglecting to do this (and/or rapidly clicking the run button) will run the ROI generation and applications steps with their default values, which may not always provide an informative demonstration.
 
 #Loading cell: loads relevant objects
 
@@ -104,7 +104,7 @@ interact(genAndViewPlanarROI, \
 
 #Segmentation application:  Segments the tractogram using the previously generated ROI
 
-#generate the roi from the preceeding visualization using the output
+#generate the roi from the preceding visualization using the output
 segPlane=WMA_pyFuncs.makePlanarROI(t1img, planeCoord.value, dimension.value)
     
 #quick and dirty tractogram subsetter by Brad Caron
@@ -112,7 +112,7 @@ segPlane=WMA_pyFuncs.makePlanarROI(t1img, planeCoord.value, dimension.value)
 def extractSubTractogram(sourceTractogram,indexes):
     #import relevant package
     import nibabel as nib
-    #extrect the desired streamlines into a new streamline object
+    #extract the desired streamlines into a new streamline object
     streamlines = sourceTractogram.streamlines[indexes]
     #establish tractogram object
     out_tractogram = nib.streamlines.tractogram.Tractogram(streamlines)
@@ -177,10 +177,9 @@ instructionList=list(['Include','Exclude'])
 interact(updateFunction, \
     instruction=Dropdown(options=instructionList, description="instruction"))
 
-
 ### Considering the output of a single planar ROI
 
-As you might be able to tell, the use of a single planar ROI does not tend return a coherent segmentation.  Indeed, typically most segmentations require a number of criteria in order to return a coherent anatomical structure (i.e. a white matter tract).  Furthermore, even when performing a multi-criteria segmentation, it turns out that a _full_ planar ROI is often still too coarse (particularly when used as an _inclusion_ criteria--as an exclusion criteria, it can suffice just fine).  In effect (though not quite, as will be discussed later), all that one is doing with a full planar ROI is indexing _all_ streamlines which traverse the specified coordinate.  This is not a very delicate operation.  In the next section we'll consider how to use _partial_ planar ROIs (as we were introduced to in the previous chapter) and see how much more useful they can be.
+As you might be able to tell, the use of a single planar ROI does not tend to return a coherent segmentation (although in the case of a midsagittal inclusion plane we get the corpus callosum).  Indeed, typically most segmentations require a number of criteria in order to return a coherent anatomical structure (i.e. a white matter tract).  Furthermore, even when performing a multi-criteria segmentation, it turns out that a _full_ planar ROI is often still too coarse (particularly when used as an _inclusion_ criteria--as an exclusion criteria, it can suffice just fine).  In effect (though not quite, as will be discussed later), all that one is doing with a full planar ROI is indexing _all_ streamlines which traverse the specified coordinate.  This is not a very delicate operation.  In the next section we'll consider how to use _partial_ planar ROIs (as we were introduced to in the previous chapter) and see how much more useful they can be.
 
 ## A modified planar ROI
 
@@ -272,7 +271,7 @@ interact(genAndViewPlanarROI, \
 
 #Segmentation application:  Segments the tractogram using the previously generated ROI
 
-#generate the roi from the preceeding visualization using the output
+#generate the roi from the preceding visualization using the output
 segPlane=WMA_pyFuncs.makePlanarROI(t1img, planeCoord.value, dimension.value)
 knife_roi=WMA_pyFuncs.makePlanarROI(t1img, cutCoord.value , cutDim.value)
 cut_roi=WMA_pyFuncs.sliceROIwithPlane(segPlane,knife_roi,keepPortion.value)
@@ -282,7 +281,7 @@ cut_roi=WMA_pyFuncs.sliceROIwithPlane(segPlane,knife_roi,keepPortion.value)
 def extractSubTractogram(sourceTractogram,indexes):
     #import relevant package
     import nibabel as nib
-    #extrect the desired streamlines into a new streamline object
+    #extract the desired streamlines into a new streamline object
     streamlines = sourceTractogram.streamlines[indexes]
     #establish tractogram object
     out_tractogram = nib.streamlines.tractogram.Tractogram(streamlines)
@@ -403,11 +402,10 @@ interact(genAndViewSphereROI, \
     xCoord=IntSlider(min=np.min(convertedBoundCoords[:,0].astype(int)), max=np.max(convertedBoundCoords[:,0].astype(int)), step=1,continuous_update=False),  \
     yCoord=IntSlider(min=np.min(convertedBoundCoords[:,1].astype(int)), max=np.max(convertedBoundCoords[:,1].astype(int)), step=1,continuous_update=False), \
     zCoord=IntSlider(min=np.min(convertedBoundCoords[:,2].astype(int)), max=np.max(convertedBoundCoords[:,2].astype(int)), step=1,continuous_update=False))
-    
 
 #Segmentation application:  Segments the tractogram using the previously generated ROI
 
-#generate the roi from the preceeding visualization using the output
+#generate the roi from the preceding visualization using the output
 segSphere=WMA_pyFuncs.createSphere(sphereRadius.value, [sphereXCoord.value,sphereYCoord.value,sphereZCoord.value], t1img)
     
 #quick and dirty tractogram subsetter by Brad Caron
@@ -415,7 +413,7 @@ segSphere=WMA_pyFuncs.createSphere(sphereRadius.value, [sphereXCoord.value,spher
 def extractSubTractogram(sourceTractogram,indexes):
     #import relevant package
     import nibabel as nib
-    #extrect the desired streamlines into a new streamline object
+    #extract the desired streamlines into a new streamline object
     streamlines = sourceTractogram.streamlines[indexes]
     #establish tractogram object
     out_tractogram = nib.streamlines.tractogram.Tractogram(streamlines)
@@ -447,7 +445,6 @@ def plotSegmentedStreamsWidget(subTractogram):
     #plot it
     sw.plot(display_fraction=1, width=1000, height=1000, style=style, percentile=0)
     #sw.plot(display_fraction=1, width=1000, height=1000, percentile=0)
-
     
 import numpy as np
 import matplotlib.pyplot as plt  
@@ -473,9 +470,9 @@ In either the spherical or planar ROI case, when we use an ROI as an _inclusion_
 
 ## Practical notes on ROI use (up to this point)
 
-Thus far, the usage cases of ROIs for segmentation have necessarily relied on the user to specify a coordinate.  As such the manner in which we have defined and used ROIs for segmentation is decidedly "manual".  If our goal is to develop reliable, high-quality (and possibly automatable) segmentations, then we'll need to do better.  Manual segmentation is still a viable approach, and one which is often applied in medical settings (when performed by experts).  Typically such individuals place their planar and spherical ROIs by referring to an anatomical scan (i.e. a T1) and selecting their coordinates based on positions relative to landmark structures.  Indeed this insight will prove to be central as we develop our anatomically-based segmentaton abilities in later chapters.
+Thus far, the usage cases of ROIs for segmentation have necessarily relied on the user to specify a coordinate.  As such the manner in which we have defined and used ROIs for segmentation is decidedly "manual".  If our goal is to develop reliable, high-quality (and possibly automatable) segmentations, then we'll need to do better.  Manual segmentation is still a viable approach, and one which is often applied in medical settings (when performed by experts).  Typically such individuals place their planar and spherical ROIs by referring to an anatomical scan (i.e. a T1) and selecting their coordinates based on positions relative to landmark structures.  Indeed this insight will prove to be central as we develop our anatomically-based segmentation abilities in later chapters.
 
-Before we move on to anatomically-based segmentations though, we need to make note of some general concerns that apply to segmentations generally.
+Before we move on to anatomically-based segmentation though, we need to make note of some general concerns that apply to segmentations generally.
 
 ## Those pesky asterisks 
 

@@ -89,7 +89,7 @@ interact(rotateAndPlotWrapper, \
 
 In previous chapters you may have noticed that we often selected locations for our ROIs (in particular planar ROIs) by referring to nearby, reference anatomical structures.  Despite this, even though we were choosing where to planar the planar ROIs in relation to these structures, we were nonetheless manually entering coordinates (based on trial and error or our best guesses).  This is less than ideal for several reasons.
 
-First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the [anterior commisure](https://en.wikipedia.org/wiki/Anterior_commissure).  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, [MNI coordinates](https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates) are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error (due to the requisite translations to or from this spatial standard) on top of all the many other sources of error in this field.  This hints at a second trouble as well.
+First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the [anterior commissure](https://en.wikipedia.org/wiki/Anterior_commissure).  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, [MNI coordinates](https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates) are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error (due to the requisite translations to or from this spatial standard) on top of all the many other sources of error in this field.  This hints at a second trouble as well.
 
 If we're going to leave other investigators to their own devices on how to implement an interpretation of the relative anatomical description of a tract, then we have compounded the number of opportunities for "noise" to be added to our segmentation specification.  In doing so we make our segmentation less reliable overall.  But what if we didn't have to do this?  What if, instead, we were able to _directly_ use those anatomical structures to define our regions of interest?  How could we do that?
 
@@ -184,7 +184,6 @@ def anatomyPlanePlotWrapper(primaryRoiNum,relativeBorder,cutRoiNum,cutBorder,kee
     import nibabel as nib
     import numpy as np
     
-
     borderPlane=WMA_pyFuncs.planarROIFromAtlasLabelBorder(atlasImg,primaryRoiNum, relativeBorder)
     
     cutPlane=WMA_pyFuncs.planarROIFromAtlasLabelBorder(atlasImg,cutRoiNum, cutBorder)
@@ -266,7 +265,7 @@ import numpy as np
 import matplotlib.pyplot as plt  
 
 #use the criteria application function to find the relevant streamlines
-streamBool=WMA_pyFuncs.applyNiftiCriteriaToTract(sourceTractogram.streamlines, outPlane, True , 'any')
+streamBool=WMA_pyFuncs.applyNiftiCriteriaToTract(sourceTractogram.streamlines, outPlane, False , 'any')
     
 streamsToPlot=extractSubTractogram(sourceTractogram,np.where(streamBool)[0])
     
@@ -332,7 +331,7 @@ def plotSegmentedStreamsWidget(subTractogram):
 #establish instruction list
 instructionList=list(['one','both','neither'])  
 
-#subset anatomical baoundaries to relevant options
+#subset anatomical boundaries to relevant options
 boundsTable= WMA_pyFuncs.findMaxMinPlaneBound(borderPlane)
 optionsHold=boundsTable['boundLabel'].loc[boundsTable['dimIndex']==boundsTable['dimIndex'].iloc[0]].tolist()
 positionOptions=optionsHold[1:len(optionsHold)]
@@ -435,4 +434,4 @@ interact(updateFunc, \
 
 ## Closing discussion
 
-In this chapter we demonstrated how to use the brain's anatomy to guide segmentation.  As we have noted before though, segmenting a coherent white matter structure typically takes the application of several criteria.  In the next two chapters we'll actually perform a segmentation for two such structures. We'll start with the [uncinate fasiciculus](https://en.wikipedia.org/wiki/Uncinate_fasciculus).
+In this chapter we demonstrated how to use the brain's anatomy to guide segmentation.  As we have noted before though, segmenting a coherent white matter structure typically takes the application of several criteria.  In the next two chapters we'll actually perform a segmentation for two such structures. We'll start with the [uncinate fasciculus](https://en.wikipedia.org/wiki/Uncinate_fasciculus).

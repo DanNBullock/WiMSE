@@ -38,7 +38,6 @@ atlasPath=os.path.join(gitRepoPath,'exampleData','parc.nii.gz')
 #load it as an object
 atlasImg = nib.load(atlasPath)
 
-
 #get and copy the data
 grossAnatAtlas=atlasImg.get_fdata().copy()
 #get the labels to iterate over
@@ -138,9 +137,9 @@ def plotParcellationConnectionWidget(subTractogram):
     style = {'axes': {'color': 'red',
                   'label': {'color': 'white'},
                   'ticklabel': {'color': 'white'},
-                  'visible': False},
+                  'visible': True},
          'background-color': 'black',
-         'box': {'visible': False}}
+         'box': {'visible': True}}
     #plot it
     sw.plot(display_fraction=1, width=1000, height=1000, style=style, percentile=0)
 
@@ -285,7 +284,7 @@ meltedFrame=pd.melt(comparisonFrame.reset_index(),id_vars='index')
 criteriaBarPlot=sns.barplot(data=meltedFrame,y='variable',x='value',hue='index')
 criteriaBarPlot.set(xlabel='streamline count (log)', ylabel='category',xscale='log',title='effect of midpoint rostro-caudal criteria')
 
-#### #### midpoint rostro-caudal criteria - observations
+#### midpoint rostro-caudal criteria - observations
 
 Note that, in this case, we **did not** negate the outcome of the boolean vector.  This is because the output we obtained (midpoints anterior of the posterior amygdala) **is** what we want.  The primarily impacted categories are occipital and cerebellar (by a wide margin), but also parietal and temporal, to a lesser extent.
 

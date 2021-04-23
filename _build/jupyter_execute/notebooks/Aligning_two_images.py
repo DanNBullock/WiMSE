@@ -54,7 +54,7 @@ zeroBlueMask=np.subtract(firstMapArray,atlanticColor)
 
 import matplotlib.pyplot as plt
 
-#quick and dirty general use hypoteuse algorithm, can be used for 2d or 3D
+#quick and dirty general use hypotenuse algorithm, can be used for 2d or 3D
 def multiDHypot(coords1,coords2):
     dimDisplace=np.subtract(coords1,coords2)
     elementNum=dimDisplace.size
@@ -68,7 +68,7 @@ def multiDHypot(coords1,coords2):
         hypotLeng=np.sqrt(elementSquareSum)
     return hypotLeng
 
-#initalize distance storage structure
+#initialize distance storage structure
 colorDistMeasures=np.zeros(([firstMapShape[0],firstMapShape[1]]))
 
 #iteratively apply the distance computation
@@ -77,12 +77,12 @@ for iRows in range(firstMapShape[0]):
         #extract the current pixel
         curPixelVal=zeroBlueMask[iRows,iColumns]
         
-        #compute the color distance for this pixel, and store it in the corresponding stpot
+        #compute the color distance for this pixel, and store it in the corresponding spot
         #in colorDistMeasures, use this if your input above was firstMapArray
         #Sidenote:  This may require additional code modifications
         #colorDistMeasures[iRows,iColumns]=multiDHypot(curPixelVal,atlanticColor)
     
-        #compute the color distance for this pixel, and store it in the corresponding stpot
+        #compute the color distance for this pixel, and store it in the corresponding spot
         #in colorDistMeasures, use this if your input above was zeroBlueMask
         #we use [0 0 0 ] as our input because zeroBlueMask has already had the atlantic blue
         #subtracted from it
@@ -107,7 +107,7 @@ def updatePlots(DistanceArray,cutVal):
     plt.hist(flattenedDistances, bins=100)
     plt.xlabel('Distance from ocean color')
     plt.ylabel('Number of pixels')
-    plt.title('Distributon of RGB color distance from Atlantic pixel color')
+    plt.title('Distribution of RGB color distance from Atlantic pixel color')
     xposition = [cutVal]
     for xc in xposition:
         plt.axvline(x=xc, color='r', linestyle='--', linewidth=3)
@@ -115,17 +115,17 @@ def updatePlots(DistanceArray,cutVal):
     fig.set_size_inches(20, 10)
      
     #compute binarized mask for values below cutVal
-    naieveOceanMask=DistanceArray<cutVal
+    naiveOceanMask=DistanceArray<cutVal
     
     #plot the image that results
     plt.subplot(3, 1, 2)
-    imshow(naieveOceanMask)
+    imshow(naiveOceanMask)
     fig = plt.gcf()
     fig.set_size_inches(10, 10)
     
     # Pie chart, where the slices will be ordered and plotted counter-clockwise:
     maskLabels = 'Presumed water', 'Presumed land'
-    maskSizes = [np.sum(naieveOceanMask==1),np.sum(naieveOceanMask==0)]
+    maskSizes = [np.sum(naiveOceanMask==1),np.sum(naiveOceanMask==0)]
     #implement pie chart plot here
 
 #create the function to manipulate
@@ -148,7 +148,7 @@ print('')
 
 grayscaleMapDim=grayscaleMap.size
 
-#quick computation to obtain native aspect ratio approximation relative to preeceding image's 2:1
+#quick computation to obtain native aspect ratio approximation relative to preceding image's 2:1
 grayscaleMapApsectRatio=grayscaleMapDim[0]/grayscaleMapDim[1]
 print('Ratio of width to height (aspect ratio)')
 print(grayscaleMapApsectRatio)
@@ -178,7 +178,7 @@ fig.set_size_inches(15, 30)
 
 Note that the axes are now the same as the previous satellite image. Now that we have it resized, lets convert it to a 2-D mask like we did previously.  This time though, we don't need to apply a specific threshold because there are only really two values in the image: gray and white. 
 
-Let's plot this output in the same fashion we did the mask we obatined from the satellite.
+Let's plot this output in the same fashion we did the mask we obtained from the satellite.
 
 #create binarized, a simple sum will give us the output we seek,
 # as there are only two distinct color values in the plot
@@ -197,11 +197,11 @@ Let's take a look at that now
 #### What sorts of trends or regularities do you notice in the disagreement between the two maps?
 
 #apply the mask
-naieveOceanMask=colorDistMeasures>cutVal.value
+naiveOceanMask=colorDistMeasures>cutVal.value
 #create binary mask for new file
 obtainedOceanMask=flatBinarized==0
 #find the differences between the two 
-discrepancyMapping=(np.logical_xor(obtainedOceanMask,naieveOceanMask))
+discrepancyMapping=(np.logical_xor(obtainedOceanMask,naiveOceanMask))
 
 #do the plotting
 imshow(discrepancyMapping, cmap='autumn')
@@ -243,13 +243,12 @@ def plot_mapDiscrepancy(map1,map2):
     
 #update the plot via input values     
 def update(xOffset, yOffset):
-    naieveOceanMaskMoved = np.roll(naieveOceanMask,yOffset,0)
-    naieveOceanMaskMoved = np.roll(naieveOceanMaskMoved,xOffset,1)
-    plot_mapDiscrepancy(obtainedOceanMask,naieveOceanMaskMoved)
+    naiveOceanMaskMoved = np.roll(naiveOceanMask,yOffset,0)
+    naiveOceanMaskMoved = np.roll(naiveOceanMaskMoved,xOffset,1)
+    plot_mapDiscrepancy(obtainedOceanMask,naiveOceanMaskMoved)
 
 #establish interactivity
 interact(update, xOffset=IntSlider(min=-30, max=30, step=1,continuous_update=False),  yOffset=IntSlider(min=-30, max=30, step=1,continuous_update=False))
-
 
 It seems that the lowest mismatch percentage you can get is around 17%, which occurs at -28 x offset and -9 y offset.  What accounts for the remaining mismatch?  Part of it likely has to do with how our mask was made (and the threshold value we chose), and that it likely wasn't entirely perfect.
 

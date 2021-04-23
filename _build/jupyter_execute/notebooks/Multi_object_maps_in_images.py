@@ -8,7 +8,7 @@ In this lesson we'll be using maps of the United States to explore this capabili
 
 Let's begin by setting the path names, and establishing a standard image size for what we'll be looking at.
 
-#lets begin by setting up paths and files
+#let's begin by setting up paths and files
 
 #this code ensures that we can navigate the WiMSE repo across multiple systems
 import subprocess
@@ -30,7 +30,7 @@ usGeoName='USA-satellite.jpg'
 #file name of political map of US
 usPolitical='Map_of_USA_with_states_modified.png'
 
-#an image resolution that's a good comprimize between the two images we will be looking at
+#an image resolution that's a good compromise between the two images we will be looking at
 standardResize=[600,1000]
 
 Let's next plot the [satellite photo of the United States](https://en.m.wikipedia.org/wiki/File:USA-satellite.jpg).  As before, we will select a water pixel (500,50; off the coast of the Baja Peninsula) that will be used to create a surface water map, as in the previous chapter.  However, we'll also be building upon this by using this mask to help us narrow our consideration of a map.  For now though, let's inspect the map.
@@ -44,7 +44,7 @@ from matplotlib.pyplot import imshow
 import matplotlib.pyplot as plt
 import numpy as np
 
-#extract the image data and print the size of the origonal file
+#extract the image data and print the size of the original file
 usGeoMapPath=os.path.join(gitRepoPath,'images',usGeoName) 
 usGeoMap= Image.open(usGeoMapPath)
 geoMapArray=np.asarray(usGeoMap)
@@ -92,7 +92,7 @@ def multiDHypot(coords1,coords2):
         hypotLeng=np.sqrt(elementSquareSum)
     return hypotLeng
 
-#establish blank storage strucure
+#establish blank storage structure
 colorGeoDistMeasures=np.zeros([standardResize[0],standardResize[1]])
 
 #iterate across pixels
@@ -107,7 +107,7 @@ for iRows in range(standardResize[0]):
         #could be done with raw input
         colorGeoDistMeasures[iRows,iColumns]=multiDHypot(curPixelVal,WaterColor)
         
-#transorm the output into a usable format
+#transform the output into a usable format
 flattenedDistances=np.ndarray.flatten(colorGeoDistMeasures)
 
 #plot the distance output as an image
@@ -115,7 +115,6 @@ heatPlot=plt.imshow(colorGeoDistMeasures)
 fig2=plt.gcf()
 fig2.colorbar(heatPlot)
 fig2.set_size_inches(18.5, 10.5)
-
 
 It seems that the ocean is fairly uniform, but the continental United States is a bit less so, such that many areas appear to be getting close to distances contained in the ocean.  Also there appears to be a good deal of [artifacting](https://en.wikipedia.org/wiki/Compression_artifact), as discussed in previous chapters (note the "blocky" color fuzz that is visible in coastal areas).  Will this issue cause a problem when we try to make a mask?  
 
@@ -140,22 +139,21 @@ def updatePlots(colorGeoDistMeasures,geoCutVal):
     plt.hist(flattenedDistances, bins=100)
     plt.xlabel('Distance from ocean color')
     plt.ylabel('Number of pixels')
-    plt.title('Distributon of RGB color distance from Atlantic pixel color')
+    plt.title('Distribution of RGB color distance from Atlantic pixel color')
     xposition = [geoCutVal]
-    #create treshold indicator
+    #create threshold indicator
     for xc in xposition:
         plt.axvline(x=xc, color='r', linestyle='--', linewidth=3)
     distHist = plt.gcf()
     distHist.set_size_inches(20, 10)
     
-    
+    #make a mask for the ocean
     geoOceanMask=colorGeoDistMeasures<geoCutVal
     plt.subplot(2, 1, 2)
     imshow(geoOceanMask)
     distMap = plt.gcf()
     distMap.set_size_inches(10, 10)
-
-        
+    
 #def update_bound(minimum, maximum):
 #    global upperBound
 #    global lowerBound
@@ -172,7 +170,6 @@ geoCutVal=FloatSlider(min=np.min(flattenedDistances), max=np.max(flattenedDistan
 
 #establish interactivity
 interact(updateCut, geoCutVal=geoCutVal) 
-
 
 It seems that a value around 5 should be just fine for this map.  In fact, there's actually a fairly large range of values that could work for this mask.  The areas where your choice will have the most impact will be on the coasts and the [Great Lakes](https://en.wikipedia.org/wiki/Great_Lakes).
 
@@ -192,7 +189,7 @@ print(politicalMapShape)
 print('')
 #note that it appears to be a CMYK image
 
-#lets convert it to RGB just for ease of use
+#let's convert it to RGB just for ease of use
 rgb_Pol = politicalMap.convert('RGB')
 rgb_PolData=np.asarray(rgb_Pol)
 print('Dimensions after conversion to RGB')
@@ -202,7 +199,7 @@ print('')
 #resize the data so it meets the standard we established earlier
 politicalResized=rgb_Pol.resize([standardResize[1],standardResize[0]], resample=0)
 politicalResizedData=np.asarray(politicalResized)
-print('Dimensions after resize to geographic map dimensions')
+print('Distribution after resize to geographic map dimensions')
 print(politicalResizedData.shape)
 print('')
 
@@ -212,7 +209,7 @@ imshow(politicalResizedData)
 fig = plt.gcf()
 fig.set_size_inches(15, 30)
 
-#lets extract the water color for this image as well.
+#let's extract the water color for this image as well.
 politicalWater=politicalResizedData[500,50]
 print('RGB value for water pixel [500,50]')
 print(politicalWater)
@@ -225,7 +222,7 @@ For now though, let's plot the color distance map for this map.
 import numpy as np
 import matplotlib.pyplot as plt
 
-#quick and dirty general use hypoteuse algorithm, can be used for 2d or 3D
+#quick and dirty general use hypotenuse algorithm, can be used for 2d or 3D
 def multiDHypot(coords1,coords2):
     dimDisplace=np.subtract(coords1,coords2)
     elementNum=dimDisplace.size
@@ -294,7 +291,7 @@ def updatePlots(colorPoliticalDistMeasures,polCutVal):
 def updateCut(polCutVal):
     updatePlots(colorPoliticalDistMeasures,polCutVal)
 
-#set theshold variable
+#set threshold variable
 polCutVal=FloatSlider(min=np.min(flattenedDistances), max=np.max(flattenedDistances), step=1,continuous_update=False)
 
 #establish interactivity
@@ -368,7 +365,7 @@ print(greenPixel)
 print('Yellow RGB value')
 print(yellowPixel)
 
-#establish stucture for storing color information
+#establish structure for storing color information
 colorArray=np.zeros([100,500,3], dtype=int)
 
 #fill in the data for each unique color of interest
@@ -464,7 +461,7 @@ interact(updatePolPlot, stateColor=stateColor)
 
 Let's think back to the masks for the geographic and political maps we made earlier and the way we aligned them.  Now that we have **both** a rough data alignment, **and** a method for indexing to specific subsets of pixels, can we extract the actual satellite geographic data (RGB values) using the "paint by numbers" representation, thereby pulling out certain sub-sections?
 
-#first lets use np.roll to align the images.
+#First let's use np.roll to align the images.
 #It isn't the most elegant way to align the images for various reasons, but straightforward enough for our purposes
 #apply the shift to the map
 xAlign=xOffset.value

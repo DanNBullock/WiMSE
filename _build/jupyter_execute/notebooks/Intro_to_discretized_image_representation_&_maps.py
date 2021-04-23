@@ -6,7 +6,7 @@ If you've happened to scroll over this lesson you'll note that we're starting by
 
 In the following sections we'll consider how the actual data in the digital image structure corresponds to things like oceans, forests and other types of [biomes](https://en.wikipedia.org/wiki/Biome).  We'll see how we can use our intuitions to bridge the gap between the raw, numerical data and our existing understanding of the world itself (i.e. the subject of the satellite photography).
 
-Ultimately, what we will be illustrating are the processes of **spatial translation** (moving an object in space) and **masking** (the selection or "indexing" of related sub-components from a larger whole).  These concepts are introduced here in 2D using the satellite image, but as later lessons will show, these concepts are absolutely fundamental to our use of neuroimaging data.  As a quick illustration of this, when we initially use an MRI scanner to obtain an image of a person's head, we also get data about the persons neck, head, skull and other tissues that *are not* the brain.  However, when we do our analyses, we only want to look at data that relates to the brain.  As such, we have to "**mask** out" those spatial regions of the scan data that we are not interested in.  Doing so ensures that we only extract data from the structures/areas of interest.  Before we get there though, let's build our intuitions.  We'll begin here with an introduction to this process with the ocean and landmasses.
+Ultimately, what we will be illustrating are the processes of **spatial translation** (moving an object in space) and **masking** (the selection or "indexing" of related sub-components from a larger whole).  These concepts are introduced here in 2D using the satellite image, but as later lessons will show, these concepts are absolutely fundamental to our use of neuroimaging data.  As a quick illustration of this, when we initially use an MRI scanner to obtain an image of a person's head, we also get data about the person's neck, head, skull and other tissues that *are not* the brain.  However, when we do our analyses, we only want to look at data that relates to the brain.  As such, we have to "**mask** out" those spatial regions of the scan data that we are not interested in.  Doing so ensures that we only extract data from the structures/areas of interest.  Before we get there though, let's build our intuitions.  We'll begin here with an introduction to this process with the ocean and landmasses.
 
 Let's begin by loading and plotting [a satellite image](https://commons.wikimedia.org/wiki/File:Earthmap1000x500.jpg) now.
 
@@ -51,17 +51,13 @@ imshow(np.asarray(firstMap))
 fig = plt.gcf()
 fig.set_size_inches(15, 30)
 
-
-
-
-
 Here we see a satellite image of the world just like any other that you've seen before.  Note though, that it is bordered by numbered axes, with zeros in the upper (for the Y axis) and lower (for the X axis) left-hand corners. This is because we have loaded it here in a jupyter notebook, which treats it just like any other pixel-wise plot that could be generated from code or data.  As such, the labeling numbers we see tracking the pixel rows in columns in the image.  It's just that, in this case, the color for each data point (in each row and column) corresponds to the color of the earth's surface at that location.  From this plotting we can see that our code has loaded the image as a 500 pixel tall by 1000 pixel wide object.
 
 Take note of how, _specifically_, the row and column numberings are associated with the plotted image.  We can see that the top row is labeled zero, while the final row is unlabeled, but nonetheless corresponds to 500.  Likewise, the first column is labeled zero, but the final (unlabeled) column corresponds to 1000.  Though this method of orientation may feel unintuitive, this is how data is plotted with [matplotlib](https://matplotlib.org/) (the code library we are using to view these images) ([Hunter, JD, 2007](https://doi.org/10.1109/MCSE.2007.55)).
 
 Lets use some additional [python functions](https://numpy.org/doc/stable/reference/generated/numpy.asarray.html) to extract the ["raw" data](https://en.wikipedia.org/wiki/RGB_color_model) being used to generate this plot and examine it.  We'll begin by looking at the dimensions of the image according to the python function (which reports image dimensions), and we'll look at the dimensions of the underlying data itself.
 
-**Do we expect these two entries to be the same or different--is the data structure _exactly_ the same size as the image?  Why or why not?
+**Do we expect these two entries to be the same or different--is the data structure _exactly_ the same size as the image?  Why or why not?**
 
 from __future__ import print_function
 print('Dimensions of image')
@@ -83,13 +79,12 @@ The **first output**  we get (providing **image** information) reads as follows:
 This provides us with several details.  It comes from the default python functions associated with inspecting data objects and their characteristics.
 
  - [**JPEG**](https://en.wikipedia.org/wiki/JPEG):  Indicates the file type, which could have also been [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) for example.
- - **(1000, 500)**: This quantity indicates the (resolution of the image)[https://en.wikipedia.org/wiki/Image_resolution].  The first number indicates how many pixels wide it is, while the second indicates how tall it is in pixels.
+ - **(1000, 500)**: This quantity indicates the [resolution of the image](https://en.wikipedia.org/wiki/Image_resolution).  The first number indicates how many pixels wide it is, while the second indicates how tall it is in pixels.
  - **RGB**:  Indicates the [color component channels](https://en.wikipedia.org/wiki/RGB_color_model) that are being combined to create the image.  Here we see that there are three of these channels and they correspond to the Red (R), Green (G), and Blue (B).
 
 The **second output** reads as "(500, 1000, 3)" and indicates the dimensions of the image's *actual* data representation.  That is, the structured and quantitative information that preserves the relevant correspondances with the source entity/object.
 
 Here we see that it is a **3** dimensional array.  This may come as a surprise given that the image is clearly **2** dimensional.  The first two values (500 and 1000) correspond to the height and width of the image.  Note that this ordering is flipped as compared to the output of the previous report.  This is something to be mindful of when investigating data structures, as the norms for the ordering of dimensions vary from function to function and programming language to programming language.  The final value, **(3)**, is something new though.  This corresponds to the aforementioned color channels for the image.  This value is 3 because this is an *RGB* based image.  Had the final entry of the first output been [*CMYK* (Cyan Magenta Yellow Black)](https://en.wikipedia.org/wiki/CMYK_color_model) instead the size of the final dimension would have been 4 instead of 3.  Typically though, CMYK is used for printed (or to be printed) mediums.
-
 
 #### Lets plot each of these color layers separately and take a look at the output.
 
@@ -276,7 +271,7 @@ print(sectionArray.shape)
 #russiaPixel=firstMapArray[80,700]
 #northAfricaPixel=firstMapArray[180,550]
 
-#begin painting the array, remember 0 indexing, extracting 100x100 squares from origional image
+#begin painting the array, remember 0 indexing, extracting 100x100 squares from original image
 sectionArray[0:99,0:99,:]=firstMapArray[0:99,0:99,:]
 sectionArray[0:99,100:199,:]=firstMapArray[400:499,350:449,:]
 sectionArray[0:99,200:299,:]=firstMapArray[100:199,150:249,:]
@@ -330,7 +325,7 @@ Well, before we can actually try to identify all of the ocean pixels, we first h
 
 Lets go ahead and set the color of that pixel (14 49 69) as a variable and then count how many pixels that _exact_ color value corresponds to.  
 
-We'll print out the number of candidate pixels below (i.e. the number of pixels in the image), along with the number that matched the variable we set.  Keep in mind that what we're counting here are those pixels that *exactly* that color.
+We'll print out the number of candidate pixels below (i.e. the number of pixels in the image), along with the number that matched the variable we set.  Keep in mind that what we're counting here are those pixels that are *exactly* that color.
 
 #### How many pixels do you expect this to be?
 We know that the ocean covers approximately [71 percent of the earth's surface](https://www.usgs.gov/special-topic/water-science-school/science/how-much-water-there-earth).  How many pixels from the image do we expect this to correspond to if the total number of pixels in the image is 1000\*500=500,000?
@@ -359,7 +354,7 @@ exactColorMask=[blueDiffSum==0]
 #counts the number of nonzero (not false) values in mask array
 totalExact=np.count_nonzero(exactColorMask)
 
-#extract the image dimensions from the image dimenion variable obtained earlier
+#extract the image dimensions from the image dimension variable obtained earlier
 imgDimY=np.asarray(firstMapShape[0])
 imgDimX=np.asarray(firstMapShape[1])
 
@@ -397,7 +392,7 @@ Our "naive", quantitative method for finding pixels that were the exact same as 
 
 ### Checking our math
 
-Our total count was reported by printing the contents of the **totalExact** variable.  This variable, in turn was computed by counting the number of non-zero entries in the **exactColorMask** variable.  What was stored in the **exactColorMask** variable and how was it generated? 
+Our total count was reported by printing the contents of the **totalExact** variable.  This variable, in turn, was computed by counting the number of non-zero entries in the **exactColorMask** variable.  What was stored in the **exactColorMask** variable and how was it generated? 
 
 **exactColorMask** was generated by subtracting the "Atlantic blue" RGB value [14 49 69] from *each* pixel in the original image and then (after summing the absolute value of this difference across all three color channels) looking for pixels which had **no** difference (i.e. were **exactly** 0).  
 
@@ -421,11 +416,11 @@ Well, the answer to these questions depends on our ability to systematically def
 
 ##  Using trigonometry to compute color distances
 
-When we ran the "Atlantic blue" algorithm described above, we essentially treated the output as binarized.  What is meant by this ("binarized") is that that the answer to our question ("Is this Atlantic blue") was either **Yes** or **No**--there was no middle ground to the potential answers to this question.  There wasn't an option for "sort of".  The *only* case in which the answer wasn't **No**  was when the "difference" between "Atlantic blue" and the pixel in question was exactly zero, in which case the answer was **Yes**.  To rephrase this question as a [pseudo-code](https://en.wikipedia.org/wiki/Pseudocode) [if statement](https://en.wikipedia.org/wiki/Boolean_expression):
+When we ran the "Atlantic blue" algorithm described above, we essentially treated the output as binarized.  What is meant by this ("binarized") is that the answer to our question ("Is this Atlantic blue") was either **Yes** or **No**--there was no middle ground to the potential answers to this question.  There wasn't an option for "sort of".  The *only* case in which the answer wasn't **No**  was when the "difference" between "Atlantic blue" and the pixel in question was exactly zero, in which case the answer was **Yes**.  To rephrase this question as a [pseudo-code](https://en.wikipedia.org/wiki/Pseudocode) [if statement](https://en.wikipedia.org/wiki/Boolean_expression):
 
 "Is this Atlantic blue" --> if "Atlantic blue"-currentPixel==0, **yes**, otherwise **no** 
 
-However, keen eyes will note that the most direct output of our method (the initial subtraction result, stored in the variable **zeroBlueMask**) *is not* actually binarized.  That is, we don't *actually* get only "yes" or "no" answers from the difference computation. Instead, we apply an additional computations to the **zeroBlueMask** (and store the results in **blueDiffSum** and **exactColorMask**) and then convert our answer to a binarized output.  
+However, keen eyes will note that the most direct output of our method (the initial subtraction result, stored in the variable **zeroBlueMask**) *is not* actually binarized.  That is, we don't *actually* get only "yes" or "no" answers from the difference computation. Instead, we apply an additional computation to the **zeroBlueMask** (and store the results in **blueDiffSum** and **exactColorMask**) and then convert our answer to a binarized output.  
 
 **Is there something in the zeroBlueMask variable that we can make use of to determine "close" colors?"
 
@@ -440,7 +435,7 @@ In 1031 cases (i.e. for 1031 pixels) the difference between the "Atlantic blue" 
 
 We can think about those colors as being "1" away from "Atlantic blue".  How many pixels are "off-by-one" like this?  To check this, we would need to look at the **blueDiffSum** variable, which has summed the cross-channel differences into a single value.  In this 2 dimensional structure, we would be looking for values equal to 1.
 
-NOTE: in the code block below, you'll note that the variable **offByValue** is set to 2.  This is despite our immediately preceding discussion focusing on pixels that were "off-by-one".  The reason for this discrepancy is that, as it turns out, there are no pixel values that are *just* one numerical value off from the "Atlantic blue" value we are looking for.  As such, in order to find *any* additional pixels, we have to increase this "off-by" number (below represented by the **offByValue** variable) to 2.  The likely cause of this is a phenomenon known as ["JPEG compression"](https://en.wikipedia.org/wiki/JPEG#JPEG_compression) which is a specialized process used by image handling & processing programs which attempts to "shrink" the storage size of the image by algorithmically recoloring nearby pixels.  Feel free to modify the **offByValue** to demonstrate this for yourself.
+NOTE: in the code block below, you'll note that the variable **offByValue** is set to 2.  This is despite our immediately preceding discussion focusing on pixels that were "off-by-one".  The reason for this discrepancy is that, as it turns out, there are no pixel values that are *just* one numerical value off from the "Atlantic blue" value we are looking for.  As such, in order to find *any* additional pixels, we have to increase this "off-by" number (below represented by the **offByValue** variable) to 2.  The likely cause of this is a phenomenon known as [JPEG compression](https://en.wikipedia.org/wiki/JPEG#JPEG_compression) which is a specialized process used by image handling & processing programs which attempts to "shrink" the storage size of the image by algorithmically recoloring nearby pixels.  Feel free to modify the **offByValue** to demonstrate this for yourself.
 
 print('Dimensions of blueDiffSum variable:')
 print(np.asarray(blueDiffSum).shape)
@@ -474,7 +469,7 @@ print('')
 In the above code block, we counted how many pixels were off by some small amount (default=2) from the "Atlantic blue" color value.  Note that, algorithmically speaking, we were kind of doing this in a rough fashion:  we were simply summing the differences from the specified RGB values across all dimensions.  This was not a particularly sophisticated method and it treats some distance scenarios (i.e. [1 1 1] and [0 0 3]) as the exact same, even though these are "different kinds of differences".  That being said, it does hint at a structured framework for considering these color differences.
 
 #### Can we generalize this concept?
-If we think about this a bit more geometrically, we could treat the RGB values as the axes of an XYZ plot.  In such a fashion, each color could be placed in this arrangement in accordance with their X (red), Y (green), and Z (blue) coordinates.  Colors could then have their "distance" computed by seeing how far away they are from one another in this spatial arrangement.  In this way we would be computing the [*hypotenuse*](https://en.wikipedia.org/wiki/Hypotenuse) formed the 3 dimensional right triangle formed by the differences in color values.  The formula would look roughly like this
+If we think about this a bit more geometrically, we could treat the RGB values as the axes of an XYZ plot.  In such a fashion, each color could be placed in this arrangement in accordance with their X (red), Y (green), and Z (blue) coordinates.  Colors could then have their "distance" computed by seeing how far away they are from one another in this spatial arrangement.  In this way we would be computing the [*hypotenuse*](https://en.wikipedia.org/wiki/Hypotenuse) formed by the 3 dimensional right triangle manifested by the differences in color values.  The formula would look roughly like this
 
 "Color Hypotenuse Distance"=$\sqrt{(R^2 +G^2 + B^2 )}$
 
@@ -491,7 +486,7 @@ Let's implement some code that does exactly this.  Next, we'll apply that code t
 import numpy as np
 import matplotlib.pyplot as plt
 
-#quick and dirty general use hypoteuse algorithm, can be used for 2d or 3D
+#quick and dirty general use hypotenuse algorithm, can be used for 2d or 3D
 def multiDHypot(coords1,coords2):
     dimDisplace=np.subtract(coords1,coords2)
     elementNum=dimDisplace.size
@@ -505,7 +500,7 @@ def multiDHypot(coords1,coords2):
         hypotLeng=np.sqrt(elementSquareSum)
     return hypotLeng
 
-#initalize distance storage structure
+#initialize distance storage structure
 colorDistMeasures=np.zeros(([firstMapShape[0],firstMapShape[1]]))
 
 #iteratively apply the distance computation
@@ -514,7 +509,7 @@ for iRows in range(firstMapShape[0]):
         #extract the current pixel
         curPixelVal=zeroBlueMask[iRows,iColumns]
         
-        #compute the color distance for this pixel, and store it in the corresponding stpot
+        #compute the color distance for this pixel, and store it in the corresponding spot
         #in colorDistMeasures, use this if your input above was firstMapArray
         #Sidenote:  This may require additional code modifications
         #colorDistMeasures[iRows,iColumns]=multiDHypot(curPixelVal,atlanticColor)
@@ -530,12 +525,12 @@ flattenedDistances=np.ndarray.flatten(colorDistMeasures)
 
 #plotting code for histogram
 ax1=plt.subplot(2, 1, 1)
-#NOTE: To get a visual sense of the aforementioned JPEG color coompression, set bins = 500 
+#NOTE: To get a visual sense of the aforementioned JPEG color compression, set bins = 500 
 #in the next line.
 plt.hist(flattenedDistances, bins=100)
 plt.xlabel('Distance from ocean color')
 plt.ylabel('Number of pixels')
-plt.title('Distributon of RGB color distance from Atlantic blue color')
+plt.title('Distribution of RGB color distance from Atlantic blue color')
 fig = plt.gcf()
 fig.set_size_inches(18.5, 10.5)
 
@@ -558,7 +553,7 @@ These likely correspond to colors/environment-types that cover large portions of
 
 #### The big cluster, from 0 to 75 is the one we are interested in, and to see why we can look at the plot below the histogram.
 
-In the plot below the histogram we see a differently colored view of the satellite image.  Here, instead of visible light, we are plotting the numerical [color distance](https://en.wikipedia.org/wiki/Color_difference) from "Atlantic blue".  Referencing the colorbar to the right, we see that most of the ocean is less than 100 "distance units" from the "Atlantic blue" color (oincidentally depicted in blue with this color mapping).  
+In the plot below the histogram we see a differently colored view of the satellite image.  Here, instead of visible light, we are plotting the numerical [color distance](https://en.wikipedia.org/wiki/Color_difference) from "Atlantic blue".  Referencing the colorbar to the right, we see that most of the ocean is less than 100 "distance units" from the "Atlantic blue" color (coincidentally depicted in blue with this color mapping).  
 
 What if we selected only those pixels that were *less than* some specified distance (e.g. 75 or 100) from "Atlantic blue"?
 
@@ -581,7 +576,7 @@ def updatePlots(DistanceArray,cutVal):
     plt.hist(flattenedDistances, bins=100)
     plt.xlabel('Distance from ocean color')
     plt.ylabel('Number of pixels')
-    plt.title('Distributon of RGB color distance from Atlantic pixel color')
+    plt.title('Distribution of RGB color distance from Atlantic pixel color')
     xposition = [cutVal]
     for xc in xposition:
         plt.axvline(x=xc, color='r', linestyle='--', linewidth=3)
@@ -589,17 +584,17 @@ def updatePlots(DistanceArray,cutVal):
     fig.set_size_inches(20, 10)
      
     #compute binarized mask for values below cutVal
-    naieveOceanMask=DistanceArray<cutVal
+    naiveOceanMask=DistanceArray<cutVal
     
     #plot the image that results
     plt.subplot(3, 1, 2)
-    imshow(naieveOceanMask)
+    imshow(naiveOceanMask)
     fig = plt.gcf()
     fig.set_size_inches(10, 10)
     
     # Pie chart, where the slices will be ordered and plotted counter-clockwise:
     maskLabels = 'Presumed water', 'Presumed land'
-    maskSizes = [np.sum(naieveOceanMask==1),np.sum(naieveOceanMask==0)]
+    maskSizes = [np.sum(naiveOceanMask==1),np.sum(naiveOceanMask==0)]
     #implement pie chart plot here
 
 #create the function to manipulate

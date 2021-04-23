@@ -474,7 +474,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "3b52b3acc54d4e3a819de7c8b8efa221", "version_major": 2, "version_minor": 0}
+{"model_id": "8233732de94b4fd4b02ed389b8fab75a", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.rotateAndPlotWrapper(roiNum, xCoord, yCoord, zCoord)&gt;
 </pre></div>
 </div>
@@ -484,7 +484,7 @@
 <div class="section" id="translation-errors">
 <h2>Translation errors<a class="headerlink" href="#translation-errors" title="Permalink to this headline">¶</a></h2>
 <p>In previous chapters you may have noticed that we often selected locations for our ROIs (in particular planar ROIs) by referring to nearby, reference anatomical structures.  Despite this, even though we were choosing where to planar the planar ROIs in relation to these structures, we were nonetheless manually entering coordinates (based on trial and error or our best guesses).  This is less than ideal for several reasons.</p>
-<p>First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the <a class="reference external" href="https://en.wikipedia.org/wiki/Anterior_commissure">anterior commisure</a>.  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, <a class="reference external" href="https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates">MNI coordinates</a> are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error (due to the requisite translations to or from this spatial standard) on top of all the many other sources of error in this field.  This hints at a second trouble as well.</p>
+<p>First of all, it is difficult to communicate and have intuitions about these coordinates.  In the previous examples we were using ACPC coordinates which specify the millimeter offset from the <a class="reference external" href="https://en.wikipedia.org/wiki/Anterior_commissure">anterior commissure</a>.  This  is nice because it is subject specific and the units themselves are quite familiar.  Alternatively, in some of the literature, <a class="reference external" href="https://neuroimage.usc.edu/brainstorm/CoordinateSystems#MNI_coordinates">MNI coordinates</a> are used, which has the benefit of being standardized, but necessarily incurs an additional source of spatial error (due to the requisite translations to or from this spatial standard) on top of all the many other sources of error in this field.  This hints at a second trouble as well.</p>
 <p>If we’re going to leave other investigators to their own devices on how to implement an interpretation of the relative anatomical description of a tract, then we have compounded the number of opportunities for “noise” to be added to our segmentation specification.  In doing so we make our segmentation less reliable overall.  But what if we didn’t have to do this?  What if, instead, we were able to <em>directly</em> use those anatomical structures to define our regions of interest?  How could we do that?</p>
 <p>Lets try that.  Below, you’ll be able to select a anatomical structure <strong>and</strong> which of its borders to use to generate a planar ROI.  Of particular note should be the potential utility of subcortical structures in providing planar ROIs for our future white matter segmentations.</p>
 <div class="cell docutils container">
@@ -569,7 +569,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "9656df4b24f94a708a4053aba48dc225", "version_major": 2, "version_minor": 0}
+{"model_id": "2ed0b7fcd5d44a21aaeb980d8574866a", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.anatomyPlanePlotWrapper(roiNum, relativeBorder, xCoord, yCoord, zCoord)&gt;
 </pre></div>
 </div>
@@ -589,7 +589,6 @@
     <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
     <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
     
-
     <span class="n">borderPlane</span><span class="o">=</span><span class="n">WMA_pyFuncs</span><span class="o">.</span><span class="n">planarROIFromAtlasLabelBorder</span><span class="p">(</span><span class="n">atlasImg</span><span class="p">,</span><span class="n">primaryRoiNum</span><span class="p">,</span> <span class="n">relativeBorder</span><span class="p">)</span>
     
     <span class="n">cutPlane</span><span class="o">=</span><span class="n">WMA_pyFuncs</span><span class="o">.</span><span class="n">planarROIFromAtlasLabelBorder</span><span class="p">(</span><span class="n">atlasImg</span><span class="p">,</span><span class="n">cutRoiNum</span><span class="p">,</span> <span class="n">cutBorder</span><span class="p">)</span>
@@ -623,7 +622,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c712128a2b5642daada7c39def4227b9", "version_major": 2, "version_minor": 0}
+{"model_id": "13626e62082247889eb5f696093805cf", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.anatomyPlanePlotWrapper(primaryRoiNum, relativeBorder, cutRoiNum, cutBorder, keepPortion, xCoord, yCoord, zCoord)&gt;
 </pre></div>
 </div>
@@ -683,7 +682,7 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  
 
 <span class="c1">#use the criteria application function to find the relevant streamlines</span>
-<span class="n">streamBool</span><span class="o">=</span><span class="n">WMA_pyFuncs</span><span class="o">.</span><span class="n">applyNiftiCriteriaToTract</span><span class="p">(</span><span class="n">sourceTractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">,</span> <span class="n">outPlane</span><span class="p">,</span> <span class="kc">True</span> <span class="p">,</span> <span class="s1">&#39;any&#39;</span><span class="p">)</span>
+<span class="n">streamBool</span><span class="o">=</span><span class="n">WMA_pyFuncs</span><span class="o">.</span><span class="n">applyNiftiCriteriaToTract</span><span class="p">(</span><span class="n">sourceTractogram</span><span class="o">.</span><span class="n">streamlines</span><span class="p">,</span> <span class="n">outPlane</span><span class="p">,</span> <span class="kc">False</span> <span class="p">,</span> <span class="s1">&#39;any&#39;</span><span class="p">)</span>
     
 <span class="n">streamsToPlot</span><span class="o">=</span><span class="n">extractSubTractogram</span><span class="p">(</span><span class="n">sourceTractogram</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">streamBool</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
     
@@ -693,9 +692,9 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5c90290d019a452d9c58c880e2c04e33", "version_major": 2, "version_minor": 0}
+{"model_id": "2917c9290e1948f49496c1f7e40707a9", "version_major": 2, "version_minor": 0}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5f2ae03fff9741849012beef519e7114", "version_major": 2, "version_minor": 0}
+{"model_id": "2ef969ee91754b76b848d99ec7f00af3", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
@@ -757,7 +756,7 @@
 <span class="c1">#establish instruction list</span>
 <span class="n">instructionList</span><span class="o">=</span><span class="nb">list</span><span class="p">([</span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="s1">&#39;neither&#39;</span><span class="p">])</span>  
 
-<span class="c1">#subset anatomical baoundaries to relevant options</span>
+<span class="c1">#subset anatomical boundaries to relevant options</span>
 <span class="n">boundsTable</span><span class="o">=</span> <span class="n">WMA_pyFuncs</span><span class="o">.</span><span class="n">findMaxMinPlaneBound</span><span class="p">(</span><span class="n">borderPlane</span><span class="p">)</span>
 <span class="n">optionsHold</span><span class="o">=</span><span class="n">boundsTable</span><span class="p">[</span><span class="s1">&#39;boundLabel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">boundsTable</span><span class="p">[</span><span class="s1">&#39;dimIndex&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">boundsTable</span><span class="p">[</span><span class="s1">&#39;dimIndex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">positionOptions</span><span class="o">=</span><span class="n">optionsHold</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">optionsHold</span><span class="p">)]</span>
@@ -883,7 +882,7 @@
 </div>
 <div class="section" id="closing-discussion">
 <h2>Closing discussion<a class="headerlink" href="#closing-discussion" title="Permalink to this headline">¶</a></h2>
-<p>In this chapter we demonstrated how to use the brain’s anatomy to guide segmentation.  As we have noted before though, segmenting a coherent white matter structure typically takes the application of several criteria.  In the next two chapters we’ll actually perform a segmentation for two such structures. We’ll start with the <a class="reference external" href="https://en.wikipedia.org/wiki/Uncinate_fasciculus">uncinate fasiciculus</a>.</p>
+<p>In this chapter we demonstrated how to use the brain’s anatomy to guide segmentation.  As we have noted before though, segmenting a coherent white matter structure typically takes the application of several criteria.  In the next two chapters we’ll actually perform a segmentation for two such structures. We’ll start with the <a class="reference external" href="https://en.wikipedia.org/wiki/Uncinate_fasciculus">uncinate fasciculus</a>.</p>
 </div>
 </div>
 
