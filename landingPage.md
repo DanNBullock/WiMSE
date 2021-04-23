@@ -8,7 +8,7 @@ This resource is a collection of [jupyer notebooks](https://jupyter.org/) notebo
 
 ## How is it structured?
 
-On the left hand side of this page there is a navigation bar listing several chapters and their sub-sections.  The first of these is the "Front matter" which concerns many of the formalities associated with this lesson collection.  Among its sections is the **chapter summaries** there you'll find brief 
+On the left hand side of this page there is a navigation bar listing several chapters and their sub-sections.  The first of these is the "Front matter" which concerns many of the formalities associated with this lesson collection.  Among its sections is the **chapter summaries** there you'll find brief descriptions of all of the chapters covered in this guide.  If you want to get a healthy dose of context and overarching themes check out the **Building Bridges** chapter.  On the other hand, if you want to jump to the lessons, begin with **Introduction to discretized image representation and maps**
 
 ## Building and collaborating 
 
