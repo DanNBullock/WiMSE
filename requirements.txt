@@ -7,4 +7,5 @@ pandas
 itables
 nibabel
 nilearn
+seaborn
 dipy==1.1.1
