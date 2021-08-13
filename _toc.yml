@@ -8,14 +8,14 @@
 
 - part: Building intuitions with digital images
   chapters:
-  - file: notebooks/Intro_to_discretized_image_representation_&_maps
+  - file: notebooks/Intro_to_discretized_image_representation_and_maps
   - file: notebooks/Aligning_two_images
   - file: notebooks/Multi_object_maps_in_images
   - file: notebooks/A_consideration_of_jpegs_and_brain_images
 
 - part: Working with NIfTI data
   chapters:
-  - file: notebooks/How_to_represent_the_brain's_anatomy_-_as_a_volume
+  - file: notebooks/How_to_represent_the_brains_anatomy_-_as_a_volume
   - file: notebooks/How_to_interpret_a_volumetric_brain_segmentation
   
 - part: White matter and tractography
@@ -31,7 +31,7 @@
   - file: notebooks/Using_ROIs_as_tools
   - file: notebooks/A_second_segmentation-categorical_segmentation
   - file: notebooks/Advanced_anatomically-based_segmentation
-  - file: notebooks/Example_Segmentation-uncinate_fasiculus.ipynb
+  - file: notebooks/Example_Segmentation-uncinate_fasiculus
   - file: notebooks/Example_Segmentation-IFOF
 
 - part: Epilogue
