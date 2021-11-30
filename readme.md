@@ -2,6 +2,8 @@
 
 A practical, hands on guide to the logic and practice of digital white matter segmentation
 
+[![Neruomatch 4.0 WiMSE presentation](https://img.youtube.com/vi/ziLdvZb-_Qs/0.jpg)](https://www.youtube.com/watch?v=ziLdvZb-_Qs)
+
 ## Author and Funding information
 
 (click below to launch this notebook collection as an interactive [Binder](https://mybinder.org/))
