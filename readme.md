@@ -1,4 +1,4 @@
-# White Matter Segmentation Education (WiMSE)
+# [White Matter Segmentation Education (WiMSE)](https://dannbullock.github.io/WiMSE/landingPage.html)
 
 A practical, hands on guide to the logic and practice of digital white matter segmentation
 
