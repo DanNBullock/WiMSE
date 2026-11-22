@@ -5,9 +5,7 @@ repository:
   url                       : https://github.com/DanNBullock/WiMSE
 html:
   use_repository_button: true
-html:
   use_issues_button: true
-html:
   use_edit_page_button: true
 execute:
   timeout: 120
